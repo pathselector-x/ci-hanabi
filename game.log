@@ -1,0 +1,1013 @@
+12/02/2021 05:57:13 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 05:57:37 PM INFO: Closing the server...
+12/02/2021 05:57:40 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 05:58:13 PM INFO: Connected by: ('127.0.0.1', 50433)
+12/02/2021 05:58:13 PM INFO: Player connected: Technic AIngel
+12/02/2021 05:58:13 PM INFO: Player ready: Technic AIngel
+12/02/2021 05:58:27 PM INFO: Connected by: ('127.0.0.1', 50436)
+12/02/2021 05:58:27 PM INFO: Player connected: Test
+12/02/2021 05:58:32 PM INFO: Player ready: Test
+12/02/2021 05:58:32 PM INFO: Game start! Between: ['Technic AIngel', 'Test']
+12/02/2021 05:58:32 PM INFO: Ok, let's start the game!
+12/02/2021 05:58:48 PM INFO: Closing the server...
+12/02/2021 06:02:06 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:02:21 PM INFO: Connected by: ('127.0.0.1', 50468)
+12/02/2021 06:02:21 PM INFO: Player connected: A
+12/02/2021 06:02:25 PM INFO: Connected by: ('127.0.0.1', 50470)
+12/02/2021 06:02:25 PM INFO: Player connected: Test
+12/02/2021 06:02:30 PM INFO: Player ready: Test
+12/02/2021 06:02:32 PM INFO: Player ready: A
+12/02/2021 06:02:32 PM INFO: Game start! Between: ['A', 'Test']
+12/02/2021 06:02:32 PM INFO: Ok, let's start the game!
+12/02/2021 06:03:33 PM INFO: Player A providing hint to Test: cards with color red are in positions: [0]
+12/02/2021 06:03:39 PM INFO: Showing hand to: Test
+12/02/2021 06:03:42 PM INFO: Showing hand to: A
+12/02/2021 06:04:08 PM INFO: Test: card played and correctly put on the table
+12/02/2021 06:05:30 PM INFO: Closing the server...
+12/02/2021 06:20:29 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:20:51 PM INFO: Connected by: ('127.0.0.1', 50748)
+12/02/2021 06:20:51 PM INFO: Player connected: technic_angel
+12/02/2021 06:20:51 PM INFO: Player ready: technic_angel
+12/02/2021 06:20:59 PM INFO: Connected by: ('127.0.0.1', 50751)
+12/02/2021 06:20:59 PM INFO: Player connected: Test
+12/02/2021 06:21:02 PM INFO: Player ready: Test
+12/02/2021 06:21:02 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 06:21:02 PM INFO: Ok, let's start the game!
+12/02/2021 06:21:21 PM INFO: Closing the server...
+12/02/2021 06:23:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:23:26 PM INFO: Connected by: ('127.0.0.1', 50782)
+12/02/2021 06:23:26 PM INFO: Player connected: Test
+12/02/2021 06:23:28 PM INFO: Player ready: Test
+12/02/2021 06:23:31 PM INFO: Connected by: ('127.0.0.1', 50784)
+12/02/2021 06:23:31 PM INFO: Player connected: technic_angel
+12/02/2021 06:23:31 PM INFO: Player ready: technic_angel
+12/02/2021 06:23:31 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:23:31 PM INFO: Ok, let's start the game!
+12/02/2021 06:23:44 PM INFO: Connected by: ('127.0.0.1', 50786)
+12/02/2021 06:23:44 PM INFO: Player connected: Test
+12/02/2021 06:23:47 PM INFO: Player ready: Test
+12/02/2021 06:23:53 PM INFO: Closing the server...
+12/02/2021 06:34:55 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:35:00 PM INFO: Connected by: ('127.0.0.1', 63342)
+12/02/2021 06:35:00 PM INFO: Player connected: Test
+12/02/2021 06:35:02 PM INFO: Player ready: Test
+12/02/2021 06:35:04 PM INFO: Connected by: ('127.0.0.1', 63345)
+12/02/2021 06:35:04 PM INFO: Player connected: technic_angel
+12/02/2021 06:35:04 PM INFO: Player ready: technic_angel
+12/02/2021 06:35:04 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:35:04 PM INFO: Ok, let's start the game!
+12/02/2021 06:35:29 PM INFO: Closing the server...
+12/02/2021 06:35:30 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:35:32 PM INFO: Connected by: ('127.0.0.1', 63350)
+12/02/2021 06:35:32 PM INFO: Player connected: Test
+12/02/2021 06:35:36 PM INFO: Connected by: ('127.0.0.1', 63353)
+12/02/2021 06:35:36 PM INFO: Player connected: technic_angel
+12/02/2021 06:35:36 PM INFO: Player ready: technic_angel
+12/02/2021 06:36:10 PM INFO: Closing the server...
+12/02/2021 06:36:10 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:36:14 PM INFO: Connected by: ('127.0.0.1', 63357)
+12/02/2021 06:36:14 PM INFO: Player connected: Test
+12/02/2021 06:36:45 PM INFO: Connected by: ('127.0.0.1', 63366)
+12/02/2021 06:36:45 PM INFO: Player connected: technic_angel
+12/02/2021 06:36:45 PM INFO: Player ready: technic_angel
+12/02/2021 06:36:49 PM INFO: Player ready: Test
+12/02/2021 06:36:49 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:36:49 PM INFO: Ok, let's start the game!
+12/02/2021 06:37:13 PM WARNING: Impossible discarding a card: there is no used token available
+12/02/2021 06:37:22 PM WARNING: Player disconnected: technic_angel
+12/02/2021 06:38:02 PM INFO: Closing the server...
+12/02/2021 06:38:03 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:38:06 PM INFO: Connected by: ('127.0.0.1', 63377)
+12/02/2021 06:38:06 PM INFO: Player connected: Test
+12/02/2021 06:38:07 PM INFO: Player ready: Test
+12/02/2021 06:38:09 PM INFO: Connected by: ('127.0.0.1', 63379)
+12/02/2021 06:38:09 PM INFO: Player connected: technic_angel
+12/02/2021 06:38:09 PM INFO: Player ready: technic_angel
+12/02/2021 06:38:09 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:38:09 PM INFO: Ok, let's start the game!
+12/02/2021 06:38:41 PM WARNING: Player disconnected: technic_angel
+12/02/2021 06:38:51 PM INFO: Closing the server...
+12/02/2021 06:38:53 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:39:00 PM INFO: Connected by: ('127.0.0.1', 63387)
+12/02/2021 06:39:00 PM INFO: Player connected: technic_angel
+12/02/2021 06:39:00 PM INFO: Player ready: technic_angel
+12/02/2021 06:39:02 PM INFO: Connected by: ('127.0.0.1', 63388)
+12/02/2021 06:39:02 PM INFO: Player connected: Test
+12/02/2021 06:39:04 PM INFO: Player ready: Test
+12/02/2021 06:39:04 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 06:39:04 PM INFO: Ok, let's start the game!
+12/02/2021 06:42:43 PM INFO: Closing the server...
+12/02/2021 06:42:45 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:42:49 PM INFO: Connected by: ('127.0.0.1', 63423)
+12/02/2021 06:42:49 PM INFO: Player connected: Test
+12/02/2021 06:42:51 PM INFO: Player ready: Test
+12/02/2021 06:42:54 PM INFO: Connected by: ('127.0.0.1', 63424)
+12/02/2021 06:42:54 PM INFO: Player connected: technic_angel
+12/02/2021 06:42:54 PM INFO: Player ready: technic_angel
+12/02/2021 06:42:54 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:42:54 PM INFO: Ok, let's start the game!
+12/02/2021 06:44:39 PM INFO: Closing the server...
+12/02/2021 06:44:39 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:44:42 PM INFO: Connected by: ('127.0.0.1', 60666)
+12/02/2021 06:44:42 PM INFO: Player connected: Test
+12/02/2021 06:44:45 PM INFO: Connected by: ('127.0.0.1', 60667)
+12/02/2021 06:44:45 PM INFO: Player connected: technic_angel
+12/02/2021 06:44:45 PM INFO: Player ready: technic_angel
+12/02/2021 06:45:04 PM INFO: Connected by: ('127.0.0.1', 60674)
+12/02/2021 06:45:04 PM INFO: Player connected: technic_angel
+12/02/2021 06:45:04 PM INFO: Player ready: technic_angel
+12/02/2021 06:45:13 PM INFO: Closing the server...
+12/02/2021 06:45:13 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:45:16 PM INFO: Connected by: ('127.0.0.1', 60677)
+12/02/2021 06:45:16 PM INFO: Player connected: Test
+12/02/2021 06:45:18 PM INFO: Player ready: Test
+12/02/2021 06:45:22 PM INFO: Connected by: ('127.0.0.1', 60680)
+12/02/2021 06:45:22 PM INFO: Player connected: technic_angel
+12/02/2021 06:45:22 PM INFO: Player ready: technic_angel
+12/02/2021 06:45:22 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:45:22 PM INFO: Ok, let's start the game!
+12/02/2021 06:47:50 PM INFO: Closing the server...
+12/02/2021 06:47:50 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:47:53 PM INFO: Connected by: ('127.0.0.1', 60708)
+12/02/2021 06:47:53 PM INFO: Player connected: Test
+12/02/2021 06:47:58 PM INFO: Connected by: ('127.0.0.1', 60710)
+12/02/2021 06:47:58 PM INFO: Player connected: technic_angel
+12/02/2021 06:47:58 PM INFO: Player ready: technic_angel
+12/02/2021 06:48:07 PM INFO: Player ready: Test
+12/02/2021 06:48:07 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:48:07 PM INFO: Ok, let's start the game!
+12/02/2021 06:49:40 PM INFO: Closing the server...
+12/02/2021 06:50:51 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:50:53 PM INFO: Connected by: ('127.0.0.1', 60733)
+12/02/2021 06:50:53 PM INFO: Player connected: Test
+12/02/2021 06:50:57 PM INFO: Connected by: ('127.0.0.1', 60736)
+12/02/2021 06:50:57 PM INFO: Player connected: technic_angel
+12/02/2021 06:50:57 PM INFO: Player ready: technic_angel
+12/02/2021 06:51:00 PM INFO: Player ready: Test
+12/02/2021 06:51:00 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:51:00 PM INFO: Ok, let's start the game!
+12/02/2021 06:53:05 PM INFO: Closing the server...
+12/02/2021 06:53:06 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:53:09 PM INFO: Connected by: ('127.0.0.1', 60753)
+12/02/2021 06:53:09 PM INFO: Player connected: Test
+12/02/2021 06:53:11 PM INFO: Player ready: Test
+12/02/2021 06:53:13 PM INFO: Connected by: ('127.0.0.1', 60755)
+12/02/2021 06:53:13 PM INFO: Player connected: technic_angel
+12/02/2021 06:53:13 PM INFO: Player ready: technic_angel
+12/02/2021 06:53:13 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:53:13 PM INFO: Ok, let's start the game!
+12/02/2021 06:54:15 PM INFO: Closing the server...
+12/02/2021 06:54:15 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 06:54:18 PM INFO: Connected by: ('127.0.0.1', 60765)
+12/02/2021 06:54:18 PM INFO: Player connected: Test
+12/02/2021 06:54:21 PM INFO: Connected by: ('127.0.0.1', 60766)
+12/02/2021 06:54:21 PM INFO: Player connected: technic_angel
+12/02/2021 06:54:21 PM INFO: Player ready: technic_angel
+12/02/2021 06:54:24 PM INFO: Player ready: Test
+12/02/2021 06:54:24 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 06:54:24 PM INFO: Ok, let's start the game!
+12/02/2021 07:13:50 PM INFO: Closing the server...
+12/02/2021 07:14:01 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:14:04 PM INFO: Connected by: ('127.0.0.1', 61239)
+12/02/2021 07:14:04 PM INFO: Player connected: Test
+12/02/2021 07:14:10 PM INFO: Connected by: ('127.0.0.1', 61241)
+12/02/2021 07:14:10 PM INFO: Player connected: technic_angel
+12/02/2021 07:14:10 PM INFO: Player ready: technic_angel
+12/02/2021 07:14:13 PM INFO: Player ready: Test
+12/02/2021 07:14:13 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:14:13 PM INFO: Ok, let's start the game!
+12/02/2021 07:14:41 PM INFO: Closing the server...
+12/02/2021 07:16:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:16:25 PM INFO: Connected by: ('127.0.0.1', 61258)
+12/02/2021 07:16:25 PM INFO: Player connected: technic_angel
+12/02/2021 07:16:25 PM INFO: Player ready: technic_angel
+12/02/2021 07:16:28 PM INFO: Connected by: ('127.0.0.1', 61260)
+12/02/2021 07:16:28 PM INFO: Player connected: Test
+12/02/2021 07:16:30 PM INFO: Player ready: Test
+12/02/2021 07:16:30 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:16:30 PM INFO: Ok, let's start the game!
+12/02/2021 07:16:30 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:16:30 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:17:17 PM INFO: Closing the server...
+12/02/2021 07:17:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:17:24 PM INFO: Connected by: ('127.0.0.1', 61273)
+12/02/2021 07:17:24 PM INFO: Player connected: Test
+12/02/2021 07:17:25 PM INFO: Player ready: Test
+12/02/2021 07:17:27 PM INFO: Connected by: ('127.0.0.1', 61274)
+12/02/2021 07:17:27 PM INFO: Player connected: technic_angel
+12/02/2021 07:17:27 PM INFO: Player ready: technic_angel
+12/02/2021 07:17:27 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:17:27 PM INFO: Ok, let's start the game!
+12/02/2021 07:17:48 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:17:56 PM INFO: Closing the server...
+12/02/2021 07:19:14 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:19:18 PM INFO: Connected by: ('127.0.0.1', 61290)
+12/02/2021 07:19:18 PM INFO: Player connected: technic_angel
+12/02/2021 07:19:18 PM INFO: Player ready: technic_angel
+12/02/2021 07:19:22 PM INFO: Connected by: ('127.0.0.1', 61292)
+12/02/2021 07:19:22 PM INFO: Player connected: Test
+12/02/2021 07:19:26 PM INFO: Player ready: Test
+12/02/2021 07:19:26 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:19:26 PM INFO: Ok, let's start the game!
+12/02/2021 07:19:26 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:19:26 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:19:32 PM INFO: Closing the server...
+12/02/2021 07:19:36 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:19:39 PM INFO: Connected by: ('127.0.0.1', 61294)
+12/02/2021 07:19:39 PM INFO: Player connected: Test
+12/02/2021 07:19:41 PM INFO: Player ready: Test
+12/02/2021 07:19:43 PM INFO: Connected by: ('127.0.0.1', 61295)
+12/02/2021 07:19:43 PM INFO: Player connected: technic_angel
+12/02/2021 07:19:43 PM INFO: Player ready: technic_angel
+12/02/2021 07:19:43 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:19:43 PM INFO: Ok, let's start the game!
+12/02/2021 07:20:21 PM INFO: Closing the server...
+12/02/2021 07:20:27 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:20:29 PM INFO: Connected by: ('127.0.0.1', 61304)
+12/02/2021 07:20:29 PM INFO: Player connected: Test
+12/02/2021 07:20:33 PM INFO: Player ready: Test
+12/02/2021 07:20:34 PM INFO: Connected by: ('127.0.0.1', 61308)
+12/02/2021 07:20:34 PM INFO: Player connected: technic_angel
+12/02/2021 07:20:34 PM INFO: Player ready: technic_angel
+12/02/2021 07:20:34 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:20:34 PM INFO: Ok, let's start the game!
+12/02/2021 07:20:34 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:22:19 PM INFO: Closing the server...
+12/02/2021 07:22:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:22:27 PM INFO: Connected by: ('127.0.0.1', 61320)
+12/02/2021 07:22:27 PM INFO: Player connected: Test
+12/02/2021 07:22:30 PM INFO: Connected by: ('127.0.0.1', 61322)
+12/02/2021 07:22:30 PM INFO: Player connected: technic_angel
+12/02/2021 07:22:30 PM INFO: Player ready: technic_angel
+12/02/2021 07:22:33 PM INFO: Player ready: Test
+12/02/2021 07:22:33 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:22:33 PM INFO: Ok, let's start the game!
+12/02/2021 07:22:33 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:22:37 PM INFO: Closing the server...
+12/02/2021 07:22:47 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:22:51 PM INFO: Connected by: ('127.0.0.1', 61325)
+12/02/2021 07:22:51 PM INFO: Player connected: Test
+12/02/2021 07:22:53 PM INFO: Connected by: ('127.0.0.1', 61326)
+12/02/2021 07:22:53 PM INFO: Player connected: technic_angel
+12/02/2021 07:22:53 PM INFO: Player ready: technic_angel
+12/02/2021 07:22:56 PM INFO: Player ready: Test
+12/02/2021 07:22:56 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:22:56 PM INFO: Ok, let's start the game!
+12/02/2021 07:22:56 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:22:56 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:23:08 PM INFO: Closing the server...
+12/02/2021 07:23:12 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:23:14 PM INFO: Connected by: ('127.0.0.1', 61332)
+12/02/2021 07:23:14 PM INFO: Player connected: technic_angel
+12/02/2021 07:23:14 PM INFO: Player ready: technic_angel
+12/02/2021 07:23:19 PM INFO: Connected by: ('127.0.0.1', 61334)
+12/02/2021 07:23:19 PM INFO: Player connected: Test
+12/02/2021 07:23:20 PM INFO: Player ready: Test
+12/02/2021 07:23:20 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:23:20 PM INFO: Ok, let's start the game!
+12/02/2021 07:24:00 PM INFO: Closing the server...
+12/02/2021 07:24:06 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:24:14 PM INFO: Connected by: ('127.0.0.1', 61343)
+12/02/2021 07:24:14 PM INFO: Player connected: technic_angel
+12/02/2021 07:24:14 PM INFO: Player ready: technic_angel
+12/02/2021 07:24:16 PM INFO: Connected by: ('127.0.0.1', 61345)
+12/02/2021 07:24:16 PM INFO: Player connected: Test
+12/02/2021 07:24:18 PM INFO: Player ready: Test
+12/02/2021 07:24:18 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:24:18 PM INFO: Ok, let's start the game!
+12/02/2021 07:25:44 PM INFO: Closing the server...
+12/02/2021 07:25:50 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:25:52 PM INFO: Connected by: ('127.0.0.1', 61360)
+12/02/2021 07:25:52 PM INFO: Player connected: Test
+12/02/2021 07:25:54 PM INFO: Player ready: Test
+12/02/2021 07:25:56 PM INFO: Connected by: ('127.0.0.1', 61361)
+12/02/2021 07:25:56 PM INFO: Player connected: technic_angel
+12/02/2021 07:25:56 PM INFO: Player ready: technic_angel
+12/02/2021 07:25:56 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:25:56 PM INFO: Ok, let's start the game!
+12/02/2021 07:25:56 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:25:56 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:26:46 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:26:51 PM INFO: Connected by: ('127.0.0.1', 61369)
+12/02/2021 07:26:51 PM INFO: Player connected: technic_angel
+12/02/2021 07:26:51 PM INFO: Player ready: technic_angel
+12/02/2021 07:26:53 PM INFO: Connected by: ('127.0.0.1', 61370)
+12/02/2021 07:26:53 PM INFO: Player connected: Test
+12/02/2021 07:26:55 PM INFO: Player ready: Test
+12/02/2021 07:26:55 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:26:55 PM INFO: Ok, let's start the game!
+12/02/2021 07:26:55 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:26:55 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:27:04 PM INFO: Closing the server...
+12/02/2021 07:27:11 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:27:13 PM INFO: Connected by: ('127.0.0.1', 61375)
+12/02/2021 07:27:13 PM INFO: Player connected: Test
+12/02/2021 07:27:14 PM INFO: Player ready: Test
+12/02/2021 07:27:16 PM INFO: Connected by: ('127.0.0.1', 61376)
+12/02/2021 07:27:16 PM INFO: Player connected: technic_angel
+12/02/2021 07:27:16 PM INFO: Player ready: technic_angel
+12/02/2021 07:27:16 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:27:16 PM INFO: Ok, let's start the game!
+12/02/2021 07:27:16 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:27:16 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:27:20 PM INFO: Closing the server...
+12/02/2021 07:27:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:27:25 PM INFO: Connected by: ('127.0.0.1', 61377)
+12/02/2021 07:27:25 PM INFO: Player connected: technic_angel
+12/02/2021 07:27:25 PM INFO: Player ready: technic_angel
+12/02/2021 07:27:27 PM INFO: Connected by: ('127.0.0.1', 61379)
+12/02/2021 07:27:27 PM INFO: Player connected: Test
+12/02/2021 07:27:28 PM INFO: Player ready: Test
+12/02/2021 07:27:28 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:27:28 PM INFO: Ok, let's start the game!
+12/02/2021 07:27:28 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:27:28 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:27:46 PM INFO: Closing the server...
+12/02/2021 07:27:52 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:27:54 PM INFO: Connected by: ('127.0.0.1', 61385)
+12/02/2021 07:27:54 PM INFO: Player connected: technic_angel
+12/02/2021 07:27:54 PM INFO: Player ready: technic_angel
+12/02/2021 07:27:56 PM INFO: Connected by: ('127.0.0.1', 61386)
+12/02/2021 07:27:56 PM INFO: Player connected: Test
+12/02/2021 07:27:57 PM INFO: Player ready: Test
+12/02/2021 07:27:57 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:27:57 PM INFO: Ok, let's start the game!
+12/02/2021 07:27:57 PM INFO: Showing hand to: technic_angel
+12/02/2021 07:27:57 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:28:02 PM INFO: Closing the server...
+12/02/2021 07:28:05 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:28:09 PM INFO: Connected by: ('127.0.0.1', 61389)
+12/02/2021 07:28:09 PM INFO: Player connected: Test
+12/02/2021 07:28:11 PM INFO: Player ready: Test
+12/02/2021 07:28:13 PM INFO: Connected by: ('127.0.0.1', 61390)
+12/02/2021 07:28:13 PM INFO: Player connected: technic_angel
+12/02/2021 07:28:13 PM INFO: Player ready: technic_angel
+12/02/2021 07:28:13 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 07:28:13 PM INFO: Ok, let's start the game!
+12/02/2021 07:44:20 PM INFO: Closing the server...
+12/02/2021 07:44:25 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:44:31 PM INFO: Connected by: ('127.0.0.1', 55540)
+12/02/2021 07:44:31 PM INFO: Player connected: technic_angel
+12/02/2021 07:44:31 PM INFO: Player ready: technic_angel
+12/02/2021 07:44:54 PM INFO: Connected by: ('127.0.0.1', 51474)
+12/02/2021 07:44:54 PM INFO: Player connected: technic_angel
+12/02/2021 07:44:54 PM INFO: Player ready: technic_angel
+12/02/2021 07:45:17 PM INFO: Connected by: ('127.0.0.1', 51480)
+12/02/2021 07:45:17 PM INFO: Player connected: technic_angel
+12/02/2021 07:45:17 PM INFO: Player ready: technic_angel
+12/02/2021 07:45:25 PM INFO: Connected by: ('127.0.0.1', 51482)
+12/02/2021 07:45:25 PM INFO: Player connected: technic_angel
+12/02/2021 07:45:25 PM INFO: Player ready: technic_angel
+12/02/2021 07:45:25 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:45:31 PM INFO: Connected by: ('127.0.0.1', 51485)
+12/02/2021 07:45:31 PM INFO: Player connected: technic_angel
+12/02/2021 07:45:31 PM INFO: Player ready: technic_angel
+12/02/2021 07:45:31 PM WARNING: Player disconnected: technic_angel
+12/02/2021 07:45:33 PM INFO: Closing the server...
+12/02/2021 07:47:47 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 07:47:52 PM INFO: Connected by: ('127.0.0.1', 51509)
+12/02/2021 07:47:52 PM INFO: Player connected: technic_angel
+12/02/2021 07:47:52 PM INFO: Player ready: technic_angel
+12/02/2021 07:47:55 PM INFO: Connected by: ('127.0.0.1', 51510)
+12/02/2021 07:47:55 PM INFO: Player connected: Test
+12/02/2021 07:47:56 PM INFO: Player ready: Test
+12/02/2021 07:47:56 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 07:47:56 PM INFO: Ok, let's start the game!
+12/02/2021 07:49:39 PM INFO: Closing the server...
+12/02/2021 08:58:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 08:58:27 PM INFO: Connected by: ('127.0.0.1', 65121)
+12/02/2021 08:58:27 PM INFO: Player connected: technic_angel
+12/02/2021 08:58:27 PM INFO: Player ready: technic_angel
+12/02/2021 08:58:27 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:08:03 PM INFO: Closing the server...
+12/02/2021 09:08:04 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:08:07 PM INFO: Connected by: ('127.0.0.1', 65247)
+12/02/2021 09:08:07 PM INFO: Player connected: technic_angel
+12/02/2021 09:08:07 PM INFO: Player ready: technic_angel
+12/02/2021 09:08:10 PM INFO: Connected by: ('127.0.0.1', 65249)
+12/02/2021 09:08:10 PM INFO: Player connected: Test
+12/02/2021 09:08:12 PM INFO: Player ready: Test
+12/02/2021 09:08:12 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 09:08:12 PM INFO: Ok, let's start the game!
+12/02/2021 09:08:12 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:08:17 PM INFO: Closing the server...
+12/02/2021 09:08:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:08:24 PM INFO: Connected by: ('127.0.0.1', 65253)
+12/02/2021 09:08:24 PM INFO: Player connected: Test
+12/02/2021 09:08:26 PM INFO: Connected by: ('127.0.0.1', 65254)
+12/02/2021 09:08:26 PM INFO: Player connected: technic_angel
+12/02/2021 09:08:26 PM INFO: Player ready: technic_angel
+12/02/2021 09:08:29 PM INFO: Player ready: Test
+12/02/2021 09:08:29 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:08:29 PM INFO: Ok, let's start the game!
+12/02/2021 09:08:29 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:08:32 PM INFO: Closing the server...
+12/02/2021 09:16:24 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:16:26 PM INFO: Connected by: ('127.0.0.1', 65337)
+12/02/2021 09:16:26 PM INFO: Player connected: technic_angel
+12/02/2021 09:16:26 PM INFO: Player ready: technic_angel
+12/02/2021 09:16:28 PM INFO: Connected by: ('127.0.0.1', 65338)
+12/02/2021 09:16:28 PM INFO: Player connected: Test
+12/02/2021 09:16:30 PM INFO: Player ready: Test
+12/02/2021 09:16:30 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 09:16:30 PM INFO: Ok, let's start the game!
+12/02/2021 09:16:30 PM INFO: Showing hand to: technic_angel
+12/02/2021 09:16:30 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:16:48 PM INFO: Showing hand to: Test
+12/02/2021 09:16:55 PM INFO: Closing the server...
+12/02/2021 09:17:20 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:17:22 PM INFO: Connected by: ('127.0.0.1', 65349)
+12/02/2021 09:17:22 PM INFO: Player connected: Test
+12/02/2021 09:17:24 PM INFO: Player ready: Test
+12/02/2021 09:17:26 PM INFO: Connected by: ('127.0.0.1', 65350)
+12/02/2021 09:17:26 PM INFO: Player connected: technic_angel
+12/02/2021 09:17:26 PM INFO: Player ready: technic_angel
+12/02/2021 09:17:26 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:17:26 PM INFO: Ok, let's start the game!
+12/02/2021 09:18:16 PM INFO: Test: card played and correctly put on the table
+12/02/2021 09:18:16 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:19:12 PM INFO: Closing the server...
+12/02/2021 09:19:13 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:19:14 PM INFO: Connected by: ('127.0.0.1', 65365)
+12/02/2021 09:19:14 PM INFO: Player connected: technic_angel
+12/02/2021 09:19:14 PM INFO: Player ready: technic_angel
+12/02/2021 09:19:18 PM INFO: Connected by: ('127.0.0.1', 65366)
+12/02/2021 09:19:18 PM INFO: Player connected: Test
+12/02/2021 09:19:19 PM INFO: Player ready: Test
+12/02/2021 09:19:19 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 09:19:19 PM INFO: Ok, let's start the game!
+12/02/2021 09:19:55 PM INFO: Closing the server...
+12/02/2021 09:19:57 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:20:00 PM INFO: Connected by: ('127.0.0.1', 65373)
+12/02/2021 09:20:00 PM INFO: Player connected: Test
+12/02/2021 09:20:02 PM INFO: Connected by: ('127.0.0.1', 65375)
+12/02/2021 09:20:02 PM INFO: Player connected: technic_angel
+12/02/2021 09:20:02 PM INFO: Player ready: technic_angel
+12/02/2021 09:20:05 PM INFO: Player ready: Test
+12/02/2021 09:20:05 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:20:05 PM INFO: Ok, let's start the game!
+12/02/2021 09:20:05 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:20:49 PM INFO: Closing the server...
+12/02/2021 09:20:51 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:21:01 PM INFO: Connected by: ('127.0.0.1', 65388)
+12/02/2021 09:21:01 PM INFO: Player connected: technic_angel
+12/02/2021 09:21:01 PM INFO: Player ready: technic_angel
+12/02/2021 09:21:06 PM INFO: Connected by: ('127.0.0.1', 65391)
+12/02/2021 09:21:06 PM INFO: Player connected: technic_angel
+12/02/2021 09:21:06 PM INFO: Player ready: technic_angel
+12/02/2021 09:21:13 PM INFO: Closing the server...
+12/02/2021 09:21:15 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:21:18 PM INFO: Connected by: ('127.0.0.1', 65392)
+12/02/2021 09:21:18 PM INFO: Player connected: technic_angel
+12/02/2021 09:21:18 PM INFO: Player ready: technic_angel
+12/02/2021 09:21:19 PM INFO: Connected by: ('127.0.0.1', 65393)
+12/02/2021 09:21:19 PM INFO: Player connected: technic_angel
+12/02/2021 09:21:19 PM INFO: Player ready: technic_angel
+12/02/2021 09:21:48 PM INFO: Closing the server...
+12/02/2021 09:22:40 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:23:14 PM INFO: Connected by: ('127.0.0.1', 65421)
+12/02/2021 09:23:14 PM INFO: Player connected: technic_angel_1
+12/02/2021 09:23:14 PM INFO: Player ready: technic_angel_1
+12/02/2021 09:23:19 PM INFO: Connected by: ('127.0.0.1', 65422)
+12/02/2021 09:23:19 PM INFO: Player connected: technic_angel
+12/02/2021 09:23:19 PM INFO: Player ready: technic_angel
+12/02/2021 09:23:19 PM INFO: Game start! Between: ['technic_angel_1', 'technic_angel']
+12/02/2021 09:23:19 PM INFO: Ok, let's start the game!
+12/02/2021 09:23:19 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:23:19 PM WARNING: Player disconnected: technic_angel_1
+12/02/2021 09:23:25 PM INFO: Closing the server...
+12/02/2021 09:23:36 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:23:37 PM INFO: Connected by: ('127.0.0.1', 65427)
+12/02/2021 09:23:37 PM INFO: Player connected: technic_angel_1
+12/02/2021 09:23:37 PM INFO: Player ready: technic_angel_1
+12/02/2021 09:23:40 PM INFO: Connected by: ('127.0.0.1', 65428)
+12/02/2021 09:23:40 PM INFO: Player connected: technic_angel
+12/02/2021 09:23:40 PM INFO: Player ready: technic_angel
+12/02/2021 09:23:40 PM INFO: Game start! Between: ['technic_angel_1', 'technic_angel']
+12/02/2021 09:23:40 PM INFO: Ok, let's start the game!
+12/02/2021 09:25:26 PM INFO: Closing the server...
+12/02/2021 09:27:04 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:27:08 PM INFO: Connected by: ('127.0.0.1', 65453)
+12/02/2021 09:27:08 PM INFO: Player connected: Test
+12/02/2021 09:27:09 PM INFO: Player ready: Test
+12/02/2021 09:27:11 PM INFO: Connected by: ('127.0.0.1', 65454)
+12/02/2021 09:27:11 PM INFO: Player connected: technic_angel
+12/02/2021 09:27:11 PM INFO: Player ready: technic_angel
+12/02/2021 09:27:11 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:27:11 PM INFO: Ok, let's start the game!
+12/02/2021 09:27:17 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:30:27 PM INFO: Closing the server...
+12/02/2021 09:40:13 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:40:16 PM INFO: Connected by: ('127.0.0.1', 59839)
+12/02/2021 09:40:16 PM INFO: Player connected: Test
+12/02/2021 09:40:19 PM INFO: Connected by: ('127.0.0.1', 59842)
+12/02/2021 09:40:19 PM INFO: Player connected: technic_angel
+12/02/2021 09:40:19 PM INFO: Player ready: technic_angel
+12/02/2021 09:40:42 PM INFO: Player ready: Test
+12/02/2021 09:40:42 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:40:42 PM INFO: Ok, let's start the game!
+12/02/2021 09:40:42 PM WARNING: Player disconnected: technic_angel
+12/02/2021 09:40:49 PM INFO: Closing the server...
+12/02/2021 09:43:03 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:43:06 PM INFO: Connected by: ('127.0.0.1', 59915)
+12/02/2021 09:43:06 PM INFO: Player connected: Test
+12/02/2021 09:43:08 PM INFO: Connected by: ('127.0.0.1', 59916)
+12/02/2021 09:43:08 PM INFO: Player connected: technic_angel
+12/02/2021 09:43:08 PM INFO: Player ready: technic_angel
+12/02/2021 09:43:11 PM INFO: Player ready: Test
+12/02/2021 09:43:11 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:43:11 PM INFO: Ok, let's start the game!
+12/02/2021 09:43:36 PM INFO: Closing the server...
+12/02/2021 09:43:37 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:44:32 PM INFO: Closing the server...
+12/02/2021 09:44:33 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:44:34 PM INFO: Connected by: ('127.0.0.1', 59939)
+12/02/2021 09:44:34 PM INFO: Player connected: Test
+12/02/2021 09:44:36 PM INFO: Connected by: ('127.0.0.1', 59940)
+12/02/2021 09:44:36 PM INFO: Player connected: technic_angel
+12/02/2021 09:44:36 PM INFO: Player ready: technic_angel
+12/02/2021 09:44:38 PM INFO: Player ready: Test
+12/02/2021 09:44:38 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 09:44:38 PM INFO: Ok, let's start the game!
+12/02/2021 09:44:44 PM INFO: Closing the server...
+12/02/2021 09:56:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:56:25 PM INFO: Connected by: ('127.0.0.1', 54333)
+12/02/2021 09:56:25 PM INFO: Player connected: technic_angel
+12/02/2021 09:56:50 PM INFO: Closing the server...
+12/02/2021 09:57:37 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 09:57:39 PM INFO: Connected by: ('127.0.0.1', 54348)
+12/02/2021 09:57:39 PM INFO: Player connected: technic_angel
+12/02/2021 09:57:39 PM INFO: Player ready: technic_angel
+12/02/2021 09:57:44 PM INFO: Connected by: ('127.0.0.1', 54350)
+12/02/2021 09:57:44 PM INFO: Player connected: Test
+12/02/2021 09:57:45 PM INFO: Player ready: Test
+12/02/2021 09:57:45 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 09:57:45 PM INFO: Ok, let's start the game!
+12/02/2021 09:58:00 PM INFO: Closing the server...
+12/02/2021 10:00:05 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:00:07 PM INFO: Connected by: ('127.0.0.1', 54378)
+12/02/2021 10:00:07 PM INFO: Player connected: technic_angel
+12/02/2021 10:00:07 PM INFO: Player ready: technic_angel
+12/02/2021 10:00:09 PM INFO: Connected by: ('127.0.0.1', 54379)
+12/02/2021 10:00:09 PM INFO: Player connected: Test
+12/02/2021 10:00:11 PM INFO: Player ready: Test
+12/02/2021 10:00:11 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 10:00:11 PM INFO: Ok, let's start the game!
+12/02/2021 10:00:28 PM INFO: Closing the server...
+12/02/2021 10:00:32 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:00:33 PM INFO: Connected by: ('127.0.0.1', 54384)
+12/02/2021 10:00:33 PM INFO: Player connected: technic_angel
+12/02/2021 10:00:33 PM INFO: Player ready: technic_angel
+12/02/2021 10:00:35 PM INFO: Connected by: ('127.0.0.1', 54387)
+12/02/2021 10:00:35 PM INFO: Player connected: Test
+12/02/2021 10:00:36 PM INFO: Player ready: Test
+12/02/2021 10:00:36 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 10:00:36 PM INFO: Ok, let's start the game!
+12/02/2021 10:02:24 PM INFO: Closing the server...
+12/02/2021 10:02:25 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:02:26 PM INFO: Connected by: ('127.0.0.1', 54407)
+12/02/2021 10:02:26 PM INFO: Player connected: Test
+12/02/2021 10:02:29 PM INFO: Connected by: ('127.0.0.1', 54410)
+12/02/2021 10:02:29 PM INFO: Player connected: technic_angel
+12/02/2021 10:02:29 PM INFO: Player ready: technic_angel
+12/02/2021 10:02:33 PM INFO: Player ready: Test
+12/02/2021 10:02:33 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 10:02:33 PM INFO: Ok, let's start the game!
+12/02/2021 10:03:21 PM INFO: Closing the server...
+12/02/2021 10:03:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:03:25 PM INFO: Connected by: ('127.0.0.1', 54419)
+12/02/2021 10:03:25 PM INFO: Player connected: technic_angel
+12/02/2021 10:03:25 PM INFO: Player ready: technic_angel
+12/02/2021 10:03:27 PM INFO: Connected by: ('127.0.0.1', 54420)
+12/02/2021 10:03:27 PM INFO: Player connected: Test
+12/02/2021 10:03:29 PM INFO: Player ready: Test
+12/02/2021 10:03:29 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 10:03:29 PM INFO: Ok, let's start the game!
+12/02/2021 10:03:52 PM INFO: Closing the server...
+12/02/2021 10:04:07 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:04:08 PM INFO: Connected by: ('127.0.0.1', 54426)
+12/02/2021 10:04:08 PM INFO: Player connected: Test
+12/02/2021 10:04:09 PM INFO: Player ready: Test
+12/02/2021 10:04:11 PM INFO: Connected by: ('127.0.0.1', 54427)
+12/02/2021 10:04:11 PM INFO: Player connected: technic_angel
+12/02/2021 10:04:11 PM INFO: Player ready: technic_angel
+12/02/2021 10:04:11 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 10:04:11 PM INFO: Ok, let's start the game!
+12/02/2021 10:04:16 PM INFO: Closing the server...
+12/02/2021 10:05:30 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:05:32 PM INFO: Connected by: ('127.0.0.1', 54449)
+12/02/2021 10:05:32 PM INFO: Player connected: Test
+12/02/2021 10:05:34 PM INFO: Player ready: Test
+12/02/2021 10:05:37 PM INFO: Connected by: ('127.0.0.1', 54450)
+12/02/2021 10:05:37 PM INFO: Player connected: technic_angel
+12/02/2021 10:05:37 PM INFO: Player ready: technic_angel
+12/02/2021 10:05:37 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 10:05:37 PM INFO: Ok, let's start the game!
+12/02/2021 10:05:37 PM INFO: Showing hand to: technic_angel
+12/02/2021 10:06:18 PM INFO: Closing the server...
+12/02/2021 10:06:19 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:06:21 PM INFO: Connected by: ('127.0.0.1', 54460)
+12/02/2021 10:06:21 PM INFO: Player connected: Test
+12/02/2021 10:06:22 PM INFO: Connected by: ('127.0.0.1', 54461)
+12/02/2021 10:06:22 PM INFO: Player connected: technic_angel
+12/02/2021 10:06:22 PM INFO: Player ready: technic_angel
+12/02/2021 10:06:25 PM INFO: Player ready: Test
+12/02/2021 10:06:25 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/02/2021 10:06:25 PM INFO: Ok, let's start the game!
+12/02/2021 10:06:25 PM INFO: Showing hand to: technic_angel
+12/02/2021 10:15:08 PM INFO: Closing the server...
+12/02/2021 10:15:13 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:15:14 PM INFO: Connected by: ('127.0.0.1', 54588)
+12/02/2021 10:15:14 PM INFO: Player connected: technic_angel
+12/02/2021 10:15:14 PM INFO: Player ready: technic_angel
+12/02/2021 10:15:31 PM INFO: Closing the server...
+12/02/2021 10:15:32 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:15:39 PM INFO: Connected by: ('127.0.0.1', 54594)
+12/02/2021 10:15:39 PM INFO: Player connected: technic_angel
+12/02/2021 10:15:39 PM INFO: Player ready: technic_angel
+12/02/2021 10:15:50 PM WARNING: Player disconnected: technic_angel
+12/02/2021 10:15:52 PM INFO: Closing the server...
+12/02/2021 10:16:53 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:17:00 PM INFO: Connected by: ('127.0.0.1', 54612)
+12/02/2021 10:17:00 PM INFO: Player connected: technic_angel
+12/02/2021 10:17:00 PM INFO: Player ready: technic_angel
+12/02/2021 10:17:13 PM WARNING: Player disconnected: technic_angel
+12/02/2021 10:17:15 PM INFO: Closing the server...
+12/02/2021 10:17:15 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:18:22 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:18:24 PM INFO: Connected by: ('127.0.0.1', 54632)
+12/02/2021 10:18:24 PM INFO: Player connected: technic_angel
+12/02/2021 10:18:24 PM INFO: Player ready: technic_angel
+12/02/2021 10:18:35 PM INFO: Connected by: ('127.0.0.1', 54634)
+12/02/2021 10:18:35 PM INFO: Player connected: Test
+12/02/2021 10:18:37 PM INFO: Player ready: Test
+12/02/2021 10:18:37 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/02/2021 10:18:37 PM INFO: Ok, let's start the game!
+12/02/2021 10:18:37 PM INFO: Showing hand to: technic_angel
+12/02/2021 10:18:39 PM WARNING: Player disconnected: technic_angel
+12/02/2021 10:19:55 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/02/2021 10:19:58 PM INFO: Connected by: ('127.0.0.1', 54653)
+12/02/2021 10:19:58 PM INFO: Player connected: technic_angel
+12/03/2021 11:11:29 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:11:33 AM INFO: Connected by: ('127.0.0.1', 52233)
+12/03/2021 11:11:33 AM INFO: Player connected: technic_angel
+12/03/2021 11:11:33 AM INFO: Player ready: technic_angel
+12/03/2021 11:11:42 AM INFO: Connected by: ('127.0.0.1', 52236)
+12/03/2021 11:11:42 AM INFO: Player connected: Test
+12/03/2021 11:11:44 AM INFO: Player ready: Test
+12/03/2021 11:11:45 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:11:45 AM INFO: Ok, let's start the game!
+12/03/2021 11:11:45 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:12:04 AM INFO: Closing the server...
+12/03/2021 11:14:02 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:19:41 AM INFO: Connected by: ('127.0.0.1', 52357)
+12/03/2021 11:19:41 AM INFO: Player connected: technic_angel
+12/03/2021 11:19:41 AM INFO: Player ready: technic_angel
+12/03/2021 11:19:52 AM INFO: Connected by: ('127.0.0.1', 52362)
+12/03/2021 11:19:52 AM INFO: Player connected: Test
+12/03/2021 11:19:53 AM INFO: Player ready: Test
+12/03/2021 11:19:53 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:19:53 AM INFO: Ok, let's start the game!
+12/03/2021 11:19:53 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:19:55 AM WARNING: Player disconnected: technic_angel
+12/03/2021 11:20:21 AM INFO: Closing the server...
+12/03/2021 11:20:27 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:20:28 AM INFO: Connected by: ('127.0.0.1', 52369)
+12/03/2021 11:20:28 AM INFO: Player connected: technic_angel
+12/03/2021 11:20:28 AM INFO: Player ready: technic_angel
+12/03/2021 11:20:31 AM INFO: Connected by: ('127.0.0.1', 52372)
+12/03/2021 11:20:31 AM INFO: Player connected: Test
+12/03/2021 11:20:32 AM INFO: Player ready: Test
+12/03/2021 11:20:32 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:20:32 AM INFO: Ok, let's start the game!
+12/03/2021 11:20:32 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:20:34 AM WARNING: Player disconnected: technic_angel
+12/03/2021 11:22:47 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:22:51 AM INFO: Connected by: ('127.0.0.1', 52396)
+12/03/2021 11:22:51 AM INFO: Player connected: Test
+12/03/2021 11:23:02 AM INFO: Connected by: ('127.0.0.1', 52397)
+12/03/2021 11:23:02 AM INFO: Player connected: AAA
+12/03/2021 11:23:04 AM INFO: Player ready: AAA
+12/03/2021 11:23:06 AM INFO: Player ready: Test
+12/03/2021 11:23:06 AM INFO: Game start! Between: ['Test', 'AAA']
+12/03/2021 11:23:06 AM INFO: Ok, let's start the game!
+12/03/2021 11:23:10 AM INFO: Showing hand to: Test
+12/03/2021 11:23:41 AM INFO: Player Test providing hint to AAA: cards with value 1 are in positions: [0, 2]
+12/03/2021 11:24:12 AM INFO: Closing the server...
+12/03/2021 11:24:41 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:24:43 AM INFO: Connected by: ('127.0.0.1', 52410)
+12/03/2021 11:24:43 AM INFO: Player connected: AAA
+12/03/2021 11:24:45 AM INFO: Connected by: ('127.0.0.1', 52411)
+12/03/2021 11:24:45 AM INFO: Player connected: Test
+12/03/2021 11:24:46 AM INFO: Player ready: Test
+12/03/2021 11:24:48 AM INFO: Player ready: AAA
+12/03/2021 11:24:48 AM INFO: Game start! Between: ['AAA', 'Test']
+12/03/2021 11:24:48 AM INFO: Ok, let's start the game!
+12/03/2021 11:24:50 AM INFO: Showing hand to: Test
+12/03/2021 11:25:04 AM INFO: Player Test providing hint to AAA: cards with value 2 are in positions: [0, 2]
+12/03/2021 11:25:12 AM INFO: Closing the server...
+12/03/2021 11:33:23 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:33:26 AM INFO: Connected by: ('127.0.0.1', 52503)
+12/03/2021 11:33:26 AM INFO: Player connected: technic_angel
+12/03/2021 11:33:26 AM INFO: Player ready: technic_angel
+12/03/2021 11:33:26 AM WARNING: Player disconnected: technic_angel
+12/03/2021 11:35:04 AM INFO: Connected by: ('127.0.0.1', 52520)
+12/03/2021 11:35:04 AM INFO: Player connected: technic_angel
+12/03/2021 11:35:04 AM INFO: Player ready: technic_angel
+12/03/2021 11:35:15 AM INFO: Connected by: ('127.0.0.1', 52522)
+12/03/2021 11:35:15 AM INFO: Player connected: Test
+12/03/2021 11:35:16 AM INFO: Player ready: Test
+12/03/2021 11:35:16 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:35:16 AM INFO: Ok, let's start the game!
+12/03/2021 11:35:16 AM WARNING: Player disconnected: technic_angel
+12/03/2021 11:36:52 AM INFO: Closing the server...
+12/03/2021 11:36:53 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:36:54 AM INFO: Connected by: ('127.0.0.1', 52538)
+12/03/2021 11:36:54 AM INFO: Player connected: technic_angel
+12/03/2021 11:36:54 AM INFO: Player ready: technic_angel
+12/03/2021 11:36:56 AM INFO: Connected by: ('127.0.0.1', 52542)
+12/03/2021 11:36:56 AM INFO: Player connected: Test
+12/03/2021 11:36:58 AM INFO: Player ready: Test
+12/03/2021 11:36:58 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:36:58 AM INFO: Ok, let's start the game!
+12/03/2021 11:37:11 AM INFO: Closing the server...
+12/03/2021 11:38:41 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:38:43 AM INFO: Connected by: ('127.0.0.1', 52566)
+12/03/2021 11:38:43 AM INFO: Player connected: technic_angel
+12/03/2021 11:38:43 AM INFO: Player ready: technic_angel
+12/03/2021 11:38:45 AM INFO: Connected by: ('127.0.0.1', 52568)
+12/03/2021 11:38:45 AM INFO: Player connected: Test
+12/03/2021 11:38:46 AM INFO: Player ready: Test
+12/03/2021 11:38:46 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:38:46 AM INFO: Ok, let's start the game!
+12/03/2021 11:38:46 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:38:48 AM WARNING: Player disconnected: technic_angel
+12/03/2021 11:39:34 AM INFO: Closing the server...
+12/03/2021 11:45:22 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:45:24 AM INFO: Connected by: ('127.0.0.1', 60074)
+12/03/2021 11:45:24 AM INFO: Player connected: technic_angel
+12/03/2021 11:45:24 AM INFO: Player ready: technic_angel
+12/03/2021 11:45:27 AM INFO: Connected by: ('127.0.0.1', 60075)
+12/03/2021 11:45:27 AM INFO: Player connected: Test
+12/03/2021 11:45:28 AM INFO: Player ready: Test
+12/03/2021 11:45:28 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:45:28 AM INFO: Ok, let's start the game!
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:45:30 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:10 AM INFO: Closing the server...
+12/03/2021 11:46:29 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:46:33 AM INFO: Connected by: ('127.0.0.1', 60087)
+12/03/2021 11:46:33 AM INFO: Player connected: Test
+12/03/2021 11:46:35 AM INFO: Player ready: Test
+12/03/2021 11:46:38 AM INFO: Connected by: ('127.0.0.1', 60088)
+12/03/2021 11:46:38 AM INFO: Player connected: technic_angel
+12/03/2021 11:46:38 AM INFO: Player ready: technic_angel
+12/03/2021 11:46:38 AM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 11:46:38 AM INFO: Ok, let's start the game!
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:40 AM INFO: Showing hand to: technic_angel
+12/03/2021 11:46:48 AM INFO: Closing the server...
+12/03/2021 11:57:00 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:57:02 AM INFO: Connected by: ('127.0.0.1', 60200)
+12/03/2021 11:57:02 AM INFO: Player connected: technic_angel
+12/03/2021 11:57:02 AM INFO: Player ready: technic_angel
+12/03/2021 11:57:05 AM INFO: Connected by: ('127.0.0.1', 60201)
+12/03/2021 11:57:05 AM INFO: Player connected: Test
+12/03/2021 11:57:06 AM INFO: Player ready: Test
+12/03/2021 11:57:06 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:57:06 AM INFO: Ok, let's start the game!
+12/03/2021 11:57:16 AM INFO: Closing the server...
+12/03/2021 11:58:45 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 11:58:48 AM INFO: Connected by: ('127.0.0.1', 60217)
+12/03/2021 11:58:48 AM INFO: Player connected: technic_angel
+12/03/2021 11:58:48 AM INFO: Player ready: technic_angel
+12/03/2021 11:58:51 AM INFO: Connected by: ('127.0.0.1', 60218)
+12/03/2021 11:58:51 AM INFO: Player connected: Test
+12/03/2021 11:58:53 AM INFO: Player ready: Test
+12/03/2021 11:58:53 AM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 11:58:53 AM INFO: Ok, let's start the game!
+12/03/2021 11:59:25 AM INFO: Closing the server...
+12/03/2021 12:01:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:01:25 PM INFO: Connected by: ('127.0.0.1', 60241)
+12/03/2021 12:01:25 PM INFO: Player connected: technic_angel
+12/03/2021 12:01:25 PM INFO: Player ready: technic_angel
+12/03/2021 12:01:25 PM WARNING: Player disconnected: technic_angel
+12/03/2021 12:01:36 PM INFO: Connected by: ('127.0.0.1', 60244)
+12/03/2021 12:01:36 PM INFO: Player connected: technic_angel
+12/03/2021 12:01:36 PM INFO: Player ready: technic_angel
+12/03/2021 12:01:43 PM INFO: Connected by: ('127.0.0.1', 60245)
+12/03/2021 12:01:43 PM INFO: Player connected: Test
+12/03/2021 12:01:45 PM INFO: Player ready: Test
+12/03/2021 12:01:45 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 12:01:45 PM INFO: Ok, let's start the game!
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:45 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:01:51 PM INFO: Closing the server...
+12/03/2021 12:01:54 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:01:57 PM INFO: Connected by: ('127.0.0.1', 60251)
+12/03/2021 12:01:57 PM INFO: Player connected: Test
+12/03/2021 12:01:58 PM INFO: Player ready: Test
+12/03/2021 12:02:00 PM INFO: Connected by: ('127.0.0.1', 60253)
+12/03/2021 12:02:00 PM INFO: Player connected: technic_angel
+12/03/2021 12:02:00 PM INFO: Player ready: technic_angel
+12/03/2021 12:02:00 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 12:02:00 PM INFO: Ok, let's start the game!
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:00 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:02:05 PM INFO: Closing the server...
+12/03/2021 12:03:58 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:03:58 PM INFO: Connected by: ('127.0.0.1', 60280)
+12/03/2021 12:03:58 PM INFO: Player connected: Test
+12/03/2021 12:04:00 PM INFO: Player ready: Test
+12/03/2021 12:04:02 PM INFO: Connected by: ('127.0.0.1', 60282)
+12/03/2021 12:04:02 PM INFO: Player connected: technic_angel
+12/03/2021 12:04:02 PM INFO: Player ready: technic_angel
+12/03/2021 12:04:02 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 12:04:02 PM INFO: Ok, let's start the game!
+12/03/2021 12:04:29 PM INFO: Closing the server...
+12/03/2021 12:04:31 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:04:32 PM INFO: Connected by: ('127.0.0.1', 60289)
+12/03/2021 12:04:32 PM INFO: Player connected: Test
+12/03/2021 12:04:34 PM INFO: Connected by: ('127.0.0.1', 60290)
+12/03/2021 12:04:34 PM INFO: Player connected: technic_angel
+12/03/2021 12:04:34 PM INFO: Player ready: technic_angel
+12/03/2021 12:04:36 PM INFO: Player ready: Test
+12/03/2021 12:04:36 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 12:04:36 PM INFO: Ok, let's start the game!
+12/03/2021 12:04:47 PM INFO: Showing hand to: Test
+12/03/2021 12:05:05 PM INFO: Test: card played and correctly put on the table
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM INFO: Showing hand to: technic_angel
+12/03/2021 12:05:05 PM WARNING: Player disconnected: technic_angel
+12/03/2021 12:05:29 PM INFO: Closing the server...
+12/03/2021 12:05:35 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:05:37 PM INFO: Connected by: ('127.0.0.1', 60301)
+12/03/2021 12:05:37 PM INFO: Player connected: technic_angel
+12/03/2021 12:05:37 PM INFO: Player ready: technic_angel
+12/03/2021 12:05:39 PM INFO: Connected by: ('127.0.0.1', 60302)
+12/03/2021 12:05:39 PM INFO: Player connected: Test
+12/03/2021 12:05:40 PM INFO: Player ready: Test
+12/03/2021 12:05:40 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 12:05:40 PM INFO: Ok, let's start the game!
+12/03/2021 12:06:05 PM INFO: Closing the server...
+12/03/2021 12:13:51 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:13:52 PM INFO: Connected by: ('127.0.0.1', 55411)
+12/03/2021 12:13:52 PM INFO: Player connected: technic_angel
+12/03/2021 12:13:52 PM INFO: Player ready: technic_angel
+12/03/2021 12:13:54 PM INFO: Connected by: ('127.0.0.1', 55412)
+12/03/2021 12:13:54 PM INFO: Player connected: Test
+12/03/2021 12:13:56 PM INFO: Player ready: Test
+12/03/2021 12:13:56 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 12:13:56 PM INFO: Ok, let's start the game!
+12/03/2021 12:13:56 PM WARNING: Player disconnected: technic_angel
+12/03/2021 12:38:02 PM INFO: Closing the server...
+12/03/2021 12:39:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:39:25 PM INFO: Connected by: ('127.0.0.1', 55905)
+12/03/2021 12:39:25 PM INFO: Player connected: Test
+12/03/2021 12:39:29 PM INFO: Connected by: ('127.0.0.1', 55906)
+12/03/2021 12:39:29 PM INFO: Player connected: AAA
+12/03/2021 12:39:31 PM INFO: Player ready: AAA
+12/03/2021 12:39:34 PM INFO: Player ready: Test
+12/03/2021 12:39:34 PM INFO: Game start! Between: ['Test', 'AAA']
+12/03/2021 12:39:34 PM INFO: Ok, let's start the game!
+12/03/2021 12:39:38 PM INFO: Showing hand to: Test
+12/03/2021 12:39:39 PM INFO: Showing hand to: Test
+12/03/2021 12:39:41 PM INFO: Showing hand to: Test
+12/03/2021 12:39:42 PM INFO: Showing hand to: Test
+12/03/2021 12:39:52 PM INFO: Showing hand to: AAA
+12/03/2021 12:39:57 PM INFO: Showing hand to: Test
+12/03/2021 12:42:19 PM INFO: Showing hand to: AAA
+12/03/2021 12:42:43 PM INFO: Showing hand to: Test
+12/03/2021 12:42:50 PM INFO: Showing hand to: Test
+12/03/2021 12:43:16 PM INFO: Test: card played and correctly put on the table
+12/03/2021 12:43:30 PM INFO: Showing hand to: Test
+12/03/2021 12:45:45 PM INFO: Closing the server...
+12/03/2021 12:50:40 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:50:44 PM INFO: Connected by: ('127.0.0.1', 51535)
+12/03/2021 12:50:44 PM INFO: Player connected: technic_angel
+12/03/2021 12:50:44 PM INFO: Player ready: technic_angel
+12/03/2021 12:50:46 PM INFO: Connected by: ('127.0.0.1', 51536)
+12/03/2021 12:50:46 PM INFO: Player connected: Test
+12/03/2021 12:50:47 PM INFO: Player ready: Test
+12/03/2021 12:50:47 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 12:50:47 PM INFO: Ok, let's start the game!
+12/03/2021 12:50:47 PM WARNING: Player disconnected: technic_angel
+12/03/2021 12:50:52 PM INFO: Closing the server...
+12/03/2021 12:50:53 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:50:56 PM INFO: Connected by: ('127.0.0.1', 51540)
+12/03/2021 12:50:56 PM INFO: Player connected: Test
+12/03/2021 12:51:00 PM INFO: Connected by: ('127.0.0.1', 51542)
+12/03/2021 12:51:00 PM INFO: Player connected: technic_angel
+12/03/2021 12:51:00 PM INFO: Player ready: technic_angel
+12/03/2021 12:51:02 PM INFO: Player ready: Test
+12/03/2021 12:51:02 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 12:51:02 PM INFO: Ok, let's start the game!
+12/03/2021 12:51:02 PM WARNING: Player disconnected: technic_angel
+12/03/2021 12:51:06 PM INFO: Closing the server...
+12/03/2021 12:51:10 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 12:51:14 PM INFO: Connected by: ('127.0.0.1', 51544)
+12/03/2021 12:51:14 PM INFO: Player connected: Test
+12/03/2021 12:51:15 PM INFO: Player ready: Test
+12/03/2021 12:51:17 PM INFO: Connected by: ('127.0.0.1', 51545)
+12/03/2021 12:51:17 PM INFO: Player connected: technic_angel
+12/03/2021 12:51:17 PM INFO: Player ready: technic_angel
+12/03/2021 12:51:17 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 12:51:17 PM INFO: Ok, let's start the game!
+12/03/2021 12:51:17 PM WARNING: Player disconnected: technic_angel
+12/03/2021 12:51:20 PM INFO: Closing the server...
+12/03/2021 01:01:52 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 01:01:55 PM INFO: Connected by: ('127.0.0.1', 51702)
+12/03/2021 01:01:55 PM INFO: Player connected: technic_angel
+12/03/2021 01:01:55 PM INFO: Player ready: technic_angel
+12/03/2021 01:01:57 PM INFO: Connected by: ('127.0.0.1', 51703)
+12/03/2021 01:01:57 PM INFO: Player connected: Test
+12/03/2021 01:01:59 PM INFO: Player ready: Test
+12/03/2021 01:01:59 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 01:01:59 PM INFO: Ok, let's start the game!
+12/03/2021 01:01:59 PM INFO: Showing hand to: technic_angel
+12/03/2021 01:02:32 PM INFO: Closing the server...
+12/03/2021 01:02:34 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 01:02:40 PM INFO: Connected by: ('127.0.0.1', 51712)
+12/03/2021 01:02:40 PM INFO: Player connected: Test
+12/03/2021 01:02:42 PM INFO: Player ready: Test
+12/03/2021 01:02:44 PM INFO: Connected by: ('127.0.0.1', 51715)
+12/03/2021 01:02:44 PM INFO: Player connected: technic_angel
+12/03/2021 01:02:44 PM INFO: Player ready: technic_angel
+12/03/2021 01:02:44 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 01:02:44 PM INFO: Ok, let's start the game!
+12/03/2021 01:02:44 PM INFO: Showing hand to: technic_angel
+12/03/2021 01:02:55 PM INFO: Showing hand to: Test
+12/03/2021 01:03:00 PM WARNING: Player disconnected: technic_angel
+12/03/2021 01:03:49 PM INFO: Closing the server...
+12/03/2021 01:03:55 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 01:04:04 PM INFO: Connected by: ('127.0.0.1', 51736)
+12/03/2021 01:04:04 PM INFO: Player connected: technic_angel
+12/03/2021 01:04:04 PM INFO: Player ready: technic_angel
+12/03/2021 01:04:06 PM INFO: Connected by: ('127.0.0.1', 51738)
+12/03/2021 01:04:06 PM INFO: Player connected: Test
+12/03/2021 01:04:07 PM INFO: Player ready: Test
+12/03/2021 01:04:07 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 01:04:07 PM INFO: Ok, let's start the game!
+12/03/2021 01:04:07 PM INFO: Showing hand to: technic_angel
+12/03/2021 01:06:28 PM INFO: Closing the server...
+12/03/2021 01:06:29 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 01:06:32 PM INFO: Connected by: ('127.0.0.1', 51762)
+12/03/2021 01:06:32 PM INFO: Player connected: technic_angel
+12/03/2021 01:06:32 PM INFO: Player ready: technic_angel
+12/03/2021 01:06:36 PM INFO: Connected by: ('127.0.0.1', 51764)
+12/03/2021 01:06:36 PM INFO: Player connected: Test
+12/03/2021 01:06:38 PM INFO: Player ready: Test
+12/03/2021 01:06:38 PM INFO: Game start! Between: ['technic_angel', 'Test']
+12/03/2021 01:06:38 PM INFO: Ok, let's start the game!
+12/03/2021 01:06:38 PM INFO: Showing hand to: technic_angel
+12/03/2021 01:08:12 PM INFO: Closing the server...
+12/03/2021 01:08:14 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/03/2021 01:08:16 PM INFO: Connected by: ('127.0.0.1', 61155)
+12/03/2021 01:08:16 PM INFO: Player connected: Test
+12/03/2021 01:08:17 PM INFO: Player ready: Test
+12/03/2021 01:08:20 PM INFO: Connected by: ('127.0.0.1', 61157)
+12/03/2021 01:08:20 PM INFO: Player connected: technic_angel
+12/03/2021 01:08:20 PM INFO: Player ready: technic_angel
+12/03/2021 01:08:20 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/03/2021 01:08:20 PM INFO: Ok, let's start the game!
+12/03/2021 01:08:20 PM INFO: Showing hand to: technic_angel
+12/03/2021 01:08:34 PM WARNING: Player disconnected: technic_angel
+12/03/2021 01:08:46 PM INFO: Closing the server...
