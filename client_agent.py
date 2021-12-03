@@ -1,13 +1,9 @@
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
-import select
 import GameData
 import socket
 from constants import *
-import os
 from collections import deque
-
-from game import Game
 
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
@@ -28,6 +24,7 @@ class TechnicAngel:
         stdout.flush()
 
         self.lock = Lock()
+        self.cv = Condition()
         self.run = True
         
         self.current_player = None
@@ -36,9 +33,22 @@ class TechnicAngel:
         self.discard_pile = None
         self.used_note_tokens = None
         self.used_storm_tokens = None
+
+        self.final_score = None
         
-        # Ready up your engines...
+        #! Ready up your engines...
+        self.auto_ready()
+        
+        self.msg_queue = deque([])
+        self.t_listener = Thread(target=self.listener)
+        self.t_listener.start()
+
         self.main_loop()
+
+        with self.lock: 
+            self.run = False
+            self.s.shutdown(socket.SHUT_RDWR)
+        self.t_listener.join()
 
     def __del__(self):
         self.s.close()
@@ -48,17 +58,15 @@ class TechnicAngel:
             data = self.s.recv(DATASIZE)
             if not data: continue
             data = GameData.GameData.deserialize(data)
-            with self.lock: 
-                accepted_types = type(data) is GameData.ServerGameStateData
-                if accepted_types: self.msg_queue.append(data)
+            with self.lock:
+                #! Insert in the msg queue just msgs to be processed, ignore the rest
+                accepted_types = type(data) is GameData.ServerGameStateData or \
+                    type(data) is GameData.ServerGameOver or \
+                    type(data) is GameData.ServerHintData
+                if accepted_types: 
+                    self.msg_queue.append(data)
+                with self.cv: self.cv.notify_all()
 
-            #if type(data) is GameData.ServerGameStateData:
-            #    self.current_player = data.currentPlayer
-            #    self.player_hands = data.players
-            #    self.table_cards = data.tableCards
-            #    self.discard_pile = data.discardPile
-            #    self.used_note_tokens = data.usedNoteTokens
-            #    self.used_storm_tokens = data.usedStormTokens
             #if type(data) is GameData.ServerActionInvalid:
             #    print("Invalid action performed. Reason:")
             #    print(data.message)
@@ -79,7 +87,7 @@ class TechnicAngel:
             #return
 
     def auto_ready(self):
-        # Send Ready signal
+        #! Send 'Ready' signal
         self.s.send(GameData.ClientPlayerStartRequest(self.playerName).serialize())
         data = self.s.recv(DATASIZE)
         data = GameData.GameData.deserialize(data)
@@ -94,7 +102,8 @@ class TechnicAngel:
 
     def query_game_info(self):
         self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
-        while True:
+        packet_found = False
+        while not packet_found:
             with self.lock:
                 for data in self.msg_queue:
                     if type(data) is GameData.ServerGameStateData:
@@ -105,16 +114,44 @@ class TechnicAngel:
                         self.used_note_tokens = data.usedNoteTokens
                         self.used_storm_tokens = data.usedStormTokens
                         self.msg_queue.remove(data)
-                        return
+                        packet_found = True
+                        # Don't break yet. There may be more recent ones to process
+                
+
+    def query_game_over(self):
+        with self.lock:
+            for data in self.msg_queue:
+                if type(data) is GameData.ServerGameOver:
+                    self.final_score = data.score
+                    self.msg_queue.remove(data)
+                    # Don't break yet. There may be more recent ones to process
+                    # In this case it's just game over...
+    
+    def wait_for_turn(self):
+        self.query_game_info()
+        self.query_game_over()
+        #! Check whether it's your turn or the game ended!
+        while self.current_player != self.playerName and self.final_score is None:
+            with self.cv: self.cv.wait()
+            self.query_game_info()
+            self.query_game_over()
+        #! Update knowledge
+        self.query_game_info()
+        self.query_game_over()
+
+    def perform_action(self, action):
+        actions = ["discard", "play", "hint"]
 
     def main_loop(self):
-        self.auto_ready()
         
-        self.msg_queue = deque([])
-        self.t_listener = Thread(target=self.listener)
-        self.t_listener.start()
+        while True:
+            self.wait_for_turn()
+            #! Check if game ended
+            if self.final_score is not None: break
 
-        self.query_game_info()
+            
+            break
+
         print(self.current_player)
         for player in self.player_hands:
             print(player.name)
@@ -122,11 +159,6 @@ class TechnicAngel:
                 print(card.value, card.color)
         print(self.table_cards)
 
-        with self.lock: self.run = False
-        print('joining listener...')
-        self.t_listener.join()
-
-        print('Exiting...')
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
 agent = TechnicAngel(ID=ID)
