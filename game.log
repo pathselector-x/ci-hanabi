@@ -1972,3 +1972,166 @@
 12/03/2021 05:58:08 PM WARNING: Player disconnected: technic_angel
 12/03/2021 05:58:30 PM INFO: Hanabi server started on 127.0.0.1:1024
 12/03/2021 05:58:31 PM INFO: Closing the server...
+12/04/2021 09:36:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/04/2021 09:36:34 PM INFO: Connected by: ('127.0.0.1', 59318)
+12/04/2021 09:36:34 PM INFO: Player connected: Test
+12/04/2021 09:36:37 PM INFO: Player ready: Test
+12/04/2021 09:36:40 PM INFO: Connected by: ('127.0.0.1', 59320)
+12/04/2021 09:36:40 PM INFO: Player connected: technic_angel
+12/04/2021 09:36:40 PM INFO: Player ready: technic_angel
+12/04/2021 09:36:40 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/04/2021 09:36:40 PM INFO: Ok, let's start the game!
+12/04/2021 09:36:40 PM INFO: Showing hand to: technic_angel
+12/04/2021 09:36:43 PM INFO: Showing hand to: Test
+12/04/2021 09:38:35 PM INFO: Showing hand to: Test
+12/04/2021 09:38:52 PM INFO: Player Test providing hint to technic_angel: cards with color red are in positions: [3]
+12/04/2021 09:40:45 PM INFO: Closing the server...
+12/04/2021 09:40:47 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/04/2021 09:40:50 PM INFO: Connected by: ('127.0.0.1', 59355)
+12/04/2021 09:40:50 PM INFO: Player connected: Test
+12/04/2021 09:40:52 PM INFO: Player ready: Test
+12/04/2021 09:40:54 PM INFO: Connected by: ('127.0.0.1', 59357)
+12/04/2021 09:40:54 PM INFO: Player connected: technic_angel
+12/04/2021 09:40:54 PM INFO: Player ready: technic_angel
+12/04/2021 09:40:54 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/04/2021 09:40:54 PM INFO: Ok, let's start the game!
+12/04/2021 09:40:54 PM INFO: Showing hand to: technic_angel
+12/04/2021 09:41:04 PM INFO: Showing hand to: Test
+12/04/2021 09:41:21 PM INFO: Player Test providing hint to technic_angel: cards with color white are in positions: [0, 1, 4]
+12/04/2021 09:41:21 PM INFO: Showing hand to: technic_angel
+12/04/2021 09:41:21 PM INFO: Showing hand to: technic_angel
+12/04/2021 09:41:21 PM WARNING: Player disconnected: technic_angel
+12/04/2021 09:42:36 PM INFO: Closing the server...
+12/04/2021 09:51:21 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/04/2021 09:51:27 PM INFO: Connected by: ('127.0.0.1', 59772)
+12/04/2021 09:51:27 PM INFO: Player connected: AAA
+12/04/2021 09:51:28 PM INFO: Player ready: AAA
+12/04/2021 09:51:30 PM INFO: Connected by: ('127.0.0.1', 59773)
+12/04/2021 09:51:30 PM INFO: Player connected: Test
+12/04/2021 09:51:31 PM INFO: Player ready: Test
+12/04/2021 09:51:31 PM INFO: Game start! Between: ['AAA', 'Test']
+12/04/2021 09:51:31 PM INFO: Ok, let's start the game!
+12/04/2021 09:51:35 PM INFO: Showing hand to: AAA
+12/04/2021 09:51:47 PM INFO: Player AAA providing hint to Test: cards with color yellow are in positions: [1, 2]
+12/04/2021 10:16:58 PM INFO: Showing hand to: AAA
+12/04/2021 10:17:01 PM INFO: Showing hand to: Test
+12/04/2021 10:17:38 PM INFO: Showing hand to: AAA
+12/04/2021 10:17:45 PM INFO: Player: AAA: card 37 discarded successfully
+12/04/2021 10:19:04 PM INFO: Showing hand to: AAA
+12/04/2021 10:19:20 PM INFO: Showing hand to: Test
+12/04/2021 10:19:29 PM WARNING: Impossible discarding a card: there is no used token available
+12/04/2021 10:19:40 PM INFO: Closing the server...
+12/04/2021 10:19:47 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/04/2021 10:19:49 PM INFO: Connected by: ('127.0.0.1', 60050)
+12/04/2021 10:19:49 PM INFO: Player connected: AAA
+12/04/2021 10:19:51 PM INFO: Player ready: AAA
+12/04/2021 10:19:53 PM INFO: Connected by: ('127.0.0.1', 60051)
+12/04/2021 10:19:53 PM INFO: Player connected: Test
+12/04/2021 10:19:55 PM INFO: Player ready: Test
+12/04/2021 10:19:55 PM INFO: Game start! Between: ['AAA', 'Test']
+12/04/2021 10:19:55 PM INFO: Ok, let's start the game!
+12/04/2021 10:19:57 PM INFO: Showing hand to: Test
+12/04/2021 10:20:00 PM INFO: Showing hand to: AAA
+12/04/2021 10:20:12 PM WARNING: Impossible discarding a card: there is no used token available
+12/04/2021 10:20:26 PM INFO: Player AAA providing hint to Test: cards with color blue are in positions: [2, 3]
+12/04/2021 10:20:41 PM INFO: Showing hand to: Test
+12/04/2021 10:21:00 PM INFO: Player: AAA: card 37 discarded successfully
+12/04/2021 10:21:07 PM INFO: Showing hand to: AAA
+12/04/2021 10:23:43 PM INFO: Showing hand to: AAA
+12/04/2021 10:24:51 PM INFO: Showing hand to: Test
+12/04/2021 10:24:55 PM INFO: Showing hand to: AAA
+12/04/2021 10:25:17 PM INFO: Game over, people.
+12/04/2021 10:25:17 PM INFO: Please, close the server now
+12/04/2021 10:25:17 PM INFO: Score: 0; message: Booooooooooooring!
+12/04/2021 10:25:17 PM WARNING: Player disconnected: Test
+12/04/2021 10:25:17 PM WARNING: Player disconnected: AAA
+12/04/2021 10:25:21 PM INFO: Closing the server...
+12/04/2021 10:25:23 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/04/2021 10:25:26 PM INFO: Connected by: ('127.0.0.1', 60090)
+12/04/2021 10:25:26 PM INFO: Player connected: AAA
+12/04/2021 10:25:29 PM INFO: Connected by: ('127.0.0.1', 60091)
+12/04/2021 10:25:29 PM INFO: Player connected: Test
+12/04/2021 10:25:30 PM INFO: Player ready: Test
+12/04/2021 10:25:32 PM INFO: Player ready: AAA
+12/04/2021 10:25:32 PM INFO: Game start! Between: ['AAA', 'Test']
+12/04/2021 10:25:32 PM INFO: Ok, let's start the game!
+12/04/2021 10:25:41 PM INFO: Showing hand to: AAA
+12/04/2021 10:25:43 PM INFO: Showing hand to: Test
+12/04/2021 10:25:54 PM INFO: Player AAA providing hint to Test: cards with value 1 are in positions: []
+12/04/2021 10:26:09 PM INFO: Player AAA providing hint to Test: cards with value 5 are in positions: [1, 4]
+12/04/2021 10:26:28 PM INFO: Showing hand to: Test
+12/04/2021 10:26:37 PM INFO: Player: Test: card 32 discarded successfully
+12/04/2021 10:26:39 PM INFO: Showing hand to: Test
+12/04/2021 10:27:04 PM INFO: Showing hand to: Test
+12/04/2021 10:27:26 PM INFO: AAA: card played and correctly put on the table
+12/04/2021 10:27:29 PM INFO: Showing hand to: Test
+12/04/2021 10:33:02 PM INFO: Showing hand to: AAA
+12/04/2021 10:33:22 PM INFO: Showing hand to: AAA
+12/04/2021 10:33:56 PM INFO: Player: AAA: card 40 discarded successfully
+12/04/2021 10:34:01 PM INFO: Showing hand to: AAA
+12/04/2021 10:34:13 PM INFO: Closing the server...
+12/05/2021 12:46:02 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/05/2021 12:46:04 AM INFO: Connected by: ('127.0.0.1', 64297)
+12/05/2021 12:46:04 AM INFO: Player connected: AAA
+12/05/2021 12:46:15 AM INFO: Connected by: ('127.0.0.1', 64301)
+12/05/2021 12:46:15 AM INFO: Player connected: BBB
+12/05/2021 12:46:17 AM INFO: Player ready: BBB
+12/05/2021 12:46:20 AM INFO: Player ready: AAA
+12/05/2021 12:46:20 AM INFO: Game start! Between: ['AAA', 'BBB']
+12/05/2021 12:46:20 AM INFO: Ok, let's start the game!
+12/05/2021 12:46:25 AM INFO: Showing hand to: AAA
+12/05/2021 12:46:30 AM INFO: Showing hand to: BBB
+12/05/2021 12:46:42 AM WARNING: Impossible discarding a card: there is no used token available
+12/05/2021 12:46:45 AM INFO: Showing hand to: BBB
+12/05/2021 12:47:06 AM INFO: Player AAA providing hint to BBB: cards with value 1 are in positions: [1, 3]
+12/05/2021 12:47:28 AM INFO: Showing hand to: BBB
+12/05/2021 12:47:34 AM INFO: Showing hand to: AAA
+12/05/2021 12:47:46 AM INFO: Player: AAA: card 23 discarded successfully
+12/05/2021 12:47:53 AM INFO: Showing hand to: AAA
+12/05/2021 12:48:09 AM INFO: Showing hand to: BBB
+12/05/2021 12:48:32 AM INFO: Showing hand to: AAA
+12/05/2021 12:48:37 AM INFO: Closing the server...
+12/05/2021 12:48:58 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/05/2021 12:49:02 AM INFO: Connected by: ('127.0.0.1', 64317)
+12/05/2021 12:49:02 AM INFO: Player connected: AAA
+12/05/2021 12:49:04 AM INFO: Player ready: AAA
+12/05/2021 12:49:14 AM INFO: Connected by: ('127.0.0.1', 64319)
+12/05/2021 12:49:14 AM INFO: Player connected: technic_angel
+12/05/2021 12:49:14 AM INFO: Player ready: technic_angel
+12/05/2021 12:49:14 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/05/2021 12:49:14 AM INFO: Ok, let's start the game!
+12/05/2021 12:49:14 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:49:29 AM INFO: Closing the server...
+12/05/2021 12:50:41 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/05/2021 12:50:43 AM INFO: Connected by: ('127.0.0.1', 64334)
+12/05/2021 12:50:43 AM INFO: Player connected: AAA
+12/05/2021 12:50:44 AM INFO: Player ready: AAA
+12/05/2021 12:50:46 AM INFO: Connected by: ('127.0.0.1', 64337)
+12/05/2021 12:50:46 AM INFO: Player connected: technic_angel
+12/05/2021 12:50:46 AM INFO: Player ready: technic_angel
+12/05/2021 12:50:46 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/05/2021 12:50:46 AM INFO: Ok, let's start the game!
+12/05/2021 12:50:46 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:50:53 AM INFO: Showing hand to: AAA
+12/05/2021 12:51:08 AM INFO: Player AAA providing hint to technic_angel: cards with color yellow are in positions: [3, 4]
+12/05/2021 12:51:08 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:51:08 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:51:08 AM WARNING: Player disconnected: technic_angel
+12/05/2021 12:54:21 AM INFO: Closing the server...
+12/05/2021 12:54:30 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/05/2021 12:54:34 AM INFO: Connected by: ('127.0.0.1', 64368)
+12/05/2021 12:54:34 AM INFO: Player connected: AAA
+12/05/2021 12:54:36 AM INFO: Player ready: AAA
+12/05/2021 12:54:39 AM INFO: Connected by: ('127.0.0.1', 64369)
+12/05/2021 12:54:39 AM INFO: Player connected: technic_angel
+12/05/2021 12:54:39 AM INFO: Player ready: technic_angel
+12/05/2021 12:54:39 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/05/2021 12:54:39 AM INFO: Ok, let's start the game!
+12/05/2021 12:54:39 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:54:44 AM INFO: Showing hand to: AAA
+12/05/2021 12:54:49 AM WARNING: Impossible discarding a card: there is no used token available
+12/05/2021 12:55:15 AM INFO: Player AAA providing hint to technic_angel: cards with value 3 are in positions: [1, 2]
+12/05/2021 12:55:15 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:55:15 AM INFO: Showing hand to: technic_angel
+12/05/2021 12:55:15 AM WARNING: Player disconnected: technic_angel
+12/05/2021 12:55:45 AM INFO: Closing the server...

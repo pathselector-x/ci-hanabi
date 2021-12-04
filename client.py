@@ -145,9 +145,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print("OH NO! The Gods are unhappy with you!")
         if type(data) is GameData.ServerHintData:
             dataOk = True
-            if True: #data.destination == playerName:
+            if data.destination == playerName:
                 print("Hint type: " + data.type)
-                print(str(data.destination) + "'s cards with value " + str(data.value) + " are:")
+                print("Your cards with value " + str(data.value) + " are:")
                 for i in data.positions:
                     print("\t" + str(i))
         if type(data) is GameData.ServerGameOver:

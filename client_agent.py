@@ -27,6 +27,9 @@ class TechnicAngel:
         self.cv = Condition()
         self.run = True
         
+        # color, value
+        self.current_hand_knowledge = [['_','_'],['_','_'],['_','_'],['_','_'],['_','_']]
+
         self.current_player = None
         self.player_hands = None
         self.table_cards = None
@@ -62,7 +65,7 @@ class TechnicAngel:
                 #! Insert in the msg queue just msgs to be processed, ignore the rest
                 accepted_types = type(data) is GameData.ServerGameStateData or \
                     type(data) is GameData.ServerGameOver or \
-                    type(data) is GameData.ServerHintData
+                    (type(data) is GameData.ServerHintData and data.destination == self.playerName)
                 if accepted_types: 
                     self.msg_queue.append(data)
                 with self.cv: self.cv.notify_all()
@@ -105,6 +108,7 @@ class TechnicAngel:
         packet_found = False
         while not packet_found:
             with self.lock:
+                read_packets = []
                 for data in self.msg_queue:
                     if type(data) is GameData.ServerGameStateData:
                         self.current_player = data.currentPlayer
@@ -113,20 +117,35 @@ class TechnicAngel:
                         self.discard_pile = data.discardPile
                         self.used_note_tokens = data.usedNoteTokens
                         self.used_storm_tokens = data.usedStormTokens
-                        self.msg_queue.remove(data)
+                        read_packets.append(data)
                         packet_found = True
                         # Don't break yet. There may be more recent ones to process
+                for pkt in read_packets:
+                    self.msg_queue.remove(pkt)
                 
-
     def query_game_over(self):
         with self.lock:
+            read_packets = []
             for data in self.msg_queue:
                 if type(data) is GameData.ServerGameOver:
                     self.final_score = data.score
-                    self.msg_queue.remove(data)
+                    read_packets.append(data)
                     # Don't break yet. There may be more recent ones to process
                     # In this case it's just game over...
-    
+            for pkt in read_packets:
+                self.msg_queue.remove(pkt)
+
+    def query_hints(self):
+        with self.lock:
+            read_packets = []
+            for data in self.msg_queue:
+                if type(data) is GameData.ServerHintData:
+                    for i in data.positions: # indices in the current hand
+                        self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = data.value
+                    read_packets.append(data)
+            for pkt in read_packets:
+                self.msg_queue.remove(pkt)
+
     def wait_for_turn(self):
         self.query_game_info()
         self.query_game_over()
@@ -138,17 +157,21 @@ class TechnicAngel:
         #! Update knowledge
         self.query_game_info()
         self.query_game_over()
+        self.query_hints()
 
     def perform_action(self, action):
         actions = ["discard", "play", "hint"]
+        #TODO: implement actions APIs
 
     def main_loop(self):
         
         while True:
             self.wait_for_turn()
+            
             #! Check if game ended
             if self.final_score is not None: break
 
+            #TODO: implement logic for auto-play
             
             break
 
@@ -158,6 +181,9 @@ class TechnicAngel:
             for card in player.hand:
                 print(card.value, card.color)
         print(self.table_cards)
+
+        for card in self.current_hand_knowledge:
+            print(card)
 
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
