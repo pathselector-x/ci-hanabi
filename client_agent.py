@@ -166,7 +166,7 @@ class TechnicAngel:
                     self.msg_queue.remove(pkt)
         self.current_hand_knowledge.pop(num)
     
-    def action_play(self, num, pile_pos): #TODO
+    def action_play(self, num): #TODO
         pass 
 
     def action_hint(self, hint_type, dst, value): #TODO
