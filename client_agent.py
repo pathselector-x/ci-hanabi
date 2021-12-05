@@ -28,7 +28,7 @@ class TechnicAngel:
         self.run = True
         
         # color, value
-        self.current_hand_knowledge = [['_','_'],['_','_'],['_','_'],['_','_'],['_','_']]
+        self.current_hand_knowledge = None
 
         self.current_player = None
         self.player_hands = None
@@ -65,29 +65,18 @@ class TechnicAngel:
                 #! Insert in the msg queue just msgs to be processed, ignore the rest
                 accepted_types = type(data) is GameData.ServerGameStateData or \
                     type(data) is GameData.ServerGameOver or \
-                    (type(data) is GameData.ServerHintData and data.destination == self.playerName)
+                    (type(data) is GameData.ServerHintData and data.destination == self.playerName) or \
+                    type(data) is GameData.ServerActionValid #or \
+                    #type(data) is GameData.ServerActionInvalid
                 if accepted_types: 
                     self.msg_queue.append(data)
                 with self.cv: self.cv.notify_all()
 
-            #if type(data) is GameData.ServerActionInvalid:
-            #    print("Invalid action performed. Reason:")
-            #    print(data.message)
-            #if type(data) is GameData.ServerActionValid:
-            #    print("Action valid!")
-            #    print("Current player: " + data.player)
             #if type(data) is GameData.ServerPlayerMoveOk:
             #    print("Nice move!")
             #    print("Current player: " + data.player)
             #if type(data) is GameData.ServerPlayerThunderStrike:
             #    print("OH NO! The Gods are unhappy with you!")
-            #if type(data) is GameData.ServerHintData:
-            #    if data.destination == self.playerName:
-            #        print("Hint type: " + data.type)
-            #        print("Your cards with value " + str(data.value) + " are:")
-            #        for i in data.positions:
-            #            print("\t" + str(i))
-            #return
 
     def auto_ready(self):
         #! Send 'Ready' signal
@@ -159,11 +148,36 @@ class TechnicAngel:
         self.query_game_over()
         self.query_hints()
 
-    def perform_action(self, action):
-        actions = ["discard", "play", "hint"]
-        #TODO: implement actions APIs
+    def action_discard(self, num):
+        # num = [0, len(hand)-1]: int
+        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
+        assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
+        assert num in range(0, len(self.current_hand_knowledge))
+        self.s.send(GameData.ClientPlayerDiscardCardRequest(self.playerName, num).serialize())
+        packet_found = False
+        while not packet_found:
+            with self.lock:
+                read_packets = []
+                for data in self.msg_queue:
+                    if type(data) is GameData.ServerActionValid:
+                        packet_found = True
+                        read_packets.append(data)
+                for pkt in read_packets:
+                    self.msg_queue.remove(pkt)
+        self.current_hand_knowledge.pop(num)
+    
+    def action_play(self, num, pile_pos): #TODO
+        pass 
+
+    def action_hint(self, hint_type, dst, value): #TODO
+        pass
 
     def main_loop(self):
+        #! Check how many cards in hand (4 or 5 depending on how many players)
+        self.query_game_info()
+        self.current_hand_knowledge = []
+        for _ in range(len(self.player_hands[0].hand)):
+            self.current_hand_knowledge.append(['', '']) # color, value
         
         while True:
             self.wait_for_turn()
@@ -174,7 +188,8 @@ class TechnicAngel:
             #TODO: implement logic for auto-play
             
             break
-
+        
+        #* This is just for DEBUG
         print(self.current_player)
         for player in self.player_hands:
             print(player.name)
