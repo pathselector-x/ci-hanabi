@@ -2695,3 +2695,18 @@
 12/06/2021 12:39:33 PM INFO: Showing hand to: technic_angel
 12/06/2021 12:39:33 PM WARNING: Player disconnected: technic_angel
 12/06/2021 12:39:49 PM INFO: Closing the server...
+12/06/2021 12:51:40 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:51:44 PM INFO: Connected by: ('127.0.0.1', 51479)
+12/06/2021 12:51:44 PM INFO: Player connected: technic_angel
+12/06/2021 12:51:44 PM INFO: Player ready: technic_angel
+12/06/2021 12:51:48 PM INFO: Connected by: ('127.0.0.1', 51480)
+12/06/2021 12:51:48 PM INFO: Player connected: AAA
+12/06/2021 12:51:50 PM INFO: Player ready: AAA
+12/06/2021 12:51:50 PM INFO: Game start! Between: ['technic_angel', 'AAA']
+12/06/2021 12:51:50 PM INFO: Ok, let's start the game!
+12/06/2021 12:51:50 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:51:51 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:51:51 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:51:51 PM INFO: Player technic_angel providing hint to AAA: cards with value 1 are in positions: [1, 3]
+12/06/2021 12:51:51 PM WARNING: Player disconnected: technic_angel
+12/06/2021 12:52:05 PM INFO: Closing the server...

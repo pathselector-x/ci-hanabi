@@ -169,6 +169,7 @@ class TechnicAngel:
         self.current_hand_knowledge.append(['', ''])
     
     def action_play(self, num):
+        # num = [0, len(hand)-1]: int
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
         assert num in range(0, len(self.current_hand_knowledge))
         self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
@@ -192,8 +193,16 @@ class TechnicAngel:
         self.current_hand_knowledge.append(['', ''])
         return was_a_good_move
 
-    def action_hint(self, hint_type, dst, value): #TODO
-        pass
+    def action_hint(self, hint_type, dst, value):
+        # hint_type = 'color' or 'value'
+        # dst = <player name> : str
+        # value = if 'color': ['red', 'yellow', 'green', 'blue', 'white'] else [1,2,3,4,5]
+        assert self.used_note_tokens < 8, 'Cannot Hint if all note tokens are used'
+        assert hint_type in ['color', 'value'], 'hint_type can be "color" or "value"'
+        assert dst in [p.name for p in self.player_hands], 'Passed the name of a non-existing player'
+        if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
+        else: assert value in [1,2,3,4,5]
+        self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
 
     def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
@@ -209,8 +218,7 @@ class TechnicAngel:
             if self.final_score is not None: break
 
             #TODO: implement logic for auto-play
-            gm = 'Good' if self.action_play(0) else 'Bad' # Test
-            print(gm)
+            self.action_hint('value', self.player_hands[0].name, 1)
             
             break
         
