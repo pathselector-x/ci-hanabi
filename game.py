@@ -209,6 +209,7 @@ class Game(object):
                 logging.info("Score: " + str(self.__score) + "; message: " + self.__scoreMessages[self.__score])
                 return (None, GameData.ServerGameOver(self.__score, self.__scoreMessages[self.__score]))
             if not ok:
+                self.__nextTurn() #! Need to call this also when mistakes are made
                 return (None, GameData.ServerPlayerThunderStrike())
             else:
                 logging.info(self.__getCurrentPlayer().name + ": card played and correctly put on the table")
@@ -312,27 +313,6 @@ class Game(object):
     def __getCurrentPlayer(self) -> Player:
         return self.__players[self.__currentPlayer]
 
-    #def __discardCard(self, cardID: int, playerName: str) -> bool:
-    #    if self.__noteTokens < 1: # Ok only if you already used at least 1 token
-    #        return False
-    #    self.__noteTokens -= 1
-    #    endLoop = False
-    #    # find player
-    #    for p in self.__players:
-    #        if endLoop:
-    #            break
-    #        if p.name == playerName:
-    #            # find card
-    #            for card in p.hand:
-    #                if endLoop:
-    #                    break
-    #                if card.id == cardID:
-    #                    self.__discardPile.append(card) # discard
-    #                    p.hand.remove(card) # remove from hand
-    #                    endLoop = True
-    #    self.__nextTurn()
-    #    return True
-
     def __discardCard(self, cardPos: int, playerName: str) -> bool: #! New #
         if self.__noteTokens < 1: # Ok only if you already used at least 1 token
             return False
@@ -352,15 +332,15 @@ class Game(object):
 
     def __playCard(self, playerName: str, cardPosition: int):
         p = self.__getPlayer(playerName)
-        self.__tableCards[p.hand[cardPosition].color].append(p.hand[cardPosition])
-        p.hand.pop(cardPosition)
+        card_to_play = p.hand.pop(cardPosition)
+        self.__tableCards[card_to_play.color].append(card_to_play)
         p.hand.append(self.__cardsToDraw.pop())
     
     def __checkTableCards(self) -> bool:
         for cardPool in self.__tableCards:
             for card in self.__tableCards[cardPool]:
                 if len(self.__tableCards[cardPool]) > 0 and self.__tableCards[cardPool][len(self.__tableCards[cardPool]) - 1].value != len(self.__tableCards[cardPool]):
-                    cardPool.pop()
+                    self.__tableCards[cardPool].pop() #! BUGFIX # cardPool.pop()
                     self.__discardPile.append(card)
                     self.__strikeThunder()
                     return False
@@ -372,7 +352,7 @@ class Game(object):
 
     def __strikeThunder(self):
         self.__stormTokens += 1
-        self.__drawCard(self.__players[self.__currentPlayer].name)
+        #! ALREADY CALLED IN __playCard(..) # self.__drawCard(self.__players[self.__currentPlayer].name)
 
     def __checkGameEnded(self):
         ended = True

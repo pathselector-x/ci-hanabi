@@ -2495,3 +2495,203 @@
 12/06/2021 11:29:40 AM WARNING: Player disconnected: technic_angel
 12/06/2021 11:29:46 AM INFO: Showing hand to: AAA
 12/06/2021 11:31:34 AM INFO: Closing the server...
+12/06/2021 12:02:36 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:02:40 PM INFO: Connected by: ('127.0.0.1', 60215)
+12/06/2021 12:02:40 PM INFO: Player connected: AAA
+12/06/2021 12:02:41 PM INFO: Player ready: AAA
+12/06/2021 12:02:44 PM INFO: Connected by: ('127.0.0.1', 60216)
+12/06/2021 12:02:44 PM INFO: Player connected: technic_angel
+12/06/2021 12:02:44 PM INFO: Player ready: technic_angel
+12/06/2021 12:02:44 PM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 12:02:44 PM INFO: Ok, let's start the game!
+12/06/2021 12:02:44 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:02:46 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:03:54 PM INFO: Closing the server...
+12/06/2021 12:04:08 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:04:14 PM INFO: Connected by: ('127.0.0.1', 60230)
+12/06/2021 12:04:14 PM INFO: Player connected: BBB
+12/06/2021 12:04:15 PM INFO: Connected by: ('127.0.0.1', 60231)
+12/06/2021 12:04:15 PM INFO: Player connected: AAA
+12/06/2021 12:04:18 PM INFO: Player ready: AAA
+12/06/2021 12:04:20 PM INFO: Player ready: BBB
+12/06/2021 12:04:20 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:04:20 PM INFO: Ok, let's start the game!
+12/06/2021 12:05:36 PM INFO: Closing the server...
+12/06/2021 12:05:37 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:05:41 PM INFO: Connected by: ('127.0.0.1', 60248)
+12/06/2021 12:05:41 PM INFO: Player connected: AAA
+12/06/2021 12:05:41 PM INFO: Player ready: AAA
+12/06/2021 12:05:43 PM INFO: Connected by: ('127.0.0.1', 60249)
+12/06/2021 12:05:43 PM INFO: Player connected: BBB
+12/06/2021 12:05:44 PM INFO: Player ready: BBB
+12/06/2021 12:05:44 PM INFO: Game start! Between: ['AAA', 'BBB']
+12/06/2021 12:05:44 PM INFO: Ok, let's start the game!
+12/06/2021 12:05:49 PM INFO: Showing hand to: AAA
+12/06/2021 12:05:53 PM INFO: Showing hand to: BBB
+12/06/2021 12:11:37 PM INFO: Closing the server...
+12/06/2021 12:11:54 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:11:56 PM INFO: Connected by: ('127.0.0.1', 60311)
+12/06/2021 12:11:56 PM INFO: Player connected: BBB
+12/06/2021 12:11:57 PM INFO: Player ready: BBB
+12/06/2021 12:11:59 PM INFO: Connected by: ('127.0.0.1', 60313)
+12/06/2021 12:11:59 PM INFO: Player connected: AAA
+12/06/2021 12:12:00 PM INFO: Player ready: AAA
+12/06/2021 12:12:00 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:12:00 PM INFO: Ok, let's start the game!
+12/06/2021 12:15:09 PM INFO: Closing the server...
+12/06/2021 12:15:10 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:15:12 PM INFO: Connected by: ('127.0.0.1', 60648)
+12/06/2021 12:15:12 PM INFO: Player connected: BBB
+12/06/2021 12:15:13 PM INFO: Player ready: BBB
+12/06/2021 12:15:15 PM INFO: Connected by: ('127.0.0.1', 60649)
+12/06/2021 12:15:15 PM INFO: Player connected: AAA
+12/06/2021 12:15:16 PM INFO: Player ready: AAA
+12/06/2021 12:15:16 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:15:16 PM INFO: Ok, let's start the game!
+12/06/2021 12:15:18 PM INFO: Showing hand to: AAA
+12/06/2021 12:15:23 PM INFO: BBB: card played and correctly put on the table
+12/06/2021 12:15:23 PM INFO: red pile has been filled. Giving 1 free note token!
+12/06/2021 12:15:30 PM INFO: Showing hand to: BBB
+12/06/2021 12:19:10 PM INFO: Closing the server...
+12/06/2021 12:19:33 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:19:34 PM INFO: Connected by: ('127.0.0.1', 60683)
+12/06/2021 12:19:34 PM INFO: Player connected: BBB
+12/06/2021 12:19:35 PM INFO: Player ready: BBB
+12/06/2021 12:19:37 PM INFO: Connected by: ('127.0.0.1', 60685)
+12/06/2021 12:19:37 PM INFO: Player connected: AAA
+12/06/2021 12:19:38 PM INFO: Player ready: AAA
+12/06/2021 12:19:38 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:19:38 PM INFO: Ok, let's start the game!
+12/06/2021 12:19:43 PM INFO: Showing hand to: AAA
+12/06/2021 12:19:55 PM INFO: Showing hand to: BBB
+12/06/2021 12:21:01 PM INFO: Closing the server...
+12/06/2021 12:21:07 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:21:09 PM INFO: Connected by: ('127.0.0.1', 60701)
+12/06/2021 12:21:09 PM INFO: Player connected: BBB
+12/06/2021 12:21:11 PM INFO: Connected by: ('127.0.0.1', 60702)
+12/06/2021 12:21:11 PM INFO: Player connected: AAA
+12/06/2021 12:21:12 PM INFO: Player ready: AAA
+12/06/2021 12:21:14 PM INFO: Player ready: BBB
+12/06/2021 12:21:14 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:21:14 PM INFO: Ok, let's start the game!
+12/06/2021 12:21:18 PM INFO: Showing hand to: AAA
+12/06/2021 12:21:25 PM INFO: Showing hand to: AAA
+12/06/2021 12:22:57 PM INFO: Closing the server...
+12/06/2021 12:22:58 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:23:00 PM INFO: Connected by: ('127.0.0.1', 60716)
+12/06/2021 12:23:00 PM INFO: Player connected: BBB
+12/06/2021 12:23:01 PM INFO: Player ready: BBB
+12/06/2021 12:23:07 PM INFO: Connected by: ('127.0.0.1', 60717)
+12/06/2021 12:23:07 PM INFO: Player connected: AAA
+12/06/2021 12:23:08 PM INFO: Player ready: AAA
+12/06/2021 12:23:08 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:23:08 PM INFO: Ok, let's start the game!
+12/06/2021 12:23:11 PM INFO: Showing hand to: AAA
+12/06/2021 12:23:22 PM INFO: Showing hand to: AAA
+12/06/2021 12:27:14 PM INFO: Closing the server...
+12/06/2021 12:27:17 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:27:19 PM INFO: Connected by: ('127.0.0.1', 60749)
+12/06/2021 12:27:19 PM INFO: Player connected: BBB
+12/06/2021 12:27:20 PM INFO: Player ready: BBB
+12/06/2021 12:27:23 PM INFO: Connected by: ('127.0.0.1', 60750)
+12/06/2021 12:27:23 PM INFO: Player connected: AAA
+12/06/2021 12:27:23 PM INFO: Player ready: AAA
+12/06/2021 12:27:23 PM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 12:27:23 PM INFO: Ok, let's start the game!
+12/06/2021 12:27:25 PM INFO: Showing hand to: AAA
+12/06/2021 12:27:30 PM INFO: Showing hand to: AAA
+12/06/2021 12:27:40 PM INFO: Showing hand to: BBB
+12/06/2021 12:27:45 PM INFO: Showing hand to: BBB
+12/06/2021 12:27:48 PM INFO: Showing hand to: AAA
+12/06/2021 12:27:53 PM INFO: BBB: card played and correctly put on the table
+12/06/2021 12:27:53 PM INFO: blue pile has been filled. Giving 1 free note token!
+12/06/2021 12:27:57 PM INFO: Game over, people.
+12/06/2021 12:27:57 PM INFO: Please, close the server now
+12/06/2021 12:27:57 PM INFO: Score: 0; message: Booooooooooooring!
+12/06/2021 12:27:57 PM WARNING: Player disconnected: AAA
+12/06/2021 12:27:57 PM WARNING: Player disconnected: BBB
+12/06/2021 12:28:01 PM INFO: Closing the server...
+12/06/2021 12:29:40 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:29:42 PM INFO: Connected by: ('127.0.0.1', 60768)
+12/06/2021 12:29:42 PM INFO: Player connected: AAA
+12/06/2021 12:29:43 PM INFO: Player ready: AAA
+12/06/2021 12:29:47 PM INFO: Connected by: ('127.0.0.1', 60770)
+12/06/2021 12:29:47 PM INFO: Player connected: technic_angel
+12/06/2021 12:29:47 PM INFO: Player ready: technic_angel
+12/06/2021 12:29:47 PM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 12:29:47 PM INFO: Ok, let's start the game!
+12/06/2021 12:29:47 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:29:48 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:29:49 PM INFO: Showing hand to: AAA
+12/06/2021 12:30:01 PM INFO: Player AAA providing hint to technic_angel: cards with value 3 are in positions: [1, 3, 4]
+12/06/2021 12:30:01 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:30:01 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:30:17 PM INFO: Showing hand to: AAA
+12/06/2021 12:30:59 PM INFO: Closing the server...
+12/06/2021 12:31:58 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:32:01 PM INFO: Connected by: ('127.0.0.1', 60786)
+12/06/2021 12:32:01 PM INFO: Player connected: AAA
+12/06/2021 12:32:03 PM INFO: Connected by: ('127.0.0.1', 60787)
+12/06/2021 12:32:03 PM INFO: Player connected: technic_angel
+12/06/2021 12:32:03 PM INFO: Player ready: technic_angel
+12/06/2021 12:32:05 PM INFO: Player ready: AAA
+12/06/2021 12:32:05 PM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 12:32:05 PM INFO: Ok, let's start the game!
+12/06/2021 12:32:05 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:32:06 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:32:08 PM INFO: Showing hand to: AAA
+12/06/2021 12:32:16 PM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [0, 1, 3]
+12/06/2021 12:32:16 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:32:16 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:32:16 PM INFO: technic_angel: card played and correctly put on the table
+12/06/2021 12:32:16 PM INFO: green pile has been filled. Giving 1 free note token!
+12/06/2021 12:33:45 PM INFO: Closing the server...
+12/06/2021 12:33:46 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:33:48 PM INFO: Connected by: ('127.0.0.1', 60803)
+12/06/2021 12:33:48 PM INFO: Player connected: technic_angel
+12/06/2021 12:33:48 PM INFO: Player ready: technic_angel
+12/06/2021 12:33:51 PM INFO: Connected by: ('127.0.0.1', 60805)
+12/06/2021 12:33:51 PM INFO: Player connected: AAA
+12/06/2021 12:33:52 PM INFO: Player ready: AAA
+12/06/2021 12:33:52 PM INFO: Game start! Between: ['technic_angel', 'AAA']
+12/06/2021 12:33:52 PM INFO: Ok, let's start the game!
+12/06/2021 12:33:52 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:33:54 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:33:54 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:33:54 PM INFO: technic_angel: card played and correctly put on the table
+12/06/2021 12:33:54 PM INFO: green pile has been filled. Giving 1 free note token!
+12/06/2021 12:37:19 PM INFO: Closing the server...
+12/06/2021 12:37:24 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:37:26 PM INFO: Connected by: ('127.0.0.1', 60858)
+12/06/2021 12:37:26 PM INFO: Player connected: technic_angel
+12/06/2021 12:37:26 PM INFO: Player ready: technic_angel
+12/06/2021 12:37:28 PM INFO: Connected by: ('127.0.0.1', 60860)
+12/06/2021 12:37:28 PM INFO: Player connected: AAA
+12/06/2021 12:37:29 PM INFO: Player ready: AAA
+12/06/2021 12:37:29 PM INFO: Game start! Between: ['technic_angel', 'AAA']
+12/06/2021 12:37:29 PM INFO: Ok, let's start the game!
+12/06/2021 12:37:29 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:37:31 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:37:31 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:37:31 PM INFO: technic_angel: card played and correctly put on the table
+12/06/2021 12:37:31 PM INFO: yellow pile has been filled. Giving 1 free note token!
+12/06/2021 12:37:31 PM WARNING: Player disconnected: technic_angel
+12/06/2021 12:37:38 PM INFO: Showing hand to: AAA
+12/06/2021 12:38:59 PM INFO: Closing the server...
+12/06/2021 12:39:07 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 12:39:09 PM INFO: Connected by: ('127.0.0.1', 60874)
+12/06/2021 12:39:09 PM INFO: Player connected: AAA
+12/06/2021 12:39:10 PM INFO: Player ready: AAA
+12/06/2021 12:39:12 PM INFO: Connected by: ('127.0.0.1', 60876)
+12/06/2021 12:39:12 PM INFO: Player connected: technic_angel
+12/06/2021 12:39:12 PM INFO: Player ready: technic_angel
+12/06/2021 12:39:12 PM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 12:39:12 PM INFO: Ok, let's start the game!
+12/06/2021 12:39:12 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:39:14 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:39:18 PM INFO: Showing hand to: AAA
+12/06/2021 12:39:33 PM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [4]
+12/06/2021 12:39:33 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:39:33 PM INFO: Showing hand to: technic_angel
+12/06/2021 12:39:33 PM WARNING: Player disconnected: technic_angel
+12/06/2021 12:39:49 PM INFO: Closing the server...

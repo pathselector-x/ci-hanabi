@@ -66,8 +66,9 @@ class TechnicAngel:
                 accepted_types = type(data) is GameData.ServerGameStateData or \
                     type(data) is GameData.ServerGameOver or \
                     (type(data) is GameData.ServerHintData and data.destination == self.playerName) or \
-                    type(data) is GameData.ServerActionValid #or \
-                    #type(data) is GameData.ServerActionInvalid
+                    type(data) is GameData.ServerActionValid or \
+                    type(data) is GameData.ServerPlayerMoveOk or \
+                    type(data) is GameData.ServerPlayerThunderStrike
                 if accepted_types: 
                     self.msg_queue.append(data)
                 with self.cv: self.cv.notify_all()
@@ -167,8 +168,29 @@ class TechnicAngel:
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
     
-    def action_play(self, num): #TODO
-        pass 
+    def action_play(self, num):
+        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
+        assert num in range(0, len(self.current_hand_knowledge))
+        self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
+        was_a_good_move = False
+        packet_found = False
+        while not packet_found:
+            with self.lock:
+                read_packets = []
+                for data in self.msg_queue:
+                    if type(data) is GameData.ServerPlayerThunderStrike:
+                        was_a_good_move = False
+                        packet_found = True
+                        read_packets.append(data)
+                    elif type(data) is GameData.ServerPlayerMoveOk:
+                        was_a_good_move = True
+                        packet_found = True
+                        read_packets.append(data)
+                for pkt in read_packets:
+                    self.msg_queue.remove(pkt)
+        self.current_hand_knowledge.pop(num)
+        self.current_hand_knowledge.append(['', ''])
+        return was_a_good_move
 
     def action_hint(self, hint_type, dst, value): #TODO
         pass
@@ -187,7 +209,8 @@ class TechnicAngel:
             if self.final_score is not None: break
 
             #TODO: implement logic for auto-play
-            self.action_discard(0) # Test
+            gm = 'Good' if self.action_play(0) else 'Bad' # Test
+            print(gm)
             
             break
         
