@@ -2365,3 +2365,133 @@
 12/05/2021 06:02:12 PM INFO: Player: AAA: card 49 discarded successfully
 12/05/2021 06:02:20 PM INFO: Showing hand to: BBB
 12/05/2021 06:02:33 PM INFO: Closing the server...
+12/06/2021 11:17:46 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 11:17:51 AM INFO: Connected by: ('127.0.0.1', 60142)
+12/06/2021 11:17:51 AM INFO: Player connected: BBB
+12/06/2021 11:17:53 AM INFO: Player ready: BBB
+12/06/2021 11:17:57 AM INFO: Connected by: ('127.0.0.1', 60144)
+12/06/2021 11:17:57 AM INFO: Player connected: AAA
+12/06/2021 11:17:58 AM INFO: Player ready: AAA
+12/06/2021 11:17:58 AM INFO: Game start! Between: ['BBB', 'AAA']
+12/06/2021 11:17:58 AM INFO: Ok, let's start the game!
+12/06/2021 11:18:02 AM INFO: Showing hand to: BBB
+12/06/2021 11:18:17 AM INFO: Player BBB providing hint to AAA: cards with value 1 are in positions: [0, 2, 4]
+12/06/2021 11:18:21 AM INFO: AAA: card played and correctly put on the table
+12/06/2021 11:18:21 AM INFO: yellow pile has been filled. Giving 1 free note token!
+12/06/2021 11:18:27 AM INFO: Showing hand to: BBB
+12/06/2021 11:18:36 AM INFO: Player BBB providing hint to AAA: cards with color blue are in positions: [1, 2, 3]
+12/06/2021 11:18:47 AM INFO: AAA: card played and correctly put on the table
+12/06/2021 11:18:47 AM INFO: blue pile has been filled. Giving 1 free note token!
+12/06/2021 11:18:50 AM INFO: Showing hand to: BBB
+12/06/2021 11:19:01 AM INFO: Showing hand to: AAA
+12/06/2021 11:19:05 AM INFO: BBB: card played and correctly put on the table
+12/06/2021 11:19:05 AM INFO: white pile has been filled. Giving 1 free note token!
+12/06/2021 11:19:10 AM INFO: Showing hand to: BBB
+12/06/2021 11:19:13 AM INFO: Player: AAA: card 33 discarded successfully
+12/06/2021 11:19:17 AM INFO: Showing hand to: BBB
+12/06/2021 11:19:28 AM INFO: Showing hand to: AAA
+12/06/2021 11:19:36 AM INFO: Player: BBB: card 46 discarded successfully
+12/06/2021 11:19:41 AM INFO: AAA: card played and correctly put on the table
+12/06/2021 11:19:41 AM INFO: white pile has been filled. Giving 1 free note token!
+12/06/2021 11:19:44 AM INFO: Showing hand to: BBB
+12/06/2021 11:20:02 AM INFO: Showing hand to: AAA
+12/06/2021 11:20:47 AM INFO: Player BBB providing hint to AAA: cards with value 5 are in positions: [2]
+12/06/2021 11:21:04 AM INFO: Player AAA providing hint to BBB: cards with value 5 are in positions: [0, 1, 2]
+12/06/2021 11:21:10 AM INFO: Showing hand to: BBB
+12/06/2021 11:21:13 AM INFO: Showing hand to: AAA
+12/06/2021 11:21:23 AM INFO: Player: BBB: card 24 discarded successfully
+12/06/2021 11:21:25 AM INFO: Showing hand to: AAA
+12/06/2021 11:21:29 AM INFO: Showing hand to: BBB
+12/06/2021 11:21:40 AM INFO: Player AAA providing hint to BBB: cards with value 2 are in positions: [3, 4]
+12/06/2021 11:21:53 AM INFO: Player: BBB: card 6 discarded successfully
+12/06/2021 11:21:56 AM INFO: Showing hand to: AAA
+12/06/2021 11:21:58 AM INFO: Showing hand to: BBB
+12/06/2021 11:22:27 AM INFO: Closing the server...
+12/06/2021 11:23:03 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 11:23:04 AM INFO: Connected by: ('127.0.0.1', 60175)
+12/06/2021 11:23:04 AM INFO: Player connected: AAA
+12/06/2021 11:23:05 AM INFO: Player ready: AAA
+12/06/2021 11:23:16 AM INFO: Connected by: ('127.0.0.1', 60179)
+12/06/2021 11:23:16 AM INFO: Player connected: technic_angel
+12/06/2021 11:23:16 AM INFO: Player ready: technic_angel
+12/06/2021 11:23:16 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 11:23:16 AM INFO: Ok, let's start the game!
+12/06/2021 11:23:16 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:23:17 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:23:24 AM INFO: Showing hand to: AAA
+12/06/2021 11:23:37 AM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [3, 4]
+12/06/2021 11:23:37 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:23:37 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:23:37 AM INFO: Player: technic_angel: card 17 discarded successfully
+12/06/2021 11:23:37 AM WARNING: Player disconnected: technic_angel
+12/06/2021 11:23:44 AM INFO: Showing hand to: AAA
+12/06/2021 11:25:18 AM INFO: Closing the server...
+12/06/2021 11:25:19 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 11:25:22 AM INFO: Connected by: ('127.0.0.1', 60200)
+12/06/2021 11:25:22 AM INFO: Player connected: technic_angel
+12/06/2021 11:25:22 AM INFO: Player ready: technic_angel
+12/06/2021 11:25:24 AM INFO: Connected by: ('127.0.0.1', 60202)
+12/06/2021 11:25:24 AM INFO: Player connected: AAA
+12/06/2021 11:25:25 AM INFO: Player ready: AAA
+12/06/2021 11:25:25 AM INFO: Game start! Between: ['technic_angel', 'AAA']
+12/06/2021 11:25:25 AM INFO: Ok, let's start the game!
+12/06/2021 11:25:25 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:25:27 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:25:27 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:25:40 AM INFO: Closing the server...
+12/06/2021 11:25:45 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 11:25:46 AM INFO: Connected by: ('127.0.0.1', 60204)
+12/06/2021 11:25:46 AM INFO: Player connected: AAA
+12/06/2021 11:25:48 AM INFO: Player ready: AAA
+12/06/2021 11:25:50 AM INFO: Connected by: ('127.0.0.1', 60206)
+12/06/2021 11:25:50 AM INFO: Player connected: technic_angel
+12/06/2021 11:25:50 AM INFO: Player ready: technic_angel
+12/06/2021 11:25:50 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 11:25:50 AM INFO: Ok, let's start the game!
+12/06/2021 11:25:50 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:25:52 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:25:55 AM INFO: Showing hand to: AAA
+12/06/2021 11:26:05 AM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [1, 2]
+12/06/2021 11:26:05 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:26:05 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:26:05 AM INFO: Player: technic_angel: card 2 discarded successfully
+12/06/2021 11:26:05 AM WARNING: Player disconnected: technic_angel
+12/06/2021 11:26:21 AM INFO: Showing hand to: AAA
+12/06/2021 11:26:41 AM INFO: Closing the server...
+12/06/2021 11:26:47 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 11:26:49 AM INFO: Connected by: ('127.0.0.1', 60213)
+12/06/2021 11:26:49 AM INFO: Player connected: AAA
+12/06/2021 11:26:50 AM INFO: Player ready: AAA
+12/06/2021 11:26:52 AM INFO: Connected by: ('127.0.0.1', 60214)
+12/06/2021 11:26:52 AM INFO: Player connected: technic_angel
+12/06/2021 11:26:52 AM INFO: Player ready: technic_angel
+12/06/2021 11:26:52 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 11:26:52 AM INFO: Ok, let's start the game!
+12/06/2021 11:26:52 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:26:54 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:26:58 AM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [3]
+12/06/2021 11:26:58 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:26:58 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:26:58 AM INFO: Player: technic_angel: card 36 discarded successfully
+12/06/2021 11:26:58 AM WARNING: Player disconnected: technic_angel
+12/06/2021 11:27:03 AM INFO: Showing hand to: AAA
+12/06/2021 11:29:13 AM INFO: Closing the server...
+12/06/2021 11:29:14 AM INFO: Hanabi server started on 127.0.0.1:1024
+12/06/2021 11:29:17 AM INFO: Connected by: ('127.0.0.1', 60245)
+12/06/2021 11:29:17 AM INFO: Player connected: AAA
+12/06/2021 11:29:18 AM INFO: Player ready: AAA
+12/06/2021 11:29:26 AM INFO: Connected by: ('127.0.0.1', 60248)
+12/06/2021 11:29:26 AM INFO: Player connected: technic_angel
+12/06/2021 11:29:26 AM INFO: Player ready: technic_angel
+12/06/2021 11:29:26 AM INFO: Game start! Between: ['AAA', 'technic_angel']
+12/06/2021 11:29:26 AM INFO: Ok, let's start the game!
+12/06/2021 11:29:26 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:29:28 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:29:29 AM INFO: Showing hand to: AAA
+12/06/2021 11:29:40 AM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/06/2021 11:29:40 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:29:40 AM INFO: Showing hand to: technic_angel
+12/06/2021 11:29:40 AM INFO: Player: technic_angel: card 3 discarded successfully
+12/06/2021 11:29:40 AM WARNING: Player disconnected: technic_angel
+12/06/2021 11:29:46 AM INFO: Showing hand to: AAA
+12/06/2021 11:31:34 AM INFO: Closing the server...

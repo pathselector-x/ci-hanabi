@@ -162,8 +162,10 @@ class Game(object):
     # Each method produces a tuple of ServerToClientData derivates
     # where the first element is the one to send to a single player, while the second one has to be sent to all players
 
-    def satisfyRequest(self, data: GameData.ClientToServerData):
+    def satisfyRequest(self, data: GameData.ClientToServerData, playerName: str):
         if type(data) in self.__dataActions:
+            if type(data) == GameData.ClientGetGameStateRequest:
+                data.sender = playerName
             return self.__dataActions[type(data)](data)
         else:
             return GameData.ServerInvalidDataReceived(data), None
@@ -171,16 +173,16 @@ class Game(object):
     # Draw request    
     def __satisfyDiscardRequest(self, data: GameData.ClientPlayerDiscardCardRequest):
         player = self.__getCurrentPlayer()
-        #* OLD # cardID = player.hand[data.handCardOrdered]
-        cardID = data.handCardOrdered #! New #
+        cardID = player.hand[data.handCardOrdered]
+        cardPos = data.handCardOrdered #! New #
         # It's the right turn to perform an action
         if player.name == data.sender:
-            if not self.__discardCard(cardID, player.name):
+            if not self.__discardCard(cardPos, player.name): #! New #
                 logging.warning("Impossible discarding a card: there is no used token available")
                 return (GameData.ServerActionInvalid("You have no used tokens"), None)
             else:
                 self.__drawCard(player.name)
-                logging.info("Player: " + self.__getCurrentPlayer().name + ": card " + str(player.hand[data.handCardOrdered].id) + " discarded successfully")
+                logging.info("Player: " + self.__getCurrentPlayer().name + ": card " + str(cardID.id) + " discarded successfully")
                 self.__nextTurn()
                 return (None, GameData.ServerActionValid(self.__getCurrentPlayer().name))
         else:
@@ -331,7 +333,7 @@ class Game(object):
     #    self.__nextTurn()
     #    return True
 
-    def __discardCard(self, cardPos: int, playerName: str) -> bool: #! New
+    def __discardCard(self, cardPos: int, playerName: str) -> bool: #! New #
         if self.__noteTokens < 1: # Ok only if you already used at least 1 token
             return False
         self.__noteTokens -= 1

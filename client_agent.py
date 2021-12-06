@@ -165,6 +165,7 @@ class TechnicAngel:
                 for pkt in read_packets:
                     self.msg_queue.remove(pkt)
         self.current_hand_knowledge.pop(num)
+        self.current_hand_knowledge.append(['', ''])
     
     def action_play(self, num): #TODO
         pass 
@@ -186,6 +187,7 @@ class TechnicAngel:
             if self.final_score is not None: break
 
             #TODO: implement logic for auto-play
+            self.action_discard(0) # Test
             
             break
         
