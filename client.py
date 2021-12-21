@@ -115,16 +115,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print("Current player: " + data.currentPlayer)
             print("Player hands: ")
             for p in data.players:
-                print(p.toString())
+                print(p.toClientString())
             print("Table cards: ")
             for pos in data.tableCards:
                 print(pos + ": [ ")
                 for c in data.tableCards[pos]:
-                    print(c.toString() + " ")
+                    print(c.toClientString() + " ")
                 print("]")
             print("Discard pile: ")
             for c in data.discardPile:
-                print("\t" + c.toString())            
+                print("\t" + c.toClientString())            
             print("Note tokens used: " + str(data.usedNoteTokens) + "/8")
             print("Storm tokens used: " + str(data.usedStormTokens) + "/3")
         if type(data) is GameData.ServerActionInvalid:
@@ -144,11 +144,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print("OH NO! The Gods are unhappy with you!")
         if type(data) is GameData.ServerHintData:
             dataOk = True
-            if data.destination == playerName:
-                print("Hint type: " + data.type)
-                print("Your cards with value " + str(data.value) + " are:")
-                for i in data.positions:
-                    print("\t" + str(i))
+            print("Hint type: " + data.type)
+            print("Player " + data.destination + " cards with value " + str(data.value) + " are:")
+            for i in data.positions:
+                print("\t" + str(i))
         if type(data) is GameData.ServerInvalidDataReceived:
             dataOk = True
             print(data.data)

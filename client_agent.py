@@ -28,7 +28,8 @@ class TechnicAngel:
         self.run = True
         
         # color, value
-        self.current_hand_knowledge = None
+        self.current_hand_knowledge = None #! Holds knowledge about current hand
+        self.already_hinted = None #! Holds knowledge about already hinted cards (col, val)
 
         self.current_player = None
         self.player_hands = None
@@ -65,19 +66,13 @@ class TechnicAngel:
                 #! Insert in the msg queue just msgs to be processed, ignore the rest
                 accepted_types = type(data) is GameData.ServerGameStateData or \
                     type(data) is GameData.ServerGameOver or \
-                    (type(data) is GameData.ServerHintData and data.destination == self.playerName) or \
+                    type(data) is GameData.ServerHintData  or \
                     type(data) is GameData.ServerActionValid or \
                     type(data) is GameData.ServerPlayerMoveOk or \
                     type(data) is GameData.ServerPlayerThunderStrike
                 if accepted_types: 
                     self.msg_queue.append(data)
                 with self.cv: self.cv.notify_all()
-
-            #if type(data) is GameData.ServerPlayerMoveOk:
-            #    print("Nice move!")
-            #    print("Current player: " + data.player)
-            #if type(data) is GameData.ServerPlayerThunderStrike:
-            #    print("OH NO! The Gods are unhappy with you!")
 
     def auto_ready(self):
         #! Send 'Ready' signal
@@ -110,6 +105,29 @@ class TechnicAngel:
                         read_packets.append(data)
                         packet_found = True
                         # Don't break yet. There may be more recent ones to process
+                    if type(data) is GameData.ServerActionValid and data.player != self.playerName and data.action == 'discard':
+                        done_removing = False
+                        for p in self.player_hands:
+                            if p.name == data.player:
+                                for i, card in enumerate(p.hand):
+                                    if card == data.card:
+                                        self.already_hinted[p.name].pop(i)
+                                        self.already_hinted[p.name].append([False, False])
+                                        done_removing = True
+                                        break
+                                if done_removing: break
+                    if (type(data) is GameData.ServerPlayerMoveOk or \
+                        type(data) is GameData.ServerPlayerThunderStrike) and data.player != self.playerName:
+                        done_removing = False
+                        for p in self.player_hands:
+                            if p.name == data.player:
+                                for i, card in enumerate(p.hand):
+                                    if card == data.card:
+                                        self.already_hinted[p.name].pop(i)
+                                        self.already_hinted[p.name].append([False, False])
+                                        done_removing = True
+                                        break
+                                if done_removing: break
                 for pkt in read_packets:
                     self.msg_queue.remove(pkt)
                 
@@ -129,10 +147,14 @@ class TechnicAngel:
         with self.lock:
             read_packets = []
             for data in self.msg_queue:
-                if type(data) is GameData.ServerHintData:
+                if type(data) is GameData.ServerHintData and data.destination == self.playerName:
                     for i in data.positions: # indices in the current hand
                         self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = data.value
                     read_packets.append(data)
+                elif type(data) is GameData.ServerHintData and data.destination != self.playerName:
+                    for i in data.positions: # indices in the current hand
+                        self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
+                    read_packets.append(data) 
             for pkt in read_packets:
                 self.msg_queue.remove(pkt)
 
@@ -160,7 +182,7 @@ class TechnicAngel:
             with self.lock:
                 read_packets = []
                 for data in self.msg_queue:
-                    if type(data) is GameData.ServerActionValid:
+                    if type(data) is GameData.ServerActionValid and data.player == self.playerName and data.action == 'discard':
                         packet_found = True
                         read_packets.append(data)
                 for pkt in read_packets:
@@ -203,14 +225,31 @@ class TechnicAngel:
         if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
         else: assert value in [1,2,3,4,5]
         self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
+        packet_found = False
+        while not packet_found:
+            with self.lock:
+                read_packets = []
+                for data in self.msg_queue:
+                    if type(data) is GameData.ServerHintData and data.destination != self.playerName:
+                        for i in data.positions: # indices in the current hand
+                            self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
+                        read_packets.append(data)
+                        packet_found = True
+                for pkt in read_packets:
+                    self.msg_queue.remove(pkt)
 
     def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
         self.query_game_info()
-        self.current_hand_knowledge = []
+
+        self.current_hand_knowledge = [] # Keep track of what you know about your hand
         for _ in range(len(self.player_hands[0].hand)):
             self.current_hand_knowledge.append(['', '']) # color, value
         
+        self.already_hinted = {} # Keep track of already hinted cards
+        for p in self.player_hands:
+            self.already_hinted[p.name] = [[False, False] for _ in range(len(self.player_hands[0].hand))] # color, value
+
         while True:
             self.wait_for_turn()
             
@@ -232,6 +271,9 @@ class TechnicAngel:
 
         for card in self.current_hand_knowledge:
             print(card)
+
+        for p in self.already_hinted.keys():
+            print(self.already_hinted[p])
 
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
