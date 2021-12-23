@@ -1,50 +1,6 @@
-import enum
 import numpy as np
 from itertools import product
-
-def calc_playability2(hand, piles, deck):
-    p = []
-    for pile_col, pile_val in enumerate(piles):
-        if pile_val == 5:
-            p.append([0.0 for _ in range(len(hand))])
-            continue
-        probs = [] # of card k
-        for card in hand:
-            col, val = card
-
-            if col != -1 and val != -1:
-                if col == pile_col and val == pile_val + 1: probs.append(1.0)
-                else: probs.append(0.0)
-
-            elif col != -1:
-                if col != pile_col: probs.append(0.0)
-                total = sum([deck[(col,i)] for i in range(1,5+1)])
-                probs.append(deck[(col,pile_val+1)] / total)
-            
-            elif val != -1:
-                if val != pile_val + 1: probs.append(0.0)
-                total = sum([deck[(i,val)] for i in range(5)])
-                probs.append(deck[(pile_col,val)] / total)
-            
-            else:
-                total = sum([deck[(i,j)] for i,j in product(range(5), range(1,5+1))])
-                probs.append(deck[(pile_col,pile_val+1)] / total)
-
-        p.append(np.asarray(probs))
-    
-    p = np.asarray(p)
-    
-    return p
-
-def p_val_given_col(val, col, deck):
-    # p(val|col) of a card
-    total = sum(deck[(col,i)] for i in range(1,5+1))
-    return deck[(col,val)] / total
-
-def p_col_given_val(val, cols, deck):
-    # p(col|val) of a card
-    total = sum(deck[(i,val)] for i in range(5))
-    return sum(deck[(col,val)] for col in cols) / total
+import random
 
 def calc_playability(hand, piles, deck):
     playabilities = []
@@ -77,9 +33,74 @@ def calc_playability(hand, piles, deck):
                 
     playabilities = np.asarray(playabilities)
     playabilities = np.max(playabilities, axis=1)
-    return playabilities
+    return playabilities # Each value will be the playability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
+def calc_discardability(hand, piles, deck):
+    discardabilites = []
+    for card in hand:
+        c, v = card
+        p = []
+        if c != -1 and v != -1:
+            for pc, pv in enumerate(piles):
+                pass
 
+def calc_best_hint(players, piles, deck):
+    # players: order based who is after I played (.hand, .name, .hints)
+    # hinted: [[(True,False)...(False,False)], [...], [...] ... ] # col, val hints
+    best_so_far = (players[0].name, 'v', 1, 0.0) # dst, type, val, playability/utility
+    for player in players:
+        color_hints = [0,1,2,3,4]
+        value_hints = [1,2,3,4,5]
+        for card, hint in zip(player.hand, player.hints):
+            c, v = card
+            hc, hv = hint
+            if hc: color_hints.remove(c)
+            if hv: value_hints.remove(v)
+        
+        if len(color_hints) > 0 or len(value_hints) > 0: # at least one useful hint found to deliver
+            for vhint in value_hints:
+                simulate_hand = []
+                simulate_hints = []
+                for hint in player.hints:
+                    simulate_hints.append(hint)
+                for i, card in enumerate(player.hand):
+                    if card[1] == vhint: simulate_hints[i][1] = True
+
+                for card, hint in zip(player.hand, simulate_hints):
+                    c, v = -1, -1
+                    hc, hv = hint
+                    if hc: c = card[0]
+                    if hv: v = card[1]
+                    simulate_hand.append((c,v))
+
+                utility = np.max(calc_playability(simulate_hand, piles, deck))
+                if utility > best_so_far[3]:
+                    best_so_far = (player.name, 'v', vhint, utility)
+                    if utility == 1.0: return best_so_far
+
+            for chint in color_hints:
+                simulate_hand = []
+                simulate_hints = []
+                for hint in player.hints:
+                    simulate_hints.append(hint)
+                for i, card in enumerate(player.hand):
+                    if card[0] == chint: simulate_hints[i][0] = True
+
+                for card, hint in zip(player.hand, simulate_hints):
+                    c, v = -1, -1
+                    hc, hv = hint
+                    if hc: c = card[0]
+                    if hv: v = card[1]
+                    simulate_hand.append((c,v))
+
+                utility = np.max(calc_playability(simulate_hand, piles, deck))
+                if utility > best_so_far[3]:
+                    best_so_far = (player.name, 'c', chint, utility)
+                    if utility == 1.0: return best_so_far
+
+            return best_so_far
+    
+    return best_so_far
 
 deck = {}
 for col in range(5): # num cards with that (col,val) in deck

@@ -1,9 +1,13 @@
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
+
+from numpy.core.numeric import isclose
 import GameData
 import socket
 from constants import *
+import numpy as np
 from collections import deque
+from itertools import product
 
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
@@ -157,13 +161,76 @@ class TechnicAngel:
                     read_packets.append(data) 
             for pkt in read_packets:
                 self.msg_queue.remove(pkt)
+    
+    def calc_deck(self):
+        deck = {} #! Holds knowledge about unseen cards
+        for col in ['red','yellow','green','blue','white']:
+            deck[(col,'1')] = 3
+            deck[(col,'2')] = 2
+            deck[(col,'3')] = 2
+            deck[(col,'4')] = 2
+            deck[(col,'5')] = 1
+
+        for player in self.player_hands:
+            for card in player.hand:
+                deck[(str(card.color), str(card.value))] -= 1
+
+        for col in ['red','yellow','green','blue','white']:
+            for card in self.table_cards[col]:
+                deck[(str(card.color), str(card.value))] -= 1
+
+        for card in self.discard_pile:
+            deck[(str(card.color), str(card.value))] -= 1
+
+        return deck
+
+    def calc_playability(self):
+        deck = self.calc_deck()
+        piles = {}
+        for col in ['red','yellow','green','blue','white']:
+            piles[col] = 0
+            if len(self.table_cards[col]) > 0:
+                piles[col] = int(self.table_cards[col][-1].value)
+
+        playabilities = []
+        for card in self.current_hand_knowledge:
+            c, v = card
+            p = []
+
+            if c != '' and v != '': # I know both col and val
+                for col in piles.keys():
+                    if c == col and int(v) == piles[col] + 1: p.append(1.0)
+                    else: p.append(0.0)
+
+            elif c != '': # I know only the col
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(0.0)
+                    elif c == col: p.append(deck[(c,str(piles[col]+1))] / sum(deck[(c,str(i))] for i in range(1,5+1)))
+                    else: p.append(0.0)
+            
+            elif v != '': # I know only the val
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(0.0)
+                    elif int(v) == piles[col] + 1: p.append(sum(deck[(i,str(v))] for i in ['red','yellow','green','blue','white'] if piles[i] + 1 == int(v)) / sum(deck[(i,str(v))] for i in ['red','yellow','green','blue','white']))
+                    else: p.append(0.0)
+                
+            else: # I don't know anything
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(0.0)
+                    else: p.append(deck[(col,str(piles[col]+1))] / sum(deck[(i,str(j))] for i,j in product(['red','yellow','green','blue','white'], range(1,5+1))))
+
+            playabilities.append(p)
+
+        playabilities = np.asarray(playabilities)
+        playabilities = np.max(playabilities, axis=1)
+        return playabilities # Each value will be the playability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
     def wait_for_turn(self):
         self.query_game_info()
         self.query_game_over()
         #! Check whether it's your turn or the game ended!
         while self.current_player != self.playerName and self.final_score is None:
-            with self.cv: self.cv.wait()
+            with self.cv: self.cv.wait(1.0)
             self.query_game_info()
             self.query_game_over()
         #! Update knowledge
@@ -259,9 +326,16 @@ class TechnicAngel:
             if self.final_score is not None: break
 
             #TODO: implement logic for auto-play
-            #self.action_hint('value', self.player_hands[0].name, 1)
+
+            playab = self.calc_playability()
+            for i in range(len(playab)):
+                if playab[i] >= 1.0:
+                    self.action_play(i)
+                    continue
+
+            self.action_hint('value', self.player_hands[0].name, 1)
             
-            #break
+            break
         
         #* This is just for DEBUG
         print(self.current_player)
@@ -280,3 +354,5 @@ class TechnicAngel:
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
 agent = TechnicAngel(ID=ID)
+
+#TODO: Vedere perché si blocca
