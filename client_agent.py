@@ -172,7 +172,7 @@ class TechnicAngel:
         self.query_hints()
 
     def action_discard(self, num):
-        # num = [0, len(hand)-1]: int
+        """num = [0, len(hand)-1]: int"""
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
         assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
         assert num in range(0, len(self.current_hand_knowledge))
@@ -191,7 +191,7 @@ class TechnicAngel:
         self.current_hand_knowledge.append(['', ''])
     
     def action_play(self, num):
-        # num = [0, len(hand)-1]: int
+        """num = [0, len(hand)-1]: int"""
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
         assert num in range(0, len(self.current_hand_knowledge))
         self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
@@ -216,9 +216,11 @@ class TechnicAngel:
         return was_a_good_move
 
     def action_hint(self, hint_type, dst, value):
-        # hint_type = 'color' or 'value'
-        # dst = <player name> : str
-        # value = if 'color': ['red', 'yellow', 'green', 'blue', 'white'] else [1,2,3,4,5]
+        """
+        hint_type = 'color' or 'value'
+        dst = <player name> : str
+        value = if 'color': ['red', 'yellow', 'green', 'blue', 'white'] else [1,2,3,4,5]
+        """
         assert self.used_note_tokens < 8, 'Cannot Hint if all note tokens are used'
         assert hint_type in ['color', 'value'], 'hint_type can be "color" or "value"'
         assert dst in [p.name for p in self.player_hands], 'Passed the name of a non-existing player'
@@ -257,9 +259,9 @@ class TechnicAngel:
             if self.final_score is not None: break
 
             #TODO: implement logic for auto-play
-            self.action_hint('value', self.player_hands[0].name, 1)
+            #self.action_hint('value', self.player_hands[0].name, 1)
             
-            break
+            #break
         
         #* This is just for DEBUG
         print(self.current_player)

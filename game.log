@@ -2837,3 +2837,78 @@
 12/21/2021 08:13:53 PM INFO: Player technic_angel providing hint to Test: cards with value 1 are in positions: [1, 2]
 12/21/2021 08:13:53 PM WARNING: Player disconnected: technic_angel
 12/21/2021 08:14:06 PM INFO: Closing the server...
+12/21/2021 08:16:20 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/21/2021 08:16:22 PM INFO: Connected by: ('127.0.0.1', 52161)
+12/21/2021 08:16:22 PM INFO: Player connected: Test
+12/21/2021 08:16:27 PM INFO: Player ready: Test
+12/21/2021 08:16:29 PM INFO: Connected by: ('127.0.0.1', 52163)
+12/21/2021 08:16:29 PM INFO: Player connected: technic_angel
+12/21/2021 08:16:29 PM INFO: Player ready: technic_angel
+12/21/2021 08:16:29 PM INFO: Game start! Between: ['Test', 'technic_angel']
+12/21/2021 08:16:29 PM INFO: Ok, let's start the game!
+12/21/2021 08:16:29 PM INFO: Showing hand to: technic_angel
+12/21/2021 08:16:31 PM INFO: Showing hand to: technic_angel
+12/21/2021 08:16:32 PM INFO: Showing hand to: Test
+12/21/2021 08:16:41 PM INFO: Player Test providing hint to technic_angel: cards with value 1 are in positions: [0, 1, 4]
+12/21/2021 08:16:41 PM INFO: Showing hand to: technic_angel
+12/21/2021 08:16:41 PM INFO: Showing hand to: technic_angel
+12/21/2021 08:16:41 PM INFO: Player technic_angel providing hint to Test: cards with value 1 are in positions: [0, 1, 4]
+12/21/2021 08:16:41 PM WARNING: Player disconnected: technic_angel
+12/21/2021 08:17:07 PM INFO: Closing the server...
+12/21/2021 09:44:40 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/21/2021 09:44:46 PM INFO: Connected by: ('127.0.0.1', 55973)
+12/21/2021 09:44:46 PM INFO: Player connected: Test
+12/21/2021 09:44:49 PM INFO: Player ready: Test
+12/21/2021 09:44:52 PM INFO: Connected by: ('127.0.0.1', 55974)
+12/21/2021 09:44:52 PM INFO: Player connected: AAA
+12/21/2021 09:44:53 PM INFO: Player ready: AAA
+12/21/2021 09:44:53 PM INFO: Game start! Between: ['Test', 'AAA']
+12/21/2021 09:44:53 PM INFO: Ok, let's start the game!
+12/21/2021 09:45:05 PM INFO: Closing the server...
+12/21/2021 09:45:12 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/21/2021 09:45:15 PM INFO: Connected by: ('127.0.0.1', 55977)
+12/21/2021 09:45:15 PM INFO: Player connected: Test
+12/21/2021 09:45:19 PM INFO: Connected by: ('127.0.0.1', 55978)
+12/21/2021 09:45:19 PM INFO: Player connected: AAA
+12/21/2021 09:45:22 PM INFO: Connected by: ('127.0.0.1', 55979)
+12/21/2021 09:45:22 PM INFO: Player connected: technic_angel
+12/21/2021 09:45:22 PM INFO: Player ready: technic_angel
+12/21/2021 09:45:24 PM INFO: Player ready: Test
+12/21/2021 09:45:28 PM INFO: Player ready: AAA
+12/21/2021 09:45:28 PM INFO: Game start! Between: ['Test', 'AAA', 'technic_angel']
+12/21/2021 09:45:28 PM INFO: Ok, let's start the game!
+12/21/2021 09:45:28 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:45:30 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:45:59 PM INFO: Showing hand to: Test
+12/21/2021 09:46:11 PM INFO: Player Test providing hint to AAA: cards with value 4 are in positions: [1, 2]
+12/21/2021 09:46:11 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:46:22 PM INFO: Showing hand to: AAA
+12/21/2021 09:46:34 PM INFO: Player AAA providing hint to technic_angel: cards with value 2 are in positions: [3, 4]
+12/21/2021 09:46:34 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:46:34 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:46:34 PM INFO: Player technic_angel providing hint to Test: cards with value 1 are in positions: [0, 1, 2, 3]
+12/21/2021 09:46:34 PM WARNING: Player disconnected: technic_angel
+12/21/2021 09:47:40 PM INFO: Closing the server...
+12/21/2021 09:47:47 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/21/2021 09:47:49 PM INFO: Connected by: ('127.0.0.1', 56003)
+12/21/2021 09:47:49 PM INFO: Player connected: Test
+12/21/2021 09:47:50 PM INFO: Player ready: Test
+12/21/2021 09:47:52 PM INFO: Connected by: ('127.0.0.1', 56004)
+12/21/2021 09:47:52 PM INFO: Player connected: AAA
+12/21/2021 09:47:55 PM INFO: Connected by: ('127.0.0.1', 56005)
+12/21/2021 09:47:55 PM INFO: Player connected: technic_angel
+12/21/2021 09:47:55 PM INFO: Player ready: technic_angel
+12/21/2021 09:47:58 PM INFO: Player ready: AAA
+12/21/2021 09:47:58 PM INFO: Game start! Between: ['Test', 'AAA', 'technic_angel']
+12/21/2021 09:47:58 PM INFO: Ok, let's start the game!
+12/21/2021 09:47:58 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:47:59 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:48:11 PM INFO: Showing hand to: AAA
+12/21/2021 09:48:18 PM INFO: Test: card played and correctly put on the table
+12/21/2021 09:48:18 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:48:23 PM INFO: Showing hand to: Test
+12/21/2021 09:48:42 PM INFO: Player AAA providing hint to technic_angel: cards with value 1 are in positions: [0, 1, 3]
+12/21/2021 09:48:42 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:48:42 PM INFO: Showing hand to: technic_angel
+12/21/2021 09:48:56 PM INFO: Showing hand to: Test
+12/21/2021 09:50:02 PM INFO: Closing the server...
