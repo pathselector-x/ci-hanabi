@@ -1,198 +1,328 @@
-from torch import nn
-import torch
-from collections import deque
-import itertools
-import numpy as np
-import random
+from sys import argv, stdout
+from threading import Thread, Lock, Condition
 import time
-import matplotlib.pyplot as plt
+from numpy.core.numeric import isclose
+import GameData
+import socket
+from constants import *
+import numpy as np
+from collections import deque
+from itertools import product
 
-import gym
+class TechnicAngel:
+    def __init__(self, ip=HOST, port=PORT, ID=0):
+        self.statuses = ["Lobby", "Game", "GameHint"]
+        self.status = self.statuses[0]
+        if ID > 0:
+            self.playerName = "technic_angel_" + str(ID)
+        else:
+            self.playerName = "technic_angel"
+        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        request = GameData.ClientPlayerAddData(self.playerName)
+        self.s.connect((ip, port))
+        self.s.send(request.serialize())
+        data = self.s.recv(DATASIZE)
+        data = GameData.GameData.deserialize(data)
+        if type(data) is GameData.ServerPlayerConnectionOk:
+            print("Connection accepted by the server. Welcome " + self.playerName)
+        stdout.flush()
+        
+        # color, value
+        self.current_hand_knowledge = None #! Holds knowledge about current hand
+        self.already_hinted = None #! Holds knowledge about already hinted cards (col, val)
 
-#! Test DQN agent for simple task
+        self.current_player = None
+        self.player_hands = None
+        self.table_cards = None
+        self.discard_pile = None
+        self.used_note_tokens = None
+        self.used_storm_tokens = None
 
-class GridWorld:
+        self.final_score = None
 
-    def __init__(self):
-        self.state = [3,2]
-        self.grid = np.array([
-            [1,0,2,0],
-            [1,1,1,1],
-            [1,1,0,1],
-            [0,1,1,0]])
-        self.rewards = np.array([
-            [1,-10,100,-10],
-            [1,10,20,1],
-            [1,5,-10,1],
-            [-10,3,0,-10]])
-    
-    def step(self, action):
-        x, y = self.state
-        if action == 0: # left
-            if y - 1 < 0 or self.grid[x, y - 1] == 0: return self.state, -10, 1
-            self.state[1] -= 1
+        self.lock = Lock()
+        self.cv = Condition()
+        self.run = True
+        
+        #! Ready up your engines...
+        self.auto_ready()
+
+        self.msg_queue = []
+        self.t_listener = Thread(target=self.listener)
+        self.t_listener.start()
+
+        self.main_loop()
+
+        with self.lock: 
+            self.run = False
+            self.s.shutdown(socket.SHUT_RDWR)
+        self.t_listener.join()
+        
+    def __del__(self):
+        self.s.close()
+
+    def listener(self):
+        while self.run:
+            data = self.s.recv(DATASIZE)
+            if not data: continue
+            data = GameData.GameData.deserialize(data)
+            print(type(data))
+            with self.lock:
+                #! Insert in the msg queue just msgs to be processed, ignore the rest
+                accepted_types = type(data) is GameData.ServerGameStateData or \
+                    type(data) is GameData.ServerGameOver or \
+                    type(data) is GameData.ServerHintData  or \
+                    type(data) is GameData.ServerActionValid or \
+                    type(data) is GameData.ServerPlayerMoveOk or \
+                    type(data) is GameData.ServerPlayerThunderStrike
+
+                if accepted_types: 
+                    self.msg_queue.append(data)
+
+                if type(data) is not GameData.ServerGameStateData:
+                    with self.cv: self.cv.notify_all()
             
-        elif action == 1: # right
-            if y + 1 > self.grid.shape[0]-1 or self.grid[x, y + 1] == 0: return self.state, -10, 1
-            self.state[1] += 1
-        elif action == 2: # up
-            if x - 1 < 0 or self.grid[x - 1, y] == 0: return self.state, -10, 1
-            self.state[0] -= 1
-        elif action == 3: # down
-            if x + 1 > self.grid.shape[1]-1 or self.grid[x + 1, y] == 0: return self.state, -10, 1
-            self.state[0] += 1
-        return self.state, self.rewards[self.state[0], self.state[1]], 1 if self.grid[self.state[0], self.state[1]] == 2 else 0
+    def auto_ready(self):
+        #! Send 'Ready' signal
+        self.s.send(GameData.ClientPlayerStartRequest(self.playerName).serialize())
+        data = self.s.recv(DATASIZE)
+        data = GameData.GameData.deserialize(data)
+        if type(data) is GameData.ServerPlayerStartRequestAccepted:
+            print("Ready: " + str(data.acceptedStartRequests) + "/"  + str(data.connectedPlayers) + " players")
+            data = self.s.recv(DATASIZE)
+            data = GameData.GameData.deserialize(data)
+        if type(data) is GameData.ServerStartGameData:
+            print("Game start!")
+            self.s.send(GameData.ClientPlayerReadyData(self.playerName).serialize())
+            self.status = self.statuses[1]
 
-    def reset(self):
-        self.state = [3,2]
-        return self.state
+    def calc_deck(self):
+        deck = {} #! Holds knowledge about unseen cards
+        for col in ['red','yellow','green','blue','white']:
+            deck[(col,'1')] = 3
+            deck[(col,'2')] = 2
+            deck[(col,'3')] = 2
+            deck[(col,'4')] = 2
+            deck[(col,'5')] = 1
 
-    def render(self):
-        time.sleep(0.3)
-        for i in range(4):
-            for j in range(4):
-                if i == self.state[0] and j == self.state[1]: print('X', end=' ')
-                elif self.grid[i,j] == 1: print('_', end=' ')
-                elif self.grid[i,j] == 0: print(' ', end=' ')
-                elif self.grid[i,j] == 2: print('O', end=' ')
-            print()
-        print()
- 
-GAMMA = 0.99
-BATCH_SIZE = 32
-BUFFER_SIZE = 50000
-MIN_REPLAY_SIZE = 1000
-EPSILON_START = 1.0
-EPSILON_END = 0.2
-EPSILON_DECAY = 10000
-TARGET_UPDATE_FREQ = 10000
+        for player in self.player_hands:
+            for card in player.hand:
+                deck[(str(card.color), str(card.value))] -= 1
 
-device = torch.device('cpu') #torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-env = gym.make('CartPole-v0')
+        for col in ['red','yellow','green','blue','white']:
+            for card in self.table_cards[col]:
+                deck[(str(card.color), str(card.value))] -= 1
 
-loss_array = []
+        for card in self.discard_pile:
+            deck[(str(card.color), str(card.value))] -= 1
 
-class DQN(nn.Module):
-    def __init__(self, env):
-        super(DQN, self).__init__()
-        in_features = int(np.prod(env.observation_space.shape))
+        return deck
 
-        self.net = nn.Sequential(
-            nn.Linear(in_features, 64),
-            nn.Tanh(),
-            nn.Linear(64, env.action_space.n)
-        )
+    def calc_playability(self):
+        deck = self.calc_deck()
+        piles = {}
+        for col in ['red','yellow','green','blue','white']:
+            piles[col] = 0
+            if len(self.table_cards[col]) > 0:
+                piles[col] = int(self.table_cards[col][-1].value)
+
+        playabilities = []
+        for card in self.current_hand_knowledge:
+            c, v = card
+            p = []
+
+            if c != '' and v != '': # I know both col and val
+                for col in piles.keys():
+                    if c == col and int(v) == piles[col] + 1: p.append(1.0)
+                    else: p.append(0.0)
+
+            elif c != '': # I know only the col
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(0.0)
+                    elif c == col: p.append(deck[(c,str(piles[col]+1))] / sum(deck[(c,str(i))] for i in range(1,5+1)))
+                    else: p.append(0.0)
+            
+            elif v != '': # I know only the val
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(0.0)
+                    elif int(v) == piles[col] + 1: p.append(sum(deck[(i,str(v))] for i in ['red','yellow','green','blue','white'] if piles[i] + 1 == int(v)) / sum(deck[(i,str(v))] for i in ['red','yellow','green','blue','white']))
+                    else: p.append(0.0)
+                
+            else: # I don't know anything
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(0.0)
+                    else: p.append(deck[(col,str(piles[col]+1))] / sum(deck[(i,str(j))] for i,j in product(['red','yellow','green','blue','white'], range(1,5+1))))
+
+            playabilities.append(p)
+
+        playabilities = np.asarray(playabilities)
+        playabilities = np.max(playabilities, axis=1)
+        return playabilities # Each value will be the playability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
+
+    def consume_packets(self):
+        read_idxs = []
+        with self.lock:
+            for idx, data in enumerate(self.msg_queue):
+
+                # Discard data of other players
+                if type(data) is GameData.ServerActionValid and data.player != self.playerName and data.action == 'discard':
+                    done_removing = False
+                    for p in self.player_hands:
+                        if p.name == data.player:
+                            for i, card in enumerate(p.hand):
+                                if card == data.card:
+                                    self.already_hinted[p.name].pop(i)
+                                    self.already_hinted[p.name].append([False, False])
+                                    done_removing = True
+                                    break
+                            if done_removing: break
+                    read_idxs.append(idx)
+
+                # Play data of other players
+                elif (type(data) is GameData.ServerPlayerMoveOk or \
+                    type(data) is GameData.ServerPlayerThunderStrike) and data.player != self.playerName:
+                    done_removing = False
+                    for p in self.player_hands:
+                        if p.name == data.player:
+                            for i, card in enumerate(p.hand):
+                                if card == data.card:
+                                    self.already_hinted[p.name].pop(i)
+                                    self.already_hinted[p.name].append([False, False])
+                                    done_removing = True
+                                    break
+                            if done_removing: break
+                    read_idxs.append(idx)
+
+                # Hint data: I received a hint
+                elif type(data) is GameData.ServerHintData and data.destination == self.playerName:
+                    for i in data.positions: # indices in the current hand
+                        self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = data.value
+                    read_idxs.append(idx)
+
+                # Hint data of other players
+                elif type(data) is GameData.ServerHintData and data.destination != self.playerName:
+                    for i in data.positions: # indices in the current hand
+                        self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
+                    read_idxs.append(idx)
+                
+                # Game over
+                elif type(data) is GameData.ServerGameOver:
+                    self.final_score = data.score
+                    read_idxs.append(idx)
+                
+                elif type(data) is not GameData.ServerGameStateData:
+                    read_idxs.append(idx)
+
+            for idx in read_idxs:
+                self.msg_queue.pop(idx)
+
+    def wait_for_turn(self):
+        while self.current_player != self.playerName and self.final_score is None:
+            with self.cv: self.cv.wait()
+            self.consume_packets()
+            self.action_show()
     
-    def forward(self, x):
-        return self.net(x)
+    def action_show(self):
+        self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
+        found = False
+        while not found:
+            with self.lock:
+                read_idxs = []
+                for i, data in enumerate(self.msg_queue):
+                    if type(data) is GameData.ServerGameStateData:
+                        self.current_player = data.currentPlayer
+                        self.player_hands = data.players
+                        self.table_cards = data.tableCards
+                        self.discard_pile = data.discardPile
+                        self.used_note_tokens = data.usedNoteTokens
+                        self.used_storm_tokens = data.usedStormTokens
+                        read_idxs.append(i)
+                        found = True
+                for idx in read_idxs:
+                    self.msg_queue.pop(idx)
+                        
+    def action_discard(self, num):
+        """num = [0, len(hand)-1]: int"""
+        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
+        assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
+        assert num in range(0, len(self.current_hand_knowledge))
+        self.s.send(GameData.ClientPlayerDiscardCardRequest(self.playerName, num).serialize())
+        self.current_hand_knowledge.pop(num)
+        self.current_hand_knowledge.append(['', ''])
+        self.current_player = None
     
-    def act(self, obs):
-        obs_t = torch.as_tensor(obs, dtype=torch.float32, device=device)
-        q_values = self(obs_t.unsqueeze(0))
-        max_q_index = torch.argmax(q_values, dim=1)[0]
-        action = max_q_index.detach().item()
-        return action
-
-replay_buffer = deque(maxlen=BUFFER_SIZE)
-rew_buffer = deque([0.0], maxlen=100)
-
-episode_reward = 0.0
-
-online_net = DQN(env).to(device)
-target_net = DQN(env).to(device)
-
-target_net.load_state_dict(online_net.state_dict())
-
-optimizer = torch.optim.Adam(online_net.parameters(), lr=0.001)
-
-#! Init replay buffer
-obs = env.reset()
-for _ in range(MIN_REPLAY_SIZE):
-    action = env.action_space.sample() #random.choice([0,1,2,3]) # Random action
-    new_obs, rew, done, _ = env.step(action)
-    transition = (obs, action, rew, done, new_obs)
-    replay_buffer.append(transition)
-    obs = new_obs
-
-    if done:
-        obs = env.reset()
-
-#! Main Training loop
-obs = env.reset()
-
-for step in itertools.count():
-    epsilon = np.interp(step, [0, EPSILON_DECAY], [EPSILON_START, EPSILON_END])
-
-    if random.random() <= epsilon:
-        action = env.action_space.sample() #random.choice([0,1,2,3]) # Random action
-    else:
-        action = online_net.act(obs)
+    def action_play(self, num):
+        """num = [0, len(hand)-1]: int"""
+        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
+        assert num in range(0, len(self.current_hand_knowledge))
+        self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
+        self.current_hand_knowledge.pop(num)
+        self.current_hand_knowledge.append(['', ''])
+        self.current_player = None
     
-    new_obs, rew, done, _ = env.step(action)
-    transition = (obs, action, rew, done, new_obs)
-    replay_buffer.append(transition)
-    obs = new_obs
+    def action_hint(self, hint_type, dst, value):
+        """
+        hint_type = 'color' or 'value'
+        dst = <player name> : str
+        value = if 'color': ['red', 'yellow', 'green', 'blue', 'white'] else [1,2,3,4,5]
+        """
+        assert self.used_note_tokens < 8, 'Cannot Hint if all note tokens are used'
+        assert hint_type in ['color', 'value'], 'hint_type can be "color" or "value"'
+        assert dst in [p.name for p in self.player_hands], 'Passed the name of a non-existing player'
+        if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
+        else: assert value in [1,2,3,4,5]
+        self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
+        self.current_player = None
 
-    episode_reward += rew
+    def main_loop(self, PLAYABILITY_THRESHOLD=1.0):
+        #! Check how many cards in hand (4 or 5 depending on how many players)
+        self.action_show()
 
-    if done:
-        obs = env.reset()
-        rew_buffer.append(episode_reward)
-        episode_reward = 0.0
+        self.current_hand_knowledge = [] # Keep track of what you know about your hand
+        for _ in range(len(self.player_hands[0].hand)):
+            self.current_hand_knowledge.append(['', '']) # color, value
+        
+        self.already_hinted = {} # Keep track of already hinted cards
+        for p in self.player_hands:
+            self.already_hinted[p.name] = [[False, False] for _ in range(len(self.player_hands[0].hand))] # color, value
 
-    # Start Gradient Step
-    transitions = random.sample(replay_buffer, BATCH_SIZE)
+        while True:
+            self.wait_for_turn()
+            
+            #! Check if game ended
+            if self.final_score is not None: break
 
-    obses = np.asarray([t[0] for t in transitions])
-    actions = np.asarray([t[1] for t in transitions])
-    rews = np.asarray([t[2] for t in transitions])
-    dones = np.asarray([t[3] for t in transitions])
-    new_obses = np.asarray([t[4] for t in transitions])
+            #TODO: implement logic for auto-play
 
-    obses_t = torch.as_tensor(obses, dtype=torch.float32, device=device)
-    actions_t = torch.as_tensor(actions, dtype=torch.int64, device=device).unsqueeze(-1)
-    rews_t = torch.as_tensor(rews, dtype=torch.float32, device=device).unsqueeze(-1)
-    dones_t = torch.as_tensor(dones, dtype=torch.float32, device=device).unsqueeze(-1)
-    new_obses_t = torch.as_tensor(new_obses, dtype=torch.float32, device=device)
+            playab = self.calc_playability()
+            played = False
+            for i in range(len(playab)):
+                if playab[i] >= PLAYABILITY_THRESHOLD:
+                    self.action_play(i)
+                    played = True
+            if played: 
+                continue
+            else:
+                self.action_hint('value', self.player_hands[0].name, 1)
+            
+            break
+        
+        #* This is just for DEBUG
+        print(self.current_player)
+        for player in self.player_hands:
+            print(player.name)
+            for card in player.hand:
+                print(card.value, card.color)
+        print(self.table_cards)
 
-    # Compute targets
-    target_q_values = target_net(new_obses_t)
-    max_target_q_values = target_q_values.max(dim=1, keepdim=True)[0]
+        for card in self.current_hand_knowledge:
+            print(card)
 
-    targets = rews_t + GAMMA * (1 - dones_t) * max_target_q_values
+        for p in self.already_hinted.keys():
+            print(self.already_hinted[p])
 
-    # Compute Loss
-    q_values = online_net(obses_t)
 
-    action_q_values = torch.gather(input=q_values, dim=1, index=actions_t)
+ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
+agent = TechnicAngel(ID=ID)
 
-    loss = nn.functional.smooth_l1_loss(action_q_values, targets)
-    loss_array.append([step, loss])
-
-    # After solved, watch it play
-    if len(rew_buffer) >= 1:
-        if np.mean(rew_buffer) >= 190:
-            loss_array = np.array(loss_array)
-            plt.plot(loss_array[:,0], loss_array[:,1])
-            plt.show()
-            obs = env.reset()
-            while True:
-                env.render()
-                action = online_net.act(obs)
-                obs, _, done, _ = env.step(action)
-                if done:
-                    obs = env.reset()
-
-    # Gradient Descent
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-
-    # Update Target Network
-    if step % TARGET_UPDATE_FREQ == 0:
-        target_net.load_state_dict(online_net.state_dict())
-
-    # Logging
-    if step % 1000 == 0:
-        print()
-        print(f'Step {step} | Avg Rew: {np.mean(rew_buffer)}')
+#TODO: Vedere perché si blocca

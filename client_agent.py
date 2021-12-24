@@ -63,6 +63,7 @@ class TechnicAngel:
 
     def listener(self):
         while self.run:
+            print(len(self.msg_queue))
             data = self.s.recv(DATASIZE)
             if not data: continue
             data = GameData.GameData.deserialize(data)
@@ -244,16 +245,16 @@ class TechnicAngel:
         assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
         assert num in range(0, len(self.current_hand_knowledge))
         self.s.send(GameData.ClientPlayerDiscardCardRequest(self.playerName, num).serialize())
-        packet_found = False
-        while not packet_found:
-            with self.lock:
-                read_packets = []
-                for data in self.msg_queue:
-                    if type(data) is GameData.ServerActionValid and data.player == self.playerName and data.action == 'discard':
-                        packet_found = True
-                        read_packets.append(data)
-                for pkt in read_packets:
-                    self.msg_queue.remove(pkt)
+        #packet_found = False
+        #while not packet_found:
+        #    with self.lock:
+        #        read_packets = []
+        #        for data in self.msg_queue:
+        #            if type(data) is GameData.ServerActionValid and data.player == self.playerName and data.action == 'discard':
+        #                packet_found = True
+        #                read_packets.append(data)
+        #        for pkt in read_packets:
+        #            self.msg_queue.remove(pkt)
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
     
@@ -262,25 +263,25 @@ class TechnicAngel:
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
         assert num in range(0, len(self.current_hand_knowledge))
         self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
-        was_a_good_move = False
-        packet_found = False
-        while not packet_found:
-            with self.lock:
-                read_packets = []
-                for data in self.msg_queue:
-                    if type(data) is GameData.ServerPlayerThunderStrike:
-                        was_a_good_move = False
-                        packet_found = True
-                        read_packets.append(data)
-                    elif type(data) is GameData.ServerPlayerMoveOk:
-                        was_a_good_move = True
-                        packet_found = True
-                        read_packets.append(data)
-                for pkt in read_packets:
-                    self.msg_queue.remove(pkt)
+        #was_a_good_move = False
+        #packet_found = False
+        #while not packet_found:
+        #    with self.lock:
+        #        read_packets = []
+        #        for data in self.msg_queue:
+        #            if type(data) is GameData.ServerPlayerThunderStrike:
+        #                was_a_good_move = False
+        #                packet_found = True
+        #                read_packets.append(data)
+        #            elif type(data) is GameData.ServerPlayerMoveOk:
+        #                was_a_good_move = True
+        #                packet_found = True
+        #                read_packets.append(data)
+        #        for pkt in read_packets:
+        #            self.msg_queue.remove(pkt)
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
-        return was_a_good_move
+        #return was_a_good_move
 
     def action_hint(self, hint_type, dst, value):
         """
@@ -294,20 +295,20 @@ class TechnicAngel:
         if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
         else: assert value in [1,2,3,4,5]
         self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
-        packet_found = False
-        while not packet_found:
-            with self.lock:
-                read_packets = []
-                for data in self.msg_queue:
-                    if type(data) is GameData.ServerHintData and data.destination != self.playerName:
-                        for i in data.positions: # indices in the current hand
-                            self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
-                        read_packets.append(data)
-                        packet_found = True
-                for pkt in read_packets:
-                    self.msg_queue.remove(pkt)
+        #packet_found = False
+        #while not packet_found:
+        #    with self.lock:
+        #        read_packets = []
+        #        for data in self.msg_queue:
+        #            if type(data) is GameData.ServerHintData and data.destination != self.playerName:
+        #                for i in data.positions: # indices in the current hand
+        #                    self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
+        #                read_packets.append(data)
+        #                packet_found = True
+        #        for pkt in read_packets:
+        #            self.msg_queue.remove(pkt)
 
-    def main_loop(self):
+    def main_loop(self, PLAYABILITY_THRESHOLD=1.0):
         #! Check how many cards in hand (4 or 5 depending on how many players)
         self.query_game_info()
 
@@ -329,7 +330,7 @@ class TechnicAngel:
 
             playab = self.calc_playability()
             for i in range(len(playab)):
-                if playab[i] >= 1.0:
+                if playab[i] >= PLAYABILITY_THRESHOLD:
                     self.action_play(i)
                     continue
 
