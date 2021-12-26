@@ -49,7 +49,7 @@ class TechnicAngel:
         self.run = True
         
         #! Ready up your engines...
-        input('Press enter to start...')
+        input('Press [ENTER] to start...')
         self.auto_ready()
 
         self.msg_queue = []
@@ -71,13 +71,7 @@ class TechnicAngel:
             data = self.s.recv(DATASIZE)
             if not data: continue
             data = GameData.GameData.deserialize(data)
-            #print(type(data))
             with self.lock:
-                #if type(data) is GameData.ServerInvalidDataReceived:
-                #    print(data.data)
-                #    with self.cv: self.cv.notify_all()
-                #    return
-
                 #! Insert in the msg queue just msgs to be processed, ignore the rest
                 accepted_types = type(data) is GameData.ServerGameStateData or \
                     type(data) is GameData.ServerGameOver or \
@@ -129,6 +123,11 @@ class TechnicAngel:
 
         for card in self.discard_pile:
             deck[(str(card.color), str(card.value))] -= 1
+        
+        for card in self.current_hand_knowledge:
+            c, v = card
+            if c != '' and v != '':
+                deck[(c,v)] -= 1
 
         return deck
 
@@ -219,7 +218,7 @@ class TechnicAngel:
         #self.action_show()
         best_so_far = None
         for player in self.player_hands:
-            print(len(player.hand))
+            #print(len(player.hand))
             if len(player.hand) == 0: continue
             for card in player.hand:
                 best_so_far = ('value', card.value, player.name, 0.0) # type, value, dst, playability/utility
@@ -320,7 +319,7 @@ class TechnicAngel:
                 # Hint data: I received a hint
                 elif type(data) is GameData.ServerHintData and data.destination == self.playerName:
                     for i in data.positions: # indices in the current hand
-                        self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = data.value
+                        self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = str(data.value)
                     read_pkts.append(data)
 
                 # Hint data of other players
@@ -342,12 +341,14 @@ class TechnicAngel:
 
     def wait_for_turn(self):
         while self.current_player != self.playerName and self.final_score is None:
-            with self.cv: self.cv.wait_for(lambda : False, timeout=1.0)
+            with self.cv: self.cv.wait_for(lambda : False, timeout=0.2)
             self.consume_packets()
             self.action_show()
+        self.consume_packets()
+        self.action_show()
     
     def action_show(self):
-        print('Show')
+        #print('Show')
         self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
         found = False
         while not found:
@@ -386,7 +387,6 @@ class TechnicAngel:
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
         self.current_player = None
-        #time.sleep(3.0)
     
     def action_play(self, num):
         print('Play', num)
@@ -397,7 +397,6 @@ class TechnicAngel:
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
         self.current_player = None
-        #time.sleep(3.0)
     
     def action_hint(self, hint_type, dst, value):
         print('Hint', hint_type, dst, value)
@@ -413,7 +412,6 @@ class TechnicAngel:
         else: assert value in [1,2,3,4,5]
         self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
         self.current_player = None
-        #time.sleep(3.0)
 
     def __can_hint(self):
         for player in self.player_hands:
@@ -421,7 +419,7 @@ class TechnicAngel:
                 return True
         return False
 
-    def select_action(self, PLAYABILITY_THRESHOLD=0.51):
+    def select_action(self, PLAYABILITY_THRESHOLD=0.8):
         playability = self.calc_playability(self.current_hand_knowledge)
         for i in range(len(playability)):
             if playability[i] >= PLAYABILITY_THRESHOLD:
