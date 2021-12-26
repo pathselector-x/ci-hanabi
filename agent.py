@@ -2,6 +2,7 @@ from sys import argv, stdout
 from threading import Thread, Lock, Condition
 import time
 from numpy.core.numeric import isclose
+from numpy.lib.function_base import select
 import GameData
 import socket
 from constants import *
@@ -159,6 +160,47 @@ class TechnicAngel:
         playabilities = np.max(playabilities, axis=1)
         return playabilities # Each value will be the playability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
+    def calc_discardability(self):
+        deck = self.calc_deck()
+        piles = {}
+        for col in ['red','yellow','green','blue','white']:
+            piles[col] = 0
+            if len(self.table_cards[col]) > 0:
+                piles[col] = int(self.table_cards[col][-1].value)
+
+        discardabilities = [] 
+        for card in self.current_hand_knowledge:
+            c, v = card
+            p = []
+
+            if c != '' and v != '': # I know both col and val
+                for col in piles.keys():
+                    if c == col and int(v) <= piles[col]: p.append(1.0)
+                    else: p.append(0.0)
+
+            elif c != '': # I know only the col
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(1.0)
+                    elif c == col: p.append(sum(deck[(c,str(i))] for i in range(1,5+1) if i <= piles[col]) / sum(deck[(c,str(i))] for i in range(1,5+1)))
+                    else: p.append(1.0)
+            
+            elif v != '': # I know only the val
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(1.0)
+                    elif int(v) > piles[col]: p.append(sum(deck[(i,str(v))] for i in ['red','yellow','green','blue','white'] if piles[i] >= int(v)) / sum(deck[(i,str(v))] for i in ['red','yellow','green','blue','white']))
+                    else: p.append(1.0)
+                
+            else: # I don't know anything
+                for col in piles.keys():
+                    if piles[col] == 5: p.append(1.0)
+                    else: p.append(sum(deck[(col,str(i))] for i in range(1,5+1) if i <= piles[col]) / sum(deck[(i,str(j))] for i,j in product(['red','yellow','green','blue','white'], range(1,5+1))))
+
+            discardabilities.append(p)
+
+        discardabilities = np.asarray(discardabilities)
+        discardabilities = np.min(discardabilities, axis=1)
+        return discardabilities # Each value will be the discardability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
+
     def consume_packets(self):
         read_idxs = []
         with self.lock:
@@ -274,7 +316,25 @@ class TechnicAngel:
         self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
         self.current_player = None
 
-    def main_loop(self, PLAYABILITY_THRESHOLD=1.0):
+    def select_action(self, PLAYABILITY_THRESHOLD=1.0):
+        playability = self.calc_playability()
+        played = False
+        for i in range(len(playability)):
+            if playability[i] >= PLAYABILITY_THRESHOLD:
+                self.action_play(i)
+                played = True
+        if played: return
+
+        if self.used_note_tokens == 8:
+            discardability = self.calc_discardability()
+            idx_to_discard = np.argmax(discardability)
+            self.action_discard(idx_to_discard)
+        else:
+            best_hint, dst = self.calc_best_hint()
+            bh_type, bh_val = best_hint
+            self.action_hint(bh_type, dst, bh_val)
+
+    def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
         self.action_show()
 
@@ -285,44 +345,27 @@ class TechnicAngel:
         self.already_hinted = {} # Keep track of already hinted cards
         for p in self.player_hands:
             self.already_hinted[p.name] = [[False, False] for _ in range(len(self.player_hands[0].hand))] # color, value
-
+            
         while True:
             self.wait_for_turn()
-            
             #! Check if game ended
             if self.final_score is not None: break
-
-            #TODO: implement logic for auto-play
-
-            playab = self.calc_playability()
-            played = False
-            for i in range(len(playab)):
-                if playab[i] >= PLAYABILITY_THRESHOLD:
-                    self.action_play(i)
-                    played = True
-            if played: 
-                continue
-            else:
-                self.action_hint('value', self.player_hands[0].name, 1)
-            
-            break
+            self.select_action()
         
         #* This is just for DEBUG
-        print(self.current_player)
-        for player in self.player_hands:
-            print(player.name)
-            for card in player.hand:
-                print(card.value, card.color)
-        print(self.table_cards)
-
-        for card in self.current_hand_knowledge:
-            print(card)
-
-        for p in self.already_hinted.keys():
-            print(self.already_hinted[p])
+        #print(self.current_player)
+        #for player in self.player_hands:
+        #    print(player.name)
+        #    for card in player.hand:
+        #        print(card.value, card.color)
+        #print(self.table_cards)
+        #
+        #for card in self.current_hand_knowledge:
+        #    print(card)
+        #
+        #for p in self.already_hinted.keys():
+        #    print(self.already_hinted[p])
 
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
 agent = TechnicAngel(ID=ID)
-
-#TODO: Vedere perché si blocca
