@@ -220,8 +220,8 @@ class Game(object):
             if self.__gameOver:
                 logging.info("Game over, people.")
                 logging.info("Please, close the server now")
-                logging.info("Score: " + str(self.__score) + "; message: " + self.__scoreMessages[self.__score])
-                return (None, GameData.ServerGameOver(self.__score, self.__scoreMessages[self.__score]))
+                logging.info("Score: " + str(self.__score)) #+ "; message: " + self.__scoreMessages[self.__score])
+                return (None, GameData.ServerGameOver(self.__score, ''))#self.__scoreMessages[self.__score]))
             if not ok:
                 self.__nextTurn()
                 return (None, GameData.ServerPlayerThunderStrike(self.__getCurrentPlayer().name, card))

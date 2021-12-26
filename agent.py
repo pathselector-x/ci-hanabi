@@ -213,7 +213,8 @@ class TechnicAngel:
         return discardabilities # Each value will be the discardability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
     def calc_best_hint(self):
-        best_so_far = ('value', 1, self.player_hands[0].name, 0.0) # type, value, dst, playability/utility
+        best_so_far = ('value', self.player_hands[0].hand[0].value, self.player_hands[0].name, 0.0) # type, value, dst, playability/utility
+
         for player in self.player_hands:
             color_hints = ['red','yellow','green','blue','white']
             value_hints = [1,2,3,4,5]
@@ -330,11 +331,13 @@ class TechnicAngel:
 
     def wait_for_turn(self):
         while self.current_player != self.playerName and self.final_score is None:
-            with self.cv: self.cv.wait()
+            with self.cv: self.cv.wait_for(lambda : False, timeout=1.0)
             self.consume_packets()
             self.action_show()
+        self.action_show()
     
     def action_show(self):
+        print('Show')
         self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
         found = False
         while not found:
@@ -354,6 +357,7 @@ class TechnicAngel:
                     self.msg_queue.remove(pkt)
                         
     def action_discard(self, num):
+        print('Discard', num)
         """num = [0, len(hand)-1]: int"""
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
         assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
@@ -362,9 +366,10 @@ class TechnicAngel:
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
         self.current_player = None
-        time.sleep(3.0)
+        #time.sleep(3.0)
     
     def action_play(self, num):
+        print('Play', num)
         """num = [0, len(hand)-1]: int"""
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
         assert num in range(0, len(self.current_hand_knowledge))
@@ -372,9 +377,10 @@ class TechnicAngel:
         self.current_hand_knowledge.pop(num)
         self.current_hand_knowledge.append(['', ''])
         self.current_player = None
-        time.sleep(3.0)
+        #time.sleep(3.0)
     
     def action_hint(self, hint_type, dst, value):
+        print('Hint', hint_type, dst, value)
         """
         hint_type = 'color' or 'value'
         dst = <player name> : str
@@ -387,16 +393,14 @@ class TechnicAngel:
         else: assert value in [1,2,3,4,5]
         self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
         self.current_player = None
-        time.sleep(3.0)
+        #time.sleep(3.0)
 
     def select_action(self, PLAYABILITY_THRESHOLD=1.0):
         playability = self.calc_playability(self.current_hand_knowledge)
-        played = False
         for i in range(len(playability)):
             if playability[i] >= PLAYABILITY_THRESHOLD:
                 self.action_play(i)
-                played = True
-        if played: return
+                return
 
         if self.used_note_tokens == 8:
             discardability = self.calc_discardability()
@@ -424,19 +428,7 @@ class TechnicAngel:
             if self.final_score is not None: break
             self.select_action()
         
-        #* This is just for DEBUG
-        #print(self.current_player)
-        #for player in self.player_hands:
-        #    print(player.name)
-        #    for card in player.hand:
-        #        print(card.value, card.color)
-        #print(self.table_cards)
-        #
-        #for card in self.current_hand_knowledge:
-        #    print(card)
-        #
-        #for p in self.already_hinted.keys():
-        #    print(self.already_hinted[p])
+        print(f'Final score: {self.final_score}/25')
 
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0

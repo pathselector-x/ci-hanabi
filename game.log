@@ -1,0 +1,2436 @@
+12/26/2021 06:56:35 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/26/2021 06:56:37 PM INFO: Connected by: ('127.0.0.1', 63765)
+12/26/2021 06:56:37 PM INFO: Player connected: technic_angel
+12/26/2021 06:56:39 PM INFO: Connected by: ('127.0.0.1', 63767)
+12/26/2021 06:56:39 PM INFO: Player connected: technic_angel_1
+12/26/2021 06:56:40 PM INFO: Connected by: ('127.0.0.1', 63769)
+12/26/2021 06:56:40 PM INFO: Player connected: technic_angel_2
+12/26/2021 06:56:41 PM INFO: Connected by: ('127.0.0.1', 63770)
+12/26/2021 06:56:41 PM INFO: Player connected: technic_angel_3
+12/26/2021 06:56:42 PM INFO: Connected by: ('127.0.0.1', 63771)
+12/26/2021 06:56:42 PM INFO: Player connected: technic_angel_4
+12/26/2021 06:56:43 PM INFO: Player ready: technic_angel_4
+12/26/2021 06:56:43 PM INFO: Player ready: technic_angel_3
+12/26/2021 06:56:44 PM INFO: Player ready: technic_angel_2
+12/26/2021 06:56:44 PM INFO: Player ready: technic_angel_1
+12/26/2021 06:56:45 PM INFO: Player ready: technic_angel
+12/26/2021 06:56:45 PM INFO: Game start! Between: ['technic_angel', 'technic_angel_1', 'technic_angel_2', 'technic_angel_3', 'technic_angel_4']
+12/26/2021 06:56:45 PM INFO: Ok, let's start the game!
+12/26/2021 06:56:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:45 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:45 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [2]
+12/26/2021 06:56:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:46 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 06:56:46 PM INFO: Giving 1 free note token.
+12/26/2021 06:56:47 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:47 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:47 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:47 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:47 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:47 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with color blue are in positions: [1, 2]
+12/26/2021 06:56:48 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:48 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:48 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:48 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:48 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:48 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [2]
+12/26/2021 06:56:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:49 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:49 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:56:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:50 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 06:56:50 PM INFO: Giving 1 free note token.
+12/26/2021 06:56:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:51 PM INFO: Player technic_angel_1 providing hint to technic_angel_4: cards with color red are in positions: [0, 1]
+12/26/2021 06:56:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:52 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:52 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:56:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:52 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:56:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:53 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:56:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:54 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0, 1]
+12/26/2021 06:56:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:55 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:56:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:57 PM INFO: Player: technic_angel_2: card 44 discarded successfully
+12/26/2021 06:56:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:57 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:56:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:58 PM INFO: Player: technic_angel_4: card 40 discarded successfully
+12/26/2021 06:56:58 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:56:59 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:56:59 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:56:59 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:56:59 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:56:59 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0, 1]
+12/26/2021 06:56:59 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:00 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:00 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:00 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:00 PM INFO: Player: technic_angel_1: card 22 discarded successfully
+12/26/2021 06:57:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:01 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:01 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:01 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:57:01 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:01 PM INFO: Player: technic_angel_3: card 47 discarded successfully
+12/26/2021 06:57:02 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:02 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:02 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 06:57:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:03 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:03 PM INFO: Player: technic_angel: card 28 discarded successfully
+12/26/2021 06:57:03 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:04 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:04 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:04 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:04 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 3]
+12/26/2021 06:57:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:05 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:05 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:05 PM INFO: Player: technic_angel_2: card 29 discarded successfully
+12/26/2021 06:57:05 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:05 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0, 3]
+12/26/2021 06:57:06 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:06 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:06 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:06 PM INFO: Player: technic_angel_4: card 0 discarded successfully
+12/26/2021 06:57:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:07 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:07 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:07 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+12/26/2021 06:57:07 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:08 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:08 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:08 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:08 PM INFO: Player: technic_angel_1: card 16 discarded successfully
+12/26/2021 06:57:08 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:09 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:09 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:09 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:09 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 3]
+12/26/2021 06:57:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:09 PM INFO: Player: technic_angel_3: card 39 discarded successfully
+12/26/2021 06:57:10 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:10 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:10 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:10 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0, 3]
+12/26/2021 06:57:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:11 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:11 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:11 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:11 PM INFO: Player: technic_angel: card 17 discarded successfully
+12/26/2021 06:57:11 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:12 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:12 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 06:57:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:13 PM INFO: Player: technic_angel_2: card 31 discarded successfully
+12/26/2021 06:57:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:13 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 06:57:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:14 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:14 PM INFO: Player: technic_angel_4: card 3 discarded successfully
+12/26/2021 06:57:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:15 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:15 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [0]
+12/26/2021 06:57:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:16 PM INFO: Player: technic_angel_1: card 48 discarded successfully
+12/26/2021 06:57:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:17 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 06:57:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:18 PM INFO: Player: technic_angel_3: card 11 discarded successfully
+12/26/2021 06:57:18 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:18 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 06:57:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:19 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:19 PM INFO: Player: technic_angel: card 42 discarded successfully
+12/26/2021 06:57:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:20 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:57:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:21 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:21 PM INFO: Player: technic_angel_2: card 30 discarded successfully
+12/26/2021 06:57:22 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:22 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:57:22 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:22 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:22 PM INFO: Player: technic_angel_4: card 14 discarded successfully
+12/26/2021 06:57:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:23 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:24 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 2]
+12/26/2021 06:57:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:25 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:25 PM INFO: Player: technic_angel_1: card 36 discarded successfully
+12/26/2021 06:57:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:26 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:26 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:57:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:26 PM INFO: Player: technic_angel_3: card 41 discarded successfully
+12/26/2021 06:57:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:27 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:27 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:57:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:28 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:28 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:28 PM INFO: Player: technic_angel: card 25 discarded successfully
+12/26/2021 06:57:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:29 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:29 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 3]
+12/26/2021 06:57:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:30 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:30 PM INFO: Player: technic_angel_2: card 43 discarded successfully
+12/26/2021 06:57:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:30 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 3]
+12/26/2021 06:57:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:31 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:31 PM INFO: Player: technic_angel_4: card 46 discarded successfully
+12/26/2021 06:57:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:32 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:32 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:32 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:32 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0, 2]
+12/26/2021 06:57:32 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:33 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:33 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:33 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:33 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:33 PM INFO: Player: technic_angel_1: card 7 discarded successfully
+12/26/2021 06:57:33 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:34 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:34 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:34 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:34 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:34 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 3]
+12/26/2021 06:57:34 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:34 PM INFO: Player: technic_angel_3: card 27 discarded successfully
+12/26/2021 06:57:35 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:35 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:35 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:35 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:35 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 3]
+12/26/2021 06:57:35 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:36 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:36 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:36 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:36 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:36 PM INFO: Player: technic_angel: card 19 discarded successfully
+12/26/2021 06:57:36 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:37 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:37 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:37 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:37 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 06:57:37 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:38 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:38 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:38 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:38 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:38 PM INFO: Player: technic_angel_2: card 4 discarded successfully
+12/26/2021 06:57:38 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:38 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 06:57:39 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:39 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:39 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:39 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:39 PM INFO: Player: technic_angel_4: card 12 discarded successfully
+12/26/2021 06:57:39 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:40 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:40 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:40 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:40 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:40 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 2]
+12/26/2021 06:57:40 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:41 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:41 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:41 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:41 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:41 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 06:57:41 PM INFO: Giving 1 free note token.
+12/26/2021 06:57:42 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:42 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:42 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:42 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:42 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:42 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 06:57:43 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:43 PM INFO: Player: technic_angel_3: card 1 discarded successfully
+12/26/2021 06:57:43 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:43 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:43 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:43 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:43 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 06:57:44 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:44 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:44 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:44 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:44 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:44 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 06:57:44 PM INFO: Giving 1 free note token.
+12/26/2021 06:57:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:45 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:45 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:46 PM INFO: Player: technic_angel_2: card 9 discarded successfully
+12/26/2021 06:57:47 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:47 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:47 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:48 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:48 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:48 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:48 PM INFO: Player: technic_angel_4: card 21 discarded successfully
+12/26/2021 06:57:48 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:49 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:49 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 1]
+12/26/2021 06:57:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:50 PM INFO: Player: technic_angel_1: card 38 discarded successfully
+12/26/2021 06:57:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:51 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:51 PM INFO: Player: technic_angel_3: card 23 discarded successfully
+12/26/2021 06:57:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:52 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:52 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:53 PM INFO: Player: technic_angel: card 20 discarded successfully
+12/26/2021 06:57:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:54 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:55 PM INFO: Player: technic_angel_2: card 49 discarded successfully
+12/26/2021 06:57:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:55 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:56 PM INFO: Player: technic_angel_4: card 18 discarded successfully
+12/26/2021 06:57:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:57 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0]
+12/26/2021 06:57:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:58 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:58 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:58 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:58 PM INFO: Player: technic_angel_1: card 37 discarded successfully
+12/26/2021 06:57:58 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:59 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:57:59 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:57:59 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:57:59 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:57:59 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:57:59 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:57:59 PM INFO: Player: technic_angel_3: card 33 discarded successfully
+12/26/2021 06:58:00 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:00 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:00 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:00 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 06:58:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:01 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:01 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:01 PM INFO: Player: technic_angel: card 45 discarded successfully
+12/26/2021 06:58:01 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:02 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:02 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:02 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:58:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:03 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:03 PM INFO: Player: technic_angel_2: card 2 discarded successfully
+12/26/2021 06:58:03 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:03 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:58:04 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:04 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:04 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:04 PM INFO: Player: technic_angel_4: card 34 discarded successfully
+12/26/2021 06:58:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:05 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:05 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:05 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0]
+12/26/2021 06:58:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:06 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:06 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:06 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:06 PM INFO: Player: technic_angel_1: card 32 discarded successfully
+12/26/2021 06:58:07 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:07 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:07 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:07 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:58:08 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:08 PM INFO: Player: technic_angel_3: card 35 discarded successfully
+12/26/2021 06:58:08 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:08 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:08 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:08 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 06:58:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:09 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:09 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:09 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:09 PM INFO: Player: technic_angel: card 26 discarded successfully
+12/26/2021 06:58:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:10 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:10 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 06:58:10 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:11 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:11 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:11 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:16 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:21 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:22 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:22 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:24 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:28 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:32 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 06:58:32 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 06:58:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 06:58:33 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 06:58:33 PM INFO: Closing the server...
+12/26/2021 07:00:38 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/26/2021 07:00:40 PM INFO: Connected by: ('127.0.0.1', 63806)
+12/26/2021 07:00:40 PM INFO: Player connected: technic_angel
+12/26/2021 07:00:42 PM INFO: Connected by: ('127.0.0.1', 63808)
+12/26/2021 07:00:42 PM INFO: Player connected: technic_angel_1
+12/26/2021 07:00:43 PM INFO: Connected by: ('127.0.0.1', 63809)
+12/26/2021 07:00:43 PM INFO: Player connected: technic_angel_2
+12/26/2021 07:00:44 PM INFO: Connected by: ('127.0.0.1', 63810)
+12/26/2021 07:00:44 PM INFO: Player connected: technic_angel_3
+12/26/2021 07:00:46 PM INFO: Connected by: ('127.0.0.1', 63811)
+12/26/2021 07:00:46 PM INFO: Player connected: technic_angel_4
+12/26/2021 07:00:47 PM INFO: Player ready: technic_angel_4
+12/26/2021 07:00:47 PM INFO: Player ready: technic_angel_3
+12/26/2021 07:00:48 PM INFO: Player ready: technic_angel_2
+12/26/2021 07:00:48 PM INFO: Player ready: technic_angel_1
+12/26/2021 07:00:49 PM INFO: Player ready: technic_angel
+12/26/2021 07:00:49 PM INFO: Game start! Between: ['technic_angel', 'technic_angel_1', 'technic_angel_2', 'technic_angel_3', 'technic_angel_4']
+12/26/2021 07:00:49 PM INFO: Ok, let's start the game!
+12/26/2021 07:00:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:49 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:49 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0, 2]
+12/26/2021 07:00:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:50 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:00:50 PM INFO: Giving 1 free note token.
+12/26/2021 07:00:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:51 PM INFO: Player technic_angel_2 providing hint to technic_angel_1: cards with color red are in positions: [2, 3]
+12/26/2021 07:00:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:52 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:52 PM INFO: Player technic_angel_3 providing hint to technic_angel_1: cards with value 1 are in positions: [1, 3]
+12/26/2021 07:00:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:52 PM INFO: Player technic_angel_4 providing hint to technic_angel_1: cards with color yellow are in positions: [0]
+12/26/2021 07:00:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:53 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+12/26/2021 07:00:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:54 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:00:54 PM INFO: Giving 1 free note token.
+12/26/2021 07:00:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:55 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:00:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:56 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:00:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:58 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:00:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:00:58 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:00:59 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:00:59 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:00:59 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:00:59 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+12/26/2021 07:01:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:00 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:01:00 PM INFO: Giving 1 free note token.
+12/26/2021 07:01:00 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:00 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:00 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:00 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:01 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:01 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:01 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:01 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:01 PM INFO: Player: technic_angel_4: card 1 discarded successfully
+12/26/2021 07:01:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:02 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:02 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:02 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+12/26/2021 07:01:03 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:03 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:03 PM INFO: Player: technic_angel_1: card 45 discarded successfully
+12/26/2021 07:01:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:04 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:04 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:04 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:04 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:05 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:05 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:05 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:05 PM INFO: Player: technic_angel_3: card 27 discarded successfully
+12/26/2021 07:01:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:06 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:06 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:06 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:06 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:07 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:07 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:07 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:07 PM INFO: Player: technic_angel: card 38 discarded successfully
+12/26/2021 07:01:08 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:08 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:08 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:08 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:08 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color red are in positions: [1, 3]
+12/26/2021 07:01:09 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:09 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:09 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:09 PM INFO: Player: technic_angel_2: card 14 discarded successfully
+12/26/2021 07:01:10 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:10 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:10 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:10 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:01:11 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:11 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:11 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:11 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:11 PM INFO: Player: technic_angel_4: card 23 discarded successfully
+12/26/2021 07:01:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:12 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:12 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+12/26/2021 07:01:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:13 PM INFO: Player: technic_angel_1: card 21 discarded successfully
+12/26/2021 07:01:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:14 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:14 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:01:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:15 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:15 PM INFO: Player: technic_angel_3: card 17 discarded successfully
+12/26/2021 07:01:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:16 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:16 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:01:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:17 PM INFO: Player: technic_angel: card 4 discarded successfully
+12/26/2021 07:01:18 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:01:19 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:19 PM INFO: Player: technic_angel_2: card 32 discarded successfully
+12/26/2021 07:01:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:20 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:01:21 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:21 PM INFO: Player: technic_angel_4: card 20 discarded successfully
+12/26/2021 07:01:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:23 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:23 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:01:23 PM INFO: Giving 1 free note token.
+12/26/2021 07:01:24 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:24 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:24 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:25 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:25 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:26 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:26 PM INFO: Player: technic_angel_3: card 25 discarded successfully
+12/26/2021 07:01:27 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:27 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:28 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:28 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:28 PM INFO: Player: technic_angel: card 35 discarded successfully
+12/26/2021 07:01:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:29 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:29 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:30 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:30 PM INFO: Player: technic_angel_2: card 19 discarded successfully
+12/26/2021 07:01:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:31 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:31 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:32 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:32 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:32 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:32 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:32 PM INFO: Player: technic_angel_4: card 39 discarded successfully
+12/26/2021 07:01:33 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:33 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:33 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:33 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:33 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:33 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [0]
+12/26/2021 07:01:34 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:34 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:34 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:34 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:34 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:34 PM INFO: Player: technic_angel_1: card 46 discarded successfully
+12/26/2021 07:01:35 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:35 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:35 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:35 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:35 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:35 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:36 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:36 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:36 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:36 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:36 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:36 PM INFO: Player: technic_angel_3: card 31 discarded successfully
+12/26/2021 07:01:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:37 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:37 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:37 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:37 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:37 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:01:38 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:38 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:38 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:38 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:38 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:38 PM INFO: Player: technic_angel: card 48 discarded successfully
+12/26/2021 07:01:39 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:39 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:39 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:39 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:39 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:39 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:01:40 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:40 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:40 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:40 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:40 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:40 PM INFO: Player: technic_angel_2: card 24 discarded successfully
+12/26/2021 07:01:41 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:41 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:41 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:41 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:41 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:41 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:01:42 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:42 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:42 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:42 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:42 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:42 PM INFO: Player: technic_angel_4: card 18 discarded successfully
+12/26/2021 07:01:43 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:43 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:43 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:43 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:43 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:43 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0, 3]
+12/26/2021 07:01:44 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:44 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:44 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:44 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:44 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:44 PM INFO: Player: technic_angel_1: card 29 discarded successfully
+12/26/2021 07:01:45 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:45 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:01:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:47 PM INFO: Player: technic_angel_3: card 6 discarded successfully
+12/26/2021 07:01:48 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:48 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:48 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:48 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:48 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:48 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:01:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:49 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:49 PM INFO: Player: technic_angel: card 41 discarded successfully
+12/26/2021 07:01:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:50 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:01:50 PM INFO: Giving 1 free note token.
+12/26/2021 07:01:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:51 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:52 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:52 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:53 PM INFO: Player: technic_angel_4: card 16 discarded successfully
+12/26/2021 07:01:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:54 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 1, 2, 3]
+12/26/2021 07:01:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:55 PM INFO: Player: technic_angel_1: card 43 discarded successfully
+12/26/2021 07:01:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:56 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:57 PM INFO: Player: technic_angel_3: card 5 discarded successfully
+12/26/2021 07:01:58 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:58 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:58 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:58 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:58 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:01:59 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:01:59 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:01:59 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:01:59 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:01:59 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:01:59 PM INFO: Player: technic_angel: card 44 discarded successfully
+12/26/2021 07:02:00 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:00 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:00 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:00 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/26/2021 07:02:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:01 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:01 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:01 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:01 PM INFO: Player: technic_angel_2: card 33 discarded successfully
+12/26/2021 07:02:02 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:02 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:02 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/26/2021 07:02:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:03 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:03 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:03 PM INFO: Player: technic_angel_4: card 28 discarded successfully
+12/26/2021 07:02:04 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:04 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:04 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:04 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:02:04 PM INFO: Giving 1 free note token.
+12/26/2021 07:02:05 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:05 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:05 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:05 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:02:06 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:06 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:06 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:06 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:02:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:07 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:07 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:07 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:07 PM INFO: Player: technic_angel_3: card 22 discarded successfully
+12/26/2021 07:02:08 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:08 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:08 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:08 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:08 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:02:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:09 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:09 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:09 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:09 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:02:09 PM INFO: Giving 1 free note token.
+12/26/2021 07:02:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:10 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:10 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:10 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:11 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:02:12 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:12 PM INFO: Player: technic_angel_2: card 7 discarded successfully
+12/26/2021 07:02:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:13 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:02:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:14 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:14 PM INFO: Player: technic_angel_4: card 3 discarded successfully
+12/26/2021 07:02:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:15 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:15 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 1, 2]
+12/26/2021 07:02:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:16 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:16 PM INFO: Player: technic_angel_1: card 36 discarded successfully
+12/26/2021 07:02:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:17 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:02:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:18 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:18 PM INFO: Player: technic_angel_3: card 47 discarded successfully
+12/26/2021 07:02:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:19 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:19 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:02:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:20 PM INFO: Player: technic_angel: card 49 discarded successfully
+12/26/2021 07:02:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:02:21 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:22 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:22 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:24 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:28 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:32 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:32 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:32 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:33 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:33 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:33 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:33 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:34 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:34 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:34 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:34 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:35 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:02:35 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:02:35 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:02:35 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:02:36 PM INFO: Closing the server...
+12/26/2021 07:05:00 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/26/2021 07:05:02 PM INFO: Connected by: ('127.0.0.1', 63856)
+12/26/2021 07:05:02 PM INFO: Player connected: technic_angel
+12/26/2021 07:05:04 PM INFO: Connected by: ('127.0.0.1', 63857)
+12/26/2021 07:05:04 PM INFO: Player connected: technic_angel_1
+12/26/2021 07:05:06 PM INFO: Connected by: ('127.0.0.1', 63858)
+12/26/2021 07:05:06 PM INFO: Player connected: technic_angel_2
+12/26/2021 07:05:07 PM INFO: Connected by: ('127.0.0.1', 63859)
+12/26/2021 07:05:07 PM INFO: Player connected: technic_angel_3
+12/26/2021 07:05:09 PM INFO: Connected by: ('127.0.0.1', 63860)
+12/26/2021 07:05:09 PM INFO: Player connected: technic_angel_4
+12/26/2021 07:05:09 PM INFO: Player ready: technic_angel_4
+12/26/2021 07:05:10 PM INFO: Player ready: technic_angel_3
+12/26/2021 07:05:11 PM INFO: Player ready: technic_angel_2
+12/26/2021 07:05:11 PM INFO: Player ready: technic_angel_1
+12/26/2021 07:05:12 PM INFO: Player ready: technic_angel
+12/26/2021 07:05:12 PM INFO: Game start! Between: ['technic_angel', 'technic_angel_1', 'technic_angel_2', 'technic_angel_3', 'technic_angel_4']
+12/26/2021 07:05:12 PM INFO: Ok, let's start the game!
+12/26/2021 07:05:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:12 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:12 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [1]
+12/26/2021 07:05:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:13 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:05:13 PM INFO: Giving 1 free note token.
+12/26/2021 07:05:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:14 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:14 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with color red are in positions: [2, 3]
+12/26/2021 07:05:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:15 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:15 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0, 2, 3]
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:16 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [1]
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:16 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:05:16 PM INFO: Giving 1 free note token.
+12/26/2021 07:05:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:17 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color yellow are in positions: [0, 1]
+12/26/2021 07:05:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:18 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:18 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0, 2]
+12/26/2021 07:05:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:19 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:19 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0, 2]
+12/26/2021 07:05:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:20 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0, 2]
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:20 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:05:20 PM INFO: Giving 1 free note token.
+12/26/2021 07:05:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:22 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 07:05:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:23 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:23 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 07:05:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:24 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:24 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0, 2]
+12/26/2021 07:05:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:24 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:25 PM INFO: Player: technic_angel_4: card 37 discarded successfully
+12/26/2021 07:05:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:25 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:25 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:05:25 PM INFO: Giving 1 free note token.
+12/26/2021 07:05:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:26 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:26 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:26 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:27 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:27 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:28 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:28 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:28 PM INFO: Player: technic_angel_3: card 47 discarded successfully
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:29 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:29 PM INFO: Player: technic_angel: card 18 discarded successfully
+12/26/2021 07:05:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:30 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:30 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:30 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:31 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:31 PM INFO: Player: technic_angel_2: card 46 discarded successfully
+12/26/2021 07:05:32 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:32 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:32 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:32 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:32 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:32 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:33 PM INFO: Player: technic_angel_4: card 7 discarded successfully
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:33 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:33 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0, 2]
+12/26/2021 07:05:34 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:34 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:34 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:34 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:34 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:34 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:34 PM INFO: Player: technic_angel_1: card 29 discarded successfully
+12/26/2021 07:05:35 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:35 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:35 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:35 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:35 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:35 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:35 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:36 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:36 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:36 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:36 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:36 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:36 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:36 PM INFO: Player: technic_angel_3: card 2 discarded successfully
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:37 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:38 PM INFO: Player: technic_angel: card 5 discarded successfully
+12/26/2021 07:05:38 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:38 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:39 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:39 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:39 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:39 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:39 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:05:39 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:40 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:40 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:40 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:40 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:40 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:40 PM INFO: Player: technic_angel_2: card 48 discarded successfully
+12/26/2021 07:05:40 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:41 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:41 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:41 PM INFO: Player: technic_angel_4: card 26 discarded successfully
+12/26/2021 07:05:42 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:42 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:42 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:42 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:42 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:42 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 3]
+12/26/2021 07:05:42 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:43 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:43 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:43 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:43 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:43 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:43 PM INFO: Player: technic_angel_1: card 35 discarded successfully
+12/26/2021 07:05:43 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:44 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:44 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:44 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:44 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:44 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:44 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:05:45 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:45 PM INFO: Player: technic_angel_3: card 22 discarded successfully
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:46 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:46 PM INFO: Player: technic_angel: card 44 discarded successfully
+12/26/2021 07:05:47 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:47 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:47 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:47 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:47 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:47 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:47 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:05:48 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:48 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:48 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:48 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:48 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:48 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:48 PM INFO: Player: technic_angel_2: card 10 discarded successfully
+12/26/2021 07:05:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:49 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:49 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:50 PM INFO: Player: technic_angel_4: card 19 discarded successfully
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:50 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0]
+12/26/2021 07:05:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:51 PM INFO: Player: technic_angel_1: card 30 discarded successfully
+12/26/2021 07:05:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:52 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:52 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:05:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:53 PM INFO: Player: technic_angel_3: card 32 discarded successfully
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:54 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:54 PM INFO: Player: technic_angel: card 43 discarded successfully
+12/26/2021 07:05:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:55 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:05:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:56 PM INFO: Player: technic_angel_2: card 17 discarded successfully
+12/26/2021 07:05:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:57 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:05:58 PM INFO: Player: technic_angel_4: card 25 discarded successfully
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:05:58 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:05:59 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0, 3]
+12/26/2021 07:05:59 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:00 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:00 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:00 PM INFO: Player: technic_angel_1: card 1 discarded successfully
+12/26/2021 07:06:00 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:01 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:01 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:01 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:01 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:06:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:02 PM INFO: Player: technic_angel_3: card 38 discarded successfully
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:02 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:06:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:03 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:03 PM INFO: Player: technic_angel: card 49 discarded successfully
+12/26/2021 07:06:03 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:04 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:04 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:04 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0, 2]
+12/26/2021 07:06:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:05 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:05 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:05 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:05 PM INFO: Player: technic_angel_2: card 3 discarded successfully
+12/26/2021 07:06:06 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:06 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:06 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:06 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0, 2]
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:07 PM INFO: Player: technic_angel_4: card 33 discarded successfully
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:07 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:07 PM INFO: technic_angel: card played and correctly put on the table
+12/26/2021 07:06:07 PM INFO: Giving 1 free note token.
+12/26/2021 07:06:08 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:08 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:08 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:08 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:08 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 2, 3]
+12/26/2021 07:06:09 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:09 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:09 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:09 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 2, 3]
+12/26/2021 07:06:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:10 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:10 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:10 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:10 PM INFO: Player: technic_angel_3: card 24 discarded successfully
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:11 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0, 2, 3]
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:11 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:11 PM INFO: Player: technic_angel: card 14 discarded successfully
+12/26/2021 07:06:12 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:12 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 2]
+12/26/2021 07:06:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:13 PM INFO: Player: technic_angel_2: card 45 discarded successfully
+12/26/2021 07:06:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:14 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:14 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 2]
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:15 PM INFO: Player: technic_angel_4: card 42 discarded successfully
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:15 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:06:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:16 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:16 PM INFO: Player: technic_angel_1: card 4 discarded successfully
+12/26/2021 07:06:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:17 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 2]
+12/26/2021 07:06:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:18 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:19 PM INFO: Player: technic_angel_3: card 11 discarded successfully
+12/26/2021 07:06:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:19 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0, 1, 2]
+12/26/2021 07:06:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:20 PM INFO: Player: technic_angel: card 20 discarded successfully
+12/26/2021 07:06:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:21 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:21 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 1]
+12/26/2021 07:06:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:22 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:22 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:22 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:22 PM INFO: Player: technic_angel_2: card 36 discarded successfully
+12/26/2021 07:06:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:23 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:23 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0, 1]
+12/26/2021 07:06:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:24 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:24 PM INFO: Player: technic_angel_4: card 23 discarded successfully
+12/26/2021 07:06:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:24 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:24 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 1]
+12/26/2021 07:06:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:25 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:25 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:25 PM INFO: Player: technic_angel_1: card 39 discarded successfully
+12/26/2021 07:06:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:26 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0, 1]
+12/26/2021 07:06:26 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:27 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:27 PM INFO: Player: technic_angel_3: card 12 discarded successfully
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:28 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0, 1]
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:28 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:28 PM INFO: Player: technic_angel: card 15 discarded successfully
+12/26/2021 07:06:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:29 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:29 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:29 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:06:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:30 PM INFO: Player: technic_angel_2: card 34 discarded successfully
+12/26/2021 07:06:30 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:06:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:06:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:06:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:31 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:06:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:06:31 PM INFO: Game over, people.
+12/26/2021 07:06:31 PM INFO: Please, close the server now
+12/26/2021 07:06:31 PM INFO: Score: 23
+12/26/2021 07:10:25 PM INFO: Hanabi server started on 127.0.0.1:1024
+12/26/2021 07:10:27 PM INFO: Connected by: ('127.0.0.1', 63898)
+12/26/2021 07:10:27 PM INFO: Player connected: technic_angel
+12/26/2021 07:10:29 PM INFO: Connected by: ('127.0.0.1', 63899)
+12/26/2021 07:10:29 PM INFO: Player connected: technic_angel_1
+12/26/2021 07:10:31 PM INFO: Connected by: ('127.0.0.1', 63900)
+12/26/2021 07:10:31 PM INFO: Player connected: technic_angel_2
+12/26/2021 07:10:33 PM INFO: Connected by: ('127.0.0.1', 63902)
+12/26/2021 07:10:33 PM INFO: Player connected: technic_angel_3
+12/26/2021 07:10:34 PM INFO: Connected by: ('127.0.0.1', 63903)
+12/26/2021 07:10:34 PM INFO: Player connected: technic_angel_4
+12/26/2021 07:10:35 PM INFO: Player ready: technic_angel_4
+12/26/2021 07:10:35 PM INFO: Player ready: technic_angel_3
+12/26/2021 07:10:36 PM INFO: Player ready: technic_angel_2
+12/26/2021 07:10:36 PM INFO: Player ready: technic_angel_1
+12/26/2021 07:10:37 PM INFO: Player ready: technic_angel
+12/26/2021 07:10:37 PM INFO: Game start! Between: ['technic_angel', 'technic_angel_1', 'technic_angel_2', 'technic_angel_3', 'technic_angel_4']
+12/26/2021 07:10:37 PM INFO: Ok, let's start the game!
+12/26/2021 07:10:37 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:37 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:37 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:37 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:37 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0, 3]
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:38 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:10:38 PM INFO: Giving 1 free note token.
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:38 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:38 PM INFO: Player technic_angel_2 providing hint to technic_angel_1: cards with color green are in positions: [2]
+12/26/2021 07:10:39 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:39 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:39 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:39 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:39 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:39 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:39 PM INFO: Player technic_angel_3 providing hint to technic_angel_1: cards with value 1 are in positions: [2]
+12/26/2021 07:10:40 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:40 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:40 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:40 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:40 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:40 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:40 PM INFO: Player technic_angel_4 providing hint to technic_angel_1: cards with value 3 are in positions: [1]
+12/26/2021 07:10:41 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:41 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:41 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:41 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:41 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:41 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:41 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [0]
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:42 PM INFO: technic_angel_1: card played and correctly put on the table
+12/26/2021 07:10:42 PM INFO: Giving 1 free note token.
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:42 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:42 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 07:10:43 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:43 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:43 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:43 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:43 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:43 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:43 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 07:10:44 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:44 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:44 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:44 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:44 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:44 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:44 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 07:10:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:45 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:45 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [0]
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:46 PM INFO: Player technic_angel_1 providing hint to technic_angel_2: cards with color yellow are in positions: [1]
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:47 PM INFO: Player: technic_angel_2: card 43 discarded successfully
+12/26/2021 07:10:47 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:47 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:47 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:47 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:47 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:47 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:48 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 07:10:48 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:49 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:49 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:49 PM INFO: Player: technic_angel_4: card 7 discarded successfully
+12/26/2021 07:10:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:50 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [0]
+12/26/2021 07:10:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:51 PM INFO: Player: technic_angel_1: card 46 discarded successfully
+12/26/2021 07:10:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:51 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 07:10:52 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:52 PM INFO: Player: technic_angel_3: card 17 discarded successfully
+12/26/2021 07:10:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:53 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 3 are in positions: [0]
+12/26/2021 07:10:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:54 PM INFO: Player: technic_angel: card 29 discarded successfully
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:55 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0, 2]
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:55 PM INFO: Player: technic_angel_2: card 1 discarded successfully
+12/26/2021 07:10:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:56 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0, 2]
+12/26/2021 07:10:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:57 PM INFO: Player: technic_angel_4: card 31 discarded successfully
+12/26/2021 07:10:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:58 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:58 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:58 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:58 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:58 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:58 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0]
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:10:59 PM INFO: Player: technic_angel_1: card 25 discarded successfully
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:10:59 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:10:59 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0, 2]
+12/26/2021 07:11:00 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:00 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:00 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:00 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:00 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:00 PM INFO: Player: technic_angel_3: card 40 discarded successfully
+12/26/2021 07:11:01 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:01 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:01 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:01 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:01 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:01 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0, 2]
+12/26/2021 07:11:02 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:02 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:02 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:02 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:02 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:02 PM INFO: Player: technic_angel: card 38 discarded successfully
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:03 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:03 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:03 PM INFO: Player: technic_angel_2: card 35 discarded successfully
+12/26/2021 07:11:04 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:04 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:04 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:04 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:04 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:04 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:05 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:05 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:05 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:05 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:05 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:05 PM INFO: Player: technic_angel_4: card 12 discarded successfully
+12/26/2021 07:11:06 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:06 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:06 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:06 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:06 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:06 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0, 3]
+12/26/2021 07:11:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:07 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:07 PM INFO: Player: technic_angel_1: card 15 discarded successfully
+12/26/2021 07:11:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:07 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:07 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:08 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:08 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:08 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:08 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:09 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:09 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:09 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:09 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:09 PM INFO: Player: technic_angel_3: card 16 discarded successfully
+12/26/2021 07:11:09 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:10 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:10 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:10 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:10 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:10 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:10 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:11 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:11 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:11 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:11 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:11 PM INFO: Player: technic_angel: card 49 discarded successfully
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:12 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:12 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:12 PM INFO: Player: technic_angel_2: card 27 discarded successfully
+12/26/2021 07:11:13 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:13 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:13 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:13 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:13 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:13 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:11:14 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:14 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:14 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:14 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:14 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:14 PM INFO: Player: technic_angel_4: card 18 discarded successfully
+12/26/2021 07:11:15 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:15 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:15 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:15 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:15 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:15 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0]
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:16 PM INFO: Player: technic_angel_1: card 10 discarded successfully
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:16 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:16 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:11:17 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:17 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:17 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:17 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:17 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:17 PM INFO: Player: technic_angel_3: card 11 discarded successfully
+12/26/2021 07:11:18 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:18 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:18 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:18 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:18 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:18 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:11:19 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:19 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:19 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:19 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:19 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:19 PM INFO: Player: technic_angel: card 44 discarded successfully
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:20 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:20 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:20 PM INFO: Player: technic_angel_2: card 26 discarded successfully
+12/26/2021 07:11:21 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:21 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:21 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:21 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:21 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:21 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/26/2021 07:11:22 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:22 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:22 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:22 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:22 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:22 PM INFO: Player: technic_angel_4: card 47 discarded successfully
+12/26/2021 07:11:23 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:23 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:23 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:23 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:23 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:23 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0]
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:24 PM INFO: Player: technic_angel_1: card 41 discarded successfully
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:24 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:24 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/26/2021 07:11:25 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:25 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:25 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:25 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:25 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:25 PM INFO: Player: technic_angel_3: card 42 discarded successfully
+12/26/2021 07:11:26 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:26 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:26 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:26 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:26 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:26 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0, 1]
+12/26/2021 07:11:27 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:27 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:27 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:27 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:27 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:28 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:28 PM INFO: Player: technic_angel: card 3 discarded successfully
+12/26/2021 07:11:28 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:28 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:28 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:11:29 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:29 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:29 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:29 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:29 PM INFO: Player: technic_angel_2: card 22 discarded successfully
+12/26/2021 07:11:29 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:30 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:30 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:30 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:30 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:30 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:11:30 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:31 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:31 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:31 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:31 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:31 PM INFO: Player: technic_angel_4: card 30 discarded successfully
+12/26/2021 07:11:31 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:32 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:32 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:32 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:32 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:32 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0, 2]
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:33 PM INFO: Player: technic_angel_1: card 20 discarded successfully
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:33 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:33 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:11:34 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:34 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:34 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:34 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:34 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:34 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:34 PM INFO: Player: technic_angel_3: card 28 discarded successfully
+12/26/2021 07:11:35 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:35 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:35 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:35 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:35 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:35 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:35 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 1 are in positions: [0]
+12/26/2021 07:11:36 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:36 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:36 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:36 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:36 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:36 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:36 PM INFO: Player: technic_angel: card 4 discarded successfully
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:37 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:37 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:37 PM INFO: Player: technic_angel_2: card 6 discarded successfully
+12/26/2021 07:11:38 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:38 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:38 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:38 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:38 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:38 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:38 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:39 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:39 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:39 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:39 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:39 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:39 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:39 PM INFO: Player: technic_angel_4: card 36 discarded successfully
+12/26/2021 07:11:40 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:40 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:40 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:40 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:40 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:40 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:40 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0]
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:41 PM INFO: Player: technic_angel_1: card 32 discarded successfully
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:41 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:41 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:42 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:42 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:42 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:42 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:42 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:42 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:42 PM INFO: Player: technic_angel_3: card 34 discarded successfully
+12/26/2021 07:11:43 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:43 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:43 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:43 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:43 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:43 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:43 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 5 are in positions: [0]
+12/26/2021 07:11:44 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:44 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:44 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:44 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:44 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:44 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:44 PM INFO: Player: technic_angel: card 45 discarded successfully
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:45 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:45 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:45 PM INFO: Player: technic_angel_2: card 13 discarded successfully
+12/26/2021 07:11:46 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:46 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:46 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:46 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:46 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:46 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:11:47 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:47 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:47 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:47 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:47 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:47 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:48 PM INFO: Player: technic_angel_4: card 33 discarded successfully
+12/26/2021 07:11:48 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:48 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:48 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:48 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:49 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:49 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:49 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+12/26/2021 07:11:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:49 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:49 PM INFO: Player: technic_angel_1: card 23 discarded successfully
+12/26/2021 07:11:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:50 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:50 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:50 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:50 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:50 PM INFO: Player technic_angel_2 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:11:50 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:51 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:51 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:51 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:51 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:51 PM INFO: Player: technic_angel_3: card 9 discarded successfully
+12/26/2021 07:11:51 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:52 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:52 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:52 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:52 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:52 PM INFO: Player technic_angel_4 providing hint to technic_angel: cards with value 2 are in positions: [0]
+12/26/2021 07:11:53 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:53 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:53 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:53 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:53 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:53 PM INFO: Player: technic_angel: card 21 discarded successfully
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:54 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:54 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:54 PM INFO: Player: technic_angel_2: card 19 discarded successfully
+12/26/2021 07:11:55 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:55 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:55 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:55 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:55 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:55 PM INFO: Player technic_angel_3 providing hint to technic_angel: cards with value 4 are in positions: [0]
+12/26/2021 07:11:56 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:56 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:56 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:56 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:56 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:56 PM INFO: Player: technic_angel_4: card 8 discarded successfully
+12/26/2021 07:11:57 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:57 PM INFO: Showing hand to: technic_angel_4
+12/26/2021 07:11:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:57 PM INFO: Showing hand to: technic_angel_2
+12/26/2021 07:11:57 PM INFO: Showing hand to: technic_angel_3
+12/26/2021 07:11:57 PM INFO: Showing hand to: technic_angel
+12/26/2021 07:11:57 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0]
+12/26/2021 07:11:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:58 PM INFO: Showing hand to: technic_angel_1
+12/26/2021 07:11:58 PM INFO: Game over, people.
+12/26/2021 07:11:58 PM INFO: Please, close the server now
+12/26/2021 07:11:58 PM INFO: Score: 23
