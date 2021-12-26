@@ -1,3 +1,4 @@
+from os import read
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
 import time
@@ -9,6 +10,8 @@ from constants import *
 import numpy as np
 from collections import deque
 from itertools import product
+
+from game import Card, Player
 
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
@@ -68,12 +71,12 @@ class TechnicAngel:
             data = self.s.recv(DATASIZE)
             if not data: continue
             data = GameData.GameData.deserialize(data)
-            print(type(data))
+            #print(type(data))
             with self.lock:
-                if type(data) is GameData.ServerInvalidDataReceived:
-                    print(data.data)
-                    with self.cv: self.cv.notify_all()
-                    return
+                #if type(data) is GameData.ServerInvalidDataReceived:
+                #    print(data.data)
+                #    with self.cv: self.cv.notify_all()
+                #    return
 
                 #! Insert in the msg queue just msgs to be processed, ignore the rest
                 accepted_types = type(data) is GameData.ServerGameStateData or \
@@ -213,7 +216,15 @@ class TechnicAngel:
         return discardabilities # Each value will be the discardability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
     def calc_best_hint(self):
-        best_so_far = ('value', self.player_hands[0].hand[0].value, self.player_hands[0].name, 0.0) # type, value, dst, playability/utility
+        #self.action_show()
+        best_so_far = None
+        for player in self.player_hands:
+            print(len(player.hand))
+            if len(player.hand) == 0: continue
+            for card in player.hand:
+                best_so_far = ('value', card.value, player.name, 0.0) # type, value, dst, playability/utility
+                break
+            break
 
         for player in self.player_hands:
             color_hints = ['red','yellow','green','blue','white']
@@ -269,7 +280,7 @@ class TechnicAngel:
                     utility = np.max(self.calc_playability(simulate_hand, except_player=player.name))
                     if utility > best_so_far[3]:
                         best_so_far = ('color', chint, player.name, utility)
-        print(best_so_far)
+
         return best_so_far
 
     def consume_packets(self):
@@ -334,7 +345,6 @@ class TechnicAngel:
             with self.cv: self.cv.wait_for(lambda : False, timeout=1.0)
             self.consume_packets()
             self.action_show()
-        self.action_show()
     
     def action_show(self):
         print('Show')
@@ -345,10 +355,20 @@ class TechnicAngel:
                 read_pkts = []
                 for data in self.msg_queue:
                     if type(data) is GameData.ServerGameStateData:
-                        self.current_player = data.currentPlayer
-                        self.player_hands = data.players
-                        self.table_cards = data.tableCards
-                        self.discard_pile = data.discardPile
+                        self.current_player = str(data.currentPlayer)
+                        self.player_hands = []
+                        for player in data.players:
+                            pl = Player(player.name)
+                            for card in player.hand:
+                                pl.hand.append(Card(card.id, card.value, card.color))
+                            self.player_hands.append(pl)
+                        self.table_cards = { "red": [], "yellow": [], "green": [], "blue": [], "white": [] }
+                        for k in data.tableCards.keys():
+                            for card in data.tableCards[k]:
+                                self.table_cards[k].append(Card(card.id, card.value, card.color))
+                        self.discard_pile = []
+                        for card in data.discardPile:
+                            self.discard_pile.append(Card(card.id, card.value, card.color))
                         self.used_note_tokens = data.usedNoteTokens
                         self.used_storm_tokens = data.usedStormTokens
                         read_pkts.append(data)
@@ -395,14 +415,20 @@ class TechnicAngel:
         self.current_player = None
         #time.sleep(3.0)
 
-    def select_action(self, PLAYABILITY_THRESHOLD=1.0):
+    def __can_hint(self):
+        for player in self.player_hands:
+            if len(player.hand) > 0:
+                return True
+        return False
+
+    def select_action(self, PLAYABILITY_THRESHOLD=0.51):
         playability = self.calc_playability(self.current_hand_knowledge)
         for i in range(len(playability)):
             if playability[i] >= PLAYABILITY_THRESHOLD:
                 self.action_play(i)
                 return
 
-        if self.used_note_tokens == 8:
+        if self.used_note_tokens == 8 or not self.__can_hint():
             discardability = self.calc_discardability()
             idx_to_discard = np.argmax(discardability)
             self.action_discard(idx_to_discard)
