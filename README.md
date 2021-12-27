@@ -1,6 +1,13 @@
 # HANABI AGENT - Leonardo Iurada (s291018)
 Computational Intelligence A.A. 2021/2022 - Politecnico di Torino
 
+# Agent
+Implemented in file **_agent.py_**. To use it run:
+```bash
+python3 agent.py <number>
+```
+The argument enables self-play w/ multiple instances of the agent.
+
 # Hanabi rules
 Setup:
 - 50 cards (5 suits: R, G, B, Y, W):

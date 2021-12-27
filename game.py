@@ -407,8 +407,8 @@ class Game(object):
             ended = ended and ((len(player.hand) < 5 and len(self.__players) <= 3) or len(player.hand) < 4)
         if ended:
             score = 0
-            for pile in self.__tableCards:
-                score += len(pile)
+            for k in self.__tableCards.keys(): #! BUGFIX
+                score += len(self.__tableCards[k]) #! BUGFIX
             return True, score
         return False, 0
     

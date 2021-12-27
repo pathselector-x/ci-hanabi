@@ -16,6 +16,7 @@ from game import Card, Player
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
         self.statuses = ["Lobby", "Game", "GameHint"]
+        self.game_ended = False
         self.status = self.statuses[0]
         if ID > 0:
             self.playerName = "technic_angel_" + str(ID)
@@ -67,25 +68,30 @@ class TechnicAngel:
         self.s.close()
 
     def listener(self):
-        while self.run:
-            data = self.s.recv(DATASIZE)
-            if not data: continue
-            data = GameData.GameData.deserialize(data)
-            with self.lock:
-                #! Insert in the msg queue just msgs to be processed, ignore the rest
-                accepted_types = type(data) is GameData.ServerGameStateData or \
-                    type(data) is GameData.ServerGameOver or \
-                    type(data) is GameData.ServerHintData  or \
-                    type(data) is GameData.ServerActionValid or \
-                    type(data) is GameData.ServerPlayerMoveOk or \
-                    type(data) is GameData.ServerPlayerThunderStrike
+        try:
+            while self.run:
+                data = self.s.recv(DATASIZE)
+                if not data: continue
+                data = GameData.GameData.deserialize(data)
+                with self.lock:
+                    #! Insert in the msg queue just msgs to be processed, ignore the rest
+                    accepted_types = type(data) is GameData.ServerGameStateData or \
+                        type(data) is GameData.ServerGameOver or \
+                        type(data) is GameData.ServerHintData  or \
+                        type(data) is GameData.ServerActionValid or \
+                        type(data) is GameData.ServerPlayerMoveOk or \
+                        type(data) is GameData.ServerPlayerThunderStrike
 
-                if accepted_types: 
-                    self.msg_queue.append(data)
+                    if accepted_types: 
+                        self.msg_queue.append(data)
 
-                    if type(data) is not GameData.ServerGameStateData:
-                        with self.cv: self.cv.notify_all()
-            
+                        if type(data) is not GameData.ServerGameStateData:
+                            with self.cv: self.cv.notify_all()
+
+        except ConnectionResetError: 
+            self.game_ended = True
+            with self.cv: self.cv.notify_all()
+                
     def auto_ready(self):
         #! Send 'Ready' signal
         self.s.send(GameData.ClientPlayerStartRequest(self.playerName).serialize())
@@ -100,7 +106,140 @@ class TechnicAngel:
             self.s.send(GameData.ClientPlayerReadyData(self.playerName).serialize())
             self.status = self.statuses[1]
 
-    def calc_deck(self, except_player=None):
+    def consume_packets(self):
+        read_pkts = []
+        with self.lock:
+            for data in self.msg_queue:
+
+                # Discard data of other players
+                if type(data) is GameData.ServerActionValid and data.player != self.playerName and data.action == 'discard':
+                    done_removing = False
+                    for p in self.player_hands:
+                        if p.name == data.player:
+                            for i, card in enumerate(p.hand):
+                                if card == data.card:
+                                    self.already_hinted[p.name].pop(i)
+                                    self.already_hinted[p.name].append([False, False])
+                                    done_removing = True
+                                    break
+                            if done_removing: break
+                    read_pkts.append(data)
+
+                # Play data of other players
+                elif (type(data) is GameData.ServerPlayerMoveOk or \
+                    type(data) is GameData.ServerPlayerThunderStrike) and data.player != self.playerName:
+                    done_removing = False
+                    for p in self.player_hands:
+                        if p.name == data.player:
+                            for i, card in enumerate(p.hand):
+                                if card == data.card:
+                                    self.already_hinted[p.name].pop(i)
+                                    self.already_hinted[p.name].append([False, False])
+                                    done_removing = True
+                                    break
+                            if done_removing: break
+                    read_pkts.append(data)
+
+                # Hint data: I received a hint
+                elif type(data) is GameData.ServerHintData and data.destination == self.playerName:
+                    for i in data.positions: # indices in the current hand
+                        self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = str(data.value)
+                    read_pkts.append(data)
+
+                # Hint data of other players
+                elif type(data) is GameData.ServerHintData and data.destination != self.playerName:
+                    for i in data.positions: # indices in the current hand
+                        self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
+                    read_pkts.append(data)
+                
+                # Game over
+                elif type(data) is GameData.ServerGameOver:
+                    self.game_ended = True
+                    self.final_score = data.score
+                    read_pkts.append(data)
+                
+                elif type(data) is not GameData.ServerGameStateData:
+                    read_pkts.append(data)
+
+            for pkt in read_pkts:
+                self.msg_queue.remove(pkt)
+
+    def wait_for_turn(self):
+        while self.current_player != self.playerName and not self.game_ended:
+            with self.cv: self.cv.wait_for(lambda : False, timeout=0.1)
+            self.consume_packets()
+            if not self.game_ended: self.action_show()
+        self.consume_packets()
+        if not self.game_ended: self.action_show()
+    
+    def action_show(self):
+        try: self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
+        except ConnectionResetError: return
+        found = False
+        while not found:
+            with self.lock:
+                if self.final_score is not None: return
+                read_pkts = []
+                for data in self.msg_queue:
+                    if type(data) is GameData.ServerGameStateData:
+                        self.current_player = str(data.currentPlayer)
+                        self.player_hands = []
+                        for player in data.players:
+                            pl = Player(player.name)
+                            for card in player.hand:
+                                pl.hand.append(Card(card.id, card.value, card.color))
+                            self.player_hands.append(pl)
+                        self.table_cards = { "red": [], "yellow": [], "green": [], "blue": [], "white": [] }
+                        for k in data.tableCards.keys():
+                            for card in data.tableCards[k]:
+                                self.table_cards[k].append(Card(card.id, card.value, card.color))
+                        self.discard_pile = []
+                        for card in data.discardPile:
+                            self.discard_pile.append(Card(card.id, card.value, card.color))
+                        self.used_note_tokens = data.usedNoteTokens
+                        self.used_storm_tokens = data.usedStormTokens
+                        read_pkts.append(data)
+                        found = True
+                for pkt in read_pkts:
+                    self.msg_queue.remove(pkt)
+                        
+    def action_discard(self, num):
+        print('Discard', num)
+        """num = [0, len(hand)-1]: int"""
+        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
+        assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
+        assert num in range(0, len(self.current_hand_knowledge))
+        self.s.send(GameData.ClientPlayerDiscardCardRequest(self.playerName, num).serialize())
+        self.current_hand_knowledge.pop(num)
+        self.current_hand_knowledge.append(['', ''])
+        self.current_player = None
+    
+    def action_play(self, num):
+        print('Play', num)
+        """num = [0, len(hand)-1]: int"""
+        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
+        assert num in range(0, len(self.current_hand_knowledge))
+        self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
+        self.current_hand_knowledge.pop(num)
+        self.current_hand_knowledge.append(['', ''])
+        self.current_player = None
+    
+    def action_hint(self, hint_type, dst, value):
+        print('Hint', hint_type, dst, value)
+        """
+        hint_type = 'color' or 'value'
+        dst = <player name> : str
+        value = if 'color': ['red', 'yellow', 'green', 'blue', 'white'] else [1,2,3,4,5]
+        """
+        assert self.used_note_tokens < 8, 'Cannot Hint if all note tokens are used'
+        assert hint_type in ['color', 'value'], 'hint_type can be "color" or "value"'
+        assert dst in [p.name for p in self.player_hands], 'Passed the name of a non-existing player'
+        if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
+        else: assert value in [1,2,3,4,5]
+        self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
+        self.current_player = None
+
+    def calc_deck(self, except_player=None): #! Logic module
         deck = {} #! Holds knowledge about unseen cards
         for col in ['red','yellow','green','blue','white']:
             deck[(col,'1')] = 3
@@ -131,7 +270,7 @@ class TechnicAngel:
 
         return deck
 
-    def calc_playability(self, hand_knowledge, except_player=None):
+    def calc_playability(self, hand_knowledge, except_player=None): #! Logic module
         deck = self.calc_deck(except_player)
         piles = {}
         for col in ['red','yellow','green','blue','white']:
@@ -173,7 +312,7 @@ class TechnicAngel:
         playabilities = np.max(playabilities, axis=1)
         return playabilities # Each value will be the playability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
-    def calc_discardability(self):
+    def calc_discardability(self): #! Logic module
         deck = self.calc_deck()
         piles = {}
         for col in ['red','yellow','green','blue','white']:
@@ -214,11 +353,9 @@ class TechnicAngel:
         discardabilities = np.min(discardabilities, axis=1)
         return discardabilities # Each value will be the discardability of each single card e.g. [0.06, 0.06, 1.0, 0.06, 0.06]
 
-    def calc_best_hint(self):
-        #self.action_show()
+    def calc_best_hint(self): #! Logic module
         best_so_far = None
         for player in self.player_hands:
-            #print(len(player.hand))
             if len(player.hand) == 0: continue
             for card in player.hand:
                 best_so_far = ('value', card.value, player.name, 0.0) # type, value, dst, playability/utility
@@ -282,144 +419,13 @@ class TechnicAngel:
 
         return best_so_far
 
-    def consume_packets(self):
-        read_pkts = []
-        with self.lock:
-            for data in self.msg_queue:
-
-                # Discard data of other players
-                if type(data) is GameData.ServerActionValid and data.player != self.playerName and data.action == 'discard':
-                    done_removing = False
-                    for p in self.player_hands:
-                        if p.name == data.player:
-                            for i, card in enumerate(p.hand):
-                                if card == data.card:
-                                    self.already_hinted[p.name].pop(i)
-                                    self.already_hinted[p.name].append([False, False])
-                                    done_removing = True
-                                    break
-                            if done_removing: break
-                    read_pkts.append(data)
-
-                # Play data of other players
-                elif (type(data) is GameData.ServerPlayerMoveOk or \
-                    type(data) is GameData.ServerPlayerThunderStrike) and data.player != self.playerName:
-                    done_removing = False
-                    for p in self.player_hands:
-                        if p.name == data.player:
-                            for i, card in enumerate(p.hand):
-                                if card == data.card:
-                                    self.already_hinted[p.name].pop(i)
-                                    self.already_hinted[p.name].append([False, False])
-                                    done_removing = True
-                                    break
-                            if done_removing: break
-                    read_pkts.append(data)
-
-                # Hint data: I received a hint
-                elif type(data) is GameData.ServerHintData and data.destination == self.playerName:
-                    for i in data.positions: # indices in the current hand
-                        self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = str(data.value)
-                    read_pkts.append(data)
-
-                # Hint data of other players
-                elif type(data) is GameData.ServerHintData and data.destination != self.playerName:
-                    for i in data.positions: # indices in the current hand
-                        self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
-                    read_pkts.append(data)
-                
-                # Game over
-                elif type(data) is GameData.ServerGameOver:
-                    self.final_score = data.score
-                    read_pkts.append(data)
-                
-                elif type(data) is not GameData.ServerGameStateData:
-                    read_pkts.append(data)
-
-            for pkt in read_pkts:
-                self.msg_queue.remove(pkt)
-
-    def wait_for_turn(self):
-        while self.current_player != self.playerName and self.final_score is None:
-            with self.cv: self.cv.wait_for(lambda : False, timeout=0.2)
-            self.consume_packets()
-            self.action_show()
-        self.consume_packets()
-        self.action_show()
-    
-    def action_show(self):
-        #print('Show')
-        self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
-        found = False
-        while not found:
-            with self.lock:
-                read_pkts = []
-                for data in self.msg_queue:
-                    if type(data) is GameData.ServerGameStateData:
-                        self.current_player = str(data.currentPlayer)
-                        self.player_hands = []
-                        for player in data.players:
-                            pl = Player(player.name)
-                            for card in player.hand:
-                                pl.hand.append(Card(card.id, card.value, card.color))
-                            self.player_hands.append(pl)
-                        self.table_cards = { "red": [], "yellow": [], "green": [], "blue": [], "white": [] }
-                        for k in data.tableCards.keys():
-                            for card in data.tableCards[k]:
-                                self.table_cards[k].append(Card(card.id, card.value, card.color))
-                        self.discard_pile = []
-                        for card in data.discardPile:
-                            self.discard_pile.append(Card(card.id, card.value, card.color))
-                        self.used_note_tokens = data.usedNoteTokens
-                        self.used_storm_tokens = data.usedStormTokens
-                        read_pkts.append(data)
-                        found = True
-                for pkt in read_pkts:
-                    self.msg_queue.remove(pkt)
-                        
-    def action_discard(self, num):
-        print('Discard', num)
-        """num = [0, len(hand)-1]: int"""
-        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
-        assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
-        assert num in range(0, len(self.current_hand_knowledge))
-        self.s.send(GameData.ClientPlayerDiscardCardRequest(self.playerName, num).serialize())
-        self.current_hand_knowledge.pop(num)
-        self.current_hand_knowledge.append(['', ''])
-        self.current_player = None
-    
-    def action_play(self, num):
-        print('Play', num)
-        """num = [0, len(hand)-1]: int"""
-        assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
-        assert num in range(0, len(self.current_hand_knowledge))
-        self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
-        self.current_hand_knowledge.pop(num)
-        self.current_hand_knowledge.append(['', ''])
-        self.current_player = None
-    
-    def action_hint(self, hint_type, dst, value):
-        print('Hint', hint_type, dst, value)
-        """
-        hint_type = 'color' or 'value'
-        dst = <player name> : str
-        value = if 'color': ['red', 'yellow', 'green', 'blue', 'white'] else [1,2,3,4,5]
-        """
-        assert self.used_note_tokens < 8, 'Cannot Hint if all note tokens are used'
-        assert hint_type in ['color', 'value'], 'hint_type can be "color" or "value"'
-        assert dst in [p.name for p in self.player_hands], 'Passed the name of a non-existing player'
-        if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
-        else: assert value in [1,2,3,4,5]
-        self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
-        self.current_player = None
-
-    def __can_hint(self):
+    def __can_hint(self): #! Logic module
         for player in self.player_hands:
             if len(player.hand) > 0:
                 return True
         return False
 
-    def select_action(self, PLAYABILITY_THRESHOLD=0.8):
+    def select_action(self, PLAYABILITY_THRESHOLD=0.8): #! Logic module
         playability = self.calc_playability(self.current_hand_knowledge)
         for i in range(len(playability)):
             if playability[i] >= PLAYABILITY_THRESHOLD:
@@ -448,8 +454,7 @@ class TechnicAngel:
 
         while True:
             self.wait_for_turn()
-            #! Check if game ended
-            if self.final_score is not None: break
+            if self.game_ended: break
             self.select_action()
         
         print(f'Final score: {self.final_score}/25')
@@ -457,3 +462,6 @@ class TechnicAngel:
 
 ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
 agent = TechnicAngel(ID=ID)
+
+#https://ai.facebook.com/blog/building-ai-that-can-master-complex-cooperative-games-with-hidden-information/
+#https://helios2.mi.parisdescartes.fr/~bouzy/publications/bouzy-hanabi-2017.pdf

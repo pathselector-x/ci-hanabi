@@ -67,7 +67,7 @@ EPSILON_END = 0.2
 EPSILON_DECAY = 10000
 TARGET_UPDATE_FREQ = 10000
 
-device = torch.device('cpu') #torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 env = gym.make('CartPole-v0')
 
 loss_array = []
@@ -77,14 +77,20 @@ class DQN(nn.Module):
         super(DQN, self).__init__()
         in_features = int(np.prod(env.observation_space.shape))
 
-        self.net = nn.Sequential(
-            nn.Linear(in_features, 64),
-            nn.Tanh(),
-            nn.Linear(64, env.action_space.n)
-        )
+        ff_layers = [nn.Linear(in_features, 64), nn.ReLU()]
+        for _ in range(3):
+            ff_layers.append(nn.Linear(64,64))
+            ff_layers.append(nn.ReLU())
+        self.net = nn.Sequential(*ff_layers)
+
+        self.lstm = nn.LSTMCell(64, 64).to(device)
+
+        self.fc_a = nn.Linear(64, env.action_space.n)
     
     def forward(self, x):
-        return self.net(x)
+        x = self.net(x)
+        o, _ = self.lstm(x)
+        return self.fc_a(o)
     
     def act(self, obs):
         obs_t = torch.as_tensor(obs, dtype=torch.float32, device=device)
