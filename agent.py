@@ -1,4 +1,5 @@
 from os import read
+import random
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
 import time
@@ -10,6 +11,10 @@ from constants import *
 import numpy as np
 from collections import deque
 from itertools import product
+
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.optimizers import Adam
 
 from game import Card, Player
 
@@ -32,6 +37,16 @@ class TechnicAngel:
             print("Connection accepted by the server. Welcome " + self.playerName)
         stdout.flush()
         
+        self.model = self.build_model()
+        self.memory = deque(maxlen=20000)
+        self.state_size = 85 # just 2 players
+        self.action_size = 20 # just 2 players
+        self.gamma = 0.95
+        self.epsilon = 1.0
+        self.epsilon_decay = 0.995
+        self.epsilon_min = 0.01
+
+        self.position = None #! To know the order of who plays and when
         # color, value
         self.current_hand_knowledge = None #! Holds knowledge about current hand
         self.already_hinted = None #! Holds knowledge about already hinted cards (col, val)
@@ -50,7 +65,8 @@ class TechnicAngel:
         self.run = True
         
         #! Ready up your engines...
-        input('Press [ENTER] to start...')
+        #input('Press [ENTER] to start...')
+        #time.sleep(3)
         self.auto_ready()
 
         self.msg_queue = []
@@ -99,6 +115,7 @@ class TechnicAngel:
         data = GameData.GameData.deserialize(data)
         if type(data) is GameData.ServerPlayerStartRequestAccepted:
             print("Ready: " + str(data.acceptedStartRequests) + "/"  + str(data.connectedPlayers) + " players")
+            self.position = data.acceptedStartRequests - 1
             data = self.s.recv(DATASIZE)
             data = GameData.GameData.deserialize(data)
         if type(data) is GameData.ServerStartGameData:
@@ -239,8 +256,9 @@ class TechnicAngel:
         self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
         self.current_player = None
 
-    def calc_deck(self, except_player=None): #! Logic module
+    def calc_deck(self): #! Logic module
         deck = {} #! Holds knowledge about unseen cards
+        cards_in_deck = 50 #! How many cards are left in the deck
         for col in ['red','yellow','green','blue','white']:
             deck[(col,'1')] = 3
             deck[(col,'2')] = 2
@@ -249,26 +267,26 @@ class TechnicAngel:
             deck[(col,'5')] = 1
 
         for player in self.player_hands:
-            if except_player is None:
-                for card in player.hand:
-                    deck[(str(card.color), str(card.value))] -= 1
-            elif player.name != except_player:
-                for card in player.hand:
-                    deck[(str(card.color), str(card.value))] -= 1
+            for card in player.hand:
+                deck[(str(card.color), str(card.value))] -= 1
+                cards_in_deck -= 1
 
         for col in ['red','yellow','green','blue','white']:
             for card in self.table_cards[col]:
                 deck[(str(card.color), str(card.value))] -= 1
+                cards_in_deck -= 1
 
         for card in self.discard_pile:
             deck[(str(card.color), str(card.value))] -= 1
+            cards_in_deck -= 1
         
         for card in self.current_hand_knowledge:
             c, v = card
             if c != '' and v != '':
                 deck[(c,v)] -= 1
+            cards_in_deck -= 1
 
-        return deck
+        return deck, cards_in_deck
 
     def calc_playability(self, hand_knowledge, except_player=None): #! Logic module
         deck = self.calc_deck(except_player)
@@ -425,7 +443,7 @@ class TechnicAngel:
                 return True
         return False
 
-    def select_action(self, PLAYABILITY_THRESHOLD=0.8): #! Logic module
+    def select_action_OLD(self, PLAYABILITY_THRESHOLD=0.8): #! Logic module
         playability = self.calc_playability(self.current_hand_knowledge)
         for i in range(len(playability)):
             if playability[i] >= PLAYABILITY_THRESHOLD:
@@ -440,6 +458,149 @@ class TechnicAngel:
             best_hint_type, best_hint_val, dst, _ = self.calc_best_hint()
             self.action_hint(best_hint_type, dst, best_hint_val)
 
+    def select_action_OLD2(self):
+        # Play
+        for idx, card in enumerate(self.current_hand_knowledge):
+            c, v = card
+            if v != '' and c != '':
+                if len(self.table_cards[c]) + 1 == int(v):
+                    self.action_play(idx)
+                    return
+                elif self.used_note_tokens > 0:
+                    self.action_discard(idx)
+                    return
+            elif v != '':
+                plus_one = 0
+                gt = 0
+                for k in self.table_cards.keys():
+                    if len(self.table_cards[k]) + 1 == int(v):
+                        plus_one += 1
+                    elif len(self.table_cards[k]) > int(v):
+                        gt += 1
+                if plus_one > gt:
+                    self.action_play(idx)
+                    return
+                elif self.used_note_tokens > 0:
+                    self.action_discard(idx)
+                    return
+            #elif c != '':
+            #    playable = 0
+            #    discardable = 0
+            #    deck = self.calc_deck()
+            #    tot = sum(deck[(c,str(i))] for i in range(1,5+1))
+            #    col_cards_left = sum(deck[(c,str(i))] for i in range(1,5+1) if i > len(self.table_cards[c]))
+            #    if len(self.table_cards[c])
+    
+        if self.used_note_tokens == 8: # Discard
+            self.action_discard(0) # oldest card
+            return
+        else: # Hint
+            for player in self.player_hands:
+                for card, hint in zip(player.hand, self.already_hinted[player.name]):
+                    if len(self.table_cards[card.color]) + 1 == card.value and not hint[1]: # that card can be played
+                        self.action_hint('value', player.name, card.value)
+                        return
+                    elif len(self.table_cards[card.color]) + 1 == card.value and not hint[0]:
+                        self.action_hint('color', player.name, card.color)
+                        return
+                    elif len(self.table_cards[card.color]) > card.value and not hint[1]: # that card can be discarded
+                        self.action_hint('value', player.name, card.value)
+                        return
+                    elif len(self.table_cards[card.color]) > card.value and not hint[0]:
+                        self.action_hint('color', player.name, card.color)
+                        return
+        if self.used_note_tokens > 0:
+            self.action_discard(0)
+        else:
+            self.action_play(0)
+
+    def build_model(self, state_size=85, action_size=20):
+        model = Sequential()
+        model.add(Dense(128, input_dim=state_size, activation='relu'))
+        model.add(Dense(128, activation='relu'))
+        model.add(Dense(action_size, activation='linear'))
+        model.compile(loss='mse', optimizer=Adam(learning_rate=0.001))
+        return model
+
+    def remember(self, state, action, reward, next_state, done):
+        self.memory.append(state, action, reward, next_state, done)
+
+    def act(self, state):
+        action = None
+        while action is None or (action in range(5,10) and self.used_note_tokens == 0) or \
+            (action in range(10,20) and self.used_note_tokens == 8):
+            if np.random.rand() <= self.epsilon:
+                action = random.choice(range(self.action_size))
+            else:
+                act_values = self.model.predict(state)
+                action = np.argmax(act_values[0])
+        return action
+    
+    def replay(self, batch_size):
+        minibatch = random.sample(self.memory, batch_size)
+        for state, action, reward, next_state, done in minibatch:
+            target = reward
+            if not done:
+                target = reward + self.gamma * np.amax(self.model.predict(next_state)[0])
+            target_f = self.model.predict(state)
+            target_f[0][action] = target
+            self.model.fit(state, target_f, epochs=1, verbose=0)
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
+
+    def calc_state(self):
+        COLORS = ['red','yellow','green','blue','white']
+        deck, _ = self.calc_deck()
+        deck_state = []
+        for c in COLORS:
+            for v in range(1,5+1):
+                deck_state.append(deck[(c,str(v))])
+
+        table_state = []
+        for c in COLORS:
+            table_state.append(len(self.table_cards[c]))
+
+        hand_knowledge_state = []
+        for c,v in self.current_hand_knowledge:
+            col, val = 0, 0
+            if c != '': col = COLORS.index(c)
+            if v != '': val = int(v)
+            hand_knowledge_state.append(col)
+            hand_knowledge_state.append(val)
+
+        already_hinted_state = []
+        for player in self.player_hands:
+            for c, v in self.already_hinted[player.name]:
+                c = 1 if c else 0
+                v = 1 if v else 0
+                already_hinted_state.append(c)
+                already_hinted_state.append(v)
+
+        hands_state = []
+        for player in self.player_hands:
+            for card in player.hand:
+                col = COLORS.index(card.color)
+                val = card.value
+                hands_state.append(col)
+                hands_state.append(val)
+
+        state = [*hand_knowledge_state, *table_state, *deck_state, 
+                 *hands_state, *already_hinted_state, self.used_note_tokens]
+        return state
+
+    def select_action(self): #! WE JUST CONSIDER 2 PLAYERS!!!
+        state = self.calc_state()
+        action = self.act(state)
+        if action in range(5):
+            self.action_play(action)
+        elif action in range(5,10):
+            self.action_discard(action - 5)
+        elif action in range(10,15):
+            self.action_hint('value', self.player_hands[0].name, action - 10 + 1)
+        elif action in range(15,20):
+            cols = ['red','yellow','green','blue','white']
+            self.action_hint('color', self.player_hands[0].name, cols[action - 15])
+            
     def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
         self.action_show()
@@ -452,16 +613,20 @@ class TechnicAngel:
         for p in self.player_hands:
             self.already_hinted[p.name] = [[False, False] for _ in range(len(self.player_hands[0].hand))] # color, value
 
+        for player in self.player_hands:
+            print(player.name)
+
         while True:
             self.wait_for_turn()
             if self.game_ended: break
             self.select_action()
         
-        print(f'Final score: {self.final_score}/25')
+        if self.final_score is not None:
+            print(f'Final score: {self.final_score}/25')
 
 
-ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
-agent = TechnicAngel(ID=ID)
+#ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
+#agent = TechnicAngel(ID=ID)
 
 #https://ai.facebook.com/blog/building-ai-that-can-master-complex-cooperative-games-with-hidden-information/
 #https://helios2.mi.parisdescartes.fr/~bouzy/publications/bouzy-hanabi-2017.pdf
