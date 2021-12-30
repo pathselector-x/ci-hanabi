@@ -1,4 +1,5 @@
 from os import read
+import os
 import random
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
@@ -15,6 +16,8 @@ from itertools import product
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
+
+import pickle
 
 from game import Card, Player
 
@@ -37,14 +40,19 @@ class TechnicAngel:
             print("Connection accepted by the server. Welcome " + self.playerName)
         stdout.flush()
         
-        self.model = self.build_model()
         self.memory = deque(maxlen=20000)
-        self.state_size = 85 # just 2 players
+        if os.path.exists('./mem_' + self.playerName):
+            self.memory = pickle.load(open('./mem_' + self.playerName, 'rb'))
+        self.state_size = 61 # just 2 players
         self.action_size = 20 # just 2 players
+        self.batch_size = 32
         self.gamma = 0.95
-        self.epsilon = 1.0
+        self.epsilon = 0.3
         self.epsilon_decay = 0.995
         self.epsilon_min = 0.01
+        self.model = self.build_model(self.state_size, self.action_size)
+        if os.path.exists('./' + self.playerName):
+            self.model.load_weights('./' + self.playerName)
 
         self.position = None #! To know the order of who plays and when
         # color, value
@@ -105,7 +113,7 @@ class TechnicAngel:
                             with self.cv: self.cv.notify_all()
 
         except ConnectionResetError: 
-            self.game_ended = True
+            with self.lock: self.game_ended = True
             with self.cv: self.cv.notify_all()
                 
     def auto_ready(self):
@@ -195,7 +203,7 @@ class TechnicAngel:
         found = False
         while not found:
             with self.lock:
-                if self.final_score is not None: return
+                if self.game_ended: return
                 read_pkts = []
                 for data in self.msg_queue:
                     if type(data) is GameData.ServerGameStateData:
@@ -514,7 +522,7 @@ class TechnicAngel:
         else:
             self.action_play(0)
 
-    def build_model(self, state_size=85, action_size=20):
+    def build_model(self, state_size=61, action_size=20):
         model = Sequential()
         model.add(Dense(128, input_dim=state_size, activation='relu'))
         model.add(Dense(128, activation='relu'))
@@ -523,7 +531,7 @@ class TechnicAngel:
         return model
 
     def remember(self, state, action, reward, next_state, done):
-        self.memory.append(state, action, reward, next_state, done)
+        self.memory.append((state, action, reward, next_state, done))
 
     def act(self, state):
         action = None
@@ -532,13 +540,16 @@ class TechnicAngel:
             if np.random.rand() <= self.epsilon:
                 action = random.choice(range(self.action_size))
             else:
+                state = np.reshape(state, [1, self.state_size])
                 act_values = self.model.predict(state)
                 action = np.argmax(act_values[0])
         return action
     
-    def replay(self, batch_size):
-        minibatch = random.sample(self.memory, batch_size)
+    def replay(self):
+        minibatch = random.sample(self.memory, self.batch_size)
         for state, action, reward, next_state, done in minibatch:
+            state = np.reshape(state, [1, self.state_size])
+            next_state = np.reshape(next_state, [1, self.state_size])
             target = reward
             if not done:
                 target = reward + self.gamma * np.amax(self.model.predict(next_state)[0])
@@ -586,9 +597,10 @@ class TechnicAngel:
 
         state = [*hand_knowledge_state, *table_state, *deck_state, 
                  *hands_state, *already_hinted_state, self.used_note_tokens]
-        return state
+        return np.array(state)
 
     def select_action(self): #! WE JUST CONSIDER 2 PLAYERS!!!
+        curr_storm_tk = self.used_storm_tokens
         state = self.calc_state()
         action = self.act(state)
         if action in range(5):
@@ -600,6 +612,23 @@ class TechnicAngel:
         elif action in range(15,20):
             cols = ['red','yellow','green','blue','white']
             self.action_hint('color', self.player_hands[0].name, cols[action - 15])
+
+        self.consume_packets()
+        if not self.game_ended:
+            self.action_show()
+
+            done = self.game_ended
+            next_state = self.calc_state()
+
+            reward = 0.0
+            if self.used_storm_tokens - curr_storm_tk != 0:
+                reward = -10.0
+            else:
+                reward = 5.0 
+            
+
+            self.remember(state, action, reward, next_state, done)
+            
             
     def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
@@ -620,6 +649,13 @@ class TechnicAngel:
             self.wait_for_turn()
             if self.game_ended: break
             self.select_action()
+
+        print(len(self.memory))
+        pickle.dump(self.memory, open('./mem_' + self.playerName, 'wb'))
+        if len(self.memory) > self.batch_size: #! Learning step
+            print('Replay...')
+            self.replay()
+            self.model.save_weights('./' + self.playerName)
         
         if self.final_score is not None:
             print(f'Final score: {self.final_score}/25')
