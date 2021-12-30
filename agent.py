@@ -4,8 +4,6 @@ import random
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
 import time
-from numpy.core.numeric import isclose
-from numpy.lib.function_base import select
 import GameData
 import socket
 from constants import *
@@ -13,6 +11,7 @@ import numpy as np
 from collections import deque
 from itertools import product
 
+import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
@@ -21,15 +20,50 @@ import pickle
 
 from game import Card, Player
 
+COLORS = ['red','yellow','green','blue','white']
+
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
+        self.s = None
+        self.ID = ID
+        if self.ID > 0:
+            self.playerName = "technic_angel_" + str(self.ID)
+        else:
+            self.playerName = "technic_angel"
+
+        ####? DQN
+        self.state_size = 61 # just 2 players
+        self.action_size = 20 # just 2 players
+        self.batch_size = 32
+        self.gamma = 0.95
+        self.epsilon = 0.25
+        self.epsilon_decay = 0.995
+        self.epsilon_min = 0.01
+        self.target_update_freq = 25
+
+        self.episode_reward = 0
+
+        self.online_net = self.build_model(self.state_size, self.action_size)
+        self.target_net = self.build_model(self.state_size, self.action_size)
+        self.target_net.set_weights(self.online_net.get_weights())
+
+        if os.path.exists('./online_' + self.playerName):
+            self.online_net.load_weights('./online_' + self.playerName)
+        if os.path.exists('./target_' + self.playerName):
+            self.target_net.load_weights('./target_' + self.playerName)
+
+        self.memory = deque(maxlen=50000)
+        if os.path.exists('./mem_' + self.playerName):
+            self.memory = pickle.load(open('./mem_' + self.playerName, 'rb'))
+        
+        self.update_count = 0 # To track when to copy weights to target net
+        if os.path.exists('./uc_' + self.playerName):
+            self.update_count = pickle.load(open('./uc_' + self.playerName, 'rb'))
+        
+        ####? Stuff...
         self.statuses = ["Lobby", "Game", "GameHint"]
         self.game_ended = False
         self.status = self.statuses[0]
-        if ID > 0:
-            self.playerName = "technic_angel_" + str(ID)
-        else:
-            self.playerName = "technic_angel"
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         request = GameData.ClientPlayerAddData(self.playerName)
         self.s.connect((ip, port))
@@ -39,20 +73,6 @@ class TechnicAngel:
         if type(data) is GameData.ServerPlayerConnectionOk:
             print("Connection accepted by the server. Welcome " + self.playerName)
         stdout.flush()
-        
-        self.memory = deque(maxlen=20000)
-        if os.path.exists('./mem_' + self.playerName):
-            self.memory = pickle.load(open('./mem_' + self.playerName, 'rb'))
-        self.state_size = 61 # just 2 players
-        self.action_size = 20 # just 2 players
-        self.batch_size = 32
-        self.gamma = 0.95
-        self.epsilon = 0.3
-        self.epsilon_decay = 0.995
-        self.epsilon_min = 0.01
-        self.model = self.build_model(self.state_size, self.action_size)
-        if os.path.exists('./' + self.playerName):
-            self.model.load_weights('./' + self.playerName)
 
         self.position = None #! To know the order of who plays and when
         # color, value
@@ -89,7 +109,8 @@ class TechnicAngel:
         self.t_listener.join()
         
     def __del__(self):
-        self.s.close()
+        if self.s is not None:
+            self.s.close()
 
     def listener(self):
         try:
@@ -533,7 +554,7 @@ class TechnicAngel:
     def remember(self, state, action, reward, next_state, done):
         self.memory.append((state, action, reward, next_state, done))
 
-    def act(self, state):
+    def act(self, model, state):
         action = None
         while action is None or (action in range(5,10) and self.used_note_tokens == 0) or \
             (action in range(10,20) and self.used_note_tokens == 8):
@@ -541,7 +562,7 @@ class TechnicAngel:
                 action = random.choice(range(self.action_size))
             else:
                 state = np.reshape(state, [1, self.state_size])
-                act_values = self.model.predict(state)
+                act_values = model.predict(state)
                 action = np.argmax(act_values[0])
         return action
     
@@ -552,10 +573,10 @@ class TechnicAngel:
             next_state = np.reshape(next_state, [1, self.state_size])
             target = reward
             if not done:
-                target = reward + self.gamma * np.amax(self.model.predict(next_state)[0])
-            target_f = self.model.predict(state)
+                target = reward + self.gamma * np.amax(self.target_net.predict(next_state)[0])
+            target_f = self.online_net.predict(state)
             target_f[0][action] = target
-            self.model.fit(state, target_f, epochs=1, verbose=0)
+            self.online_net.fit(state, target_f, epochs=1, verbose=0)
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
@@ -601,8 +622,14 @@ class TechnicAngel:
 
     def select_action(self): #! WE JUST CONSIDER 2 PLAYERS!!!
         curr_storm_tk = self.used_storm_tokens
+        curr_already_hinted = [[c,v] for c,v in self.already_hinted[self.player_hands[0].name]]
+        curr_table = {}
+        for c in COLORS:
+            curr_table[c] = [card for card in self.table_cards[c]]
+
         state = self.calc_state()
-        action = self.act(state)
+        action = self.act(self.online_net, state)
+
         if action in range(5):
             self.action_play(action)
         elif action in range(5,10):
@@ -614,21 +641,55 @@ class TechnicAngel:
             self.action_hint('color', self.player_hands[0].name, cols[action - 15])
 
         self.consume_packets()
-        if not self.game_ended:
+        if not self.game_ended: 
             self.action_show()
 
-            done = self.game_ended
+            done = False
             next_state = self.calc_state()
+            reward = 0
 
-            reward = 0.0
-            if self.used_storm_tokens - curr_storm_tk != 0:
-                reward = -10.0
-            else:
-                reward = 5.0 
-            
-
+            if action in range(5): # PLAY
+                if self.used_storm_tokens - curr_storm_tk != 0:
+                    reward = -5
+                else:
+                    for c in COLORS:
+                        if len(self.table_cards[c]) > len(curr_table[c]):
+                            reward = len(self.table_cards[c])
+                            break
+            elif action in range(5,10): # DISCARD
+                discarded_card = self.discard_pile[-1]
+                if all(discarded_card.value <= len(self.table_cards[c]) for c in COLORS):
+                    reward = 1
+                else:
+                    deck, _ = self.calc_deck()
+                    if deck[(discarded_card.color, str(discarded_card.value))] == 0:
+                        reward = len(self.table_cards[discarded_card.color]) - 6
+            elif action in range(10,20): # HINT 
+                useless_hint = True
+                diff = [[False, False] for _ in range(5)]
+                idx = 0
+                for (c1,v1), (c2,v2) in zip(self.already_hinted[self.player_hands[0].name], curr_already_hinted):
+                    useless_hint = useless_hint and (c1 == c2) and (v1 == v2)
+                    if c1 != c2: diff[idx][0] = True
+                    if v1 != v2: diff[idx][1] = True
+                    idx += 1
+                if useless_hint:
+                    reward = -1
+                else:
+                    for i, (c,v) in enumerate(diff):
+                        if c or v:
+                            card = self.player_hands[0].hand[i]
+                            if card.value == len(self.table_cards[card.color]) + 1 or \
+                                all(card.value <= len(self.table_cards[c])  for c in COLORS):
+                                reward = 1
+            self.episode_reward += reward
             self.remember(state, action, reward, next_state, done)
-            
+
+        elif self.final_score is not None: # game ended, we check that we have also a final score
+            done = True
+            reward = self.final_score if self.final_score > 0 else -5
+            self.episode_reward += reward
+            self.remember(state, action, self.episode_reward, state, done)
             
     def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
@@ -650,16 +711,26 @@ class TechnicAngel:
             if self.game_ended: break
             self.select_action()
 
-        print(len(self.memory))
         pickle.dump(self.memory, open('./mem_' + self.playerName, 'wb'))
         if len(self.memory) > self.batch_size: #! Learning step
             print('Replay...')
             self.replay()
-            self.model.save_weights('./' + self.playerName)
-        
-        if self.final_score is not None:
-            print(f'Final score: {self.final_score}/25')
 
+            self.update_count += 1
+            if self.update_count % self.target_update_freq == 0:
+                print('Updating target net...')
+                self.target_net.set_weights(self.online_net.get_weights())
+            
+            self.online_net.save_weights('./online_' + self.playerName)
+            self.target_net.save_weights('./target_' + self.playerName)
+            pickle.dump(self.update_count, open('./uc_' + self.playerName, 'wb'))
+
+        if self.final_score is not None:
+            for c in COLORS:
+                print(c[0], len(self.table_cards[c]), end=' | ')
+            print()
+            print(f'Final score: {self.final_score}/25')
+        print(f'Episode reward: {self.episode_reward}')
 
 #ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
 #agent = TechnicAngel(ID=ID)

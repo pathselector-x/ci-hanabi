@@ -132,7 +132,7 @@ for step in itertools.count():
     if random.random() <= epsilon:
         action = env.action_space.sample() #random.choice([0,1,2,3]) # Random action
     else:
-        action = online_net.act(obs)
+        action = online_net.act(obs) #! ONLINE
     
     new_obs, rew, done, _ = env.step(action)
     transition = (obs, action, rew, done, new_obs)
@@ -162,13 +162,13 @@ for step in itertools.count():
     new_obses_t = torch.as_tensor(new_obses, dtype=torch.float32, device=device)
 
     # Compute targets
-    target_q_values = target_net(new_obses_t)
+    target_q_values = target_net(new_obses_t) #! TARGET
     max_target_q_values = target_q_values.max(dim=1, keepdim=True)[0]
 
     targets = rews_t + GAMMA * (1 - dones_t) * max_target_q_values
 
-    # Compute Loss
-    q_values = online_net(obses_t)
+    # Compute Loss 
+    q_values = online_net(obses_t) #! ONLINE
 
     action_q_values = torch.gather(input=q_values, dim=1, index=actions_t)
 

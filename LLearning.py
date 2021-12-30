@@ -1,10 +1,13 @@
 from multiprocessing import Process, Manager
+from threading import Thread
 from server import manageNetwork
 from agent import TechnicAngel
 import time
+import matplotlib.pyplot as plt
 
-def f(idx):
-    agent = TechnicAngel('127.0.0.1', 1024, idx)
+def f(idx, ):
+    agent = TechnicAngel(ID=idx)
+    
     #if agent.final_score is not None:
     #    return_dict['final_score'] = agent.final_score 
     #else:
@@ -12,14 +15,15 @@ def f(idx):
 
 if __name__ == '__main__':
 
-    num_games = 5
+    num_games = 10
     score_tot = 0
 
-    for _ in range(num_games):
-        print(_)
+    #manager = Manager()
+    #return_dict = manager.dict()
+    #return_dict['rew'] = []
 
-        #manager = Manager()
-        #return_dict = manager.dict()
+    for game in range(num_games):
+        print(f'Game #{game+1}')
 
         process_server = Process(target=manageNetwork)
         process_server.start()
@@ -36,6 +40,7 @@ if __name__ == '__main__':
 
         #score_tot += return_dict['final_score']
     
-    print(score_tot / num_games)
+    #print(score_tot / num_games)
+
 
         
