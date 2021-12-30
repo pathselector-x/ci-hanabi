@@ -15,7 +15,7 @@ def f(idx, ):
 
 if __name__ == '__main__':
 
-    num_games = 10
+    num_games = 100
     score_tot = 0
 
     #manager = Manager()
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     #return_dict['rew'] = []
 
     for game in range(num_games):
-        print(f'Game #{game+1}')
+        print(f'\033[93mGame #{game+1}\033[0m')
 
         process_server = Process(target=manageNetwork)
         process_server.start()

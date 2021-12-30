@@ -13,7 +13,7 @@ from itertools import product
 
 import tensorflow as tf
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, Conv1D, Conv2D, LSTM
 from keras.optimizers import Adam
 
 import pickle
@@ -36,10 +36,10 @@ class TechnicAngel:
         self.action_size = 20 # just 2 players
         self.batch_size = 32
         self.gamma = 0.95
-        self.epsilon = 0.25
+        self.epsilon = 0.2
         self.epsilon_decay = 0.995
         self.epsilon_min = 0.01
-        self.target_update_freq = 25
+        self.target_update_freq = 10
 
         self.episode_reward = 0
 
@@ -545,8 +545,14 @@ class TechnicAngel:
 
     def build_model(self, state_size=61, action_size=20):
         model = Sequential()
-        model.add(Dense(128, input_dim=state_size, activation='relu'))
-        model.add(Dense(128, activation='relu'))
+        model.add(Conv1D(32, 1, strides=4, input_shape=(1, state_size), activation='relu'))
+        model.add(Conv1D(64, 1, strides=2, activation='relu'))
+        model.add(Conv1D(64, 1, strides=1, activation='relu'))
+        #model.add(Conv2D(64, 4, strides=2))
+        #model.add(Conv2D(64, 3, strides=1))
+        model.add(LSTM(1))
+        #model.add(Dense(128, input_dim=state_size, activation='relu'))
+        #model.add(Dense(128, activation='relu'))
         model.add(Dense(action_size, activation='linear'))
         model.compile(loss='mse', optimizer=Adam(learning_rate=0.001))
         return model
@@ -562,7 +568,7 @@ class TechnicAngel:
                 action = random.choice(range(self.action_size))
             else:
                 state = np.reshape(state, [1, self.state_size])
-                act_values = model.predict(state)
+                act_values = model.predict(state[np.newaxis, :, :]) #! np.newaxis workaround for Conv1D
                 action = np.argmax(act_values[0])
         return action
     
@@ -573,10 +579,10 @@ class TechnicAngel:
             next_state = np.reshape(next_state, [1, self.state_size])
             target = reward
             if not done:
-                target = reward + self.gamma * np.amax(self.target_net.predict(next_state)[0])
-            target_f = self.online_net.predict(state)
+                target = reward + self.gamma * np.amax(self.target_net.predict(next_state[np.newaxis, :, :])[0])
+            target_f = self.online_net.predict(state[np.newaxis, :, :])
             target_f[0][action] = target
-            self.online_net.fit(state, target_f, epochs=1, verbose=0)
+            self.online_net.fit(state[np.newaxis, :, :], target_f, epochs=1, verbose=0)
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
@@ -650,7 +656,7 @@ class TechnicAngel:
 
             if action in range(5): # PLAY
                 if self.used_storm_tokens - curr_storm_tk != 0:
-                    reward = -5
+                    reward = -15
                 else:
                     for c in COLORS:
                         if len(self.table_cards[c]) > len(curr_table[c]):
@@ -687,7 +693,7 @@ class TechnicAngel:
 
         elif self.final_score is not None: # game ended, we check that we have also a final score
             done = True
-            reward = self.final_score if self.final_score > 0 else -5
+            reward = self.final_score if self.final_score > 0 else -50
             self.episode_reward += reward
             self.remember(state, action, self.episode_reward, state, done)
             
@@ -718,8 +724,9 @@ class TechnicAngel:
 
             self.update_count += 1
             if self.update_count % self.target_update_freq == 0:
-                print('Updating target net...')
+                print('\033[92mUpdating target net...\033[0m')
                 self.target_net.set_weights(self.online_net.get_weights())
+                self.update_count = 0
             
             self.online_net.save_weights('./online_' + self.playerName)
             self.target_net.save_weights('./target_' + self.playerName)
