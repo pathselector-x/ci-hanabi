@@ -4,10 +4,10 @@ COLORS = ['red','yellow','green','white','blue']
 VALUES = range(1,5+1)
 
 class Hanabi:
-    def __init__(self, view_colors=['red','white','green','blue','yellow'], verbose=False):
+    def __init__(self, num_players=2, view_colors=['red','white','green','blue','yellow'], verbose=False):
         self.num_actions = 21 # P0-4, D0-4, HCR-W, HV1-5, Invalid/deal
-        self.num_players = 2
-        self.hand_size = 5
+        self.num_players = num_players
+        self.hand_size = 5 if num_players < 4 else 4
         self.state_size = 838
         self.view_colors = view_colors
         self.verbose = verbose
@@ -227,7 +227,7 @@ class Hanabi:
     def compute_legal_action(self, player_idx):
         actions = []
         if self.err_tk == 3:
-            for _ in range(20): actions.append(0)
+            for _ in range(10+5*(self.num_players-1)*2): actions.append(0)
             return actions
         else:
             for _ in range(5): actions.append(1)
@@ -235,23 +235,26 @@ class Hanabi:
             for _ in range(5): actions.append(0)
         else:
             for _ in range(5): actions.append(1)
-        if self.info_tk == 8:
-            for _ in range(10): actions.append(0)
-        else:
-            for _ in range(10): actions.append(0)
-            admissible_colors = [k for k in COLORS]
-            admissible_values = [v for v in VALUES]
-            for col in COLORS:
-                if all(c != col for c, _ in self.player_hands[(player_idx + 1) % self.num_players]):
-                    admissible_colors.remove(col)
-            for val in VALUES:
-                if all(v != val for _, v in self.player_hands[(player_idx + 1) % self.num_players]):
-                    admissible_values.remove(val)
-            for k in admissible_colors:
-                actions[10 + COLORS.index(k)] = 1
-            for v in admissible_values:
-                actions[14 + v] = 1
-        actions.append(0)
+        for player in range(self.num_players):
+            if player != player_idx:
+                if self.info_tk == 8:
+                    for _ in range(10): actions.append(0)
+                else:
+                    #for _ in range(10): actions.append(0)
+                    #start_val = 10+5*(self.num_players-1)
+                    admissible_colors = [1 for k in COLORS]
+                    admissible_values = [1 for v in VALUES]
+                    for i, col in enumerate(COLORS):
+                        if all(c != col for c, _ in self.player_hands[player]):
+                            admissible_colors[i] = 0
+                    for i, val in enumerate(VALUES):
+                        if all(v != val for _, v in self.player_hands[player]):
+                            admissible_values[i] = 0
+                    for k in admissible_colors:
+                        actions.append(k)
+                    for v in admissible_values:
+                        actions.append(v)
+                actions.append(0)
         return actions
             
     def compute_state(self, player_idx, permute_colors=False): # state is just a belief
@@ -358,7 +361,7 @@ class Hanabi:
         self.player_hands = [[self.deck.pop() for __ in range(self.hand_size)] for _ in range(self.num_players)]
         self.hands_knowledge = [[['',0] for __ in range(self.hand_size)] for _ in range(self.num_players)]
         self.played_last_turn = [False for _ in range(self.num_players)]
-        return self.compute_state(player_idx, permute_colors) #self.encode(player_idx) #
+        return #self.compute_state(player_idx, permute_colors) #self.encode(player_idx) #
     
     def __action_play(self, player_idx, num):
         done = False
@@ -488,23 +491,28 @@ class Hanabi:
         elif action in range(5,10): # discard 0-4
             reward, done = self.__action_discard(player_idx, action - 5)
             if self.verbose: print(f'P{player_idx+1} Discard {action-5}')
-        elif action in range(10,15): # hint color to_next_player [COLORS]
-            reward, done = self.__action_hint(player_idx, 'color', (player_idx + 1) % self.num_players, COLORS[action - 10])
-            if self.verbose: print(f'P{player_idx+1} Hint P{((player_idx+1)%2)+1} Color {COLORS[action-10]}')
-        elif action in range(15,20): # hint value to_next_player 1-5
-            reward, done = self.__action_hint(player_idx, 'value', (player_idx + 1) % self.num_players, action - 14)
-            if self.verbose: print(f'P{player_idx+1} Hint P{((player_idx+1)%2)+1} Value {action-14}')
-        next_state = self.compute_state(player_idx, permute_colors)#self.encode(player_idx) #
+        elif action in range(10,10+5*(self.num_players-1)): # hint color to_next_player [COLORS]
+            to = (player_idx + ((action - 10) // 5) + 1) % self.num_players
+            color = COLORS[(action-10)%5]
+            reward, done = self.__action_hint(player_idx, 'color', to, color)
+            if self.verbose: print(f'P{player_idx+1} Hint P{to+1} Color {color}')
+        elif action in range(10+5*(self.num_players-1),10+5*(self.num_players-1)*2): # hint value to_next_player 1-5
+            start_val = 10+5*(self.num_players-1)
+            to = (player_idx + ((action - start_val) // 5) + 1) % self.num_players
+            value = ((action-start_val)%5)+1
+            reward, done = self.__action_hint(player_idx, 'value', to, value)
+            if self.verbose: print(f'P{player_idx+1} Hint P{to+1} Value {value}')
+        #next_state = self.compute_state(player_idx, permute_colors)#self.encode(player_idx) #
 
-        if all(self.played_last_turn): done = True
-        if done: 
-            done = 1
-            reward = 0.0
-            if self.err_tk < 3:
-                for k in COLORS:
-                    reward += len(self.table_cards[k])
-        else: 
-            done = 0
-            reward = 0.0
+        #if all(self.played_last_turn): done = True
+        #if done: 
+        #    done = 1
+        #    reward = 0.0
+        #    if self.err_tk < 3:
+        #        for k in COLORS:
+        #            reward += len(self.table_cards[k])
+        #else: 
+        #    done = 0
+        #    reward = 0.0
 
-        return next_state, reward, done, None
+        return #next_state, reward, done, None

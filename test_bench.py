@@ -8,7 +8,6 @@ class Agent:
     def __init__(self, player_idx: int, env: Hanabi):
         self.env = env
         self.pidx = player_idx
-        self.kn_mat = np.zeros((5,10))
 
     def __play_probably_safe_card(self, threshold):
         knowledge = self.env.hands_knowledge[self.pidx]
@@ -29,10 +28,12 @@ class Agent:
                         how_many -= 1
                     if card[0] == c: total -= 1
 
-                for card in self.env.player_hands[(self.pidx + 1) % 2]:
-                    if card[0] == c and card[1] == playable_val:
-                        how_many -= 1
-                    if card[0] == c: total -= 1
+                for player in range(self.env.num_players):
+                    if player != self.pidx:
+                        for card in self.env.player_hands[player]:
+                            if card[0] == c and card[1] == playable_val:
+                                how_many -= 1
+                            if card[0] == c: total -= 1
 
                 p.append(how_many / total)
             
@@ -46,10 +47,12 @@ class Agent:
                         how_many -= 1
                     if card[1] == v: total -= 1
 
-                for card in self.env.player_hands[(self.pidx + 1) % 2]:
-                    if card[0] in piles_playable and card[1] == v:
-                        how_many -= 1
-                    if card[1] == v: total -= 1
+                for player in range(self.env.num_players):
+                    if player != self.pidx:
+                        for card in self.env.player_hands[player]:
+                            if card[0] in piles_playable and card[1] == v:
+                                how_many -= 1
+                            if card[1] == v: total -= 1
                 
                 p.append(how_many / total)
             
@@ -71,12 +74,14 @@ class Agent:
                     for card in self.env.discard_pile:
                         if card[0] in colors and card[1] == v:
                             how_many -= 1
-                    for card in self.env.player_hands[(self.pidx + 1) % 2]:
-                        if card[0] in colors and card[1] == v:
-                            how_many -= 1
+                    for player in range(self.env.num_players):
+                        if player != self.pidx:
+                            for card in self.env.player_hands[player]:
+                                if card[0] in colors and card[1] == v:
+                                    how_many -= 1
                     min_p = min(min_p, how_many / total)
                 p.append(min_p)
-
+        
         idx_to_play = np.argmax(p)
         if p[idx_to_play] >= threshold:
             self.env.step(self.pidx, idx_to_play)
@@ -89,20 +94,26 @@ class Agent:
         return False
 
     def __tell_anyone_about_useful_card(self):
-        hand = self.env.player_hands[(self.pidx + 1) % 2]
-        kn = self.env.hands_knowledge[(self.pidx + 1) % 2]
+        cnt = 0
+        for pl in range(self.env.num_players): #TODO start iter from next player wrt current
+            player = (self.pidx + pl) % self.env.num_players
+            if player != self.pidx:
+                hand = self.env.player_hands[player]
+                kn = self.env.hands_knowledge[player]
 
-        for (kc, kv), (c, v) in zip(kn, hand):
-            if len(self.env.table_cards[c]) + 1 == v:
-                if kc != '' and kv != 0: continue
+                for (kc, kv), (c, v) in zip(kn, hand):
+                    if len(self.env.table_cards[c]) + 1 == v:
+                        if kc != '' and kv != 0: continue
 
-                if kc == '':
-                    self.env.step(self.pidx, 10 + COLORS.index(c))
-                    return True
-                
-                if kv == 0:
-                    self.env.step(self.pidx, 14 + v)
-                    return True
+                        if kc == '':
+                            self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
+                            return True
+                        
+                        if kv == 0:
+                            start_val = 10+5*(self.env.num_players-1)
+                            self.env.step(self.pidx, start_val + (v-1) + 5 * cnt)
+                            return True
+                cnt += 1
         return False
 
     def __interrupted_pile(self, color):
@@ -115,19 +126,25 @@ class Agent:
         return False
 
     def __tell_dispensable(self):
-        hand = self.env.player_hands[(self.pidx + 1) % 2]
-        kn = self.env.hands_knowledge[(self.pidx + 1) % 2]
+        cnt = 0
+        for pl in range(self.env.num_players): #TODO start iter from next player wrt current
+            player = (self.pidx + pl) % self.env.num_players
+            if player != self.pidx:
+                hand = self.env.player_hands[player]
+                kn = self.env.hands_knowledge[player]
 
-        for (kc, kv), (c, v) in zip(kn, hand):
-            if v <= len(self.env.table_cards[c]) and kv == 0:
-                self.env.step(self.pidx, 14 + v)
-                return True
-            elif len(self.env.table_cards[c]) == 5 and kc == '':
-                self.env.step(self.pidx, 10 + COLORS.index(c))
-                return True
-            elif self.__interrupted_pile(c) and kc == '':
-                self.env.step(self.pidx, 10 + COLORS.index(c))
-                return True
+                for (kc, kv), (c, v) in zip(kn, hand):
+                    if v <= len(self.env.table_cards[c]) and kv == 0:
+                        start_val = 10+5*(self.env.num_players-1)
+                        self.env.step(self.pidx, start_val + (v-1) + 5 * cnt)
+                        return True
+                    elif len(self.env.table_cards[c]) == 5 and kc == '':
+                        self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
+                        return True
+                    elif self.__interrupted_pile(c) and kc == '':
+                        self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
+                        return True
+                cnt += 1
         return False
     
     def __osawa_discard(self):
@@ -183,10 +200,12 @@ class Agent:
                         if card[0] == c and card[1] <= v_lte:
                             how_many -= 1
                         if card[0] == c: total -= 1
-                    for card in self.env.player_hands[(self.pidx + 1) % 2]:
-                        if card[0] == c and card[1] <= v_lte:
-                            how_many -= 1
-                        if card[0] == c: total -= 1
+                    for player in range(self.env.num_players):
+                        if player != self.pidx:
+                            for card in self.env.player_hands[player]:
+                                if card[0] == c and card[1] <= v_lte:
+                                    how_many -= 1
+                                if card[0] == c: total -= 1
                     p.append(how_many / total)
                     continue
             elif v != 0:
@@ -205,10 +224,12 @@ class Agent:
                         if card[0] in colors and card[1] == v:
                             how_many -= 1
                         if card[1] == v: total -= 1
-                    for card in self.env.player_hands[(self.pidx + 1) % 2]:
-                        if card[0] in colors and card[1] == v:
-                            how_many -= 1
-                        if card[1] == v: total -= 1
+                    for player in range(self.env.num_players):
+                        if player != self.pidx:
+                            for card in self.env.player_hands[player]:
+                                if card[0] in colors and card[1] == v:
+                                    how_many -= 1
+                                if card[1] == v: total -= 1
                     p.append(how_many / total)
             else:
                 p.append(0.0)
@@ -227,7 +248,7 @@ class Agent:
     def __tell_randomly(self):
         legal_actions = self.env.compute_legal_action(self.pidx)
         legal_actions = legal_actions[10:-1]
-        legal_actions = [o for la, o in zip(legal_actions, range(10,20)) if la == 1]
+        legal_actions = [o for la, o in zip(legal_actions, range(10,10+5*(self.env.num_players-1)*2)) if la == 1]
         self.env.step(self.pidx, random.choice(legal_actions))
         return True
     
@@ -255,25 +276,23 @@ class Agent:
 
         assert False, f'PANIC!!! {self.env.info_tk}'
 
-def eval_agent_goodness():
-    env = Hanabi()
-    p1 = Agent(0, env)
-    p2 = Agent(1, env)
-
-    NUM_GAMES = 5000
+def eval_agent_goodness(num_agents=2, num_games=1000):
+    env = Hanabi(num_players=num_agents)
+    players = []
+    for i in range(num_agents):
+        players.append(Agent(i, env))
 
     stats = []
 
-    for game in range(NUM_GAMES):
+    for game in range(num_games):
         env.reset(0)
-        while True:
-            p1.act()
-            if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
-                break
-
-            p2.act()
-            if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
-                break
+        done = False
+        while not done:
+            for p in players:
+                p.act()
+                if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
+                    done = True
+                    break
 
         if env.err_tk < 3:
             stats.append(sum(len(env.table_cards[k]) for k in COLORS))
@@ -282,14 +301,14 @@ def eval_agent_goodness():
 
         if game % 1000 == 0: print(game)
 
-    print(f'Average score on {NUM_GAMES} games: {sum(stats) / NUM_GAMES}')
-    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{NUM_GAMES} games)')
-    print(f'Lost {sum(1 for s in stats if s == 0)}/{NUM_GAMES} games')
+    print(f'Average score on {num_games} games: {sum(stats) / num_games}')
+    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
+    print(f'Lost {sum(1 for s in stats if s == 0)}/{num_games} games')
     plt.hist(stats, bins=25, edgecolor='white', linewidth=1.2)
     plt.show()
     exit()
 
-#eval_agent_goodness()
+eval_agent_goodness(num_agents=3, num_games=1000)
 
 
 env = Hanabi(verbose=True)
