@@ -175,11 +175,50 @@ class Agent:
                     p.append(1.0)
                     continue
                 else:
-                    pass
+                    count = [3,2,2,2,1]
+                    total = 10
+                    v_lte = len(self.env.table_cards[c])
+                    how_many = sum(count[:v_lte])
+                    for card in self.env.discard_pile:
+                        if card[0] == c and card[1] <= v_lte:
+                            how_many -= 1
+                        if card[0] == c: total -= 1
+                    for card in self.env.player_hands[(self.pidx + 1) % 2]:
+                        if card[0] == c and card[1] <= v_lte:
+                            how_many -= 1
+                        if card[0] == c: total -= 1
+                    p.append(how_many / total)
+                    continue
             elif v != 0:
-                pass
-
-
+                if all(v <= len(self.env.table_cards[k]) for k in COLORS):
+                    p.append(1.0)
+                    continue
+                else:
+                    total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
+                    colors = []
+                    for k in COLORS:
+                        if v == len(self.env.table_cards[k]) + 1:
+                            colors.append(k)
+                        
+                    how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(colors)
+                    for card in self.env.discard_pile:
+                        if card[0] in colors and card[1] == v:
+                            how_many -= 1
+                        if card[1] == v: total -= 1
+                    for card in self.env.player_hands[(self.pidx + 1) % 2]:
+                        if card[0] in colors and card[1] == v:
+                            how_many -= 1
+                        if card[1] == v: total -= 1
+                    p.append(how_many / total)
+            else:
+                p.append(0.0)
+        
+        idx_to_discard = np.argmax(p)
+        if all(pv == p[0] for pv in p): idx_to_discard = 0
+        if p[idx_to_discard] >= threshold:
+            self.env.step(self.pidx, 5 + idx_to_discard)
+            return True
+        return False
     
     def __discard_oldest_first(self):
         self.env.step(self.pidx, 5)
@@ -209,11 +248,10 @@ class Agent:
         
         if self.env.info_tk > 0:
             if self.__osawa_discard(): return
-            #if self.__discard_probably_useless_card(0.6): return #! New
+            if self.__discard_probably_useless_card(0.0): return
             if self.__discard_oldest_first(): return
         else:
             if self.__tell_randomly(): return
-        #if self.__discard_randomly(): return
 
         assert False, f'PANIC!!! {self.env.info_tk}'
 
@@ -222,7 +260,7 @@ def eval_agent_goodness():
     p1 = Agent(0, env)
     p2 = Agent(1, env)
 
-    NUM_GAMES = 2000
+    NUM_GAMES = 5000
 
     stats = []
 
@@ -251,7 +289,7 @@ def eval_agent_goodness():
     plt.show()
     exit()
 
-eval_agent_goodness()
+#eval_agent_goodness()
 
 
 env = Hanabi(verbose=True)
