@@ -215,7 +215,7 @@ class CardKnowledge:
 
     def known(self):
         self.computeIdentity()
-        return self.color_ != -1 and self.value_ != -1
+        return self.color_ != '' and self.value_ != -1
     
     def color(self):
         self.computeIdentity()
@@ -463,9 +463,7 @@ class TechnicAngel:
                             for i, card in enumerate(p.hand):
                                 if card == data.card:
                                     self.hand_knowledge[p.name].pop(i)
-                                    self.hand_knowledge[p.name].append(CardKnowledge(self))
-                                    self.already_hinted[p.name].pop(i)
-                                    self.already_hinted[p.name].append([False, False])
+                                    self.hand_knowledge[p.name].append(['',0])
                                     done_removing = True
                                     break
                             if done_removing: break
@@ -480,9 +478,7 @@ class TechnicAngel:
                             for i, card in enumerate(p.hand):
                                 if card == data.card:
                                     self.hand_knowledge[p.name].pop(i)
-                                    self.hand_knowledge[p.name].append(CardKnowledge(self))
-                                    self.already_hinted[p.name].pop(i)
-                                    self.already_hinted[p.name].append([False, False])
+                                    self.hand_knowledge[p.name].append(['',0])
                                     done_removing = True
                                     break
                             if done_removing: break
@@ -491,21 +487,19 @@ class TechnicAngel:
                 # Hint data: I received a hint
                 elif type(data) is GameData.ServerHintData and data.destination == self.playerName:
                     for i in data.positions: # indices in the current hand
-                        #self.current_hand_knowledge[i][0 if data.type == 'color' else 1] = str(data.value)
                         if data.type == 'color':
-                            self.hand_knowledge[self.playerName][i].setMustBe(color=data.value)
+                            self.hand_knowledge[self.playerName][i][0] = data.value
                         else:
-                            self.hand_knowledge[self.playerName][i].setMustBe(value=data.value)
+                            self.hand_knowledge[self.playerName][i][1] = data.value
                     read_pkts.append(data)
 
                 # Hint data of other players
                 elif type(data) is GameData.ServerHintData and data.destination != self.playerName:
                     for i in data.positions: # indices in the current hand
-                        self.already_hinted[data.destination][i][0 if data.type == 'color' else 1] = True
                         if data.type == 'color':
-                            self.hand_knowledge[data.destination][i].setMustBe(color=data.value)
+                            self.hand_knowledge[data.destination][i][0] = data.value
                         else:
-                            self.hand_knowledge[data.destination][i].setMustBe(value=data.value)
+                            self.hand_knowledge[data.destination][i][1] = data.value
                     read_pkts.append(data)
                 
                 # Game over
@@ -635,254 +629,7 @@ class TechnicAngel:
         return deck, cards_in_deck
 
     def select_action(self): #! Logic
-        cardsRemainingInDeck = 50 - self.myHandSize_ * len(self.player_hands)
-        for _ in self.discard_pile:
-            cardsRemainingInDeck -= 1
-        for k in COLORS:
-            cardsRemainingInDeck -= len(self.table_cards[k])
-
-        if cardsRemainingInDeck == 0:
-            if self.maybePlayLowestPlayableCard(): return
-            if self.maybePlayMisteryCard(): return
-        if self.maybeGiveValuableWarning(): return
-        if self.maybeDiscardFinesse(): return
-        if self.maybePlayLowestPlayableCard(): return
-        if self.maybeGiveHelpfulHint(): return
-        if self.maybePlayMisteryCard(): return
-
-        if self.used_note_tokens == 0: 
-            #TODO more than 2 players!!
-            self.action_hint('value', self.player_hands[0].name, self.player_hands[0].hand[0].value)
-        else:
-            if self.maybeDiscardWorthlessCard(): return
-            if self.maybeDiscardOldCard(): return
-            
-            best_index = 0
-            for i in range(self.myHandSize_):
-                if self.hand_knowledge[self.playerName][i].value() > self.hand_knowledge[self.playerName][best_index].value():
-                    best_index = i
-            self.action_discard(best_index)
-    
-    def isPlayable(self, color, value): 
-        playableValue = len(self.table_cards[color]) + 1
-        return value == playableValue
-
-    def isValuable(self, color, value): 
-        card_count = (3 if value == 1 else (1 if value == 5 else 2))
-        if self.playedCount_[color][value] != card_count - 1: return False
-        return not self.isWorthless(color, value)
-
-    def isWorthless(self, color, value):
-        playableValue = len(self.table_cards[color]) + 1
-        if value < playableValue: return True
-        while value > playableValue:
-            value -= 1
-            card_count = (3 if value == 1 else (1 if value == 5 else 2))
-            if self.playedCount_[color][value] == card_count: return True
-        return False
-
-    def updateEyesightCount(self): pass
-    def updateLocatedCount(self): pass
-    def invalidateKnol(self, player_index, card_index, draw_new_card): pass
-    def seePublicCard(self): pass
-
-    def nextDiscardIndex(self, to): 
-        if to != self.playerName: # it means 'to' is an idx
-            to = self.player_hands[to].name
-        best_fitness = 0
-        best_index = -1
-        for i in range(self.myHandSize_):
-            if self.hand_knowledge[to][i].playable() == YES: return -1
-            if self.hand_knowledge[to][i].worthless() == YES: return -1
-            if self.hand_knowledge[to][i].valuable() == YES: continue
-
-            fitness = 100 + self.hand_knowledge[to][i].probabilityWorthless()
-            if fitness > best_fitness:
-                best_fitness = fitness
-                best_index = i
-        return best_index
-
-    def noValuableWarningWasGiven(self, from_): pass
-
-    def bestHintForPlayer(self, partner):
-        is_really_playable = [card.value == len(self.table_cards[card.color]) + 1 for card in self.player_hands[partner].hand]
-        valueToAvoid = -1
-        #TODO: more than 2 players
-        discardIndex = self.nextDiscardIndex(partner)
-        if discardIndex != -1:
-            valueToAvoid = self.player_hands[partner].hand[discardIndex].value
-            if not self.hand_knowledge[self.player_hands[partner].name][discardIndex].couldBeValuableWithValue(valueToAvoid):
-                valueToAvoid = -1
-        def is_ok(hint, oldKnols, newKnols):
-            if hint.value != -1 and hint.value == valueToAvoid: return False
-            reveals_a_playable_card = False
-            is_misleading = MAYBE
-            for i in range(self.myHandSize_-1, -1, -1):
-                if oldKnols[i].playable() != MAYBE: continue
-                if newKnols[i].playable() == YES:
-                    reveals_a_playable_card = True
-                elif newKnols[i].playable() == MAYBE and hint.includes(self.player_hands[partner].hand):
-                    if is_misleading == MAYBE:
-                        is_misleading = NO if is_really_playable else YES
-            if reveals_a_playable_card or is_misleading == NO: return True
-            else: return False
-        return self.bestHintForPlayerGivenConstraint(partner, is_ok)
-
-    def reduction_in_entropy(self, oldKnols, newKnols):
-        result = 0
-        for i in range(len(oldKnols)):
-            result += oldKnols[i].possibilities() - newKnols[i].possibilities()
-        return result
-
-    def bestHintForPlayerGivenConstraint(self, to, is_okay):
-        colors = {k: False for k in COLORS}
-        values = {v: False for v in VALUES}
-        for card in self.player_hands[to].hand:
-            colors[card.color] = True
-            values[card.value] = True
-        oldKnols = [kn.copy() for kn in self.hand_knowledge[self.player_hands[to].name]]
-        best = Hint('color', 'red', -10, self.player_hands[to].name)
-        for k in COLORS:
-            if k not in colors.keys(): continue
-            hint = Hint('color', k, -1, self.player_hands[to].name)
-            newKnols = [kn.copy() for kn in oldKnols]
-            for i in range(self.myHandSize_):
-                if self.player_hands[to].hand[i].color == k:
-                    newKnols[i].setMustBe(color=k)
-                else:
-                    newKnols[i].setCannotBe(color=k)
-            if is_okay(hint, oldKnols, newKnols):
-                hint.fitness = self.reduction_in_entropy(oldKnols, newKnols)
-                if hint.fitness > best.fitness:
-                    best = hint
-        for v in VALUES:
-            if v not in values.keys(): continue
-            hint = Hint('value', v, -1, self.player_hands[to].name)
-            newKnols = [kn.copy() for kn in oldKnols]
-            for i in range(self.myHandSize_):
-                if self.player_hands[to].hand[i].value == v:
-                    newKnols[i].setMustBe(value=v)
-                else:
-                    newKnols[i].setCannotBe(value=v)
-            if is_okay(hint, oldKnols, newKnols):
-                hint.fitness = self.reduction_in_entropy(oldKnols, newKnols)
-                if hint.fitness > best.fitness:
-                    best = hint
-        return best
-
-    def vector_count(self, vec, value):
-        result = 0
-        for i in range(len(vec)):
-            if vec[i] == value: result += 1
-        return result
-
-    def maybeDiscardFinesse(self): 
-        if self.used_note_tokens == 0: return False
-
-        myPlayableCards = []
-        myPlayableIndices = []
-
-        for i in range(self.myHandSize_):
-            kn = self.hand_knowledge[self.playerName][i]
-            if kn.known() and kn.valuable() == NO and kn.playable() == YES:
-                myPlayableCards.append(kn.knownCard())
-                myPlayableIndices.append(i)
-        
-        if len(myPlayableCards) == 0: return False
-
-        othersNewestCards = []
-
-        for player in self.player_hands:
-            for i in range(self.myHandSize_-1, -1, -1):
-                othersNewestCards.append(player.hand[i])
-        
-        for j in range(len(myPlayableCards)):
-            if self.vector_count(othersNewestCards, myPlayableCards[j]) == 1:
-                self.action_discard(myPlayableIndices[j])
-                return True
-        return False
-
-    def maybePlayLowestPlayableCard(self): 
-        best_index = -1
-        best_fitness = 0
-        for i in range(self.myHandSize_):
-            if self.hand_knowledge[self.playerName][i].playable() == NO: continue
-            self.hand_knowledge[self.playerName][i].update(True)
-            if self.hand_knowledge[self.playerName][i].playable() != YES: continue
-            fitness = 6 - self.hand_knowledge[self.playerName][i].value()
-            if self.hand_knowledge[self.playerName][i].playable() != YES: fitness += 100
-            if fitness > best_fitness:
-                best_index = i
-                best_fitness = fitness
-        if best_index != -1:
-            self.action_play(best_index)
-            return True
-        return False
-
-    def maybeGiveHelpfulHint(self): 
-        if self.used_note_tokens == 8: return False
-        bestHint = None
-        #TODO more than 2 players (start with the following player)
-        for i in range(len(self.player_hands)):
-            candidate = self.bestHintForPlayer(i)
-            if bestHint is None or candidate.fitness > bestHint.fitness:
-                bestHint = candidate
-        if bestHint.fitness <= 0: return False
-        self.action_hint(bestHint.type, bestHint.to, bestHint.value)
-        return True
-
-    def maybeGiveValuableWarning(self): 
-        if self.used_note_tokens == 8: return False
-        player_to_warn = 0 # idx #TODO more than 2 players !!!
-        discardIndex = self.nextDiscardIndex(player_to_warn)
-        if discardIndex == -1: return False
-        targetCard = self.player_hands[player_to_warn].hand[discardIndex]
-        if not self.isValuable(targetCard.color, targetCard.value): return False
-        bestHint = self.bestHintForPlayer(player_to_warn)
-        if bestHint.fitness > 0:
-            self.action_hint(bestHint.type, self.player_hands[player_to_warn].name, bestHint.value)
-            return True
-        self.action_hint('value', self.player_hands[player_to_warn].name, targetCard.value)
-        return True
-
-    def maybePlayMisteryCard(self): 
-        best_fitness = 0
-        best_index = -1
-        for i in range(self.myHandSize_-1, -1, -1):
-            self.hand_knowledge[self.playerName][i].update(True)
-            if self.hand_knowledge[self.playerName][i].playable() == MAYBE:
-                fitness = self.hand_knowledge[self.playerName][i].probabilityPlayable()
-                if fitness > best_fitness:
-                    best_fitness = fitness
-                    best_index = i
-        if best_index != -1:
-            self.action_play(best_index)
-            return True
-        return False
-
-    def maybeDiscardWorthlessCard(self): 
-        best_index = -1
-        best_fitness = 0
-        for i in range(self.myHandSize_):
-            if self.hand_knowledge[self.playerName][i].worthless() == NO: continue
-            if self.hand_knowledge[self.playerName].worthless() == MAYBE:
-                self.hand_knowledge[self.playerName][i].update(True)
-                if self.hand_knowledge[self.playerName][i].worthless() != YES: continue
-            fitness = 2.0 - self.hand_knowledge[self.playerName][i].probabilityWorthless()
-            if fitness > best_fitness:
-                best_index = i
-                best_fitness = fitness
-        if best_index != -1:
-            self.action_discard(best_index)
-            return True
-        return False
-
-    def maybeDiscardOldCard(self): 
-        best_index = self.nextDiscardIndex(self.playerName)
-        if best_index != -1:
-            self.action_discard(best_index)
-            return True
-        return False
+        pass
 
     def main_loop(self):
         #! Check how many cards in hand (4 or 5 depending on how many players)
@@ -891,22 +638,13 @@ class TechnicAngel:
         self.hand_knowledge = {} # Keep track of what you know about your hand
         self.hand_knowledge[self.playerName] = []
         for _ in range(len(self.player_hands[0].hand)):
-            self.hand_knowledge[self.playerName].append(CardKnowledge(self)) # color, value
+            self.hand_knowledge[self.playerName].append(['',0]) # color, value
         for player in self.player_hands:
+            self.hand_knowledge[player.name] = []
             for _ in range(len(self.player_hands[0].hand)):
-                self.hand_knowledge[player.name].append(CardKnowledge(self)) # color, value
+                self.hand_knowledge[player.name].append(['',0]) # color, value
 
-        self.myHandSize_ = len(self.player_hands[0].hand)
-        self.playedCount_ = {k: [0 for _ in range(5+1)] for k in COLORS} # what cards have been played so far
-        self.locatedCount_ = {k: [0 for _ in range(5+1)] for k in COLORS} # what cards in players' hands are definitely identified
-        self.eyesightCount_ = {k: [0 for _ in range(5+1)] for k in COLORS} # what cards in players' hand are visible to me
-        
-        self.already_hinted = {} # Keep track of already hinted cards
-        for p in self.player_hands:
-            self.already_hinted[p.name] = [[False, False] for _ in range(len(self.player_hands[0].hand))] # color, value
-
-        #for player in self.player_hands:
-        #    print(player.name)
+        self.hand_size = len(self.player_hands[0].hand)
 
         while True:
             self.wait_for_turn()
@@ -919,5 +657,5 @@ class TechnicAngel:
             print()
             print(f'Final score: {self.final_score}/25')
 
-#ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
-#agent = TechnicAngel(ID=ID)
+ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
+agent = TechnicAngel(ID=ID)
