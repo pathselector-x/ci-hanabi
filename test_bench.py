@@ -1,8 +1,9 @@
 import numpy as np
 import random
+from itertools import product
 import matplotlib.pyplot as plt
-
-from hanabi import COLORS, Hanabi
+import time
+from hanabi import COLORS, VALUES, Hanabi
 
 class Agent:
     def __init__(self, player_idx: int, env: Hanabi):
@@ -95,7 +96,7 @@ class Agent:
 
     def __tell_anyone_about_useful_card(self):
         cnt = 0
-        for pl in range(self.env.num_players): #TODO start iter from next player wrt current
+        for pl in range(self.env.num_players):
             player = (self.pidx + pl) % self.env.num_players
             if player != self.pidx:
                 hand = self.env.player_hands[player]
@@ -127,7 +128,7 @@ class Agent:
 
     def __tell_dispensable(self):
         cnt = 0
-        for pl in range(self.env.num_players): #TODO start iter from next player wrt current
+        for pl in range(self.env.num_players): 
             player = (self.pidx + pl) % self.env.num_players
             if player != self.pidx:
                 hand = self.env.player_hands[player]
@@ -275,6 +276,104 @@ class Agent:
             if self.__tell_randomly(): return
 
         assert False, f'PANIC!!! {self.env.info_tk}'
+    
+    def MCTS_act(self, timeout=1.0, C=2):
+
+        action_set = [self.__play_probably_safe_card, self.__discard_probably_useless_card, self.__tell_anyone_about_useful_card, self.__tell_dispensable, self.__tell_randomly]
+
+        class Node:
+            def __init__(self, player_idx):
+                self.player_idx = player_idx
+                self.hand = []
+                self.saved_hand = []
+        
+        def re_determinize(knowledge, board, pile, other_hands):
+            deck = []
+            for k in COLORS:
+                deck.append((k,1))
+                deck.append((k,1))
+                deck.append((k,1))
+                deck.append((k,2))
+                deck.append((k,2))
+                deck.append((k,3))
+                deck.append((k,3))
+                deck.append((k,4))
+                deck.append((k,4))
+                deck.append((k,5))
+            for k in COLORS:
+                for c,v in board[k]: deck.remove((c,v))
+            for c,v in pile: deck.remove((c,v))
+            for hand in other_hands:
+                for c,v in hand: deck.remove((c,v))
+
+            # infer hidden cards
+            new_kn = []
+            for c,v in knowledge:
+                if c != '' and v != '': new_kn.append((c,v))
+                elif c != '':
+                    count = 0
+                    val = 0
+                    for k,w in deck:
+                        if k == c: 
+                            count += 1
+                            val = w
+                        if count > 1: break
+                    if count == 1:
+                        new_kn.append((c,val))
+                elif v != 0:
+                    count = 0
+                    col = ''
+                    for k,w in deck:
+                        if w == v: 
+                            count += 1
+                            col = k
+                        if count > 1: break
+                    if count == 1:
+                        new_kn.append((col,v))
+                else:
+                    new_kn.append(('',0))
+
+            possible = [] # list of lists for each place in hand
+            for c,v in new_kn:
+                if c != '' and v != 0:
+                    possible.append((c,v))
+                    deck.remove((c,v))
+                else: possible.append(None)
+            
+            random.shuffle(deck)
+
+            for i, (c,v) in zip(range(len(possible)), new_kn):
+                if possible[i] is not None: continue
+                if c != '':
+                    for k,w in deck:
+                        if k == c: 
+                            possible[i] = (k,w)
+                            deck.remove((k,w))
+                            break
+                elif v != '':
+                    for k,w in deck:
+                        if w == v: 
+                            possible[i] = (k,w)
+                            deck.remove((k,w))
+                            break
+            
+            for i in range(len(possible)):
+                if possible[i] is not None: continue
+                possible[i] = deck.pop()
+
+            return possible
+        
+        #re_determinize(self.env.hands_knowledge[self.pidx], 
+        #   self.env.table_cards, self.env.discard_pile, 
+        #   [self.env.player_hands[p] for p in range(self.env.num_players) if p != self.pidx])
+
+
+        return
+        timeout = time.time() + timeout
+        while time.time() <= timeout:
+            root_hand = []
+            root_node = None
+            player = Node(0)
 
 def eval_agent_goodness(num_agents=2, num_games=1000):
     env = Hanabi(num_players=num_agents)
@@ -308,7 +407,12 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-eval_agent_goodness(num_agents=3, num_games=1000)
+env = Hanabi()
+env.reset(0)
+p = Agent(0, env)
+p.MCTS_act()
+exit()
+#eval_agent_goodness(num_agents=3, num_games=1000)
 
 
 env = Hanabi(verbose=True)

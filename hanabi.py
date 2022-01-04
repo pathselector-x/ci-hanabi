@@ -3,6 +3,8 @@ import random
 COLORS = ['red','yellow','green','white','blue']
 VALUES = range(1,5+1)
 
+def deepcopy(d: 'dict[str, list]'): return {key: d[key].copy() for key in d.keys()}
+
 class Hanabi:
     def __init__(self, num_players=2, view_colors=['red','white','green','blue','yellow'], verbose=False):
         self.num_actions = 21 # P0-4, D0-4, HCR-W, HV1-5, Invalid/deal
@@ -362,6 +364,22 @@ class Hanabi:
         self.hands_knowledge = [[['',0] for __ in range(self.hand_size)] for _ in range(self.num_players)]
         self.played_last_turn = [False for _ in range(self.num_players)]
         return #self.compute_state(player_idx, permute_colors) #self.encode(player_idx) #
+    
+    def set_state(self, hands_knowledge, board, pile, info_tk, err_tk, player_hands, deck):
+        self.info_tk = info_tk
+        self.err_tk = err_tk
+        self.hands_knowledge = [hands_knowledge[i].copy() for i in range(len(hands_knowledge))]
+        self.table_cards = deepcopy(board)
+        self.discard_pile = pile.copy()
+        self.player_hands = [player_hands[i].copy() for i in range(len(player_hands))]
+        self.deck = deck.copy()
+        self.played_last_turn = [False for _ in range(self.num_players)]
+        if len(self.deck) == 0:
+            for p in range(self.num_players, -1, -1):
+                if len(self.player_hands[p]) < self.hand_size:
+                    for pl in range(p, -1, -1):
+                        self.played_last_turn[pl] = True
+                    break
     
     def __action_play(self, player_idx, num):
         done = False
