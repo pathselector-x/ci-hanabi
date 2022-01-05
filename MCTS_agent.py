@@ -1,6 +1,7 @@
 from itertools import product
 import random
 import numpy as np
+from hanabi import Hanabi
 import time
 
 # initial state
@@ -29,7 +30,7 @@ class Node:
         self.num_players = len(self.last_turn_played)
         self.redetermine()
 
-        self.num_visits = 0
+        self.num_visits = 1 if parent is None else 0
         self.value = 0
         self.action = action
         self.parent = parent
@@ -438,7 +439,7 @@ class Node:
                         dst = player
                 for v in VALUES:
                     if value_hints_count[player][v] >= max_count:
-                        max_count = value_hints_count[player][k]
+                        max_count = value_hints_count[player][v]
                         hint_type = 'value'
                         hint_val = v
                         dst = player
@@ -482,6 +483,25 @@ class Node:
                     self.valid_moves[i] = False
                     continue
             else: self.expanded[i] = True
+
+    def __draw(self, player_idx, player_hands, table_cards, discard_pile):
+        # need to build a plausible deck
+        deck = FULL_DECK.copy()
+        for k in COLORS:
+            for card in table_cards[k]:
+                if card in deck: deck.remove(card)
+        for pl in range(self.num_players):
+            if pl != player_hands:
+                for card in player_hands[pl]: 
+                    if card in deck: deck.remove(card)
+        for card in discard_pile: 
+            if card in deck: deck.remove(card)
+        
+        random.shuffle(deck)
+
+        player_hands[player_idx].append(deck.pop())
+        
+        return player_hands
 
     def __play_probably_safe_card(self, state, threshold):
         player_idx, player_hands, hands_knowledge, last_turn_played, \
@@ -563,13 +583,7 @@ class Node:
         if p[idx_to_play] >= threshold:
             # Play
             c, v = player_hands[player_idx].pop(idx_to_play)
-
             hands_knowledge[player_idx].pop(idx_to_play)
-            if len_deck > 0:
-                hands_knowledge[player_idx].append(('',0))
-                len_deck -= 1
-            else:
-                last_turn_played[player_idx] = True
 
             if v == len(table_cards[c]) + 1:
                 table_cards[c].append((c,v))
@@ -577,6 +591,13 @@ class Node:
             else:
                 discard_pile.append((c,v))
                 err_tk += 1
+
+            if len_deck > 0:
+                hands_knowledge[player_idx].append(('',0))
+                len_deck -= 1
+                player_hands = self.__draw(player_idx, player_hands, table_cards, discard_pile)
+            else:
+                last_turn_played[player_idx] = True
 
             return ((player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
                 last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
@@ -649,16 +670,17 @@ class Node:
         if p[idx_to_discard] >= threshold:
             # Discard
             c, v = player_hands[player_idx].pop(idx_to_discard)
-
             hands_knowledge[player_idx].pop(idx_to_discard)
-            if len_deck > 0:
-                hands_knowledge[player_idx].append(('',0))
-                len_deck -= 1
-            else:
-                last_turn_played[player_idx] = True
 
             discard_pile.append((c,v))
             info_tk -= 1
+
+            if len_deck > 0:
+                hands_knowledge[player_idx].append(('',0))
+                len_deck -= 1
+                player_hands = self.__draw(player_idx, player_hands, table_cards, discard_pile)
+            else:
+                last_turn_played[player_idx] = True
 
             return ((player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
                 last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
@@ -750,13 +772,17 @@ class Node:
         # Discard
         c, v = player_hands[player_idx].pop(0)
         hands_knowledge[player_idx].pop(0)
+
+        discard_pile.append((c,v))
+        info_tk -= 1
+
         if len_deck > 0:
             hands_knowledge[player_idx].append(('',0))
             len_deck -= 1
+            player_hands = self.__draw(player_idx, player_hands, table_cards, discard_pile)
         else:
             last_turn_played[player_idx] = True
-        discard_pile.append((c,v))
-        info_tk -= 1
+
         return ((player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
             last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
 
@@ -792,7 +818,7 @@ class Node:
                         dst = player
                 for v in VALUES:
                     if value_hints_count[player][v] >= max_count:
-                        max_count = value_hints_count[player][k]
+                        max_count = value_hints_count[player][v]
                         hint_type = 'value'
                         hint_val = v
                         dst = player
@@ -871,3 +897,35 @@ class Node:
             node.parent.value += value
             node.parent.num_visits += num_visits
             node.backprop(node.parent, value, num_visits)
+
+class MCTSAgent:
+    def __init__(self, player_idx, env: Hanabi):
+        self.player_idx = player_idx
+        self.env = env
+    
+    def compute_action(self, timeout=1.0, C=2):
+        state = (self.player_idx, self.env.player_hands, self.env.hands_knowledge, self.env.played_last_turn,
+            self.env.table_cards, self.env.discard_pile, self.env.info_tk, self.env.err_tk, len(self.env.deck))
+        root = Node(state)
+        timeout = time.time() + timeout
+        while time.time() <= timeout:
+            root.redetermine()
+            node = root
+
+            while node.fully_expanded():
+                node = node.select(C)
+
+                if node.player_idx != root.player_idx:
+                    node.redetermine()
+
+            node.expand()
+            score = node.simulate()
+            node.backprop(node, score, node.num_visits)
+        
+        return root.select(C).action
+
+env = Hanabi()
+env.reset(0)
+
+p1 = MCTSAgent(0, env)
+print(p1.compute_action())
