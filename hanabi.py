@@ -7,10 +7,10 @@ def deepcopy(d: 'dict[str, list]'): return {key: d[key].copy() for key in d.keys
 
 class Hanabi:
     def __init__(self, num_players=2, view_colors=['red','white','green','blue','yellow'], verbose=False):
-        self.num_actions = 21 # P0-4, D0-4, HCR-W, HV1-5, Invalid/deal
+        #self.num_actions = 21 # P0-4, D0-4, HCR-W, HV1-5, Invalid/deal
         self.num_players = num_players
         self.hand_size = 5 if num_players < 4 else 4
-        self.state_size = 838
+        #self.state_size = 838
         self.view_colors = view_colors
         self.verbose = verbose
         #self.reset()
@@ -339,7 +339,34 @@ class Hanabi:
         elif action in range(10,20): # hint
             if self.info_tk == 8: return False
             return True
+
+    def compute_actions(self, player_idx):
+        actions = []
+        count = 0
+        if self.err_tk < 3:
+            for _ in self.hands_knowledge[player_idx]: # Plays
+                actions.append(count)
+                count += 1
+        if self.info_tk > 0:
+            for _ in self.hands_knowledge[player_idx]: # Discards
+                actions.append(count)
+                count += 1
         
+        if self.info_tk < 8:
+            for pl in range(self.num_players):
+                player = (player_idx + pl) % self.num_players
+                if player != player_idx:
+                    colors = {k: 0 for k in COLORS}
+                    values = {v: 0 for v in VALUES}
+                    for card in self.player_hands[player]:
+                        colors[card[0]] += 1
+                        values[card[1]] += 1
+                    for j, k in enumerate(colors.keys()):
+                        if colors[k] > 0: actions.append(10 + (pl-1) * 5 + j)
+                    for j, k in enumerate(values.keys()):
+                        if values[k] > 0: actions.append(10+5*(self.num_players-1) + (pl-1) * 5 + j)
+        return actions
+
     def reset(self, player_idx, permute_colors=False):
         self.info_tk = 0 # max 8
         self.err_tk = 0 # max 3
@@ -365,22 +392,23 @@ class Hanabi:
         self.played_last_turn = [False for _ in range(self.num_players)]
         return #self.compute_state(player_idx, permute_colors) #self.encode(player_idx) #
     
-    def set_state(self, hands_knowledge, board, pile, info_tk, err_tk, player_hands, deck):
+    def set_state(self, hands_knowledge, board, pile, info_tk, err_tk, player_hands, deck, played_last_turn):
         self.info_tk = info_tk
         self.err_tk = err_tk
-        self.hands_knowledge = [hands_knowledge[i].copy() for i in range(self.num_players)]
+        self.last_turn = len(deck) == 0
+        self.deck = deck.copy()
         self.table_cards = deepcopy(board)
         self.discard_pile = pile.copy()
         self.player_hands = [player_hands[i].copy() for i in range(self.num_players)]
-        self.deck = deck.copy()
-        self.played_last_turn = [False for _ in range(self.num_players)]
-        self.last_turn = False
-        if len(self.deck) == 0:
-            for p in range(self.num_players, -1, -1):
-                if len(self.player_hands[p]) < self.hand_size:
-                    for pl in range(p, -1, -1):
-                        self.played_last_turn[pl] = True
-                    break
+        self.hands_knowledge = [hands_knowledge[i].copy() for i in range(self.num_players)]
+        self.played_last_turn = played_last_turn.copy()
+    
+    def is_final_state(self):
+        return self.err_tk == 3 or (len(self.deck) == 0 and all(self.played_last_turn)) or sum(len(self.table_cards[k]) for k in COLORS) == 25
+    
+    def final_score(self):
+        if self.err_tk == 3: return 0
+        return sum(len(self.table_cards[k]) for k in COLORS)
     
     def __action_play(self, player_idx, num):
         done = False

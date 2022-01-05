@@ -308,29 +308,29 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-eval_agent_goodness(num_agents=2, num_games=1000)
+#eval_agent_goodness(num_agents=2, num_games=1000)
 
 
-env = Hanabi(verbose=True)
-p1 = Agent(0, env)
-p2 = Agent(1, env)
-
-env.reset(0)
-
-while True:
-    p1.act()
-    if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
-        break
-
-    p2.act()
-    if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
-        break
-
-print(f'\nCards left: {len(env.deck)}')
-print(f'Error tokens: {3 - env.err_tk} | Info tokens: {8 - env.info_tk}')
-for k in COLORS:
-    print(f'{k}: {len(env.table_cards[k])} | ', end='')
-print()
+#env = Hanabi(verbose=True)
+#p1 = Agent(0, env)
+#p2 = Agent(1, env)
+#
+#env.reset(0)
+#
+#while True:
+#    p1.act()
+#    if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
+#        break
+#
+#    p2.act()
+#    if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
+#        break
+#
+#print(f'\nCards left: {len(env.deck)}')
+#print(f'Error tokens: {3 - env.err_tk} | Info tokens: {8 - env.info_tk}')
+#for k in COLORS:
+#    print(f'{k}: {len(env.table_cards[k])} | ', end='')
+#print()
 
 # https://arxiv.org/pdf/1902.06075.pdf
 # https://arxiv.org/pdf/1704.07069.pdf
