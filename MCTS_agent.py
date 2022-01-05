@@ -7,52 +7,84 @@ import time
 # initial state
 FULL_DECK = [(c,v) for c,v in product(COLORS, [1,1,1,2,2,3,3,4,4,5])] # can use .copy()
 
+NUM_MOVES = 5
+# def play_probably_safe_card(self, threshold): pass
+# def discard_probably_useless_card(self, threshold): pass
+# def tell_anyone_about_useful_card(self): pass
+# def tell_dispensable(self): pass
+# def tell_most_info(self): pass
+
+def deepcopy(d: 'dict[str, list]'): return {key: d[key].copy() for key in d.keys()}
+COLORS = ['red','yellow','green','white','blue']
+VALUES = range(1,5+1)
+
 class Node:
     total_visits = 0
 
-    def __init__(self, player_idx, hands_knowledge, board, pile, player_hands, info_tk, err_tk, num_players, action=None, value=0, parent=None):
-        self.env = Hanabi(num_players)
-        self.player_idx = player_idx
-        self.__info_tk = info_tk
-        self.__err_tk = err_tk
-        self.__hands_knowledge = [hands_knowledge[i].copy() for i in range(self.env.num_players)]
-        self.__board = deepcopy(board)
-        self.__pile = pile.copy()
-        self.__player_hands = [player_hands[i].copy() for i in range(self.env.num_players)]
+    def __init__(self, state, action=None, parent=None):
+        # state:
+        # player_idx, player_hands, hands_knowledge, last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck
+        # player_idx is the idx of the playing player @ state
+        self.player_idx, self.player_hands, self.hands_knowledge, self.last_turn_played, \
+        self.table_cards, self.discard_pile, self.info_tk, self.err_tk, self.len_deck = state
+        self.num_players = len(self.last_turn_played)
         self.redetermine()
 
         self.num_visits = 0
+        self.value = 0
         self.action = action
-        self.value = value
         self.parent = parent
         self.children = []
-        self.expanded = [False, False, False, False, False]
-        self.valid_moves = self.__valid_moves()
+
+        self.expanded = [False for _ in range(NUM_MOVES)]
+        self.valid_moves = self.__calc_valid_moves()
+
+    def __calc_valid_moves(self):
+        valid_moves = [False for _ in range(NUM_MOVES)]
+        if self.err_tk == 3 or all(self.last_turn_played) or sum(len(self.table_cards[k]) for k in COLORS) == 25:
+            return valid_moves
+        valid_moves[0] = True
+        if self.info_tk > 0:
+            valid_moves[1] = True
+        if self.info_tk < 8:
+            valid_moves[2] = True
+            valid_moves[3] = True
+            valid_moves[4] = True
+        return valid_moves
 
     def __sample_plausible_hand(self, knowledge: list, board: 'dict[str, list]', pile: list, player_hands: 'list[list]'):
         # need to build a plausible deck
         deck = FULL_DECK.copy()
-        for k in knowledge.keys():
-            for card in board: deck.remove(card)
+        for k in COLORS:
+            for card in board[k]:
+                if card in deck: deck.remove(card)
         for hand in player_hands:
-            for card in hand: deck.remove(card)
-        for card in pile: deck.remove(card)
+            for card in hand: 
+                if card in deck: deck.remove(card)
+        for card in pile: 
+            if card in deck: deck.remove(card)
 
         new_kn = [] # fixes corner cases in which we can infer the card
         for c, v in knowledge:
-            if c != '' and v != 0: new_kn.append((c,v)); deck.remove((c,v))
+            if c != '' and v != 0: 
+                new_kn.append((c,v))
+                if (c,v) in deck: deck.remove((c,v))
             elif c != '':
                 count, val = 0, 0
                 for k, w in deck:
                     if k == c: count += 1; val = w
                     if count > 1: break
-                if count == 1: new_kn.append((c,val)); deck.remove((c,val))
+                if count == 1: 
+                    new_kn.append((c,val)); 
+                    if (c,val) in deck: deck.remove((c,val))
             elif v != 0:
                 count, col = 0, ''
                 for k, w in deck:
                     if w == v: count += 1; col = k
                     if count > 1: break
-                if count == 1: new_kn.append((col,v)); deck.remove((col,v))
+                if count == 1: 
+                    new_kn.append((col,v)) 
+                    if (col,v) in deck: deck.remove((col,v))
             elif c == '' and v == 0 and len(deck) == 1: new_kn.append(deck.pop())
             else: new_kn.append((c,v))
         
@@ -72,93 +104,352 @@ class Node:
         return plausible_hand, deck 
     
     def redetermine(self):
-        self.hand, self.deck = self.__sample_plausible_hand(self.__hands_knowledge[self.player_idx], self.__board, self.__pile, self.__player_hands)
-        for i in range(self.env.num_players):
-            if i == self.player_idx: self.__player_hands[i] = self.hand
-        self.env.set_state(self.__hands_knowledge, self.__board, self.__pile, self.__info_tk, self.__err_tk, self.__player_hands, self.deck)
+        self.hand, self.deck = self.__sample_plausible_hand(self.hands_knowledge[self.player_idx], self.table_cards, self.discard_pile, self.player_hands)
+        for i in range(self.num_players):
+            if i == self.player_idx: self.player_hands[i] = self.hand; break
 
-    def __default_policy(self, player): # used in simulation #TODO
-        if self.env.err_tk < 2 and len(self.env.deck) == 0:
-            if self.__play_probably_safe_card(0.0): return
+    def play_probably_safe_card(self, threshold=0.7):
+        player_hands = [card.copy() for card in self.player_hands]
+        hands_knowledge = [card.copy() for card in self.hands_knowledge]
+        last_turn_played = self.last_turn_played.copy()
+        table_cards = deepcopy(self.table_cards)
+        discard_pile = self.discard_pile.copy()
+        info_tk = self.info_tk
+        err_tk = self.err_tk
+        len_deck = self.len_deck
+
+        knowledge = hands_knowledge[self.player_idx]
+        p = []
+        for c, v in knowledge:
+            if c != '' and v != 0:
+                playable_val = len(table_cards[c]) + 1
+                if v == playable_val: p.append(1.0)
+                else: p.append(0.0)
+                
+            elif c != '':
+                playable_val = len(table_cards[c]) + 1
+                how_many = 3 if playable_val == 1 else (1 if playable_val == 5 else 2)
+                total = 10
+
+                for card in discard_pile:
+                    if card[0] == c and card[1] == playable_val:
+                        how_many -= 1
+                    if card[0] == c: total -= 1
+
+                for player in range(self.num_players):
+                    if player != self.player_idx:
+                        for card in player_hands[player]:
+                            if card[0] == c and card[1] == playable_val:
+                                how_many -= 1
+                            if card[0] == c: total -= 1
+
+                p.append(how_many / total)
+            
+            elif v != 0:
+                piles_playable = [k for k in COLORS if v == len(table_cards[k]) + 1]
+                how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(piles_playable)
+                total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
+
+                for card in discard_pile:
+                    if card[0] in piles_playable and card[1] == v:
+                        how_many -= 1
+                    if card[1] == v: total -= 1
+
+                for player in range(self.num_players):
+                    if player != self.player_idx:
+                        for card in player_hands[player]:
+                            if card[0] in piles_playable and card[1] == v:
+                                how_many -= 1
+                            if card[1] == v: total -= 1
+                
+                p.append(how_many / total)
+            
+            else:
+                min_p = 1.0
+                total = 50 - len(discard_pile) - \
+                    sum(len(table_cards[k]) for k in COLORS) - \
+                    sum(len(player_hands[(self.player_idx + offset) % self.num_players]) for offset in range(self.num_players-1))
+                vals = {}
+                for k in COLORS:
+                    pv = len(table_cards[k]) + 1
+                    if pv > 5: continue
+                    if pv not in vals.keys(): vals[pv] = [k]
+                    else: vals[pv].append(k)
+
+                for v in vals.keys():
+                    colors = vals[v]
+                    how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(colors)
+                    for card in discard_pile:
+                        if card[0] in colors and card[1] == v:
+                            how_many -= 1
+                    for player in range(self.num_players):
+                        if player != self.player_idx:
+                            for card in player_hands[player]:
+                                if card[0] in colors and card[1] == v:
+                                    how_many -= 1
+                    min_p = min(min_p, how_many / total)
+                p.append(min_p)
         
-        if self.__play_safe_card(): return
+        idx_to_play = np.argmax(p)
+        if p[idx_to_play] >= threshold:
+            # Play
+            c, v = player_hands[self.player_idx].pop(idx_to_play)
 
-        if self.env.err_tk < 3:
-            if self.__play_probably_safe_card(0.7): return
+            hands_knowledge[self.player_idx].pop(idx_to_play)
+            if len_deck > 0:
+                hands_knowledge[self.player_idx].append(('',0))
+                len_deck -= 1
+            else:
+                last_turn_played[self.player_idx] = True
 
-        if self.env.info_tk < 8:
-            if self.__tell_anyone_about_useful_card(): return
+            if v == len(table_cards[c]) + 1:
+                table_cards[c].append((c,v))
+                if info_tk > 0: info_tk -= 1
+            else:
+                discard_pile.append((c,v))
+                err_tk += 1
 
-        if self.env.info_tk > 4 and self.env.info_tk < 8:
-            if self.__tell_dispensable(): return
-        
-        if self.env.info_tk > 0:
-            if self.__osawa_discard(): return
-            if self.__discard_probably_useless_card(0.0): return
-            if self.__discard_oldest_first(): return
-        else:
-            if self.__tell_randomly(): return
-    
-    def play_probably_safe_card(self, player, threshold=0.7):pass
-    def discard_probably_useless_card(self, player, threshold=0.0):pass
-    def tell_anyone_about_useful_card(self, player): pass
-    def tell_dispensable(self, player): pass
-    def tell_most_info(self, player): pass
+            return ((self.player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None        
 
-    def remove_and_determine_incompatible_cards(self): pass
-    
-    def __valid_moves(self):
-        actions = [False, False, False, False, False] # play_prob_safe, ...
-        if self.env.err_tk == 3 or all(self.env.played_last_turn) or sum(len(self.env.table_cards[k]) for k in COLORS): return actions
-        
-        actions[0] = True  # play_probably_safe_card
-        if self.env.info_tk > 0:
-            actions[1] = True # discard_probably_useless_card
-        if self.env.info_tk < 8:
-            actions[2] = True # tell_anyone_about_useful_card
-            actions[3] = True # tell_dispensable
-            actions[4] = True # tell_most_info
-        return actions
-    
-    def fully_expanded(self):
-        return all(self.expanded)
+    def __interrupted_pile(self, table_cards, discard_pile, color):
+        for v in range(len(table_cards[color]) + 1, 6):
+            count = 3 if v == 1 else (1 if v == 5 else 2)
+            for card in discard_pile:
+                if card[0] == color and card[1] == v:
+                    count -= 1
+            if count == 0: return True
+        return False
 
-    def simulate(self):
-        Node.total_visits += 1
-        self.num_visits += 1
-        done = False
-        while not done:
-            for pl in range(self.env.num_players):
-                player = (self.player_idx + pl) % self.env.num_players
-                self.__default_policy(player)
-                if self.env.err_tk == 3 or all(self.env.played_last_turn) or sum(len(self.env.table_cards[k]) for k in COLORS) == 25:
-                    done = True
-                    break
-        score = 0 if self.env.err_tk == 3 else sum(len(self.env.table_cards[k]) for k in COLORS)
-        self.value += score
+    def discard_probably_useless_card(self, threshold=0.0): 
+        player_hands = [card.copy() for card in self.player_hands]
+        hands_knowledge = [card.copy() for card in self.hands_knowledge]
+        last_turn_played = self.last_turn_played.copy()
+        table_cards = deepcopy(self.table_cards)
+        discard_pile = self.discard_pile.copy()
+        info_tk = self.info_tk
+        err_tk = self.err_tk
+        len_deck = self.len_deck
 
-    def expand(self):
-        for i in range(len(self.valid_moves)):
-            if self.expanded[i] == False and self.valid_moves[i] == True:
-                n = Node((self.player_idx + 1) % self.env.num_players, self.__hands_knowledge, 
-                        self.__board, self.__pile, self.__player_hands, self.__info_tk, self.__err_tk, 
-                        self.env.num_players)
-                ok = False
-                if i == 0: ok = n.play_probably_safe_card(self.player_idx, 0.7) # first param: who performs action
-                elif i == 1: ok = n.discard_probably_useless_card(self.player_idx, 0.0)
-                elif i == 2: ok = n.tell_anyone_about_useful_card(self.player_idx)
-                elif i == 3: ok = n.tell_dispensable(self.player_idx)
-                elif i == 4: ok = n.tell_most_info(self.player_idx)
-                self.expanded[i] = True
-                if ok: 
-                    n.action = i
-                    self.children.append(n)
-                    return
-                else:
-                    self.valid_moves[i] = False
+        kn = hands_knowledge[self.player_idx]
+        # calc prob of being useless
+        p = []
+        for c, v in kn:
+            if c != '' and v != 0:
+                if v <= len(table_cards[c]) or \
+                    len(table_cards[c]) == 5 or\
+                    self.__interrupted_pile(table_cards, discard_pile, c):
+                    p.append(1.0)
                     continue
-            else: self.expanded[i] = True
+            elif c != '':
+                if len(table_cards[c]) == 5 or\
+                    self.__interrupted_pile(table_cards, discard_pile, c):
+                    p.append(1.0)
+                    continue
+                else:
+                    count = [3,2,2,2,1]
+                    total = 10
+                    v_lte = len(table_cards[c])
+                    how_many = sum(count[:v_lte])
+                    for card in discard_pile:
+                        if card[0] == c and card[1] <= v_lte:
+                            how_many -= 1
+                        if card[0] == c: total -= 1
+                    for player in range(self.num_players):
+                        if player != self.player_idx:
+                            for card in player_hands[player]:
+                                if card[0] == c and card[1] <= v_lte:
+                                    how_many -= 1
+                                if card[0] == c: total -= 1
+                    p.append(how_many / total)
+                    continue
+            elif v != 0:
+                if all(v <= len(table_cards[k]) for k in COLORS):
+                    p.append(1.0)
+                    continue
+                else:
+                    total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
+                    colors = []
+                    for k in COLORS:
+                        if v == len(table_cards[k]) + 1:
+                            colors.append(k)
+                        
+                    how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(colors)
+                    for card in discard_pile:
+                        if card[0] in colors and card[1] == v:
+                            how_many -= 1
+                        if card[1] == v: total -= 1
+                    for player in range(self.num_players):
+                        if player != self.player_idx:
+                            for card in player_hands[player]:
+                                if card[0] in colors and card[1] == v:
+                                    how_many -= 1
+                                if card[1] == v: total -= 1
+                    p.append(how_many / total)
+            else:
+                p.append(0.0)
 
+        idx_to_discard = np.argmax(p)
+        if all(pv == p[0] for pv in p): idx_to_discard = 0
+        if p[idx_to_discard] >= threshold:
+            # Discard
+            c, v = player_hands[self.player_idx].pop(idx_to_discard)
+
+            hands_knowledge[self.player_idx].pop(idx_to_discard)
+            if len_deck > 0:
+                hands_knowledge[self.player_idx].append(('',0))
+                len_deck -= 1
+            else:
+                last_turn_played[self.player_idx] = True
+
+            discard_pile.append((c,v))
+            info_tk -= 1
+
+            return ((self.player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None
+        
+    def tell_anyone_about_useful_card(self): 
+        player_hands = [card.copy() for card in self.player_hands]
+        hands_knowledge = [card.copy() for card in self.hands_knowledge]
+        last_turn_played = self.last_turn_played.copy()
+        table_cards = deepcopy(self.table_cards)
+        discard_pile = self.discard_pile.copy()
+        info_tk = self.info_tk
+        err_tk = self.err_tk
+        len_deck = self.len_deck
+
+        hint_type = None
+        hint_val = None
+        dst = None
+
+        for pl in range(self.num_players):
+            player = (self.player_idx + pl) % self.num_players
+            if player != self.player_idx:
+                hand = player_hands[player]
+                kn = hands_knowledge[player]
+
+                for (kc, kv), (c, v) in zip(kn, hand):
+                    if len(table_cards[c]) + 1 == v:
+                        if kc != '' and kv != 0: continue
+
+                        if kc == '':
+                            hint_type = 'color'
+                            hint_val = c
+                            dst = player
+                            break
+                        
+                        if kv == 0:
+                            hint_type = 'value'
+                            hint_val = v
+                            dst = player
+                            break
+
+        if hint_type is not None and hint_val is not None and dst is not None:
+            for i in range(len(player_hands[dst])):
+                if player_hands[dst][i][0 if hint_type == 'color' else 1] == hint_val:
+                    hands_knowledge[dst][i] = player_hands[dst][i]
+            return ((self.player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None
+        
+    def tell_dispensable(self):
+        player_hands = [card.copy() for card in self.player_hands]
+        hands_knowledge = [card.copy() for card in self.hands_knowledge]
+        last_turn_played = self.last_turn_played.copy()
+        table_cards = deepcopy(self.table_cards)
+        discard_pile = self.discard_pile.copy()
+        info_tk = self.info_tk
+        err_tk = self.err_tk
+        len_deck = self.len_deck 
+
+        hint_type = None
+        hint_val = None
+        dst = None
+
+        for pl in range(self.num_players): 
+            player = (self.player_idx + pl) % self.num_players
+            if player != self.player_idx:
+                hand = player_hands[player]
+                kn = hands_knowledge[player]
+
+                for (kc, kv), (c, v) in zip(kn, hand):
+                    if v <= len(table_cards[c]) and kv == 0:
+                        hint_type = 'value'
+                        hint_val = v
+                        dst = player
+                        break
+                    elif len(table_cards[c]) == 5 and kc == '':
+                        hint_type = 'color'
+                        hint_val = c
+                        dst = player
+                        break
+                    elif self.__interrupted_pile(table_cards, discard_pile, c) and kc == '':
+                        hint_type = 'color'
+                        hint_val = c
+                        dst = player
+                        break
+
+        if hint_type is not None and hint_val is not None and dst is not None:
+            for i in range(len(player_hands[dst])):
+                if player_hands[dst][i][0 if hint_type == 'color' else 1] == hint_val:
+                    hands_knowledge[dst][i] = player_hands[dst][i]
+            return ((self.player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None
+
+    def tell_most_info(self): 
+        player_hands = [card.copy() for card in self.player_hands]
+        hands_knowledge = [card.copy() for card in self.hands_knowledge]
+        last_turn_played = self.last_turn_played.copy()
+        table_cards = deepcopy(self.table_cards)
+        discard_pile = self.discard_pile.copy()
+        info_tk = self.info_tk
+        err_tk = self.err_tk
+        len_deck = self.len_deck 
+
+        color_hints_count = [{k: 0 for k in COLORS} for _ in range(self.num_players)]
+        value_hints_count = [{k: 0 for k in VALUES} for _ in range(self.num_players)]
+
+        for player in range(self.num_players):
+            if player != self.player_idx:
+                hand = player_hands[player]
+                kn = hands_knowledge[player]
+
+                for (kc, kv), (c, v) in zip(kn, hand):
+                    if kc == '':
+                        color_hints_count[player][c] += 1
+                    if kv == 0:
+                        value_hints_count[player][v] += 1
+        
+        hint_type = None
+        hint_val = None
+        dst = None
+        max_count = 0
+        for player in range(self.num_players):
+            if player != self.player_idx:
+                for k in COLORS:
+                    if color_hints_count[player][k] >= max_count:
+                        max_count = color_hints_count[player][k]
+                        hint_type = 'color'
+                        hint_val = k
+                        dst = player
+                for v in VALUES:
+                    if value_hints_count[player][v] >= max_count:
+                        max_count = value_hints_count[player][k]
+                        hint_type = 'value'
+                        hint_val = v
+                        dst = player
+
+        if hint_type is not None and hint_val is not None and dst is not None:
+            for i in range(len(player_hands[dst])):
+                if player_hands[dst][i][0 if hint_type == 'color' else 1] == hint_val:
+                    hands_knowledge[dst][i] = player_hands[dst][i]
+            return ((self.player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None
+    
     def select(self, C=2):
         max_UCB = 0
         selected_child = None
@@ -169,40 +460,281 @@ class Node:
                 selected_child = child
         return selected_child
 
+    def fully_expanded(self):
+        return all(self.expanded)
+
+    def expand(self):
+        for i in range(len(self.valid_moves)):
+            if self.expanded[i] == False and self.valid_moves[i] == True:
+                next_state = None
+                if i == 0: next_state = self.play_probably_safe_card(0.7)
+                elif i == 1: next_state = self.discard_probably_useless_card(0.0)
+                elif i == 2: next_state = self.tell_anyone_about_useful_card()
+                elif i == 3: next_state = self.tell_dispensable()
+                elif i == 4: next_state = self.tell_most_info()
+                self.expanded[i] = True
+                if next_state is not None:
+                    self.children.append(Node(next_state, action=i, parent=self))
+                    return
+                else:
+                    self.valid_moves[i] = False
+                    continue
+            else: self.expanded[i] = True
+
+    def __play_probably_safe_card(self, state, threshold):
+        player_idx, player_hands, hands_knowledge, last_turn_played, \
+        table_cards, discard_pile, info_tk, err_tk, len_deck = state
+
+        knowledge = hands_knowledge[player_idx]
+        p = []
+        for c, v in knowledge:
+            if c != '' and v != 0:
+                playable_val = len(table_cards[c]) + 1
+                if v == playable_val: p.append(1.0)
+                else: p.append(0.0)
+                
+            elif c != '':
+                playable_val = len(table_cards[c]) + 1
+                how_many = 3 if playable_val == 1 else (1 if playable_val == 5 else 2)
+                total = 10
+
+                for card in discard_pile:
+                    if card[0] == c and card[1] == playable_val:
+                        how_many -= 1
+                    if card[0] == c: total -= 1
+
+                for player in range(self.num_players):
+                    if player != player_idx:
+                        for card in player_hands[player]:
+                            if card[0] == c and card[1] == playable_val:
+                                how_many -= 1
+                            if card[0] == c: total -= 1
+
+                p.append(how_many / total)
+            
+            elif v != 0:
+                piles_playable = [k for k in COLORS if v == len(table_cards[k]) + 1]
+                how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(piles_playable)
+                total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
+
+                for card in discard_pile:
+                    if card[0] in piles_playable and card[1] == v:
+                        how_many -= 1
+                    if card[1] == v: total -= 1
+
+                for player in range(self.num_players):
+                    if player != player_idx:
+                        for card in player_hands[player]:
+                            if card[0] in piles_playable and card[1] == v:
+                                how_many -= 1
+                            if card[1] == v: total -= 1
+                
+                p.append(how_many / total)
+            
+            else:
+                min_p = 1.0
+                total = 50 - len(discard_pile) - \
+                    sum(len(table_cards[k]) for k in COLORS) - \
+                    sum(len(player_hands[(player_idx + offset) % self.num_players]) for offset in range(self.num_players-1))
+                vals = {}
+                for k in COLORS:
+                    pv = len(table_cards[k]) + 1
+                    if pv > 5: continue
+                    if pv not in vals.keys(): vals[pv] = [k]
+                    else: vals[pv].append(k)
+
+                for v in vals.keys():
+                    colors = vals[v]
+                    how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(colors)
+                    for card in discard_pile:
+                        if card[0] in colors and card[1] == v:
+                            how_many -= 1
+                    for player in range(self.num_players):
+                        if player != player_idx:
+                            for card in player_hands[player]:
+                                if card[0] in colors and card[1] == v:
+                                    how_many -= 1
+                    min_p = min(min_p, how_many / total)
+                p.append(min_p)
+        
+        idx_to_play = np.argmax(p)
+        if p[idx_to_play] >= threshold:
+            # Play
+            c, v = player_hands[player_idx].pop(idx_to_play)
+
+            hands_knowledge[player_idx].pop(idx_to_play)
+            if len_deck > 0:
+                hands_knowledge[player_idx].append(('',0))
+                len_deck -= 1
+            else:
+                last_turn_played[player_idx] = True
+
+            if v == len(table_cards[c]) + 1:
+                table_cards[c].append((c,v))
+                if info_tk > 0: info_tk -= 1
+            else:
+                discard_pile.append((c,v))
+                err_tk += 1
+
+            return ((player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None        
+
+    def __discard_probably_useless_card(self, state, threshold):
+        player_idx, player_hands, hands_knowledge, last_turn_played, \
+        table_cards, discard_pile, info_tk, err_tk, len_deck = state
+
+        kn = hands_knowledge[player_idx]
+        # calc prob of being useless
+        p = []
+        for c, v in kn:
+            if c != '' and v != 0:
+                if v <= len(table_cards[c]) or \
+                    len(table_cards[c]) == 5 or\
+                    self.__interrupted_pile(table_cards, discard_pile, c):
+                    p.append(1.0)
+                    continue
+            elif c != '':
+                if len(table_cards[c]) == 5 or\
+                    self.__interrupted_pile(table_cards, discard_pile, c):
+                    p.append(1.0)
+                    continue
+                else:
+                    count = [3,2,2,2,1]
+                    total = 10
+                    v_lte = len(table_cards[c])
+                    how_many = sum(count[:v_lte])
+                    for card in discard_pile:
+                        if card[0] == c and card[1] <= v_lte:
+                            how_many -= 1
+                        if card[0] == c: total -= 1
+                    for player in range(self.num_players):
+                        if player != player_idx:
+                            for card in player_hands[player]:
+                                if card[0] == c and card[1] <= v_lte:
+                                    how_many -= 1
+                                if card[0] == c: total -= 1
+                    p.append(how_many / total)
+                    continue
+            elif v != 0:
+                if all(v <= len(table_cards[k]) for k in COLORS):
+                    p.append(1.0)
+                    continue
+                else:
+                    total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
+                    colors = []
+                    for k in COLORS:
+                        if v == len(table_cards[k]) + 1:
+                            colors.append(k)
+                        
+                    how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(colors)
+                    for card in discard_pile:
+                        if card[0] in colors and card[1] == v:
+                            how_many -= 1
+                        if card[1] == v: total -= 1
+                    for player in range(self.num_players):
+                        if player != player_idx:
+                            for card in player_hands[player]:
+                                if card[0] in colors and card[1] == v:
+                                    how_many -= 1
+                                if card[1] == v: total -= 1
+                    p.append(how_many / total)
+            else:
+                p.append(0.0)
+
+        idx_to_discard = np.argmax(p)
+        if all(pv == p[0] for pv in p): idx_to_discard = 0
+        if p[idx_to_discard] >= threshold:
+            # Discard
+            c, v = player_hands[player_idx].pop(idx_to_discard)
+
+            hands_knowledge[player_idx].pop(idx_to_discard)
+            if len_deck > 0:
+                hands_knowledge[player_idx].append(('',0))
+                len_deck -= 1
+            else:
+                last_turn_played[player_idx] = True
+
+            discard_pile.append((c,v))
+            info_tk -= 1
+
+            return ((player_idx + 1) % self.num_players, player_hands, hands_knowledge, \
+                last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck)
+        return None
+
+    def __tell_anyone_about_useful_card(self, state):
+        pass
+
+    def __tell_dispensable(self, state):
+        pass
+
+    def __discard_oldest_first(self, state):
+        pass
+
+    def __tell_randomly(self, state):
+        pass
+
+    def __play(self, state):
+        player, player_hands, hands_knowledge, last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck = state
+        if err_tk < 2 and len_deck == 0:
+            next_state = self.__play_probably_safe_card(state, 0.0)
+            if next_state is not None: return next_state
+
+        next_state = self.__play_probably_safe_card(state, 1.0)
+        if next_state is not None: return next_state
+
+        if err_tk < 3:
+            next_state = self.__play_probably_safe_card(state, 0.7)
+            if next_state is not None: return next_state
+
+        if info_tk < 8:
+            next_state = self.__tell_anyone_about_useful_card(state)
+            if next_state is not None: return next_state
+
+        if info_tk > 4 and info_tk < 8:
+            next_state = self.__tell_dispensable(state)
+            if next_state is not None: return next_state
+        
+        if info_tk > 0:
+            next_state = self.__discard_probably_useless_card(state, 0.0)
+            if next_state is not None: return next_state
+            next_state = self.__discard_oldest_first(state)
+            if next_state is not None: return next_state
+        else:
+            next_state = self.__tell_randomly(state)
+            if next_state is not None: return next_state
+
+    def simulate(self):
+        Node.total_visits += 1
+        self.num_visits += 1
+        player_hands = [card.copy() for card in self.player_hands]
+        hands_knowledge = [card.copy() for card in self.hands_knowledge]
+        last_turn_played = self.last_turn_played.copy()
+        table_cards = deepcopy(self.table_cards)
+        discard_pile = self.discard_pile.copy()
+        info_tk = self.info_tk
+        err_tk = self.err_tk
+        len_deck = self.len_deck 
+
+        done = False
+        while not done:
+            for pl in range(self.num_players):
+                player = (self.player_idx + pl) % self.num_players
+
+                player_hands, hands_knowledge, last_turn_played, table_cards, discard_pile, \
+                info_tk, err_tk, len_deck = self.__play((player, player_hands, hands_knowledge, 
+                    last_turn_played, table_cards, discard_pile, info_tk, err_tk, len_deck))
+
+                if err_tk == 3 or all(last_turn_played) or sum(len(table_cards[k]) for k in COLORS) == 25:
+                    done = True
+                    break
+
+        score = sum(len(table_cards[k]) for k in COLORS)
+        if err_tk == 3: score = 0
+        return score
+
     def backprop(self, node, value, num_visits):
         if node.parent is not None:
             node.parent.value += value
             node.parent.num_visits += num_visits
             node.backprop(node.parent, value, num_visits)
-
-def MCTS(current_state, timeout=1.0, C=2):
-    Node.total_visits = 0
-    root = Node(*current_state)
-    saved_hand = []
-
-    timeout = time.time() + timeout
-    while time.time() <= timeout:
-        root.redetermine()
-        node = root
-        
-        while node.fully_expanded():
-            new_node = node.select(C)
-
-            if node.player_idx != root.player_idx:
-                node.hand = saved_hand
-                # remove from hand incompatible cards with observation + sample new cards
-                node.remove_and_determine_incompatible_cards() 
-            
-            node = new_node
-
-            if node.player_idx != root.player_idx:
-                saved_hand = node.hand.copy()
-                node.hand = node.redetermine()
-        
-        node.expand()
-        score = node.simulate()
-        node.backprop(node, score, node.num_visits)
-    
-    return root.select(C).action
-
-

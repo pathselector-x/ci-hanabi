@@ -368,12 +368,13 @@ class Hanabi:
     def set_state(self, hands_knowledge, board, pile, info_tk, err_tk, player_hands, deck):
         self.info_tk = info_tk
         self.err_tk = err_tk
-        self.hands_knowledge = [hands_knowledge[i].copy() for i in range(len(hands_knowledge))]
+        self.hands_knowledge = [hands_knowledge[i].copy() for i in range(self.num_players)]
         self.table_cards = deepcopy(board)
         self.discard_pile = pile.copy()
-        self.player_hands = [player_hands[i].copy() for i in range(len(player_hands))]
+        self.player_hands = [player_hands[i].copy() for i in range(self.num_players)]
         self.deck = deck.copy()
         self.played_last_turn = [False for _ in range(self.num_players)]
+        self.last_turn = False
         if len(self.deck) == 0:
             for p in range(self.num_players, -1, -1):
                 if len(self.player_hands[p]) < self.hand_size:
@@ -385,8 +386,11 @@ class Hanabi:
         done = False
         reward = 0
 
+        if num >= len(self.player_hands[player_idx]):
+            print(len(self.player_hands[player_idx]), num)
         self.hands_knowledge[player_idx].pop(num)
-        self.hands_knowledge[player_idx].append(['',0])
+        if len(self.deck) > 0:
+            self.hands_knowledge[player_idx].append(['',0])
 
         c, v = self.player_hands[player_idx].pop(num)
         if len(self.deck) > 0: self.player_hands[player_idx].append(self.deck.pop())
@@ -419,7 +423,8 @@ class Hanabi:
         reward = 0
 
         self.hands_knowledge[player_idx].pop(num)
-        self.hands_knowledge[player_idx].append(['',0])
+        if len(self.deck) > 0:
+            self.hands_knowledge[player_idx].append(['',0])
 
         c, v = self.player_hands[player_idx].pop(num)
         if len(self.deck) > 0: self.player_hands[player_idx].append(self.deck.pop())
