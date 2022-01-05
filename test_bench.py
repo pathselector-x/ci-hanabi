@@ -247,7 +247,9 @@ class Agent:
 
     def __tell_randomly(self):
         legal_actions = self.env.compute_legal_action(self.pidx)
-        legal_actions = legal_actions[10:-1]
+        if len(legal_actions) == 0:
+            print('err')
+        legal_actions = legal_actions[10:]
         legal_actions = [o for la, o in zip(legal_actions, range(10,10+5*(self.env.num_players-1)*2)) if la == 1]
         self.env.step(self.pidx, random.choice(legal_actions))
         return True

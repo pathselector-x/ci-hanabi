@@ -22,9 +22,53 @@ class SASAgent:
 
         random.shuffle(deck)
 
-        hand = [] #TODO: sample according to knowledge !!!
-        for _ in self.env.hands_knowledge[self.player_idx]:
-            hand.append(deck.pop())
+        knowledge = self.env.hands_knowledge[self.player_idx].copy()
+        for i, (c, v) in enumerate(knowledge):
+            if c != '' and v == 0: # if I know only the color
+                color_count = sum(1 for card in deck if card[0] == c)
+                if color_count == 1:
+                    val = 0
+                    for card in deck:
+                        if card[0] == c: val = card[1]; break
+                    knowledge[i] = (c,val)
+            elif c == '' and v != 0: # if I know only the value
+                value_count = sum(1 for card in deck if card[1] == v)
+                if value_count == 1:
+                    col = ''
+                    for card in deck:
+                        if card[1] == v: col = card[0]; break
+                    knowledge[i] = (col,v)
+            #TODO: corner case in where in our belief only our ('',0) cards are left
+
+        hand = []
+        for c, v in knowledge:
+            if c != '' and v != 0:
+                for card in deck:
+                    if card[0] == c and card[1] == v:
+                        hand.append(card)
+                        deck.remove(card)
+                        break
+            else:
+                hand.append(None)
+
+        for i, (c, v) in enumerate(knowledge):
+            if hand[i] is None:
+                if c != '':
+                    for card in deck:
+                        if card[0] == c:
+                            hand[i] = card
+                            deck.remove(card)
+                            break
+                elif v != 0:
+                    for card in deck:
+                        if card[1] == v:
+                            hand[i] = card
+                            deck.remove(card)
+                            break
+
+        for i, (c, v) in enumerate(knowledge):
+            if hand[i] is None:
+                hand[i] = deck.pop()
 
         player_hands[self.player_idx] = hand
         return player_hands, deck
@@ -51,22 +95,36 @@ class SASAgent:
                     done = simulation.is_final_state()
             scores[action] = simulation.final_score()
         
-        best_action, score = 0, 0
-        for key in scores.keys():
-            if scores[key] > score:
-                best_action = key
-                score = scores[key]
-        return best_action
+        return scores
+        
 
     def act(self):
-        action = self.__search()
-        self.env.step(self.player_idx, action)
+        if len(self.env.deck) < 40:
+            tot_scores = None
+            for _ in range(25):
+                scores = self.__search()
+                if tot_scores is None:
+                    tot_scores = scores
+                else:
+                    for k in tot_scores.keys():
+                        tot_scores[k] += scores[k]
+
+            best_action, score = 0, 0
+            for key in scores.keys():
+                if scores[key] > score:
+                    best_action = key
+                    score = scores[key]
+
+            self.env.step(self.player_idx, best_action)
+        else:
+            a = Agent(self.player_idx, self.env)
+            a.act()
 
 env = Hanabi(2, verbose=True)
 env.reset(0)
 
 p1 = SASAgent(0, env)
-p2 = SASAgent(0, env)
+p2 = SASAgent(1, env)
 
 while True:
     p1.act()
