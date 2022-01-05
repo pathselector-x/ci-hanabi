@@ -186,12 +186,12 @@ class Agent:
                     len(self.env.table_cards[c]) == 5 or\
                     self.__interrupted_pile(c):
                     p.append(1.0)
-                    continue
+                else:
+                    p.append(0.0)
             elif c != '':
                 if len(self.env.table_cards[c]) == 5 or\
                     self.__interrupted_pile(c):
                     p.append(1.0)
-                    continue
                 else:
                     count = [3,2,2,2,1]
                     total = 10
@@ -212,7 +212,6 @@ class Agent:
             elif v != 0:
                 if all(v <= len(self.env.table_cards[k]) for k in COLORS):
                     p.append(1.0)
-                    continue
                 else:
                     total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
                     colors = []
@@ -309,7 +308,7 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-eval_agent_goodness(num_agents=3, num_games=1000)
+eval_agent_goodness(num_agents=2, num_games=1000)
 
 
 env = Hanabi(verbose=True)
