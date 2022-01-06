@@ -69,7 +69,7 @@ class SASAgent:
         for i, (c, v) in enumerate(knowledge):
             if hand[i] is None:
                 hand[i] = deck.pop()
-
+        if len(hand) < 5: print(len(hand), len(deck))
         player_hands[self.player_idx] = hand
         return player_hands, deck
 
@@ -98,10 +98,10 @@ class SASAgent:
         return scores
         
 
-    def act(self):
-        if len(self.env.deck) < 40:
+    def act(self, card_thresh=50, num_simulations=25):
+        if len(self.env.deck) < card_thresh:
             tot_scores = None
-            for _ in range(25):
+            for _ in range(num_simulations):
                 scores = self.__search()
                 if tot_scores is None:
                     tot_scores = scores
@@ -120,20 +120,80 @@ class SASAgent:
             a = Agent(self.player_idx, self.env)
             a.act()
 
-env = Hanabi(2, verbose=True)
-env.reset(0)
+import matplotlib.pyplot as plt
 
-p1 = SASAgent(0, env)
-p2 = SASAgent(1, env)
+def eval_agent_goodness(num_agents=2, num_games=1000):
+    env = Hanabi(num_players=num_agents)
+    players = []
+    for i in range(num_agents):
+        players.append(SASAgent(i, env))
 
-while True:
-    p1.act()
-    if env.is_final_state(): break
-    p2.act()
-    if env.is_final_state(): break
+    stats = []
 
-print(f'\nCards left: {len(env.deck)}')
-print(f'Error tokens: {3 - env.err_tk} | Info tokens: {8 - env.info_tk}')
-for k in COLORS:
-    print(f'{k}: {len(env.table_cards[k])} | ', end='')
-print()
+    for game in range(num_games):
+        env.reset(0)
+        done = False
+        while not done:
+            for p in players:
+                p.act(card_thresh=50, num_simulations=25)
+                if env.is_final_state(): break
+
+        if env.err_tk < 3:
+            stats.append(sum(len(env.table_cards[k]) for k in COLORS))
+        else:
+            stats.append(0)
+
+        if game % (num_games//10) == 0: print(game)
+
+    print(f'Average score on {num_games} games: {sum(stats) / num_games}')
+    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
+    print(f'Lost {sum(1 for s in stats if s == 0)}/{num_games} games')
+    plt.hist(stats, bins=25, edgecolor='white', linewidth=1.2)
+    plt.show()
+    exit()
+
+#eval_agent_goodness(num_agents=2, num_games=10)
+stats = []
+num_agents = 2
+num_games = 1
+count = num_games
+# 20, 10: 19.87
+# 50, 10: 21.47
+# 20, 20: 20.83
+# 20, 50: 21.60 Best so far
+# 50, 50: bad
+# 30, 50: 
+while count > 0:
+    try:
+        print(num_games - count)
+        env = Hanabi(num_agents, verbose=(num_games == 1))
+        env.reset(0)
+
+        agents = [SASAgent(i, env) for i in range(num_agents)]
+        done = False
+        while not done:
+            for a in agents:
+                a.act(card_thresh=30, num_simulations=200)
+                if env.is_final_state(): done = True; break
+
+        if env.err_tk < 3:
+            stats.append(sum(len(env.table_cards[k]) for k in COLORS))
+        else:
+            stats.append(0)
+
+        print(f'\nCards left: {len(env.deck)}')
+        print(f'Error tokens: {3 - env.err_tk} | Info tokens: {8 - env.info_tk}')
+        for k in COLORS:
+            print(f'{k}: {len(env.table_cards[k])} | ', end='')
+        print()
+        count -= 1
+    except Exception as e:
+        if type(e) == KeyboardInterrupt: break
+        continue
+
+if num_games > 1:    
+    print(f'Average score on {num_games} games: {sum(stats) / num_games}')
+    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
+    print(f'Lost {sum(1 for s in stats if s == 0)}/{num_games} games')
+    plt.hist(stats, bins=25, edgecolor='white', linewidth=1.2)
+    plt.show()
