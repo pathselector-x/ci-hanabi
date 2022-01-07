@@ -348,6 +348,7 @@ class Hanabi:
             for _ in self.hands_knowledge[player_idx]: # Plays
                 actions.append(count)
                 count += 1
+        count = 5
         if self.info_tk > 0:
             for _ in self.hands_knowledge[player_idx]: # Discards
                 actions.append(count)
@@ -416,7 +417,7 @@ class Hanabi:
         reward = 0
 
         if num >= len(self.player_hands[player_idx]):
-            print(len(self.player_hands[player_idx]), num)
+            print('Whoops! ', len(self.player_hands[player_idx]), num)
         self.hands_knowledge[player_idx].pop(num)
         if len(self.deck) > 0:
             self.hands_knowledge[player_idx].append(['',0])

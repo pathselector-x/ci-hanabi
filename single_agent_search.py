@@ -66,11 +66,12 @@ class SASAgent:
                             hand[i] = card
                             deck.remove(card)
                             break
-
+        
+        assert len(knowledge) == len(self.env.player_hands[self.player_idx])
         for i, (c, v) in enumerate(knowledge):
             if hand[i] is None:
                 hand[i] = deck.pop()
-        if len(hand) < 5: print(len(hand), len(deck))
+        
         player_hands[self.player_idx] = hand
         return player_hands, deck
 
@@ -133,6 +134,9 @@ import matplotlib.pyplot as plt
 
 def eval_agent_goodness(num_agents=2, num_games=1000):
     env = Hanabi(num_players=num_agents)
+    thresh = 50 - num_agents * 5 - 1
+    if num_agents > 3: thresh = 50 - num_agents * 4 - 1
+    print('Thresh: ', thresh)
     players = []
     for i in range(num_agents):
         players.append(SASAgent(i, env))
@@ -144,8 +148,10 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
         done = False
         while not done:
             for p in players:
-                p.act(card_thresh=50, num_simulations=25)
-                if env.is_final_state(): break
+                p.act(card_thresh=thresh, num_simulations=1)
+                if env.is_final_state(): 
+                    done = True
+                    break
 
         if env.err_tk < 3:
             stats.append(sum(len(env.table_cards[k]) for k in COLORS))
@@ -161,7 +167,7 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-##eval_agent_goodness(num_agents=2, num_games=10)
+#eval_agent_goodness(num_agents=5, num_games=10)
 #stats = []
 #num_agents = 2
 #num_games = 100
