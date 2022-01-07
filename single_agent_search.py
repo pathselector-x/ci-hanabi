@@ -9,6 +9,7 @@ class SASAgent:
     def __init__(self, player_idx, env: Hanabi):
         self.player_idx = player_idx
         self.env = env
+        self.need_search = True
     
     def __sample_from_belief(self):
         player_hands = [h.copy() for h in self.env.player_hands]
@@ -84,21 +85,28 @@ class SASAgent:
             # For each action we do a rollout (according to blueprint strategy) and register the outcome
             simulation = Hanabi(self.env.num_players)
             simulation.set_state(self.env.hands_knowledge, self.env.table_cards, self.env.discard_pile, self.env.info_tk, self.env.err_tk, player_hands, deck, self.env.played_last_turn)
-            agents = [Agent(p, simulation) for p in range(simulation.num_players)]
+            agents = [SASAgent(p, simulation) for p in range(simulation.num_players)]
             simulation.step(self.player_idx, action)
+            self.need_search = False
             
             done = simulation.is_final_state()
             while not done:
                 for p in range(simulation.num_players):
                     player = (self.player_idx + 1 + p) % simulation.num_players
-                    agents[player].act()
+                    if self.need_search:
+                        agents[player].act()
+                    else: 
+                        agents[player].act2(simulation)
                     done = simulation.is_final_state()
             scores[action] = simulation.final_score()
         
         return scores
         
+    def act2(self, env):
+        a = Agent(self.player_idx, env)
+        a.act()
 
-    def act(self, card_thresh=50, num_simulations=25):
+    def act(self, card_thresh=39, num_simulations=1):
         if len(self.env.deck) < card_thresh:
             tot_scores = None
             for _ in range(num_simulations):
@@ -116,6 +124,7 @@ class SASAgent:
                     score = scores[key]
 
             self.env.step(self.player_idx, best_action)
+            return best_action
         else:
             a = Agent(self.player_idx, self.env)
             a.act()
@@ -152,48 +161,48 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-#eval_agent_goodness(num_agents=2, num_games=10)
-stats = []
-num_agents = 2
-num_games = 1
-count = num_games
-# 20, 10: 19.87
-# 50, 10: 21.47
-# 20, 20: 20.83
-# 20, 50: 21.60 Best so far
-# 50, 50: bad
-# 30, 50: 
-while count > 0:
-    try:
-        print(num_games - count)
-        env = Hanabi(num_agents, verbose=(num_games == 1))
-        env.reset(0)
-
-        agents = [SASAgent(i, env) for i in range(num_agents)]
-        done = False
-        while not done:
-            for a in agents:
-                a.act(card_thresh=30, num_simulations=200)
-                if env.is_final_state(): done = True; break
-
-        if env.err_tk < 3:
-            stats.append(sum(len(env.table_cards[k]) for k in COLORS))
-        else:
-            stats.append(0)
-
-        print(f'\nCards left: {len(env.deck)}')
-        print(f'Error tokens: {3 - env.err_tk} | Info tokens: {8 - env.info_tk}')
-        for k in COLORS:
-            print(f'{k}: {len(env.table_cards[k])} | ', end='')
-        print()
-        count -= 1
-    except Exception as e:
-        if type(e) == KeyboardInterrupt: break
-        continue
-
-if num_games > 1:    
-    print(f'Average score on {num_games} games: {sum(stats) / num_games}')
-    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
-    print(f'Lost {sum(1 for s in stats if s == 0)}/{num_games} games')
-    plt.hist(stats, bins=25, edgecolor='white', linewidth=1.2)
-    plt.show()
+##eval_agent_goodness(num_agents=2, num_games=10)
+#stats = []
+#num_agents = 2
+#num_games = 100
+#count = num_games
+## 20, 10: 19.87
+## 50, 10: 21.47
+## 20, 20: 20.83
+## 20, 50: 21.60 Best so far
+## 50, 50: bad
+## 30, 50: 
+#while count > 0:
+#    try:
+#        print(num_games - count)
+#        env = Hanabi(num_agents, verbose=(num_games == 1))
+#        env.reset(0)
+#
+#        agents = [SASAgent(i, env) for i in range(num_agents)]
+#        done = False
+#        while not done:
+#            for a in agents:
+#                a.act(card_thresh=35, num_simulations=1) # 35 1
+#                if env.is_final_state(): done = True; break
+#
+#        if env.err_tk < 3:
+#            stats.append(sum(len(env.table_cards[k]) for k in COLORS))
+#        else:
+#            stats.append(0)
+#
+#        print(f'\nCards left: {len(env.deck)}')
+#        print(f'Error tokens: {3 - env.err_tk} | Info tokens: {8 - env.info_tk}')
+#        for k in COLORS:
+#            print(f'{k}: {len(env.table_cards[k])} | ', end='')
+#        print()
+#        count -= 1
+#    except Exception as e:
+#        if type(e) == KeyboardInterrupt: break
+#        continue
+#
+#if num_games > 1:    
+#    print(f'Average score on {num_games} games: {sum(stats) / num_games}')
+#    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
+#    print(f'Lost {sum(1 for s in stats if s == 0)}/{num_games} games')
+#    plt.hist(stats, bins=25, edgecolor='white', linewidth=1.2)
+#    plt.show()

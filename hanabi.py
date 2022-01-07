@@ -431,7 +431,7 @@ class Hanabi:
         if v == len(self.table_cards[c]) + 1:
             self.table_cards[c].append((c,v))
             reward = 5 + v
-            if self.info_tk > 0: 
+            if len(self.table_cards[c]) == 5 and self.info_tk > 0: 
                 self.info_tk -= 1
             if all(len(self.table_cards[k]) == 5 for k in COLORS):
                 reward = 100
