@@ -108,14 +108,14 @@ class ServerHintData(ServerToClientData):
     value: can be the color or the value of the card
     positions: a list of cards that satisfy the value of the hint
     '''
-    def __init__(self, sender: str, destination: str, type: str, value, positions: list, player: str) -> None: #! MOD 'player: str'
+    def __init__(self, sender: str, destination: str, type: str, value, positions: list, player: str) -> None: #! ADDED 'player: str'
         action = "Hint data from server to destination client"
-        self.source = sender #! super.sender overwrites self.sender, use a different name like 'self.source'
+        self.source = sender #! BUGFIX super.sender overwrites self.sender, use a different name like 'self.source'
         self.destination = destination
         self.type = type
         self.value = value
         self.positions = positions
-        self.player = player #! MOD
+        self.player = player #! ADDED so you know the current player (to be consistent with play and discard methods!)
         super().__init__(action)
 
 class ServerPlayerConnectionOk(ServerToClientData):
@@ -181,13 +181,14 @@ class ServerActionValid(ServerToClientData):
     move: the last move that occurred.
     cardHandIndex: the card index of the lastPlayer played card, given his hand order.
     '''
-    def __init__(self, player: str, lastPlayer: str, action: str, card, cardHandIndex: int) -> None:
-        #! action = "Valid action performed" # You are overwriting the action e.g. "discard"
+    def __init__(self, player: str, lastPlayer: str, action: str, card, cardHandIndex: int, handLength=0) -> None: #! ADDED send also length of hand of last player
+        #! BUGFIX action = "Valid action performed" # You are overwriting the action e.g. "discard"
         self.action = action
         self.card = card
         self.lastPlayer = lastPlayer
         self.cardHandIndex = cardHandIndex
         self.player = player
+        self.handLength = handLength #! ADDED
         super().__init__(action)
 
 class ServerPlayerMoveOk(ServerToClientData):
@@ -198,12 +199,13 @@ class ServerPlayerMoveOk(ServerToClientData):
     card: the last card played.
     cardHandIndex: the card index of the lastPlayer played card, given his hand order.
     '''
-    def __init__(self, player: str, lastPlayer: str, card, cardHandIndex: int) -> None:
+    def __init__(self, player: str, lastPlayer: str, card, cardHandIndex: int, handLength: int) -> None: #! ADDED send also length of hand of last player
         action = "Correct move! Well done!"
         self.card = card
         self.cardHandIndex = cardHandIndex
         self.lastPlayer = lastPlayer
         self.player = player
+        self.handLength = handLength #! ADDED
         super().__init__(action)
 
 class ServerPlayerThunderStrike(ServerToClientData):
@@ -215,12 +217,13 @@ class ServerPlayerThunderStrike(ServerToClientData):
     card: the card that was just discarded.
     cardHandIndex: the card index of the lastPlayer played card, given his hand order.
     '''
-    def __init__(self, player: str, lastPlayer: str, card, cardHandIndex: int) -> None:
+    def __init__(self, player: str, lastPlayer: str, card, cardHandIndex: int, handLength: int) -> None: #! ADDED send also length of hand of last player
         action = "The Gods are angry at you!"
         self.player = player
         self.lastPlayer = lastPlayer
         self.cardHandIndex = cardHandIndex
         self.card = card
+        self.handLength = handLength #! ADDED
         super().__init__(action)
 
 class ServerActionInvalid(ServerToClientData):

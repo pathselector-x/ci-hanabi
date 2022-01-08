@@ -1,15 +1,15 @@
 from hanabi import Hanabi, COLORS
-from test_bench import Agent
+from rule_based_agent import Agent
 from itertools import product
 import random
 
 FULL_DECK = [(c,v) for c,v in product(COLORS, [1,1,1,2,2,3,3,4,4,5])] # can use .copy()
-
+ITERS_DONE = 0
 class SASAgent:
+    iters_done = 0
     def __init__(self, player_idx, env: Hanabi):
         self.player_idx = player_idx
         self.env = env
-        #self.need_search = True
     
     def __sample_from_belief(self):
         player_hands = [h.copy() for h in self.env.player_hands]
@@ -78,37 +78,32 @@ class SASAgent:
         # Perform 1-ply search
         scores = {}
         # Need to sample the highest probable hand from belief space, and recompute the deck accordingly
-        player_hands, deck = self.__sample_from_belief()
+        
         #!print('Sampled: ', player_hands)
         valid_actions = self.env.compute_actions(self.player_idx)
 
         for action in valid_actions:
+            player_hands, deck = self.__sample_from_belief()
             # For each action we do a rollout (according to blueprint strategy) and register the outcome
-            simulation = Hanabi(self.env.num_players)
+            simulation = Hanabi(self.env.num_players, verbose=False)
             simulation.set_state(self.env.hands_knowledge, self.env.table_cards, self.env.discard_pile, self.env.info_tk, self.env.err_tk, player_hands, deck, self.env.played_last_turn)
             agents = [Agent(p, simulation) for p in range(simulation.num_players)]
             simulation.step(self.player_idx, action)
-            #self.need_search = False
             
             done = simulation.is_final_state()
             while not done:
                 for p in range(simulation.num_players):
                     player = (self.player_idx + 1 + p) % simulation.num_players
-                    #if agents[player].need_search:
-                    #    agents[player].act()
-                    #else: 
-                    agents[player].act()#simulation)
+                    agents[player].act()
                     done = simulation.is_final_state()
             scores[action] = simulation.final_score()
         
         return scores
-        
-    #def act2(self, env):
-    #    a = Agent(self.player_idx, env)
-    #    a.act()
 
     def act(self, card_thresh=39, num_simulations=1):
-        if len(self.env.deck) < card_thresh:
+        global ITERS_DONE
+        ITERS_DONE += 1
+        if ITERS_DONE > card_thresh: #len(self.env.deck) < card_thresh:
             tot_scores = None
             for _ in range(num_simulations):
                 scores = self.__search()
@@ -117,15 +112,8 @@ class SASAgent:
                 else:
                     for k in tot_scores.keys():
                         tot_scores[k] += scores[k]
-
-            best_action, score = 0, 0
-            for key in scores.keys():
-                if scores[key] > score:
-                    best_action = key
-                    score = scores[key]
-
             #self.env.step(self.player_idx, best_action)
-            return best_action
+            return max(zip(tot_scores.values(), tot_scores.keys()))[1]
         else:
             a = Agent(self.player_idx, self.env)
             action = a.act(execute_action=False)
@@ -145,11 +133,11 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     stats = []
 
     for game in range(num_games):
-        env.reset(0)
+        env.reset()
         done = False
         while not done:
             for p in players:
-                action = p.act(card_thresh=thresh, num_simulations=1)
+                action = p.act(card_thresh=thresh, num_simulations=100)
                 env.step(p.player_idx, action)
                 if env.is_final_state(): 
                     done = True
@@ -160,7 +148,7 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
         else:
             stats.append(0)
 
-        if game % (num_games//10) == 0: print(game)
+        #if game % (num_games//10) == 0: print(game)
 
     print(f'Average score on {num_games} games: {sum(stats) / num_games}')
     print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
@@ -169,10 +157,10 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-#eval_agent_goodness(num_agents=2, num_games=10)
+##eval_agent_goodness(num_agents=2, num_games=100)
 #stats = []
 #num_agents = 2
-#num_games = 100
+#num_games = 1
 #count = num_games
 ## 20, 10: 19.87
 ## 50, 10: 21.47
@@ -184,13 +172,14 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
 #    try:
 #        print(num_games - count)
 #        env = Hanabi(num_agents, verbose=(num_games == 1))
-#        env.reset(0)
+#        env.reset()
 #
 #        agents = [SASAgent(i, env) for i in range(num_agents)]
 #        done = False
 #        while not done:
 #            for a in agents:
-#                a.act(card_thresh=35, num_simulations=1) # 35 1
+#                action = a.act(card_thresh=20, num_simulations=100) # 35 1
+#                env.step(a.player_idx, action)
 #                if env.is_final_state(): done = True; break
 #
 #        if env.err_tk < 3:
