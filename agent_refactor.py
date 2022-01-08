@@ -58,7 +58,7 @@ class TechnicAngel:
         self.cv = Condition()
         self.run = True
 
-        self.need_just_cp = False
+        self.action_performed = False
         self.satify_show = False
         
         #! Ready up your engines...
@@ -82,28 +82,43 @@ class TechnicAngel:
                 data = self.s.recv(DATASIZE)
                 if not data: continue
                 data = GameData.GameData.deserialize(data)
-                print(type(data))
+                #print(type(data))
                 with self.cv:
                     
-                    # Satisfy check_current_player() request
-                    if type(data) is GameData.ServerGameStateData and self.need_just_cp:
-                        self.current_player = str(data.currentPlayer)
-                        self.need_just_cp = False
-                        self.satify_show = True
-                        self.cv.notify_all()
+                    ## Satisfy check_current_player() request
+                    #if type(data) is GameData.ServerGameStateData and self.need_just_cp:
+                    #    self.current_player = str(data.currentPlayer)
+                    #    self.need_just_cp = False
+                    #    self.satify_show = True
+                    #    self.cv.notify_all()
 
                     # Satisfy action_show() request
-                    elif type(data) is GameData.ServerGameStateData and not self.need_just_cp:
+                    if type(data) is GameData.ServerGameStateData:
                         self.current_player = str(data.currentPlayer)
                         self.player_hands = {self.playerName: []}
+                        ##for player in data.players:
+                        ##    self.player_hands[player.name] = [Card(card.id, card.value, card.color) for card in player.hand]
+                        ##    if self.hands_knowledge is not None:
+                        ##        while len(self.player_hands[player.name]) < len(self.hands_knowledge[player.name]):
+                        ##            self.deck_has_cards = False
+                        ##            self.hands_knowledge[player.name].pop()
+                        ##    else:
+                        ##        self.play_order.append(player.name) #TODO: refactor this
+                        #! === With data.players mod ===
+                        play_order = []
                         for player in data.players:
-                            self.player_hands[player.name] = [Card(card.id, card.value, card.color) for card in player.hand]
-                            if self.hands_knowledge is not None:
-                                while len(self.player_hands[player.name]) < len(self.hands_knowledge[player.name]):
-                                    self.deck_has_cards = False
-                                    self.hands_knowledge[player.name].pop()
+                            if player.name == self.playerName:
+                                self.player_hands[player.name] = []
                             else:
-                                self.play_order.append(player.name) #TODO: refactor this
+                                self.player_hands[player.name] = [Card(card.id, card.value, card.color) for card in player.hand]
+                                if self.hands_knowledge is not None:
+                                    while len(self.player_hands[player.name]) < len(self.hands_knowledge[player.name]):
+                                        self.deck_has_cards = False
+                                        self.hands_knowledge[player.name].pop()
+                            play_order.append(player.name)
+                        play_order = play_order[play_order.index(self.playerName):] + play_order[:play_order.index(self.playerName)]
+                        self.play_order = play_order
+                        #! === ===
                         self.table_cards = { "red": [], "yellow": [], "green": [], "blue": [], "white": [] }
                         for k in data.tableCards.keys():
                             for card in data.tableCards[k]:
@@ -118,19 +133,22 @@ class TechnicAngel:
 
                     # Someone other than me played something
                     elif (type(data) is GameData.ServerPlayerMoveOk or \
-                        type(data) is GameData.ServerPlayerThunderStrike) and data.player != self.playerName:
+                        type(data) is GameData.ServerPlayerThunderStrike): #and data.lastPlayer != self.playerName:
                         idx = data.cardHandIndex
-                        self.hands_knowledge[data.player].pop(idx)
-                        self.hands_knowledge[data.player].append(['',0])
-                        print('other player PLAY')
+                        self.hands_knowledge[data.lastPlayer].pop(idx)
+                        self.hands_knowledge[data.lastPlayer].append(['',0])
+                        self.current_player = data.player
+                        #print('other player PLAY')
+                        if data.lastPlayer == self.playerName: self.action_performed = True
                         self.cv.notify_all()
 
                     # Someone other than me discarded something
-                    elif type(data) is GameData.ServerActionValid and data.player != self.playerName and data.action == 'discard':
+                    elif type(data) is GameData.ServerActionValid and data.action == 'discard': #and data.lastPlayer != self.playerName
                         idx = data.cardHandIndex
-                        self.hands_knowledge[data.player].pop(idx)
-                        self.hands_knowledge[data.player].append(['',0])
-                        print('other player DISCARD')
+                        self.hands_knowledge[data.lastPlayer].pop(idx)
+                        self.hands_knowledge[data.lastPlayer].append(['',0])
+                        self.current_player = data.player
+                        if data.lastPlayer == self.playerName: self.action_performed = True
                         self.cv.notify_all()
                     
                     # Someone (including me) hinted another player (I could be the destination too if I didn't hint)
@@ -138,26 +156,28 @@ class TechnicAngel:
                         for i in data.positions: # indices in the current hand
                             self.hands_knowledge[data.destination][i][0 if data.type == 'color' else 1] = data.value   
                         #print('other player HINT')
+                        self.current_player = data.player
+                        if data.source == self.playerName: self.action_performed = True
                         self.cv.notify_all()
 
                     # I played a card
-                    elif (type(data) is GameData.ServerPlayerMoveOk or \
-                        type(data) is GameData.ServerPlayerThunderStrike) and data.player == self.playerName:
-                        self.cv.notify_all()
+                    #elif (type(data) is GameData.ServerPlayerMoveOk or \
+                    #    type(data) is GameData.ServerPlayerThunderStrike) and data.lastPlayer == self.playerName:
+                    #    self.action_performed = True
+                    #    self.current_player = data.player
+                    #    self.cv.notify_all()
 
                     # I discarded a card
-                    elif type(data) is GameData.ServerActionValid and data.player == self.playerName and data.action == 'discard':
-                        self.cv.notify_all()
+                    #elif type(data) is GameData.ServerActionValid and data.lastPlayer == self.playerName and data.action == 'discard':
+                    #    self.action_performed = True
+                    #    self.current_player = data.player
+                    #    self.cv.notify_all()
 
                     # Game ended
                     elif type(data) is GameData.ServerGameOver:
                         self.game_ended = True
                         self.final_score = data.score
                         self.cv.notify_all()
-
-                    elif type(data) is GameData.ServerInvalidDataReceived:
-                        print(self.player_hands)
-                        os._exit(1)
 
         except ConnectionResetError: 
             #with self.cv: 
@@ -179,15 +199,15 @@ class TechnicAngel:
             self.s.send(GameData.ClientPlayerReadyData(self.playerName).serialize())
             self.status = self.statuses[1]
 
-    def check_current_player(self):
-        self.need_just_cp = True
-        self.satify_show = False
-        self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
-        while not self.satify_show:
-            self.cv.wait()
+    #def check_current_player(self):
+    #    self.need_just_cp = True
+    #    self.satify_show = False
+    #    self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
+    #    while not self.satify_show:
+    #        self.cv.wait()
 
     def action_show(self):
-        self.need_just_cp = False
+        #self.need_just_cp = False
         self.satify_show = False
         self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
         while not self.satify_show:
@@ -198,17 +218,18 @@ class TechnicAngel:
         """num = [0, len(hand)-1]: int"""
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Play'
         assert num in range(len(self.hands_knowledge[self.playerName]))
+        self.action_performed = False
         self.s.send(GameData.ClientPlayerPlayCardRequest(self.playerName, num).serialize())
-        self.hands_knowledge[self.playerName].pop(num)
-        if not self.deck_has_cards: 
-            self.played_last_turn[self.playerName] = True
-        else:
-            if self.__calc_real_deck_len() - 1 > 0:
-                self.hands_knowledge[self.playerName].append(['',0])
-            else:
-                self.deck_has_cards = False
-        self.current_player = None
-        self.cv.wait()
+        #self.hands_knowledge[self.playerName].pop(num)
+        #if not self.deck_has_cards: 
+        #    self.played_last_turn[self.playerName] = True
+        #else:
+        #    if self.__calc_real_deck_len() - 1 > 0:
+        #        self.hands_knowledge[self.playerName].append(['',0])
+        #    else:
+        #        self.deck_has_cards = False
+        while not self.action_performed:
+            self.cv.wait()
     
     def action_discard(self, num):
         print('Discard', num)
@@ -216,17 +237,18 @@ class TechnicAngel:
         assert self.current_player == self.playerName, 'Be sure it is your turn, before requesting a Discard'
         assert self.used_note_tokens > 0, 'Cannot request a Discard when used_note_tokens == 0'
         assert num in range(len(self.hands_knowledge[self.playerName]))
+        self.action_performed = False
         self.s.send(GameData.ClientPlayerDiscardCardRequest(self.playerName, num).serialize())
-        self.hands_knowledge[self.playerName].pop(num)
-        if not self.deck_has_cards: 
-            self.played_last_turn[self.playerName] = True
-        else:
-            if self.__calc_real_deck_len() - 1 > 0:
-                self.hands_knowledge[self.playerName].append(['',0])
-            else:
-                self.deck_has_cards = False
-        self.current_player = None
-        self.cv.wait()
+        #self.hands_knowledge[self.playerName].pop(num)
+        #if not self.deck_has_cards: 
+        #    self.played_last_turn[self.playerName] = True
+        #else:
+        #    if self.__calc_real_deck_len() - 1 > 0:
+        #        self.hands_knowledge[self.playerName].append(['',0])
+        #    else:
+        #        self.deck_has_cards = False
+        while not self.action_performed:
+            self.cv.wait()
     
     def action_hint(self, hint_type, dst, value):
         print('Hint', hint_type, dst, value)
@@ -240,29 +262,28 @@ class TechnicAngel:
         assert dst in self.player_hands.keys() and dst != self.playerName, 'Passed the name of a non-existing player'
         if hint_type == 'color': assert value in ['red','yellow','green','blue','white']
         else: assert value in [1,2,3,4,5]
-        self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, str(value)).serialize())
-        self.current_player = None
-        self.cv.wait()
+        self.action_performed = False
+        self.s.send(GameData.ClientHintData(self.playerName, dst, hint_type, value).serialize())
+        #self.current_player = None
+        while not self.action_performed:
+            self.cv.wait()
 
-    def __calc_real_deck_len(self):
-        num_players = len(self.player_hands.keys())
-        count = 5*num_players if num_players < 4 else 4*num_players
-        for k in COLORS: count += len(self.table_cards[k])
-        count += len(self.discard_pile)
-        if 50 - count <= 0: self.deck_has_cards = False
-        return max(50 - count, 0)
+    #def __calc_real_deck_len(self):
+    #    num_players = len(self.player_hands.keys())
+    #    count = 5*num_players if num_players < 4 else 4*num_players
+    #    for k in COLORS: count += len(self.table_cards[k])
+    #    count += len(self.discard_pile)
+    #    if 50 - count <= 0: self.deck_has_cards = False
+    #    return max(50 - count, 0)
 
     def select_action(self):
         num_players = len(self.play_order) #TODO: fix play order
         thresh = 50 - (num_players-1) * (5 if num_players < 4 else 4) - 1
 
-        deck = [(c,v) for c,v in product(COLORS, [1,1,1,2,2,3,3,4,4,5])]
-
-        for card in self.discard_pile: deck.remove((card.color, card.value))
-
+        deck = [(c,v) for c,v in product(COLORS, [1,1,1,2,2,3,3,4,4,5])]    
+        for card in self.discard_pile: deck.remove((card.color, card.value))    
         for k in COLORS:
-            for card in self.table_cards[k]: deck.remove((card.color, card.value))
-
+            for card in self.table_cards[k]: deck.remove((card.color, card.value))  
         for key in self.player_hands.keys():
             if key != self.playerName:
                 for card in self.player_hands[key]: deck.remove((card.color, card.value))
@@ -271,13 +292,13 @@ class TechnicAngel:
         table_cards = {k: [(card.color, card.value) for card in self.table_cards[k]] for k in COLORS}
         discard_pile = [(card.color, card.value) for card in self.discard_pile]
         player_hands = [[(card.color, card.value) for card in self.player_hands[p]] for p in self.play_order]
-        played_last_turn = [self.played_last_turn[k] for k in self.played_last_turn.keys()]
+        played_last_turn = [self.played_last_turn[k] for k in self.play_order]
 
         env = Hanabi(num_players, verbose=True)
-        env.set_state(hands_knowledge, table_cards, discard_pile, self.used_note_tokens, self.used_storm_tokens, player_hands, deck, played_last_turn)
+        env.set_state(hands_knowledge, table_cards, discard_pile, self.used_note_tokens, self.used_storm_tokens, player_hands, [], played_last_turn)
 
         agent = SASAgent(0, env)
-        best_action = agent.act(card_thresh=thresh-100, num_simulations=1)
+        best_action = agent.act(card_thresh=35, num_simulations=1)
         
         if best_action in range(0,5): # play 0-4
             self.action_play(best_action)
@@ -331,14 +352,20 @@ class TechnicAngel:
         #print(self.used_note_tokens)
         #print(self.used_storm_tokens)
         #print(self.played_last_turn)
+        #self.__abort()
 
         while True:
+
             with self.cv:
-                self.check_current_player()
+
                 while self.current_player != self.playerName and not self.game_ended:
                     self.cv.wait()#_for(lambda: False, 1.0)
                     if self.game_ended: self.__abort()
-                    self.check_current_player()
+                    #self.check_current_player()
+                
+                #for p in self.player_hands:
+                #    for card in self.player_hands[p]: print(p, card.color, card.value, end=' | ')
+                #    print()
 
                 self.action_show() # to obtain the current view of the game
                 self.select_action()

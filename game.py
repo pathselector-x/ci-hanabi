@@ -276,7 +276,7 @@ class Game(object):
         self.__nextTurn()
         self.__noteTokens += 1
         logging.info("Player " + data.sender + " providing hint to " + data.destination + ": cards with " + data.type + " " + str(data.value) + " are in positions: " + str(positions))
-        return None, GameData.ServerHintData(data.sender, data.destination, data.type, data.value, positions)
+        return None, GameData.ServerHintData(data.sender, data.destination, data.type, data.value, positions, self.__getCurrentPlayer().name) #! MOD last param.
 
     def isGameOver(self):
         return self.__gameOver
@@ -328,7 +328,11 @@ class Game(object):
     def __getPlayersStatus(self, currentPlayerName):
         players = []
         for p in self.__players:
-            if p.name != currentPlayerName:
+            #! I WANT ALSO THE ORDER OF PLAY
+            if p.name == currentPlayerName: #! we don't want to cheat
+                tmp_player = Player(currentPlayerName) #! so we build an 'empty' Player object
+                players.append(tmp_player)
+            else:
                 players.append(p)
         return (self.__players[self.__currentPlayer].name, players)
 

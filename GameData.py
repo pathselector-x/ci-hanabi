@@ -108,13 +108,14 @@ class ServerHintData(ServerToClientData):
     value: can be the color or the value of the card
     positions: a list of cards that satisfy the value of the hint
     '''
-    def __init__(self, sender: str, destination: str, type: str, value, positions: list) -> None:
+    def __init__(self, sender: str, destination: str, type: str, value, positions: list, player: str) -> None: #! MOD 'player: str'
         action = "Hint data from server to destination client"
-        self.sender = sender
+        self.source = sender #! super.sender overwrites self.sender, use a different name like 'self.source'
         self.destination = destination
         self.type = type
         self.value = value
         self.positions = positions
+        self.player = player #! MOD
         super().__init__(action)
 
 class ServerPlayerConnectionOk(ServerToClientData):
@@ -181,7 +182,7 @@ class ServerActionValid(ServerToClientData):
     cardHandIndex: the card index of the lastPlayer played card, given his hand order.
     '''
     def __init__(self, player: str, lastPlayer: str, action: str, card, cardHandIndex: int) -> None:
-        action = "Valid action performed"
+        #! action = "Valid action performed" # You are overwriting the action e.g. "discard"
         self.action = action
         self.card = card
         self.lastPlayer = lastPlayer
