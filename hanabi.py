@@ -341,7 +341,7 @@ class Hanabi:
             return True
 
     def compute_actions(self, player_idx):
-        assert len(self.hands_knowledge[player_idx]) == len(self.player_hands[player_idx])
+        #assert len(self.hands_knowledge[player_idx]) == len(self.player_hands[player_idx])
         actions = []
         count = 0
         if self.err_tk < 3:

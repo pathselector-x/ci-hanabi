@@ -101,7 +101,7 @@ def manageInput():
             logging.info("Closing the server...")
             os._exit(0)
 
-#print("Type 'exit' to end the program")
+print("Type 'exit' to end the program")
 
 
 def manageNetwork():

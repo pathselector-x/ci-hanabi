@@ -85,14 +85,14 @@ class Agent:
         
         idx_to_play = np.argmax(p)
         if p[idx_to_play] >= threshold:
-            self.env.step(self.pidx, idx_to_play)
-            return True
-        return False        
+            #self.env.step(self.pidx, idx_to_play)
+            return True, idx_to_play
+        return False, None
     
     def __play_safe_card(self):
-        if self.__play_probably_safe_card(1.0): 
-            return True
-        return False
+        ok, action = self.__play_probably_safe_card(1.0)
+        if ok: return ok, action
+        return False, None
 
     def __tell_anyone_about_useful_card(self):
         cnt = 0
@@ -107,15 +107,15 @@ class Agent:
                         if kc != '' and kv != 0: continue
 
                         if kc == '':
-                            self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
-                            return True
+                            #self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
+                            return True, 10 + COLORS.index(c) + 5 * cnt
                         
                         if kv == 0:
                             start_val = 10+5*(self.env.num_players-1)
-                            self.env.step(self.pidx, start_val + (v-1) + 5 * cnt)
-                            return True
+                            #self.env.step(self.pidx, start_val + (v-1) + 5 * cnt)
+                            return True, start_val + (v-1) + 5 * cnt
                 cnt += 1
-        return False
+        return False, None
 
     def __interrupted_pile(self, color):
         for v in range(len(self.env.table_cards[color]) + 1, 6):
@@ -137,44 +137,44 @@ class Agent:
                 for (kc, kv), (c, v) in zip(kn, hand):
                     if v <= len(self.env.table_cards[c]) and kv == 0:
                         start_val = 10+5*(self.env.num_players-1)
-                        self.env.step(self.pidx, start_val + (v-1) + 5 * cnt)
-                        return True
+                        #self.env.step(self.pidx, start_val + (v-1) + 5 * cnt)
+                        return True, start_val + (v-1) + 5 * cnt
                     elif len(self.env.table_cards[c]) == 5 and kc == '':
-                        self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
-                        return True
+                        #self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
+                        return True, 10 + COLORS.index(c) + 5 * cnt
                     elif self.__interrupted_pile(c) and kc == '':
-                        self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
-                        return True
+                        #self.env.step(self.pidx, 10 + COLORS.index(c) + 5 * cnt)
+                        return True, 10 + COLORS.index(c) + 5 * cnt
                 cnt += 1
-        return False
+        return False, None
     
-    def __osawa_discard(self):
+    def __osawa_discard(self, execute_action=True):
         kn = self.env.hands_knowledge[self.pidx]
 
         for i, (c, v) in enumerate(kn):
             if c != '' and v != 0:
                 if v <= len(self.env.table_cards[c]):
-                    self.env.step(self.pidx, 5 + i)
-                    return True
+                    #self.env.step(self.pidx, 5 + i)
+                    return True, 5 + i
                 elif len(self.env.table_cards[c]) == 5:
-                    self.env.step(self.pidx, 5 + i)
-                    return True
+                    #self.env.step(self.pidx, 5 + i)
+                    return True, 5 + i
                 elif self.__interrupted_pile(c):
-                    self.env.step(self.pidx, 5 + i)
-                    return True 
+                    #self.env.step(self.pidx, 5 + i)
+                    return True, 5 + i 
             elif c != '':
                 if len(self.env.table_cards[c]) == 5:
-                    self.env.step(self.pidx, 5 + i)
-                    return True
+                    #self.env.step(self.pidx, 5 + i)
+                    return True, 5 + i
                 elif self.__interrupted_pile(c):
-                    self.env.step(self.pidx, 5 + i)
-                    return True
+                    #self.env.step(self.pidx, 5 + i)
+                    return True, 5 + i
             elif v != '':
                 if all(v <= len(self.env.table_cards[k]) for k in COLORS):
-                    self.env.step(self.pidx, 5 + i)
-                    return True
+                    #self.env.step(self.pidx, 5 + i)
+                    return True, 5 + i
 
-        return False
+        return False, None
 
     def __discard_probably_useless_card(self, threshold):
         kn = self.env.hands_knowledge[self.pidx]
@@ -237,41 +237,69 @@ class Agent:
         idx_to_discard = np.argmax(p)
         if all(pv == p[0] for pv in p): idx_to_discard = 0
         if p[idx_to_discard] >= threshold:
-            self.env.step(self.pidx, 5 + idx_to_discard)
-            return True
-        return False
+            #self.env.step(self.pidx, 5 + idx_to_discard)
+            return True, 5 + idx_to_discard
+        return False, None
     
     def __discard_oldest_first(self):
-        self.env.step(self.pidx, 5)
-        return True
+        #self.env.step(self.pidx, 5)
+        return True, 5
 
     def __tell_randomly(self):
         legal_actions = self.env.compute_actions(self.pidx)
         legal_actions = [a for a in legal_actions if a >= 10]
-        self.env.step(self.pidx, random.choice(legal_actions))
-        return True
+        action = random.choice(legal_actions)
+        #self.env.step(self.pidx, action)
+        return True, action
     
-    def act(self):
+    def act(self, execute_action=True):
         if self.env.err_tk < 2 and len(self.env.deck) == 0:
-            if self.__play_probably_safe_card(0.0): return
+            ok, action = self.__play_probably_safe_card(0.0)
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
         
-        if self.__play_safe_card(): return
+        ok, action = self.__play_safe_card()
+        if ok: 
+            if execute_action: self.env.step(self.pidx, action)
+            return action
 
         if self.env.err_tk < 3:
-            if self.__play_probably_safe_card(0.7): return
+            ok, action = self.__play_probably_safe_card(0.7)
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
 
         if self.env.info_tk < 8:
-            if self.__tell_anyone_about_useful_card(): return
+            ok, action = self.__tell_anyone_about_useful_card()
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
 
         if self.env.info_tk > 4 and self.env.info_tk < 8:
-            if self.__tell_dispensable(): return
+            ok, action = self.__tell_dispensable()
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
         
         if self.env.info_tk > 0:
-            if self.__osawa_discard(): return
-            if self.__discard_probably_useless_card(0.0): return
-            if self.__discard_oldest_first(): return
+            ok, action = self.__osawa_discard()
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
+            ok, action = self.__discard_probably_useless_card(0.0)
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
+            ok, action = self.__discard_oldest_first()
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
         else:
-            if self.__tell_randomly(): return
+            ok, action = self.__tell_randomly()
+            if ok: 
+                if execute_action: self.env.step(self.pidx, action)
+                return action
 
         assert False, f'PANIC!!! {self.env.info_tk}'
 

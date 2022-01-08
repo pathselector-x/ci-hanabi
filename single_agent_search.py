@@ -9,7 +9,7 @@ class SASAgent:
     def __init__(self, player_idx, env: Hanabi):
         self.player_idx = player_idx
         self.env = env
-        self.need_search = True
+        #self.need_search = True
     
     def __sample_from_belief(self):
         player_hands = [h.copy() for h in self.env.player_hands]
@@ -39,7 +39,6 @@ class SASAgent:
                     for card in deck:
                         if card[1] == v: col = card[0]; break
                     knowledge[i] = (col,v)
-            #TODO: corner case in where in our belief only our ('',0) cards are left
 
         hand = []
         for c, v in knowledge:
@@ -67,7 +66,7 @@ class SASAgent:
                             deck.remove(card)
                             break
         
-        assert len(knowledge) == len(self.env.player_hands[self.player_idx])
+        #assert len(knowledge) == len(self.env.player_hands[self.player_idx])
         for i, (c, v) in enumerate(knowledge):
             if hand[i] is None:
                 hand[i] = deck.pop()
@@ -80,32 +79,33 @@ class SASAgent:
         scores = {}
         # Need to sample the highest probable hand from belief space, and recompute the deck accordingly
         player_hands, deck = self.__sample_from_belief()
+        #!print('Sampled: ', player_hands)
         valid_actions = self.env.compute_actions(self.player_idx)
 
         for action in valid_actions:
             # For each action we do a rollout (according to blueprint strategy) and register the outcome
             simulation = Hanabi(self.env.num_players)
             simulation.set_state(self.env.hands_knowledge, self.env.table_cards, self.env.discard_pile, self.env.info_tk, self.env.err_tk, player_hands, deck, self.env.played_last_turn)
-            agents = [SASAgent(p, simulation) for p in range(simulation.num_players)]
+            agents = [Agent(p, simulation) for p in range(simulation.num_players)]
             simulation.step(self.player_idx, action)
-            self.need_search = False
+            #self.need_search = False
             
             done = simulation.is_final_state()
             while not done:
                 for p in range(simulation.num_players):
                     player = (self.player_idx + 1 + p) % simulation.num_players
-                    if self.need_search:
-                        agents[player].act()
-                    else: 
-                        agents[player].act2(simulation)
+                    #if agents[player].need_search:
+                    #    agents[player].act()
+                    #else: 
+                    agents[player].act()#simulation)
                     done = simulation.is_final_state()
             scores[action] = simulation.final_score()
         
         return scores
         
-    def act2(self, env):
-        a = Agent(self.player_idx, env)
-        a.act()
+    #def act2(self, env):
+    #    a = Agent(self.player_idx, env)
+    #    a.act()
 
     def act(self, card_thresh=39, num_simulations=1):
         if len(self.env.deck) < card_thresh:
@@ -124,11 +124,12 @@ class SASAgent:
                     best_action = key
                     score = scores[key]
 
-            self.env.step(self.player_idx, best_action)
+            #self.env.step(self.player_idx, best_action)
             return best_action
         else:
             a = Agent(self.player_idx, self.env)
-            a.act()
+            action = a.act(execute_action=False)
+            return action
 
 import matplotlib.pyplot as plt
 
@@ -148,7 +149,8 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
         done = False
         while not done:
             for p in players:
-                p.act(card_thresh=thresh, num_simulations=1)
+                action = p.act(card_thresh=thresh, num_simulations=1)
+                env.step(p.player_idx, action)
                 if env.is_final_state(): 
                     done = True
                     break
@@ -167,7 +169,7 @@ def eval_agent_goodness(num_agents=2, num_games=1000):
     plt.show()
     exit()
 
-#eval_agent_goodness(num_agents=5, num_games=10)
+#eval_agent_goodness(num_agents=2, num_games=10)
 #stats = []
 #num_agents = 2
 #num_games = 100

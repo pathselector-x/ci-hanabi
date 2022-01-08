@@ -196,7 +196,7 @@ class Game(object):
                 self.__drawCard(player.name)
                 logging.info("Player: " + self.__getCurrentPlayer().name + ": card " + str(card.id) + " discarded successfully")
                 self.__nextTurn()
-                return (None, GameData.ServerActionValid(self.__getCurrentPlayer().name, "discard", card))
+                return (None, GameData.ServerActionValid(self.__getCurrentPlayer().name, player.name, "discard", card, data.handCardOrdered))
         else:
             return (GameData.ServerActionInvalid("It is not your turn yet"), None)
 
@@ -220,24 +220,21 @@ class Game(object):
             if self.__gameOver:
                 logging.info("Game over, people.")
                 logging.info("Please, close the server now")
-                logging.info("Score: " + str(self.__score)) #+ "; message: " + self.__scoreMessages[self.__score]) #!
-                logging.info("Error Tokens: " + str(self.__stormTokens)) #!
-                for k in self.__tableCards.keys():
-                    logging.info(k + ": " + str(len(self.__tableCards[k]))) #!
-                return (None, GameData.ServerGameOver(self.__score, ''))#self.__scoreMessages[self.__score])) #!
+                logging.info("Score: " + str(self.__score) + "; message: " + self.__scoreMessages[self.__score])
+                return (None, GameData.ServerGameOver(self.__score, self.__scoreMessages[self.__score]))
             if not ok:
                 self.__nextTurn()
-                return (None, GameData.ServerPlayerThunderStrike(self.__getCurrentPlayer().name, card))
+                return (None, GameData.ServerPlayerThunderStrike(self.__getCurrentPlayer().name, p.name, card, data.handCardOrdered))
             else:
                 logging.info(self.__getCurrentPlayer().name + ": card played and correctly put on the table")
                 if card.value == 5:
                     logging.info(card.color + " pile has been filled.")
-                if self.__noteTokens > 0:
-                    self.__noteTokens -= 1
-                    logging.info("Giving 1 free note token.")
+                    if self.__noteTokens > 0:
+                        self.__noteTokens -= 1
+                        logging.info("Giving 1 free note token.")
                 self.__nextTurn()
                 self.__gameOver, self.__score = self.__checkGameEnded()
-                return (None, GameData.ServerPlayerMoveOk(self.__getCurrentPlayer().name, card))
+                return (None, GameData.ServerPlayerMoveOk(self.__getCurrentPlayer().name, p.name, card, data.handCardOrdered))
         else:
             return (GameData.ServerActionInvalid("It is not your turn yet"), None)
 
@@ -245,6 +242,8 @@ class Game(object):
     def __satisfyHintRequest(self, data: GameData.ClientHintData):
         if self.__getCurrentPlayer().name != data.sender:
             return (GameData.ServerActionInvalid("It is not your turn yet"), None)
+        if data.destination == data.sender:
+            return (GameData.ServerActionInvalid("You are giving a suggestion to yourself! Bad!"), None)
         if self.__noteTokens == self.__MAX_NOTE_TOKENS:
             logging.warning("All the note tokens have been used. Impossible getting hints")
             return GameData.ServerActionInvalid("All the note tokens have been used"), None
@@ -407,8 +406,8 @@ class Game(object):
             ended = ended and ((len(player.hand) < 5 and len(self.__players) <= 3) or len(player.hand) < 4)
         if ended:
             score = 0
-            for k in self.__tableCards.keys(): #! BUGFIX
-                score += len(self.__tableCards[k]) #! BUGFIX
+            for pile in self.__tableCards:
+                score += len(pile)
             return True, score
         return False, 0
     
