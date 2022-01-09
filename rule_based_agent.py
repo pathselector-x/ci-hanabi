@@ -18,6 +18,9 @@ class Agent:
                 
             elif c != '':
                 playable_val = len(self.env.table_cards[c]) + 1
+                if playable_val == 5:
+                    p.append(sum(1 for k in COLORS if 5 == len(self.env.table_cards[k]) + 1) / 5)
+                    continue
                 how_many = 3 if playable_val == 1 else (1 if playable_val == 5 else 2)
                 total = 10
 
@@ -33,9 +36,16 @@ class Agent:
                                 how_many -= 1
                             if card[0] == c: total -= 1
 
+                if total == 0:
+                    print(self.env.discard_pile)
+                    print(self.env.player_hands)
+                    print(self.pidx, c, playable_val)
                 p.append(how_many / total)
             
             elif v != 0:
+                if v == 5:
+                    p.append(sum(1 for k in COLORS if 5 == len(self.env.table_cards[k]) + 1) / 5)
+                    continue
                 piles_playable = [k for k in COLORS if v == len(self.env.table_cards[k]) + 1]
                 how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(piles_playable)
                 total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
@@ -52,6 +62,10 @@ class Agent:
                                 how_many -= 1
                             if card[1] == v: total -= 1
                 
+                if total == 0:
+                    print(self.env.discard_pile)
+                    print(self.env.player_hands)
+                    print(self.pidx, v, piles_playable)
                 p.append(how_many / total)
             
             else:

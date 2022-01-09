@@ -1,4 +1,5 @@
 import os
+import random
 from sys import argv, stdout
 from threading import Thread, Lock, Condition
 import GameData
@@ -7,6 +8,9 @@ from constants import *
 from game import Card
 from hanabi import Hanabi, COLORS
 from rule_based_agent import Agent
+from itertools import product
+
+FULL_DECK = [(c,v) for c,v in product(COLORS, [1,1,1,2,2,3,3,4,4,5])]
 
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
@@ -210,6 +214,84 @@ class TechnicAngel:
         while not self.action_performed:
             self.cv.wait()
 
+    def sample_from_belief(self, player_idx, env: Hanabi):
+        deck = FULL_DECK.copy()
+        for card in env.discard_pile: deck.remove(card)
+        for k in COLORS:
+            for card in env.table_cards[k]: deck.remove(card)
+        for p in range(env.num_players):
+            if p != player_idx:
+                for card in env.player_hands[p]: deck.remove(card)
+        random.shuffle(deck)
+        hand = [None for _ in range(len(env.hands_knowledge[player_idx]))]
+        for i, (c,v) in enumerate(env.hands_knowledge[player_idx]):
+            if c != '' and v != 0:
+                hand[i] = (c,v)
+                deck.remove((c,v))
+
+        candidates = {(c,v,i): [] for i, (c,v) in enumerate(env.hands_knowledge[player_idx]) if (c != '' and v == 0) or (c == '' and v != 0)}
+        for candidate in candidates.keys():
+            for card in deck:
+                if candidate[0] == card[0] or candidate[1] == card[1]:
+                    candidates[candidate].append(card)
+
+        for i, (c,v) in enumerate(env.hands_knowledge[player_idx]):
+            if ((c != '' and v == 0) or (c == '' and v != 0)) and hand[i] is None:
+                if len(candidates[(c,v,i)]) == 1:
+                    card = candidates[(c,v,i)][0]
+                    hand[i] = card
+                    for k in candidates.keys():
+                        if card in candidates[k]: candidates[k].remove(card)
+
+        for i, (c,v) in enumerate(env.hands_knowledge[player_idx]):
+            if ((c != '' and v == 0) or (c == '' and v != 0)) and hand[i] is None:
+                card = candidates[(c,v,i)][0]
+                hand[i] = card
+                for k in candidates.keys():
+                    if card in candidates[k]: candidates[k].remove(card)
+
+        for i in range(len(hand)):
+            if hand[i] is None:
+                hand[i] = deck.pop()
+
+        for card in hand:
+            if card in deck: deck.remove(card)
+
+        return hand, deck  
+
+    def search(self, env: Hanabi, max_depth=1, depth=0):
+        scores = {}
+        valid_actions = env.compute_actions(0)
+
+        hand, deck = self.sample_from_belief(0, env)
+        
+        for action in valid_actions:
+            simulation = Hanabi(env.num_players)
+            simulation.set_state(env.hands_knowledge, env.table_cards, env.discard_pile, env.info_tk, env.err_tk, env.player_hands, env.deck, env.played_last_turn)
+            simulation.player_hands[self.play_order.index(self.playerName)] = hand.copy()
+            simulation.deck = deck.copy()
+            agents = [Agent(p, simulation) for p in range(simulation.num_players)]
+            
+            simulation.step(0, action)
+            done = simulation.is_final_state()
+
+            while not done:
+                for p in range(simulation.num_players):
+                    p_i = (p + 1) % simulation.num_players
+                    if p_i == 0 and depth > max_depth: 
+                        best_action, _ = self.search(simulation, max_depth=max_depth, depth=depth + 1)
+                        simulation.step(p_i, best_action)
+                    else:
+                        agents[p_i].act(execute_action=True)
+
+                    if simulation.is_final_state():
+                        done = True
+                        break
+            
+            scores[action] = simulation.final_score()
+        return max(zip(scores.values(), scores.keys()))[1], scores
+        
+
     def select_action(self):
         num_players = len(self.play_order)
         thresh = 50 - (num_players-1) * (5 if num_players < 4 else 4) - 1
@@ -225,8 +307,19 @@ class TechnicAngel:
 
         #agent = SASAgent(0, env) #TODO: fix search
         #best_action = agent.act(card_thresh=10000, num_simulations=100)
-        agent = Agent(0, env)
-        best_action = agent.act(execute_action=False)
+
+        tot_scores = {}
+        for _ in range(10):
+            _, scores = self.search(env)
+            for k in scores.keys():
+                if k not in tot_scores.keys():
+                    tot_scores[k] = scores[k]
+                else:
+                    tot_scores[k] += scores[k]
+        best_action = max(zip(tot_scores.values(), tot_scores.keys()))[1]
+        
+        #agent = Agent(0, env)
+        #best_action = agent.act(execute_action=False)
 
         if best_action in range(0,5): # play 0-4
             self.action_play(best_action)
