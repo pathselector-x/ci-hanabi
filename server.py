@@ -113,7 +113,7 @@ def manageNetwork():
             conn, addr = s.accept()
             threading.Thread(target=manageConnection, args=(conn, addr)).start()
 
-#logging.basicConfig(filename="game.log", level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt="%m/%d/%Y %I:%M:%S %p")
-#logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
+logging.basicConfig(filename="game.log", level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s', datefmt="%m/%d/%Y %I:%M:%S %p")
+logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 threading.Thread(target=manageNetwork).start()
 manageInput()

@@ -1,0 +1,183 @@
+01/09/2022 04:05:01 PM INFO: Hanabi server started on 127.0.0.1:1024
+01/09/2022 04:05:08 PM INFO: Connected by: ('127.0.0.1', 52775)
+01/09/2022 04:05:08 PM INFO: Player connected: technic_angel
+01/09/2022 04:05:16 PM INFO: Connected by: ('127.0.0.1', 52777)
+01/09/2022 04:05:16 PM INFO: Player connected: technic_angel_1
+01/09/2022 04:05:16 PM INFO: Player ready: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player ready: technic_angel
+01/09/2022 04:05:18 PM INFO: Game start! Between: ['technic_angel', 'technic_angel_1']
+01/09/2022 04:05:18 PM INFO: Ok, let's start the game!
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color white are in positions: [0, 1, 2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 6 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [0, 1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color red are in positions: [1, 2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color white are in positions: [2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [1, 2, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color white are in positions: [0, 2, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 4 are in positions: [2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color blue are in positions: [2, 4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 25 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 1 are in positions: [3, 4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 34 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [2, 4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 5 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color yellow are in positions: [4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 4 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [1, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 45 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color yellow are in positions: [3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 30 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [2, 4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 44 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color blue are in positions: [1, 2, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 2 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 3 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 3 are in positions: [0, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 47 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color green are in positions: [1, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 32 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with value 2 are in positions: [0, 2, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: technic_angel: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 27 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 4 are in positions: [0, 1, 3, 4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 43 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 0 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color green are in positions: [1, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 37 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color white are in positions: [4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 22 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: white pile has been filled.
+01/09/2022 04:05:18 PM INFO: Giving 1 free note token.
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color red are in positions: [1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 40 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 8 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color yellow are in positions: [0, 1, 3, 4]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 16 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 3 are in positions: [3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 41 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color blue are in positions: [2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 42 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 5 are in positions: [1, 2]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: blue pile has been filled.
+01/09/2022 04:05:18 PM INFO: Giving 1 free note token.
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color yellow are in positions: [0, 1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: technic_angel_1: card played and correctly put on the table
+01/09/2022 04:05:18 PM INFO: yellow pile has been filled.
+01/09/2022 04:05:18 PM INFO: Giving 1 free note token.
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 1 are in positions: [0, 1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 11 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with color white are in positions: [0, 1]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 9 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player technic_angel providing hint to technic_angel_1: cards with value 2 are in positions: [0]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player: technic_angel_1: card 19 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Player: technic_angel: card 26 discarded successfully
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel_1
+01/09/2022 04:05:18 PM INFO: Player technic_angel_1 providing hint to technic_angel: cards with color red are in positions: [1, 3]
+01/09/2022 04:05:18 PM INFO: Showing hand to: technic_angel
+01/09/2022 04:05:18 PM INFO: Game over, people.
+01/09/2022 04:05:18 PM INFO: Please, close the server now
+01/09/2022 04:05:18 PM INFO: Score: 19; message: Outstanding!

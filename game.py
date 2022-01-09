@@ -196,7 +196,7 @@ class Game(object):
                 self.__drawCard(player.name)
                 logging.info("Player: " + self.__getCurrentPlayer().name + ": card " + str(card.id) + " discarded successfully")
                 self.__nextTurn()
-                return (None, GameData.ServerActionValid(self.__getCurrentPlayer().name, player.name, "discard", card, data.handCardOrdered, len(player.hand)))
+                return (None, GameData.ServerActionValid(self.__getCurrentPlayer().name, player.name, "discard", card, data.handCardOrdered, len(player.hand))) #! ADDED last param. see GameData relative comment
         else:
             return (GameData.ServerActionInvalid("It is not your turn yet"), None)
 
@@ -220,9 +220,8 @@ class Game(object):
             if self.__gameOver:
                 logging.info("Game over, people.")
                 logging.info("Please, close the server now")
-                logging.info("Score: " + str(self.__score)) #! + "; message: " + self.__scoreMessages[self.__score])
-                print([len(p.hand) for p in self.__players]) #! just a debug print
-                return (None, GameData.ServerGameOver(self.__score, '')) #! self.__scoreMessages[self.__score]))
+                logging.info("Score: " + str(self.__score) + "; message: " + self.__scoreMessages[self.__score // len(self.__scoreMessages)])  #! BUGFIX index
+                return (None, GameData.ServerGameOver(self.__score, self.__scoreMessages[self.__score // len(self.__scoreMessages)])) #! BUGFIX index
             if not ok:
                 self.__nextTurn()
                 return (None, GameData.ServerPlayerThunderStrike(self.__getCurrentPlayer().name, p.name, card, data.handCardOrdered, len(p.hand)))
@@ -235,7 +234,7 @@ class Game(object):
                         logging.info("Giving 1 free note token.")
                 self.__nextTurn()
                 self.__gameOver, self.__score = self.__checkGameEnded()
-                return (None, GameData.ServerPlayerMoveOk(self.__getCurrentPlayer().name, p.name, card, data.handCardOrdered, len(p.hand)))
+                return (None, GameData.ServerPlayerMoveOk(self.__getCurrentPlayer().name, p.name, card, data.handCardOrdered, len(p.hand))) #! ADDED last param. see GameData relative comment
         else:
             return (GameData.ServerActionInvalid("It is not your turn yet"), None)
 
@@ -277,7 +276,7 @@ class Game(object):
         self.__nextTurn()
         self.__noteTokens += 1
         logging.info("Player " + data.sender + " providing hint to " + data.destination + ": cards with " + data.type + " " + str(data.value) + " are in positions: " + str(positions))
-        return None, GameData.ServerHintData(data.sender, data.destination, data.type, data.value, positions, self.__getCurrentPlayer().name) #! ADDED last param.
+        return None, GameData.ServerHintData(data.sender, data.destination, data.type, data.value, positions, self.__getCurrentPlayer().name) #! ADDED last param. see GameData relative comment
 
     def isGameOver(self):
         return self.__gameOver

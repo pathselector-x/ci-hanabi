@@ -18,9 +18,6 @@ class Agent:
                 
             elif c != '':
                 playable_val = len(self.env.table_cards[c]) + 1
-                if playable_val == 5:
-                    p.append(sum(1 for k in COLORS if 5 == len(self.env.table_cards[k]) + 1) / 5)
-                    continue
                 how_many = 3 if playable_val == 1 else (1 if playable_val == 5 else 2)
                 total = 10
 
@@ -36,16 +33,9 @@ class Agent:
                                 how_many -= 1
                             if card[0] == c: total -= 1
 
-                if total == 0:
-                    print(self.env.discard_pile)
-                    print(self.env.player_hands)
-                    print(self.pidx, c, playable_val)
                 p.append(how_many / total)
             
             elif v != 0:
-                if v == 5:
-                    p.append(sum(1 for k in COLORS if 5 == len(self.env.table_cards[k]) + 1) / 5)
-                    continue
                 piles_playable = [k for k in COLORS if v == len(self.env.table_cards[k]) + 1]
                 how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(piles_playable)
                 total = (3 if v == 1 else (1 if v == 5 else 2)) * 5
@@ -62,38 +52,10 @@ class Agent:
                                 how_many -= 1
                             if card[1] == v: total -= 1
                 
-                if total == 0:
-                    print(self.env.discard_pile)
-                    print(self.env.player_hands)
-                    print(self.pidx, v, piles_playable)
                 p.append(how_many / total)
             
             else:
                 p.append(0.0)
-                #min_p = 1.0
-                #total = 50 - len(self.env.discard_pile) - \
-                #    sum(len(self.env.table_cards[k]) for k in COLORS) - \
-                #    len(self.env.player_hands[(self.pidx + 1)%2])
-                #vals = {}
-                #for k in COLORS:
-                #    pv = len(self.env.table_cards[k]) + 1
-                #    if pv > 5: continue
-                #    if pv not in vals.keys(): vals[pv] = [k]
-                #    else: vals[pv].append(k)
-                #
-                #for v in vals.keys():
-                #    colors = vals[v]
-                #    how_many = (3 if v == 1 else (1 if v == 5 else 2)) * len(colors)
-                #    for card in self.env.discard_pile:
-                #        if card[0] in colors and card[1] == v:
-                #            how_many -= 1
-                #    for player in range(self.env.num_players):
-                #        if player != self.pidx:
-                #            for card in self.env.player_hands[player]:
-                #                if card[0] in colors and card[1] == v:
-                #                    how_many -= 1
-                #    min_p = min(min_p, how_many / total)
-                #p.append(min_p)
         
         try:
             idx_to_play = np.argmax(p)
@@ -304,38 +266,3 @@ class Agent:
                 return action
 
         assert False, f'PANIC!!! {self.env.info_tk}'
-
-#import matplotlib.pyplot as plt
-#def eval_agent_goodness(num_agents=2, num_games=1000):
-#    env = Hanabi(num_players=num_agents)
-#    players = []
-#    for i in range(num_agents):
-#        players.append(Agent(i, env))
-#
-#    stats = []
-#
-#    for game in range(num_games):
-#        env.reset()
-#        done = False
-#        while not done:
-#            for p in players:
-#                p.act()
-#                if env.err_tk == 3 or all(env.played_last_turn) or sum(len(env.table_cards[k]) for k in COLORS) == 25:
-#                    done = True
-#                    break
-#
-#        if env.err_tk < 3:
-#            stats.append(sum(len(env.table_cards[k]) for k in COLORS))
-#        else:
-#            stats.append(0)
-#
-#        if game % 1000 == 0: print(game)
-#
-#    print(f'Average score on {num_games} games: {sum(stats) / num_games}')
-#    print(f'Max score: {max(stats)} (in {sum(1 for s in stats if s == max(stats))}/{num_games} games)')
-#    print(f'Lost {sum(1 for s in stats if s == 0)}/{num_games} games')
-#    plt.hist(stats, bins=25, edgecolor='white', linewidth=1.2)
-#    plt.show()
-#    exit()
-#
-##eval_agent_goodness(num_agents=2, num_games=1000)
