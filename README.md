@@ -2,11 +2,10 @@
 Computational Intelligence A.A. 2021/2022 - Politecnico di Torino
 
 # Agent
-Implemented in file **_agent.py_**. To use it run:
+Implemented in file **_agent.py_**. To run it, start the server and then type in a shell:
 ```bash
-python3 agent.py <number>
+python3 agent.py
 ```
-The argument enables self-play w/ multiple instances of the agent.
 
 # Hanabi rules
 Setup:
@@ -63,9 +62,11 @@ Commands for client:
 + exit: exit from the game
 + ready: set your status to ready (lobby only)
 + show: show cards
-+ hint \<type> \<destinatary> \<cards>:
++ hint \<type> \<destinatary> \<value>:
   + type: 'color' or 'value'
   + destinatary: name of the person you want to ask the hint to
-  + cards: the cards you are addressing to. They start from 0 and are shown in the hand order. (this will probably be removed in a later version)
+  + value: 
+    + if type is 'color', then value is one of these: \['red', 'yellow', 'green', 'white', 'blue']
+    + if type is 'value', then value is a number between 1 and 5 (included)
 + discard \<num>: discard the card *num* (\[0-4]) from your hand
 + play \<num>: play the card *num* (\[0-4]) from your hand

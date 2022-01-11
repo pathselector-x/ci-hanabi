@@ -1,16 +1,12 @@
 import os
-import random
 from sys import argv, stdout
-from threading import Thread, Lock, Condition
+from threading import Thread, Condition
 import GameData
 import socket
 from constants import *
 from game import Card
 from hanabi import Hanabi, COLORS
 from rule_based_agent import Agent
-from itertools import product
-
-FULL_DECK = [(c,v) for c,v in product(COLORS, [1,1,1,2,2,3,3,4,4,5])]
 
 class TechnicAngel:
     def __init__(self, ip=HOST, port=PORT, ID=0):
@@ -21,9 +17,7 @@ class TechnicAngel:
         else:
             self.playerName = "technic_angel"
 
-        self.statuses = ["Lobby", "Game", "GameHint"]
         self.game_ended = False
-        self.status = self.statuses[0]
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         request = GameData.ClientPlayerAddData(self.playerName)
         self.s.connect((ip, port))
@@ -49,18 +43,15 @@ class TechnicAngel:
 
         self.final_score = None
 
-        self.lock = Lock()
         self.cv = Condition()
         self.run = True
 
         self.action_performed = False
-        self.satify_show = False
+        self.satisfy_show = False
         
         #! Ready up your engines...
-        input('Press [ENTER] to start...')
         self.auto_ready()
 
-        self.msg_queue = []
         self.t_listener = Thread(target=self.listener)
         self.t_listener.start()
 
@@ -85,15 +76,6 @@ class TechnicAngel:
                     if type(data) is GameData.ServerGameStateData:
                         self.current_player = str(data.currentPlayer)
                         self.player_hands = {self.playerName: []}
-                        ##for player in data.players:
-                        ##    self.player_hands[player.name] = [Card(card.id, card.value, card.color) for card in player.hand]
-                        ##    if self.hands_knowledge is not None:
-                        ##        while len(self.player_hands[player.name]) < len(self.hands_knowledge[player.name]):
-                        ##            self.deck_has_cards = False
-                        ##            self.hands_knowledge[player.name].pop()
-                        ##    else:
-                        ##        self.play_order.append(player.name) #TODO: refactor this
-                        #! === With data.players modifications ===
                         play_order = []
                         for player in data.players:
                             if player.name == self.playerName:
@@ -103,7 +85,6 @@ class TechnicAngel:
                             play_order.append(player.name)
                         play_order = play_order[play_order.index(self.playerName):] + play_order[:play_order.index(self.playerName)]
                         self.play_order = play_order
-                        #! =======================================
                         self.table_cards = { "red": [], "yellow": [], "green": [], "blue": [], "white": [] }
                         for k in data.tableCards.keys():
                             for card in data.tableCards[k]:
@@ -113,7 +94,7 @@ class TechnicAngel:
                             self.discard_pile.append(Card(card.id, card.value, card.color))
                         self.used_note_tokens = data.usedNoteTokens
                         self.used_storm_tokens = data.usedStormTokens
-                        self.satify_show = True
+                        self.satisfy_show = True
                         self.cv.notify_all()
 
                     # Someone played something
@@ -151,7 +132,7 @@ class TechnicAngel:
                         self.final_score = data.score
                         self.cv.notify_all()
 
-        except ConnectionResetError: 
+        except ConnectionResetError:
             self.game_ended = True
             os._exit(0)
                 
@@ -168,12 +149,11 @@ class TechnicAngel:
         if type(data) is GameData.ServerStartGameData:
             print("Game start!")
             self.s.send(GameData.ClientPlayerReadyData(self.playerName).serialize())
-            self.status = self.statuses[1]
 
     def action_show(self):
-        self.satify_show = False
+        self.satisfy_show = False
         self.s.send(GameData.ClientGetGameStateRequest(self.playerName).serialize())
-        while not self.satify_show:
+        while not self.satisfy_show:
             self.cv.wait()
 
     def action_play(self, num):
@@ -245,18 +225,14 @@ class TechnicAngel:
 
     def __abort(self):
         if self.final_score is not None:
-            for c in COLORS:
-                print(c[0], len(self.table_cards[c]), end=' | ')
-            print()
-            print(f'Final score: {self.final_score}/25')
-        with self.lock: 
-            self.run = False
-            self.s.shutdown(socket.SHUT_RDWR)
+            print(f'\nFinal score: {self.final_score}/25')
+        
+        self.run = False
+        self.s.shutdown(socket.SHUT_RDWR)
         self.t_listener.join()
         os._exit(0)
 
     def main_loop(self):
-        #TODO: communicate changes in 'game.py' and 'GameData.py'
         #! Check how many cards in hand (4 or 5 depending on how many players)
         with self.cv: self.action_show()
         
@@ -275,8 +251,7 @@ class TechnicAngel:
                 self.select_action()
 
 if len(argv) > 1:
-    ID = int(argv[1]) if int(argv[1]) in [1,2,3,4,5] else 0
+    ID = int(argv[1]) if int(argv[1]) in [1,2,3,4] else 0
 else:
     ID = 0
 agent = TechnicAngel(ID=ID)
-
